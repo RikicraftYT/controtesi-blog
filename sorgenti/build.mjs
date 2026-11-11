@@ -28,7 +28,7 @@ const GRUPPI = [
   { id: "rendimenti", nome: "Quanto rende il mercato" },
   { id: "prezzi", nome: "I prezzi sono giusti?" },
   { id: "portafoglio", nome: "Come costruire il portafoglio" },
-  { id: "sintesi", nome: "Tirare le fila" },
+  { id: "sintesi", nome: "Trarre le conclusioni" },
 ];
 
 /* ---------- Markdown ---------- */
@@ -55,7 +55,9 @@ voce("obiezione", "Obiezione");
 voce("risposta", "Risposta");
 voce("difendibile", "Formulazione difendibile");
 
-md.renderer.rules.table_open = () => '<div class="tabella"><table>\n';
+// La tabella può scorrere in orizzontale su schermi stretti: il contenitore
+// riceve il focus, così si può scorrere anche da tastiera.
+md.renderer.rules.table_open = () => '<div class="tabella" tabindex="0" role="region" aria-label="Tabella"><table>\n';
 md.renderer.rules.table_close = () => "</table></div>\n";
 
 const linkBase = md.renderer.rules.link_open ?? ((t, i, o, e, self) => self.renderToken(t, i, o));
@@ -117,7 +119,7 @@ function guscio({ titolo, descrizione, corpo, corrente = "", barra = false }) {
 <html lang="it" data-theme="chiaro">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(titolo)}</title>
 <meta name="description" content="${esc(descrizione)}">
 <link rel="icon" href="${icona}">
@@ -158,10 +160,17 @@ function paginaArticolo(a, i) {
   const gruppo = GRUPPI.find((g) => g.id === a.gruppo);
   const prima = articoli[i - 1];
   const dopo = articoli[i + 1];
+  const voci = a.sezioni.map((s) => `<li><a href="#${s.id}">${esc(s.testo)}</a></li>`).join("");
+  const sommarioBreve = a.sezioni.length
+    ? `<details class="sommario-breve">
+    <summary>In questa pagina</summary>
+    <nav aria-label="In questa pagina"><ol>${voci}</ol></nav>
+  </details>`
+    : "";
   const sommario = a.sezioni.length
     ? `<aside class="sommario-pagina" aria-label="In questa pagina">
     <h2>In questa pagina</h2>
-    <ol>${a.sezioni.map((s) => `<li><a href="#${s.id}">${esc(s.testo)}</a></li>`).join("")}</ol>
+    <ol>${voci}</ol>
   </aside>`
     : "";
   const corpo = `<article>
@@ -176,6 +185,7 @@ function paginaArticolo(a, i) {
   </div>
 </header>
 <div class="articolo-corpo">
+  ${sommarioBreve}
   <div class="prosa">
 ${a.html}
   </div>

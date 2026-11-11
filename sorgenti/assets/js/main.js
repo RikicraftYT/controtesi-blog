@@ -64,48 +64,34 @@
     document.querySelectorAll(".prosa h2[id]").forEach(function (h) { oss.observe(h); });
   }
 
+  /* ----- Sommario a tendina (telefono e tablet): si chiude dopo la scelta ----- */
+  var tendina = document.querySelector(".sommario-breve");
+  if (tendina) {
+    tendina.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a")) tendina.open = false;
+    });
+  }
+
   /* ----- Simulazione: scommessa +50% / -40% ----- */
+  // Il grafico è disegnato alla larghezza reale del riquadro, così le etichette
+  // restano leggibili anche su telefono; i percorsi si conservano se cambia la
+  // larghezza (rotazione del dispositivo) e si rigenerano solo col bottone.
   var fig = document.querySelector('[data-sim="scommessa"]');
   if (fig) {
     var NS = "http://www.w3.org/2000/svg";
-    var L = 640, A = 300, mSx = 46, mDx = 12, mSu = 12, mGiu = 26;
     var GIOCATE = 50, GIOCATORI = 20, yMin = -3, yMax = 2;
+    var ATTESO = GIOCATE * Math.log10(1.05);
+    var percorsi = [];
+    var larghezzaDisegnata = 0;
 
-    var x = function (n) { return mSx + (L - mSx - mDx) * n / GIOCATE; };
-    var y = function (log) {
-      var c = Math.max(yMin, Math.min(yMax, log));
-      return mSu + (A - mSu - mGiu) * (yMax - c) / (yMax - yMin);
-    };
     var el = function (nome, attr) {
       var n = document.createElementNS(NS, nome);
       for (var k in attr) n.setAttribute(k, attr[k]);
       return n;
     };
-    var linea = function (f) {
-      var p = [];
-      for (var n = 0; n <= GIOCATE; n++) p.push(x(n).toFixed(1) + "," + y(f(n)).toFixed(1));
-      return p.join(" ");
-    };
 
-    var svg = el("svg", { viewBox: "0 0 " + L + " " + A, role: "img",
+    var svg = el("svg", { role: "img",
       "aria-label": "Grafico di venti percorsi simulati della scommessa, con valore atteso e percorso tipico" });
-    [[2, "×100"], [1, "×10"], [0, "×1"], [-1, "×0,1"], [-2, "×0,01"], [-3, "×0,001"]].forEach(function (g) {
-      svg.appendChild(el("line", { x1: mSx, x2: L - mDx, y1: y(g[0]), y2: y(g[0]), "class": "sim-griglia" }));
-      var t = el("text", { x: mSx - 6, y: y(g[0]) + 4, "text-anchor": "end", "class": "sim-asse" });
-      t.textContent = g[1];
-      svg.appendChild(t);
-    });
-    [0, 10, 20, 30, 40, 50].forEach(function (n) {
-      var t = el("text", { x: x(n), y: A - 6, "text-anchor": "middle", "class": "sim-asse" });
-      t.textContent = n === 0 ? "giocata 0" : String(n);
-      svg.appendChild(t);
-    });
-    var gruppo = el("g", {});
-    svg.appendChild(gruppo);
-    svg.appendChild(el("polyline", { "class": "sim-tipico",
-      points: linea(function (n) { return n * Math.log10(Math.sqrt(1.5 * 0.6)); }) }));
-    svg.appendChild(el("polyline", { "class": "sim-atteso",
-      points: linea(function (n) { return n * Math.log10(1.05); }) }));
 
     var comandi = document.createElement("div");
     comandi.className = "sim-comandi";
@@ -118,23 +104,73 @@
     comandi.appendChild(bottone);
     comandi.appendChild(esito);
 
+    var disegna = function () {
+      var L = Math.round(Math.max(280, Math.min(720, fig.clientWidth - 36)));
+      var stretto = L < 480;
+      var A = stretto ? Math.round(L * 0.72) : 300;
+      var mSx = stretto ? 42 : 46, mDx = 10, mSu = 12, mGiu = 26;
+      larghezzaDisegnata = fig.clientWidth;
+      svg.setAttribute("viewBox", "0 0 " + L + " " + A);
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+      var x = function (n) { return mSx + (L - mSx - mDx) * n / GIOCATE; };
+      var y = function (log) {
+        var c = Math.max(yMin, Math.min(yMax, log));
+        return mSu + (A - mSu - mGiu) * (yMax - c) / (yMax - yMin);
+      };
+      var linea = function (f) {
+        var p = [];
+        for (var n = 0; n <= GIOCATE; n++) p.push(x(n).toFixed(1) + "," + y(f(n)).toFixed(1));
+        return p.join(" ");
+      };
+
+      [[2, "×100"], [1, "×10"], [0, "×1"], [-1, "×0,1"], [-2, "×0,01"], [-3, "×0,001"]].forEach(function (g) {
+        svg.appendChild(el("line", { x1: mSx, x2: L - mDx, y1: y(g[0]), y2: y(g[0]), "class": "sim-griglia" }));
+        var t = el("text", { x: mSx - 6, y: y(g[0]) + 4, "text-anchor": "end", "class": "sim-asse" });
+        t.textContent = g[1];
+        svg.appendChild(t);
+      });
+      (stretto ? [0, 25, 50] : [0, 10, 20, 30, 40, 50]).forEach(function (n) {
+        var t = el("text", { x: x(n), y: A - 6, "text-anchor": n === 0 ? "start" : n === GIOCATE ? "end" : "middle", "class": "sim-asse" });
+        t.textContent = n === 0 ? "giocata 0" : String(n);
+        svg.appendChild(t);
+      });
+      percorsi.forEach(function (logs) {
+        svg.appendChild(el("polyline", { "class": "sim-percorso",
+          points: logs.map(function (v, n) { return x(n).toFixed(1) + "," + y(v).toFixed(1); }).join(" ") }));
+      });
+      svg.appendChild(el("polyline", { "class": "sim-tipico",
+        points: linea(function (n) { return n * Math.log10(Math.sqrt(1.5 * 0.6)); }) }));
+      svg.appendChild(el("polyline", { "class": "sim-atteso",
+        points: linea(function (n) { return n * Math.log10(1.05); }) }));
+    };
+
     var gioca = function () {
-      while (gruppo.firstChild) gruppo.removeChild(gruppo.firstChild);
-      var sopraInizio = 0, sopraAtteso = 0, atteso = GIOCATE * Math.log10(1.05);
+      var sopraInizio = 0, sopraAtteso = 0;
+      percorsi = [];
       for (var g = 0; g < GIOCATORI; g++) {
-        var log = 0, p = [x(0).toFixed(1) + "," + y(0).toFixed(1)];
+        var log = 0, logs = [0];
         for (var n = 1; n <= GIOCATE; n++) {
           log += Math.log10(Math.random() < 0.5 ? 1.5 : 0.6);
-          p.push(x(n).toFixed(1) + "," + y(log).toFixed(1));
+          logs.push(log);
         }
         if (log > 0) sopraInizio++;
-        if (log > atteso) sopraAtteso++;
-        gruppo.appendChild(el("polyline", { "class": "sim-percorso", points: p.join(" ") }));
+        if (log > ATTESO) sopraAtteso++;
+        percorsi.push(logs);
       }
+      disegna();
       esito.textContent = "Sopra il capitale iniziale: " + sopraInizio + " su " + GIOCATORI +
         ". Sopra il valore atteso: " + sopraAtteso + " su " + GIOCATORI + ".";
     };
     bottone.addEventListener("click", gioca);
+
+    var attesa;
+    window.addEventListener("resize", function () {
+      clearTimeout(attesa);
+      attesa = setTimeout(function () {
+        if (Math.abs(fig.clientWidth - larghezzaDisegnata) > 8) disegna();
+      }, 150);
+    });
 
     fig.insertBefore(comandi, fig.firstChild);
     fig.insertBefore(svg, fig.firstChild);
