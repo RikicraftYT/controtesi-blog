@@ -5,6 +5,7 @@ tesi: Value, size e momentum rendono più del mercato.
 obiezione: Dopo la pubblicazione i premi si riducono di circa un terzo.
 gruppo: prezzi
 sommario: Alcune caratteristiche delle azioni hanno reso più di quanto spieghi il rischio di mercato. Se è rischio dura, se è errore si consuma. Non è facile dire quale.
+aggiornato: 2026-11-11
 ---
 
 Alcune caratteristiche delle azioni sono state associate a rendimenti più alti di quanto spieghi il solo rischio di mercato. La domanda che decide tutto è se siano compensi per un rischio, e quindi destinati a durare, oppure errori di prezzo, destinati a ridursi una volta noti.

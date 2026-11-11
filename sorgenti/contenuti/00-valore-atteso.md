@@ -5,6 +5,7 @@ tesi: Se il valore atteso è positivo, conviene.
 obiezione: È una media su mondi paralleli. Tu ne vivi uno solo.
 gruppo: strumento
 sommario: Prima di discutere le teorie conviene capire cosa promette una media, e cosa no. Con una scommessa che in media vince e quasi sempre perde.
+aggiornato: 2026-11-11
 ---
 
 Ogni tesi di questo blog è un'affermazione su un valore atteso, e il valore atteso è una media su molti mondi possibili, non ciò che accade a un singolo investitore nel tempo. La distanza tra le due cose spiega buona parte delle obiezioni che troverai negli altri articoli.

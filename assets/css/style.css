@@ -165,11 +165,6 @@ a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offse
 .apertura-azioni a:not(.bottone) { padding-block: 0.6rem; }
 
 .indice { max-width: 78rem; margin: 0 auto; padding: 0 var(--bordo-dx) 5rem var(--bordo-sx); }
-.indice-colonne {
-  display: none; font-family: var(--titoli); font-size: 0.95rem; font-weight: 600;
-  padding-bottom: 0.6rem; color: var(--tenue);
-}
-.indice-colonne span:last-child { color: var(--lampone); }
 
 /* Gerarchia della home: il nome del gruppo pesa più delle tesi che contiene. */
 .gruppo { margin-top: 4rem; }
@@ -204,10 +199,37 @@ a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offse
 .duello-obiezione::before { content: "Obiezione. "; font-family: var(--titoli); font-style: normal; font-weight: 600; font-size: 0.9rem; }
 
 @media (min-width: 52rem) {
-  .indice-colonne, .duello { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); column-gap: 3rem; }
-  .duello-obiezione { padding-top: 0.15rem; }
-  .duello-obiezione::before { content: none; }
+  .duello { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); column-gap: 3rem; }
+  .duello-obiezione { padding-top: 0.1rem; }
+  /* Su due colonne l'etichetta va sopra il testo, al posto di una legenda. */
+  .duello-obiezione::before { content: "Obiezione"; display: block; margin-bottom: 0.15rem; }
 }
+
+/* Rimando al simulatore di portafogli */
+.indice-coda { max-width: 78rem; margin: 0 auto; padding: 0 var(--bordo-dx) 5rem var(--bordo-sx); }
+.rimando {
+  font-family: var(--titoli);
+  background: var(--superficie); border: 1.5px solid var(--inchiostro); border-radius: 14px;
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+.indice-coda .rimando { max-width: 46rem; }
+.prosa .rimando { margin: 3.2rem 0 0; }
+.rimando-etichetta { margin: 0 0 0.35rem !important; font-size: 0.92rem; font-weight: 600; color: var(--tenue); }
+.rimando .rimando-titolo {
+  font-family: var(--titoli); font-weight: 700; font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 0.6rem;
+}
+.rimando p:not(.rimando-etichetta) { font-family: var(--testo); font-size: 1.1rem; line-height: 1.5; margin: 0 0 1.2rem; max-width: 36rem; }
+.rimando .bottone { font-weight: 600; color: var(--carta); }
+
+.visivamente-nascosto {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* Pagina 404 */
+.errore-codice { font-family: var(--titoli); font-weight: 600; font-size: 1rem !important; color: var(--lampone) !important; margin: 0 0 1rem !important; }
+.apertura-errore { min-height: 55vh; }
 
 /* ---------- Articolo ---------- */
 
@@ -388,6 +410,7 @@ a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offse
   font-family: var(--titoli); font-size: 0.95rem; color: var(--tenue);
 }
 .piede p { margin: 0; max-width: 34rem; }
+.piede-link { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; }
 .piede a { color: inherit; display: inline-block; padding: 0.6rem 0; margin: -0.6rem 0; }
 
 @media (prefers-reduced-motion: reduce) {

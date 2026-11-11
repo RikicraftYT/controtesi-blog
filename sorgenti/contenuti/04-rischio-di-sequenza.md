@@ -5,6 +5,7 @@ tesi: Conta il rendimento medio.
 obiezione: Se versi o prelevi, conta l'ordine. Stessa media, esiti opposti.
 gruppo: rendimenti
 sommario: Due investitori con gli stessi rendimenti in ordine inverso finiscono in posti diversi. È il motivo per cui «in media cresce» non basta a chi vive del portafoglio.
+aggiornato: 2026-11-11
 ---
 
 Quando versi o prelevi denaro, l'ordine dei rendimenti conta quanto la loro media. È il motivo per cui «il mercato cresce in media» non basta a chi accumula, e ancora meno a chi vive del portafoglio.

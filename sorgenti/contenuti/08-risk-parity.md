@@ -5,6 +5,7 @@ tesi: Va bilanciato il rischio, non il capitale.
 obiezione: Funziona finché azioni e obbligazioni non scendono insieme. Nel 2022 è successo.
 gruppo: portafoglio
 sommario: Un 60/40 è per il 95% una scommessa azionaria. Risk parity lo corregge, ma per trasformare l'equilibrio in rendimento ha bisogno di leva e di correlazioni che stiano ferme.
+aggiornato: 2026-11-11
 ---
 
 Dividere il capitale in parti uguali non divide il rischio in parti uguali. Risk parity parte da questa osservazione corretta, ma per trasformarla in rendimento ha bisogno di due ipotesi fragili: correlazioni stabili e leva a buon mercato.

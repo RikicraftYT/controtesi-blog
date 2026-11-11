@@ -5,6 +5,7 @@ tesi: L'efficienza va e viene, come le risorse in un ecosistema.
 obiezione: Una teoria compatibile con qualsiasi osservazione non prevede niente.
 gruppo: prezzi
 sommario: Andrew Lo propone di smettere di chiedersi se i mercati sono efficienti e di chiedersi quanto, dove e quando. Descrive bene. Prevede poco.
+aggiornato: 2026-11-11
 ---
 
 Andrew Lo propone di trattare l'efficienza come un grado che varia nel tempo e tra mercati, non come una proprietà fissa. È la cornice più utile per tenere insieme [Mercati efficienti](mercati-efficienti.html) e [Factor investing](factor-investing.html), ma è qualitativa: descrive bene, prevede poco.

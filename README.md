@@ -19,7 +19,7 @@ Le formule sono scritte per intero e ogni numero rimanda alla sua fonte.
 
 ## Di cosa parla
 
-- **Lo strumento**: il valore atteso, cosa promette una media e cosa no.
+- **Il metro di giudizio**: il valore atteso, cosa promette una media e cosa no.
 - **Quanto rende il mercato**: crescita di lungo periodo, premio per il rischio, prezzo d'ingresso, ordine dei rendimenti.
 - **I prezzi sono giusti?**: mercati efficienti, mercati adattivi, factor investing.
 - **Come costruire il portafoglio**: risk parity e Permanent Portfolio.
@@ -28,6 +28,10 @@ Le formule sono scritte per intero e ogni numero rimanda alla sua fonte.
 ## Per chi è
 
 Per chi investe o vuole capire meglio le teorie che sente ripetere, e preferisce un ragionamento con le obiezioni in vista a una risposta definitiva. Aiuta un po' di familiarità con i numeri.
+
+## Dalla teoria ai numeri
+
+Chi vuole provare queste idee sui propri portafogli può usare il [Simulatore di portafogli](https://portfolio-site-2zxf.onrender.com), un altro progetto dello stesso autore: si inseriscono le proprie allocazioni e se ne analizzano le statistiche.
 
 ## Avvertenza
 

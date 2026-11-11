@@ -18,13 +18,35 @@ const MODULI = path.join(QUI, "node_modules");
 const SITO = {
   nome: "Controtesi",
   motto: "Idee d'investimento messe alla prova",
+  // Indirizzo pubblico: serve solo ai link assoluti (anteprime social, canonical, pagina 404).
+  url: "https://rikicraftyt.github.io/controtesi-blog/",
+  anteprima: { file: "assets/img/anteprima.png", larghezza: 1200, altezza: 630,
+    alt: "Controtesi. Idee d'investimento messe alla prova." },
 };
+
+// Sito dello stesso autore, segnalato in home, nel piè di pagina e negli articoli sul portafoglio.
+const SIMULATORE = {
+  nome: "Simulatore di portafogli",
+  url: "https://portfolio-site-2zxf.onrender.com",
+};
+
+const MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio",
+  "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+
+// "2026-11-11" -> "l'11 novembre 2026"
+function dataEstesa(iso, file) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso ?? "");
+  if (!m) throw new Error(`Data "aggiornato" mancante o non valida (AAAA-MM-GG) in ${file}`);
+  const g = Number(m[3]);
+  const giorno = g === 1 ? "il 1º" : g === 8 || g === 11 ? `l'${g}` : `il ${g}`;
+  return `${giorno} ${MESI[Number(m[2]) - 1]} ${m[1]}`;
+}
 
 const NUMERI = ["Zero", "Un", "Due", "Tre", "Quattro", "Cinque", "Sei", "Sette", "Otto", "Nove", "Dieci",
   "Undici", "Dodici", "Tredici", "Quattordici", "Quindici", "Sedici", "Diciassette", "Diciotto", "Diciannove", "Venti"];
 
 const GRUPPI = [
-  { id: "strumento", nome: "Lo strumento" },
+  { id: "strumento", nome: "Il metro di giudizio" },
   { id: "rendimenti", nome: "Quanto rende il mercato" },
   { id: "prezzi", nome: "I prezzi sono giusti?" },
   { id: "portafoglio", nome: "Come costruire il portafoglio" },
@@ -91,6 +113,7 @@ function leggi(file) {
   const parole = m[2].replace(/\$\$[\s\S]*?\$\$/g, " ").split(/\s+/).filter(Boolean).length;
   return {
     ...dati,
+    file: path.basename(file),
     html: md.renderer.render(tokens, md.options, {}),
     sezioni,
     minuti: Math.max(1, Math.round(parole / 180)),
@@ -112,16 +135,34 @@ const icona =
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#ffe45c"/><path d="M9 23 23 9M9 9l14 14" stroke="#1d1633" stroke-width="4" stroke-linecap="round"/></svg>'
   );
 
-function guscio({ titolo, descrizione, corpo, corrente = "", barra = false }) {
+function guscio({ titolo, descrizione, corpo, corrente = "", barra = false, percorso = corrente,
+  tipo = "website", aggiornato = "", base = "", indicizza = true, titoloSocial = titolo }) {
+  const assoluto = SITO.url + (percorso === "index.html" ? "" : percorso);
+  const meta = [
+    indicizza ? `<link rel="canonical" href="${assoluto}">` : '<meta name="robots" content="noindex">',
+    `<meta property="og:site_name" content="${SITO.nome}">`,
+    '<meta property="og:locale" content="it_IT">',
+    `<meta property="og:type" content="${tipo}">`,
+    `<meta property="og:title" content="${esc(titoloSocial)}">`,
+    `<meta property="og:description" content="${esc(descrizione)}">`,
+    indicizza ? `<meta property="og:url" content="${assoluto}">` : "",
+    `<meta property="og:image" content="${SITO.url}${SITO.anteprima.file}">`,
+    `<meta property="og:image:width" content="${SITO.anteprima.larghezza}">`,
+    `<meta property="og:image:height" content="${SITO.anteprima.altezza}">`,
+    `<meta property="og:image:alt" content="${esc(SITO.anteprima.alt)}">`,
+    '<meta name="twitter:card" content="summary_large_image">',
+    aggiornato ? `<meta property="article:modified_time" content="${aggiornato}">` : "",
+  ].filter(Boolean).join("\n");
   const voce = (href, testo, classe = "") =>
     `<a href="${href}"${classe ? ` class="${classe}"` : ""}${corrente === href ? ' aria-current="page"' : ""}>${testo}</a>`;
   return `<!DOCTYPE html>
 <html lang="it" data-theme="chiaro">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8">${base ? `\n<base href="${base}">` : ""}
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(titolo)}</title>
 <meta name="description" content="${esc(descrizione)}">
+${meta}
 <link rel="icon" href="${icona}">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -147,13 +188,22 @@ ${corpo}
 <footer class="piede">
   <div class="piede-interno">
     <p>${SITO.nome} raccoglie analisi di idee, non consulenza finanziaria. Ogni numero citato rimanda alla sua fonte.</p>
-    <p><a href="fonti.html">Fonti e letture</a></p>
+    <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="${SIMULATORE.url}" target="_blank" rel="noopener">${SIMULATORE.nome}<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
   </div>
 </footer>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
 `;
+}
+
+function rimandoSimulatore(titolo, testo) {
+  return `<aside class="rimando" aria-label="${SIMULATORE.nome}">
+  <p class="rimando-etichetta">Dallo stesso autore</p>
+  <h2 class="rimando-titolo">${esc(titolo)}</h2>
+  <p>${esc(testo)}</p>
+  <a class="bottone" href="${SIMULATORE.url}" target="_blank" rel="noopener">Apri il simulatore<span aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a>
+</aside>`;
 }
 
 function paginaArticolo(a, i) {
@@ -178,7 +228,7 @@ function paginaArticolo(a, i) {
   <p class="articolo-gruppo"><a href="index.html#${gruppo.id}">${esc(gruppo.nome)}</a></p>
   <h1>${esc(a.titolo)}</h1>
   <p class="articolo-sommario">${esc(a.sommario)}</p>
-  <p class="articolo-tempo">${a.minuti} minuti di lettura</p>
+  <p class="articolo-tempo">${a.minuti} minuti di lettura <span aria-hidden="true">·</span> Aggiornato <time datetime="${a.aggiornato}">${dataEstesa(a.aggiornato, a.file)}</time></p>
   <div class="scontro">
     <p class="scontro-tesi"><b>La tesi</b>${esc(a.tesi)}</p>
     <p class="scontro-obiezione"><b>L'obiezione più forte</b>${esc(a.obiezione)}</p>
@@ -188,6 +238,7 @@ function paginaArticolo(a, i) {
   ${sommarioBreve}
   <div class="prosa">
 ${a.html}
+${a.gruppo === "portafoglio" ? rimandoSimulatore("Prova queste idee sui tuoi numeri", "Nel simulatore inserisci i tuoi portafogli, per esempio un 60/40, un Permanent Portfolio o una versione risk parity, e ne confronti le statistiche.") : ""}
   </div>
   ${sommario}
 </div>
@@ -198,10 +249,13 @@ ${a.html}
 </nav>`;
   return guscio({
     titolo: `${a.titolo} | ${SITO.nome}`,
+    titoloSocial: a.titolo,
     descrizione: a.sommario,
     corpo,
     corrente: `${a.slug}.html`,
     barra: true,
+    tipo: "article",
+    aggiornato: a.aggiornato,
   });
 }
 
@@ -243,8 +297,10 @@ function paginaIniziale() {
   </div>
 </section>
 <section class="indice" aria-label="Tutti gli articoli">
-  <div class="indice-colonne" aria-hidden="true"><span>La tesi</span><span>L'obiezione più forte</span></div>
 ${gruppi}
+</section>
+<section class="indice-coda">
+${rimandoSimulatore("Dalle idee ai tuoi portafogli", "Il simulatore di portafogli permette di inserire le proprie allocazioni e analizzarne le statistiche: un modo per mettere alla prova sui numeri le idee discusse qui.")}
 </section>`;
   return guscio({
     titolo: `${SITO.nome} | ${SITO.motto}`,
@@ -262,13 +318,37 @@ const copia = (da, a) => {
   fs.copyFileSync(da, a);
 };
 
+function pagina404() {
+  const corpo = `<section class="apertura apertura-errore">
+  <p class="errore-codice">Errore 404</p>
+  <h1>Questa pagina non esiste.</h1>
+  <p>Il link potrebbe essere sbagliato, oppure l'articolo ha cambiato indirizzo. Gli articoli sono tutti nella pagina iniziale.</p>
+  <div class="apertura-azioni">
+    <a class="bottone" href="index.html">Vai agli articoli</a>
+    <a href="fonti.html">Fonti e letture</a>
+  </div>
+</section>`;
+  return guscio({
+    titolo: `Pagina non trovata | ${SITO.nome}`,
+    descrizione: "La pagina cercata non esiste.",
+    corpo,
+    percorso: "404.html",
+    // GitHub Pages serve questa pagina a qualunque indirizzo mancante, anche in
+    // sottocartelle: il base fa funzionare i link relativi da ogni profondità.
+    base: new URL(SITO.url).pathname,
+    indicizza: false,
+  });
+}
+
 scrivi("index.html", paginaIniziale());
+scrivi("404.html", pagina404());
 articoli.forEach((a, i) => scrivi(`${a.slug}.html`, paginaArticolo(a, i)));
 pagine.forEach((p) => scrivi(`${p.slug}.html`, paginaSemplice(p)));
 
 const risorse = path.join(USCITA, "assets");
 copia(path.join(QUI, "assets/css/style.css"), path.join(risorse, "css/style.css"));
 copia(path.join(QUI, "assets/js/main.js"), path.join(risorse, "js/main.js"));
+copia(path.join(QUI, SITO.anteprima.file), path.join(risorse, "img", path.basename(SITO.anteprima.file)));
 
 if (fs.existsSync(MODULI)) {
   copia(path.join(MODULI, "katex/dist/katex.min.css"), path.join(risorse, "katex/katex.min.css"));
@@ -283,4 +363,4 @@ if (fs.existsSync(MODULI)) {
   for (const f of caratteri) copia(path.join(MODULI, f), path.join(risorse, "fonts", path.basename(f)));
 }
 
-console.log(`Scritte ${articoli.length + pagine.length + 1} pagine in ${USCITA}`);
+console.log(`Scritte ${articoli.length + pagine.length + 2} pagine in ${USCITA}`);

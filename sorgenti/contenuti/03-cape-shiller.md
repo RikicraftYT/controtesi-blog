@@ -5,6 +5,7 @@ tesi: Chi compra caro guadagna meno.
 obiezione: Il CAPE è sopra la media da trent'anni e il mercato è salito lo stesso.
 gruppo: rendimenti
 sommario: Il prezzo che paghi sposta il rendimento a dieci anni più di ogni altra variabile osservabile. Ma non ti dice quando. Serve a tarare le aspettative, non a entrare e uscire.
+aggiornato: 2026-11-11
 ---
 
 Il prezzo d'ingresso è la variabile che più sposta il rendimento a dieci anni, ma non dice *quando* arriverà la correzione. Il CAPE serve a tarare le aspettative, non a decidere quando entrare e uscire.

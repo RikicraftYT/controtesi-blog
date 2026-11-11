@@ -5,6 +5,7 @@ tesi: Il mercato globale, in media, cresce.
 obiezione: Tra crescita ed età della pietra c'è la stagnazione. Chiedere al Giappone.
 gruppo: rendimenti
 sommario: «Altrimenti torniamo all'età della pietra» è un argomento vero ma incompleto. Qui c'è la versione che regge senza dati storici, e i cinque punti in cui scricchiola.
+aggiornato: 2026-11-11
 ---
 
 La tesi regge su un argomento di equilibrio, non sulla storia: nessuno detiene un'attività rischiosa senza aspettarsi un compenso, quindi il prezzo si aggiusta finché il rendimento atteso è positivo. È una tesi sul rendimento *atteso*. Non garantisce nulla sul rendimento *realizzato* in un dato arco di vita.

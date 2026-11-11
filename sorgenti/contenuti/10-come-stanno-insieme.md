@@ -5,6 +5,7 @@ tesi: Si possono sostenere tutte queste idee insieme.
 obiezione: No. Alcune coppie si contraddicono, e conviene sapere quali.
 gruppo: sintesi
 sommario: Mercati efficienti e risk parity non possono essere entrambi veri in forma forte. Una mappa delle contraddizioni e tre modi coerenti di uscirne.
+aggiornato: 2026-11-11
 ---
 
 Le idee di questo blog non si possono sostenere tutte nella forma forte: alcune coppie si contraddicono. Sapere quali è più utile che scegliere una teoria preferita.

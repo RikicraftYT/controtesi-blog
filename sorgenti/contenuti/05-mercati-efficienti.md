@@ -5,6 +5,7 @@ tesi: I prezzi contengono già tutta l'informazione.
 obiezione: Se fosse vero, nessuno pagherebbe per informarsi. E chi farebbe i prezzi?
 gruppo: prezzi
 sommario: «Non esistono pasti gratis» e «il prezzo è giusto» sembrano la stessa frase. Non lo sono, e confonderle è l'errore più comune su questa teoria.
+aggiornato: 2026-11-11
 ---
 
 L'ipotesi contiene due affermazioni diverse, e solo una è ben sostenuta. «Non esistono pasti gratis», cioè battere il mercato al netto dei costi è molto difficile, regge bene. «Il prezzo è giusto», cioè i prezzi riflettono sempre il valore fondamentale, è molto più fragile.
