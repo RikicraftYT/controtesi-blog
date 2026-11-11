@@ -72,6 +72,32 @@
     });
   }
 
+  /* ----- Formule: su più righe quando quella affiancata non entra ----- */
+  var formule = document.querySelectorAll(".formula");
+  if (document.querySelector(".prosa .katex-display")) {
+    var adatta = function () {
+      formule.forEach(function (f) {
+        f.classList.remove("a-righe");
+        var d = f.querySelector(".formula-affiancata .katex-display");
+        if (d && d.scrollWidth > d.clientWidth + 1) f.classList.add("a-righe");
+      });
+      // Se manca poco, si rimpicciolisce la formula (al massimo del 20%) invece di farla scorrere.
+      document.querySelectorAll(".prosa .katex-display").forEach(function (d) {
+        d.style.fontSize = "";
+        if (!d.offsetParent) return;
+        var rapporto = d.clientWidth / d.scrollWidth;
+        if (rapporto < 1 && rapporto >= 0.8) d.style.fontSize = (Math.floor(rapporto * 100) - 3) + "%";
+      });
+    };
+    adatta();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(adatta);
+    var attesaFormule;
+    window.addEventListener("resize", function () {
+      clearTimeout(attesaFormule);
+      attesaFormule = setTimeout(adatta, 150);
+    });
+  }
+
   /* ----- Simulazione: scommessa +50% / -40% ----- */
   // Il grafico è disegnato alla larghezza reale del riquadro, così le etichette
   // restano leggibili anche su telefono; i percorsi si conservano se cambia la

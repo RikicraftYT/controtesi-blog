@@ -39,7 +39,7 @@ slug: nome-del-file-html
 titolo: Titolo dell'articolo
 tesi: La tesi in una frase.
 obiezione: L'obiezione più forte in una frase.
-gruppo: strumento | rendimenti | prezzi | portafoglio | sintesi
+gruppo: strumento | rendimenti | prezzi | portafoglio | vita | sintesi
 sommario: Due righe che compaiono sotto il titolo e nei risultati di ricerca.
 aggiornato: 2026-11-11
 ---
@@ -47,7 +47,7 @@ aggiornato: 2026-11-11
 
 `aggiornato` (formato AAAA-MM-GG) è obbligatorio per gli articoli: compare sotto il titolo come «Aggiornato l'11 novembre 2026». Va cambiato quando si rivede il contenuto, non per correzioni di battitura.
 
-I file sono ordinati per nome, quindi il prefisso numerico decide l'ordine degli articoli. Le pagine che non sono articoli (come `fonti.md`) hanno `tipo: pagina`. I nomi dei gruppi sono in `GRUPPI` dentro `build.mjs`.
+Gli articoli seguono l'ordine dei gruppi in `GRUPPI`; dentro ogni gruppo decide il prefisso numerico del nome del file. Un gruppo che non è in `GRUPPI` blocca la build con un errore. Le pagine che non sono articoli (come `fonti.md`) hanno `tipo: pagina`. I nomi dei gruppi sono in `GRUPPI` dentro `build.mjs`.
 
 Le formule si scrivono in LaTeX: `$...$` nel testo, `$$...$$` su riga separata. KaTeX le trasforma in HTML durante la build.
 

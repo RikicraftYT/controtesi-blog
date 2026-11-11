@@ -9,6 +9,7 @@ import MarkdownIt from "markdown-it";
 import anchor from "markdown-it-anchor";
 import container from "markdown-it-container";
 import katexPluginModule from "@vscode/markdown-it-katex";
+import katex from "katex";
 
 const katexPlugin = katexPluginModule.default ?? katexPluginModule;
 const QUI = path.dirname(fileURLToPath(import.meta.url));
@@ -43,13 +44,15 @@ function dataEstesa(iso, file) {
 }
 
 const NUMERI = ["Zero", "Un", "Due", "Tre", "Quattro", "Cinque", "Sei", "Sette", "Otto", "Nove", "Dieci",
-  "Undici", "Dodici", "Tredici", "Quattordici", "Quindici", "Sedici", "Diciassette", "Diciotto", "Diciannove", "Venti"];
+  "Undici", "Dodici", "Tredici", "Quattordici", "Quindici", "Sedici", "Diciassette", "Diciotto", "Diciannove", "Venti",
+  "Ventuno", "Ventidue", "Ventitré", "Ventiquattro", "Venticinque", "Ventisei", "Ventisette", "Ventotto", "Ventinove", "Trenta"];
 
 const GRUPPI = [
   { id: "strumento", nome: "Il metro di giudizio" },
   { id: "rendimenti", nome: "Quanto rende il mercato" },
   { id: "prezzi", nome: "I prezzi sono giusti?" },
   { id: "portafoglio", nome: "Come costruire il portafoglio" },
+  { id: "vita", nome: "Dal risparmio alla pensione" },
   { id: "sintesi", nome: "Trarre le conclusioni" },
 ];
 
@@ -60,7 +63,51 @@ const slugify = (s) =>
     .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 const md = new MarkdownIt({ html: true, typographer: false, linkify: false });
-md.use(katexPlugin, { throwOnError: true });
+// \acapo segna un punto in cui una formula lunga può andare a capo sugli schermi
+// stretti; nella versione normale non produce nulla.
+const MACRO = { "\\acapo": "" };
+md.use(katexPlugin, { throwOnError: true, macros: MACRO });
+
+// Formule su schermi stretti. Molte formule affiancano due equazioni separate da
+// \qquad, altre segnano con \acapo dove spezzarsi: per queste si genera anche una
+// versione su più righe, che main.js mostra solo quando quella affiancata non entra.
+function spezza(latex) {
+  const parti = [];
+  let profondita = 0, inizio = 0, i = 0;
+  while (i < latex.length) {
+    const resto = latex.slice(i);
+    // \begin{nome} e \end{nome}: si salta il nome, che non conta come graffa.
+    if (resto.startsWith("\\begin{")) { profondita++; i = latex.indexOf("}", i) + 1; continue; }
+    if (resto.startsWith("\\end{")) { profondita--; i = latex.indexOf("}", i) + 1; continue; }
+    const c = latex[i];
+    if (c === "\\" && /^\\[{}]/.test(resto)) { i += 2; continue; }
+    if (c === "{") profondita++;
+    if (c === "}") profondita--;
+    const m = profondita === 0 &&
+      /^(?:\\acapo(?![a-zA-Z])|\\qquad(?![a-zA-Z])(\\quad(?![a-zA-Z])|\\Rightarrow\\qquad(?![a-zA-Z]))?)/.exec(resto);
+    if (m) {
+      parti.push(latex.slice(inizio, i).trim());
+      inizio = i + m[0].length;
+      if (m[1]?.includes("Rightarrow")) latex = latex.slice(0, inizio) + "\\Rightarrow\\; " + latex.slice(inizio);
+      i = inizio;
+      continue;
+    }
+    i++;
+  }
+  parti.push(latex.slice(inizio).trim());
+  return parti.filter(Boolean).length > 1 ? parti.filter(Boolean) : null;
+}
+
+const bloccoMatematico = md.renderer.rules.math_block;
+md.renderer.rules.math_block = (tokens, idx, ...resto) => {
+  const affiancata = bloccoMatematico(tokens, idx, ...resto);
+  const parti = spezza(tokens[idx].content.trim());
+  if (!parti) return affiancata;
+  const righe = katex.renderToString(`\\begin{gathered}${parti.join(" \\\\ ")}\\end{gathered}`,
+    { displayMode: true, throwOnError: true, macros: MACRO });
+  return `<div class="formula"><div class="formula-affiancata">${affiancata}</div>` +
+    `<div class="formula-righe"><p class="katex-block">${righe}</p></div></div>\n`;
+};
 md.use(anchor, { slugify, level: [2] });
 
 const voce = (nome, etichetta) =>
@@ -123,7 +170,14 @@ function leggi(file) {
 const cartella = path.join(QUI, "contenuti");
 const tutti = fs.readdirSync(cartella).filter((f) => f.endsWith(".md")).sort()
   .map((f) => leggi(path.join(cartella, f)));
-const articoli = tutti.filter((p) => p.tipo !== "pagina");
+// Gli articoli seguono l'ordine dei gruppi (e, dentro ogni gruppo, quello dei file):
+// così "articolo precedente/successivo" ripercorre la home.
+const posizione = (a) => {
+  const i = GRUPPI.findIndex((g) => g.id === a.gruppo);
+  if (i < 0) throw new Error(`Gruppo "${a.gruppo}" sconosciuto in ${a.file}: aggiungilo a GRUPPI`);
+  return i;
+};
+const articoli = tutti.filter((p) => p.tipo !== "pagina").sort((a, b) => posizione(a) - posizione(b));
 const pagine = tutti.filter((p) => p.tipo === "pagina");
 
 /* ---------- Modelli ---------- */
@@ -290,7 +344,7 @@ function paginaIniziale() {
 
   const corpo = `<section class="apertura">
   <h1>Ogni tesi vale quanto la migliore obiezione a cui sa rispondere.</h1>
-  <p>${NUMERI[articoli.length] ?? articoli.length} articoli su rendimenti, prezzi e portafogli. Ognuno parte dalla tesi nella sua forma più forte, poi le dà contro, con le formule e le fonti in vista.</p>
+  <p>${NUMERI[articoli.length] ?? articoli.length} articoli su rendimenti, prezzi, portafogli e pensione. Ognuno parte dalla tesi nella sua forma più forte, poi le dà contro, con le formule e le fonti in vista.</p>
   <div class="apertura-azioni">
     <a class="bottone" href="${articoli[0].slug}.html">Inizia a leggere</a>
     <a href="come-stanno-insieme.html">Guarda dove le teorie si contraddicono</a>

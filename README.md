@@ -19,10 +19,11 @@ Le formule sono scritte per intero e ogni numero rimanda alla sua fonte.
 
 ## Di cosa parla
 
-- **Il metro di giudizio**: il valore atteso, cosa promette una media e cosa no.
-- **Quanto rende il mercato**: crescita di lungo periodo, premio per il rischio, prezzo d'ingresso, ordine dei rendimenti.
-- **I prezzi sono giusti?**: mercati efficienti, mercati adattivi, factor investing.
-- **Come costruire il portafoglio**: risk parity e Permanent Portfolio.
+- **Il metro di giudizio**: il valore atteso, il costo della volatilità, entrare tutto subito o a rate.
+- **Quanto rende il mercato**: crescita di lungo periodo, il campione dei paesi sviluppati, premio per il rischio, i pochi titoli che fanno l'indice, prezzo d'ingresso, ordine dei rendimenti.
+- **I prezzi sono giusti?**: mercati efficienti, gestione passiva, finanza comportamentale, mercati adattivi, Minsky e Soros, code grasse, factor investing.
+- **Come costruire il portafoglio**: risk parity, Permanent Portfolio, oro, trend following.
+- **Dal risparmio alla pensione**: FIRE, la regola del 4%, il ciclo di vita.
 - **Trarre le conclusioni**: dove queste idee si contraddicono e quali combinazioni stanno in piedi.
 
 ## Per chi è

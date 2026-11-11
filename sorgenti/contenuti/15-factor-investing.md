@@ -21,7 +21,7 @@ $$
 I dati non lo confermano: titoli piccoli e titoli a basso prezzo rispetto al patrimonio hanno reso più di quanto il loro $\beta$ giustifichi. Fama e French (1993) aggiungono due fattori, poi altri due nel 2015:
 
 $$
-E[r_i] - r_f = \beta_i\,\text{MKT} + s_i\,\text{SMB} + h_i\,\text{HML} + r_i\,\text{RMW} + c_i\,\text{CMA}
+E[r_i] - r_f = \beta_i\,\text{MKT} + s_i\,\text{SMB} \acapo + h_i\,\text{HML} + r_i\,\text{RMW} + c_i\,\text{CMA}
 $$
 
 Ogni fattore è il rendimento di un portafoglio lungo su un gruppo di titoli e corto sul gruppo opposto.

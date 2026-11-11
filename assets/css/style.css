@@ -326,6 +326,10 @@ a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offse
 }
 .prosa .katex-display > .katex { font-size: 1.12em; }
 .voce .katex-display { background: var(--carta); }
+/* Formule con due versioni: affiancata (predefinita) e su più righe per schermi stretti. */
+.formula-righe { display: none; }
+.formula.a-righe .formula-affiancata { display: none; }
+.formula.a-righe .formula-righe { display: block; }
 
 /* Tabelle */
 .tabella { overflow-x: auto; margin: 1.8rem 0; -webkit-overflow-scrolling: touch; }
