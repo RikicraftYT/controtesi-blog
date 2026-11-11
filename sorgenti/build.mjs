@@ -210,17 +210,17 @@ ${p.html}
 }
 
 function paginaIniziale() {
-  const gruppi = GRUPPI.map((g) => {
+  const gruppi = GRUPPI.map((g, n) => {
     const righe = articoli.filter((a) => a.gruppo === g.id).map((a) => `
     <div class="duello">
       <div>
         <h3 class="duello-tesi"><a href="${a.slug}.html">${esc(a.tesi)}</a></h3>
-        <p class="duello-articolo">${esc(a.titolo)}, ${a.minuti} minuti</p>
+        <p class="duello-articolo">${esc(a.titolo)} <span aria-hidden="true">·</span> ${a.minuti} minuti</p>
       </div>
       <p class="duello-obiezione">${esc(a.obiezione)}</p>
     </div>`).join("");
     return `  <section class="gruppo" id="${g.id}">
-    <h2>${esc(g.nome)}</h2>${righe}
+    <h2><span class="gruppo-numero">${String(n + 1).padStart(2, "0")}</span> ${esc(g.nome)}</h2>${righe}
   </section>`;
   }).join("\n");
 
@@ -228,7 +228,7 @@ function paginaIniziale() {
   <h1>Ogni tesi vale quanto la migliore obiezione a cui sa rispondere.</h1>
   <p>${NUMERI[articoli.length] ?? articoli.length} articoli su rendimenti, prezzi e portafogli. Ognuno parte dalla tesi nella sua forma più forte, poi le dà contro, con le formule e le fonti in vista.</p>
   <div class="apertura-azioni">
-    <a class="bottone" href="${articoli[0].slug}.html">Comincia dal valore atteso</a>
+    <a class="bottone" href="${articoli[0].slug}.html">Inizia a leggere</a>
     <a href="come-stanno-insieme.html">Guarda dove le teorie si contraddicono</a>
   </div>
 </section>

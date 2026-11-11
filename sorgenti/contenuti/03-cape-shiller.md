@@ -26,7 +26,7 @@ Il legame tra CAPE iniziale e rendimenti successivi è negativo e robusto su ori
 ## Obiezioni e risposte
 
 ::: obiezione La statistica è più debole di quanto sembra
-I rendimenti decennali si sovrappongono: in un secolo ci sono una decina di osservazioni indipendenti. [Uno studio sul Financial Analysts Journal](https://informahealthcare.com/doi/full/10.1080/0015198X.2018.1547056) conclude che, corrette le statistiche, l'evidenza di prevedibilità a lungo orizzonte è molto inferiore a quanto riportato.
+I rendimenti decennali si sovrappongono: in un secolo ci sono una decina di osservazioni indipendenti. [Uno studio sul Financial Analysts Journal](https://doi.org/10.1080/0015198X.2018.1547056) conclude che, corrette le statistiche, l'evidenza di prevedibilità a lungo orizzonte è molto inferiore a quanto riportato.
 :::
 
 ::: risposta

@@ -43,7 +43,7 @@ npm install
 npm run build
 ```
 
-Per cambiare la grafica modifica `sorgenti/assets/css/style.css` e rigenera, oppure modifica direttamente `assets/css/style.css`.
+Per cambiare la grafica modifica `sorgenti/assets/css/style.css` (e `sorgenti/assets/js/main.js` per gli script) e rigenera: la build copia i file in `assets/` e sovrascrive eventuali modifiche fatte lì.
 
 ## Pubblicare
 

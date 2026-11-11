@@ -28,7 +28,7 @@ I numeri citati negli articoli vengono dalle pagine qui sotto, consultate l'11 n
 
 - [CAPE Is High: Should You Care?](https://rpc.cfainstitute.org/blogs/enterprising-investor/2024/cape-is-high-should-you-care) – CFA Institute
 - [The Remarkable Accuracy of CAPE as a Predictor of Returns](https://www.advisorperspectives.com/articles/2020/07/20/the-remarkable-accuracy-of-cape-as-a-predictor-of-returns-1) – Advisor Perspectives
-- [Critica statistica alle regressioni di lungo orizzonte](https://informahealthcare.com/doi/full/10.1080/0015198X.2018.1547056) – Financial Analysts Journal
+- [Critica statistica alle regressioni di lungo orizzonte](https://doi.org/10.1080/0015198X.2018.1547056) – Financial Analysts Journal
 - [A Better Way to Predict Long-Term Stock Returns](https://www.morningstar.com/financial-advisors/better-way-predict-long-term-stock-returns) – Morningstar
 - [Understanding Sequence of Return Risk](https://www.kitces.com/blog/understanding-sequence-of-return-risk-safe-withdrawal-rates-bear-market-crashes-and-bad-decades/) – Kitces
 - [Is sequence-of-returns risk really sequence-of-withdrawals risk?](https://www.capitalgroup.com/advisor/insights/articles/rethinking-sequence-of-returns-risk.html) – Capital Group
@@ -36,20 +36,26 @@ I numeri citati negli articoli vengono dalle pagine qui sotto, consultate l'11 n
 ## Efficienza, adattamento, fattori
 
 - [Fama, Hansen, Shiller: Nobelists 2013](https://cepr.org/voxeu/columns/fama-hansen-shiller-nobelists-2013) – CEPR/VoxEU
+- [Nobel laureates in economics](https://api.thecrimson.com/column/homo-economicus/article/2013/10/18/nobel-laureates-economics) – The Harvard Crimson, sulla volatilità in eccesso di Shiller
 - [The Interrelated Market Efficiency Debate](https://knowledge.insead.edu/economics-finance/interrelated-market-efficiency-debate) – INSEAD
 - [The Adaptive Markets Hypothesis](https://web.mit.edu/~alo/www/Papers/JPM2004.html) – Andrew Lo, Journal of Portfolio Management 2004 ([testo su SSRN](https://papers.ssrn.com/abstract=602222))
 - [Reconciling Efficient Markets with Behavioral Finance](https://www.cxoadvisory.com/?p=336) – CXO Advisory, sintesi
+- [Lo: Adaptive Markets](https://www.investing.com/analysis/lo-adaptive-markets-200278166) – Investing.com, commento
 - [Does Academic Research Destroy Stock Return Predictability?](https://doi.org/10.1111/jofi.12365) – McLean e Pontiff, Journal of Finance 2016
 - [Published Results Impact Future Results](https://www.etf.com/sections/index-investor-corner/swedroe-published-results-impact-future-results) – Swedroe
+- [MoneySense sul premio value](https://moneysense.ca/?p=36813) – value a grande capitalizzazione contro S&P 500 dal 1927
 
 ## Costruzione del portafoglio
 
 - [Leverage Aversion and Risk Parity](https://www.aqr.com/Insights/Research/Journal-Article/Leverage-Aversion-and-Risk-Parity) – Asness, Frazzini, Pedersen, Financial Analysts Journal 2012
+- [Leverage Aversion and Risk Parity, scheda bibliografica](https://econpapers.repec.org/RePEc:taf:ufajxx:v:68:y:2012:i:1:p:47-59) – RePEc, Financial Analysts Journal 68(1)
 - [Will My Risk Parity Strategy Outperform?](https://cdar.berkeley.edu/sites/default/files/2012_Anderson-et-al.-WillRiskStrategyOutperfom.pdf) – Anderson, Bianchi, Goldberg
 - [Risk parity nel 2022 e 2023](https://caia.org/node/7312) – CAIA
 - [Risk parity ETFs: were they effective in 2022?](https://www.etfcentral.com/news/risk-parity-etfs-effective-2022) – ETF Central
+- [Risk parity e la strategia All Weather](https://angelinvestorsnetwork.com/market-analysis/risk-parity-hedge-fund-strategy-bridgewater-all-weather) – Angel Investors Network, correlazione azioni-obbligazioni nel 2022
 - [When stocks and bonds fall together](https://www.evidenceinvestor.com/post/when-stocks-and-bonds-fall-together) – Swedroe
 - [Permanent Portfolio](https://portfoliocharts.com/portfolios/permanent-portfolio/) – Portfolio Charts, con dati per paese
+- [Harry Browne Permanent Portfolio](https://portfolioslab.com/portfolio/harry-browne-permanent) – PortfoliosLab, perdita massima 2022
 - [The strange tale of the Permanent Portfolio](https://www.moneysense.ca/?p=18105) – MoneySense
 
 ## Libri per andare oltre
