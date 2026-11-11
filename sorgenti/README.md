@@ -51,6 +51,12 @@ Gli articoli seguono l'ordine dei gruppi in `GRUPPI`; dentro ogni gruppo decide 
 
 Le formule si scrivono in LaTeX: `$...$` nel testo, `$$...$$` su riga separata. KaTeX le trasforma in HTML durante la build.
 
+Sui telefoni le formule su riga separata troppo larghe vanno a capo da sole nei punti in cui c'è `\qquad` (di solito tra due equazioni affiancate). Se una formula lunga non ha `\qquad`, si può indicare dove spezzarla con `\acapo`, che sugli schermi larghi non produce nulla:
+
+```
+g = \tfrac{1}{2}\ln(1{,}5) + \tfrac{1}{2}\ln(0{,}75) \acapo = \tfrac{1}{2}\ln(1{,}125)
+```
+
 Obiezioni, risposte e conclusione usano tre blocchi:
 
 ```
