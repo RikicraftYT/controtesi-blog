@@ -5,6 +5,7 @@ tesi: Un attivo per ogni regime economico, in parti uguali.
 obiezione: Tre quarti del capitale rinunciano al premio azionario.
 gruppo: portafoglio
 sommario: Azioni, obbligazioni lunghe, oro e liquidità al 25% ciascuno. Harry Browne rinuncia a prevedere e a stimare. Il conto arriva sotto forma di rendimento atteso.
+aggiornato: 2026-11-11
 ---
 
 È la versione senza leva e senza stime dell'idea di [Risk parity](risk-parity.html): quattro attivi in parti uguali, uno per ogni regime economico. Rinuncia a rendimento atteso in cambio di perdite massime contenute, e la rinuncia è più grande di quanto i backtest facciano sembrare.

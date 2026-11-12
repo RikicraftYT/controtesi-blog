@@ -5,6 +5,7 @@ tesi: Le azioni pagano un premio per il rischio.
 obiezione: Un premio così grande nessun modello lo giustifica. Forse è stata fortuna.
 gruppo: rendimenti
 sommario: Che il premio azionario sia positivo è logica. Che sia stato del 6% l'anno è un enigma, e la spiegazione che scegli decide quanto aspettarti in futuro.
+aggiornato: 2026-11-11
 ---
 
 Il premio azionario storico è troppo alto per essere spiegato dai modelli standard con un'avversione al rischio plausibile. [Il mercato cresce nel tempo](mercato-cresce.html) dice che il premio deve essere positivo; qui la domanda è perché sia stato *così grande*, e la risposta che scegli determina quanto premio aspettarti in futuro.

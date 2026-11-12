@@ -1,54 +1,43 @@
 # Controtesi
 
-Blog statico: undici articoli su teorie d'investimento, ognuno con tesi, obiezioni e risposte.
+**Idee d'investimento messe alla prova.**
 
-## Aprire il sito
+[Leggi il sito](https://rikicraftyt.github.io/controtesi-blog/)
 
-Apri `index.html` con un browser. Funziona anche senza connessione: caratteri, formule e script sono inclusi nella cartella `assets/`.
+Controtesi è un blog in italiano che prende le idee più diffuse sugli investimenti e le mette sotto pressione. Non per smontarle, ma per capire fin dove reggono.
 
-## Cosa c'è nella cartella
+## L'idea
 
-| Percorso | Contenuto |
-| --- | --- |
-| `index.html` | Pagina iniziale con l'elenco tesi / obiezione |
-| `*.html` | Un file per articolo, più `fonti.html` |
-| `assets/css/style.css` | Grafica (colori, caratteri, impaginazione, tema scuro) |
-| `assets/js/main.js` | Tema chiaro/scuro, barra di lettura, sommario, simulazione |
-| `assets/fonts/`, `assets/katex/` | Caratteri e stile delle formule |
-| `sorgenti/` | Testi in Markdown e script che genera le pagine |
+Ogni tesi vale quanto la migliore obiezione a cui sa rispondere. Per questo gli articoli seguono lo stesso percorso:
 
-## Modificare i testi
+1. **La tesi**, nella sua forma più forte e più onesta.
+2. **L'obiezione più forte**, quella che un critico serio porterebbe davvero.
+3. **Obiezioni e risposte**, una per una.
+4. **La formulazione difendibile**: cosa resta della tesi dopo il confronto.
 
-Gli articoli sono in `sorgenti/contenuti/*.md`. Le formule si scrivono in LaTeX: `$...$` nel testo, `$$...$$` su riga separata. Obiezioni, risposte e conclusione usano tre blocchi:
+Le formule sono scritte per intero e ogni numero rimanda alla sua fonte.
 
-```
-::: obiezione Titolo dell'obiezione
-Testo.
-:::
+## Di cosa parla
 
-::: risposta
-Testo.
-:::
+- **Il metro di giudizio**: il valore atteso, il costo della volatilità, entrare tutto subito o a rate.
+- **Quanto rende il mercato**: crescita di lungo periodo, il campione dei paesi sviluppati, premio per il rischio, i pochi titoli che fanno l'indice, prezzo d'ingresso, ordine dei rendimenti.
+- **I prezzi sono giusti?**: mercati efficienti, gestione passiva, finanza comportamentale, mercati adattivi, Minsky e Soros, code grasse, factor investing.
+- **Come costruire il portafoglio**: risk parity, Permanent Portfolio, oro, trend following.
+- **Dal risparmio alla pensione**: FIRE, la regola del 4%, il ciclo di vita.
+- **Trarre le conclusioni**: dove queste idee si contraddicono e quali combinazioni stanno in piedi.
 
-::: difendibile
-Testo.
-:::
-```
+## Per chi è
 
-Per rigenerare le pagine serve Node.js 18 o successivo:
+Per chi investe o vuole capire meglio le teorie che sente ripetere, e preferisce un ragionamento con le obiezioni in vista a una risposta definitiva. Aiuta un po' di familiarità con i numeri.
 
-```
-cd sorgenti
-npm install
-npm run build
-```
+## Dalla teoria ai numeri
 
-Per cambiare la grafica modifica `sorgenti/assets/css/style.css` e rigenera, oppure modifica direttamente `assets/css/style.css`.
+Chi vuole provare queste idee sui propri portafogli può usare il [Simulatore di portafogli](https://portfolio-site-2zxf.onrender.com), un altro progetto dello stesso autore: si inseriscono le proprie allocazioni e se ne analizzano le statistiche.
 
-## Pubblicare
+## Avvertenza
 
-È un sito statico: basta caricare la cartella (senza `sorgenti/`) su qualsiasi hosting, per esempio GitHub Pages o Netlify.
+Controtesi analizza idee. Non è consulenza finanziaria e non suggerisce cosa comprare o vendere.
 
-## Nota
+---
 
-Analisi di idee, non consulenza finanziaria. Le fonti dei numeri citati sono in `fonti.html`.
+Le note tecniche per modificare o rigenerare il sito sono in [`sorgenti/README.md`](sorgenti/README.md).

@@ -5,6 +5,7 @@ tesi: Value, size e momentum rendono più del mercato.
 obiezione: Dopo la pubblicazione i premi si riducono di circa un terzo.
 gruppo: prezzi
 sommario: Alcune caratteristiche delle azioni hanno reso più di quanto spieghi il rischio di mercato. Se è rischio dura, se è errore si consuma. Non è facile dire quale.
+aggiornato: 2026-11-11
 ---
 
 Alcune caratteristiche delle azioni sono state associate a rendimenti più alti di quanto spieghi il solo rischio di mercato. La domanda che decide tutto è se siano compensi per un rischio, e quindi destinati a durare, oppure errori di prezzo, destinati a ridursi una volta noti.
@@ -20,7 +21,7 @@ $$
 I dati non lo confermano: titoli piccoli e titoli a basso prezzo rispetto al patrimonio hanno reso più di quanto il loro $\beta$ giustifichi. Fama e French (1993) aggiungono due fattori, poi altri due nel 2015:
 
 $$
-E[r_i] - r_f = \beta_i\,\text{MKT} + s_i\,\text{SMB} + h_i\,\text{HML} + r_i\,\text{RMW} + c_i\,\text{CMA}
+E[r_i] - r_f = \beta_i\,\text{MKT} + s_i\,\text{SMB} \acapo + h_i\,\text{HML} + r_i\,\text{RMW} + c_i\,\text{CMA}
 $$
 
 Ogni fattore è il rendimento di un portafoglio lungo su un gruppo di titoli e corto sul gruppo opposto.

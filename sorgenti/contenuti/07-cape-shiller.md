@@ -5,6 +5,7 @@ tesi: Chi compra caro guadagna meno.
 obiezione: Il CAPE è sopra la media da trent'anni e il mercato è salito lo stesso.
 gruppo: rendimenti
 sommario: Il prezzo che paghi sposta il rendimento a dieci anni più di ogni altra variabile osservabile. Ma non ti dice quando. Serve a tarare le aspettative, non a entrare e uscire.
+aggiornato: 2026-11-11
 ---
 
 Il prezzo d'ingresso è la variabile che più sposta il rendimento a dieci anni, ma non dice *quando* arriverà la correzione. Il CAPE serve a tarare le aspettative, non a decidere quando entrare e uscire.
@@ -26,7 +27,7 @@ Il legame tra CAPE iniziale e rendimenti successivi è negativo e robusto su ori
 ## Obiezioni e risposte
 
 ::: obiezione La statistica è più debole di quanto sembra
-I rendimenti decennali si sovrappongono: in un secolo ci sono una decina di osservazioni indipendenti. [Uno studio sul Financial Analysts Journal](https://informahealthcare.com/doi/full/10.1080/0015198X.2018.1547056) conclude che, corrette le statistiche, l'evidenza di prevedibilità a lungo orizzonte è molto inferiore a quanto riportato.
+I rendimenti decennali si sovrappongono: in un secolo ci sono una decina di osservazioni indipendenti. [Uno studio sul Financial Analysts Journal](https://doi.org/10.1080/0015198X.2018.1547056) conclude che, corrette le statistiche, l'evidenza di prevedibilità a lungo orizzonte è molto inferiore a quanto riportato.
 :::
 
 ::: risposta

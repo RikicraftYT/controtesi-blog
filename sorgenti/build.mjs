@@ -9,6 +9,7 @@ import MarkdownIt from "markdown-it";
 import anchor from "markdown-it-anchor";
 import container from "markdown-it-container";
 import katexPluginModule from "@vscode/markdown-it-katex";
+import katex from "katex";
 
 const katexPlugin = katexPluginModule.default ?? katexPluginModule;
 const QUI = path.dirname(fileURLToPath(import.meta.url));
@@ -18,17 +19,41 @@ const MODULI = path.join(QUI, "node_modules");
 const SITO = {
   nome: "Controtesi",
   motto: "Idee d'investimento messe alla prova",
+  // Indirizzo pubblico: serve solo ai link assoluti (anteprime social, canonical, pagina 404).
+  url: "https://rikicraftyt.github.io/controtesi-blog/",
+  anteprima: { file: "assets/img/anteprima.png", larghezza: 1200, altezza: 630,
+    alt: "Controtesi. Idee d'investimento messe alla prova." },
 };
 
+// Sito dello stesso autore, segnalato in home, nel piè di pagina e negli articoli sul portafoglio.
+const SIMULATORE = {
+  nome: "Simulatore di portafogli",
+  url: "https://portfolio-site-2zxf.onrender.com",
+};
+
+const MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio",
+  "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+
+// "2026-11-11" -> "l'11 novembre 2026"
+function dataEstesa(iso, file) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso ?? "");
+  if (!m) throw new Error(`Data "aggiornato" mancante o non valida (AAAA-MM-GG) in ${file}`);
+  const g = Number(m[3]);
+  const giorno = g === 1 ? "il 1º" : g === 8 || g === 11 ? `l'${g}` : `il ${g}`;
+  return `${giorno} ${MESI[Number(m[2]) - 1]} ${m[1]}`;
+}
+
 const NUMERI = ["Zero", "Un", "Due", "Tre", "Quattro", "Cinque", "Sei", "Sette", "Otto", "Nove", "Dieci",
-  "Undici", "Dodici", "Tredici", "Quattordici", "Quindici", "Sedici", "Diciassette", "Diciotto", "Diciannove", "Venti"];
+  "Undici", "Dodici", "Tredici", "Quattordici", "Quindici", "Sedici", "Diciassette", "Diciotto", "Diciannove", "Venti",
+  "Ventuno", "Ventidue", "Ventitré", "Ventiquattro", "Venticinque", "Ventisei", "Ventisette", "Ventotto", "Ventinove", "Trenta"];
 
 const GRUPPI = [
-  { id: "strumento", nome: "Lo strumento" },
+  { id: "strumento", nome: "Il metro di giudizio" },
   { id: "rendimenti", nome: "Quanto rende il mercato" },
   { id: "prezzi", nome: "I prezzi sono giusti?" },
   { id: "portafoglio", nome: "Come costruire il portafoglio" },
-  { id: "sintesi", nome: "Tirare le fila" },
+  { id: "vita", nome: "Dal risparmio alla pensione" },
+  { id: "sintesi", nome: "Trarre le conclusioni" },
 ];
 
 /* ---------- Markdown ---------- */
@@ -38,7 +63,51 @@ const slugify = (s) =>
     .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 const md = new MarkdownIt({ html: true, typographer: false, linkify: false });
-md.use(katexPlugin, { throwOnError: true });
+// \acapo segna un punto in cui una formula lunga può andare a capo sugli schermi
+// stretti; nella versione normale non produce nulla.
+const MACRO = { "\\acapo": "" };
+md.use(katexPlugin, { throwOnError: true, macros: MACRO });
+
+// Formule su schermi stretti. Molte formule affiancano due equazioni separate da
+// \qquad, altre segnano con \acapo dove spezzarsi: per queste si genera anche una
+// versione su più righe, che main.js mostra solo quando quella affiancata non entra.
+function spezza(latex) {
+  const parti = [];
+  let profondita = 0, inizio = 0, i = 0;
+  while (i < latex.length) {
+    const resto = latex.slice(i);
+    // \begin{nome} e \end{nome}: si salta il nome, che non conta come graffa.
+    if (resto.startsWith("\\begin{")) { profondita++; i = latex.indexOf("}", i) + 1; continue; }
+    if (resto.startsWith("\\end{")) { profondita--; i = latex.indexOf("}", i) + 1; continue; }
+    const c = latex[i];
+    if (c === "\\" && /^\\[{}]/.test(resto)) { i += 2; continue; }
+    if (c === "{") profondita++;
+    if (c === "}") profondita--;
+    const m = profondita === 0 &&
+      /^(?:\\acapo(?![a-zA-Z])|\\qquad(?![a-zA-Z])(\\quad(?![a-zA-Z])|\\Rightarrow\\qquad(?![a-zA-Z]))?)/.exec(resto);
+    if (m) {
+      parti.push(latex.slice(inizio, i).trim());
+      inizio = i + m[0].length;
+      if (m[1]?.includes("Rightarrow")) latex = latex.slice(0, inizio) + "\\Rightarrow\\; " + latex.slice(inizio);
+      i = inizio;
+      continue;
+    }
+    i++;
+  }
+  parti.push(latex.slice(inizio).trim());
+  return parti.filter(Boolean).length > 1 ? parti.filter(Boolean) : null;
+}
+
+const bloccoMatematico = md.renderer.rules.math_block;
+md.renderer.rules.math_block = (tokens, idx, ...resto) => {
+  const affiancata = bloccoMatematico(tokens, idx, ...resto);
+  const parti = spezza(tokens[idx].content.trim());
+  if (!parti) return affiancata;
+  const righe = katex.renderToString(`\\begin{gathered}${parti.join(" \\\\ ")}\\end{gathered}`,
+    { displayMode: true, throwOnError: true, macros: MACRO });
+  return `<div class="formula"><div class="formula-affiancata">${affiancata}</div>` +
+    `<div class="formula-righe"><p class="katex-block">${righe}</p></div></div>\n`;
+};
 md.use(anchor, { slugify, level: [2] });
 
 const voce = (nome, etichetta) =>
@@ -55,7 +124,9 @@ voce("obiezione", "Obiezione");
 voce("risposta", "Risposta");
 voce("difendibile", "Formulazione difendibile");
 
-md.renderer.rules.table_open = () => '<div class="tabella"><table>\n';
+// La tabella può scorrere in orizzontale su schermi stretti: il contenitore
+// riceve il focus, così si può scorrere anche da tastiera.
+md.renderer.rules.table_open = () => '<div class="tabella" tabindex="0" role="region" aria-label="Tabella"><table>\n';
 md.renderer.rules.table_close = () => "</table></div>\n";
 
 const linkBase = md.renderer.rules.link_open ?? ((t, i, o, e, self) => self.renderToken(t, i, o));
@@ -89,6 +160,7 @@ function leggi(file) {
   const parole = m[2].replace(/\$\$[\s\S]*?\$\$/g, " ").split(/\s+/).filter(Boolean).length;
   return {
     ...dati,
+    file: path.basename(file),
     html: md.renderer.render(tokens, md.options, {}),
     sezioni,
     minuti: Math.max(1, Math.round(parole / 180)),
@@ -98,7 +170,14 @@ function leggi(file) {
 const cartella = path.join(QUI, "contenuti");
 const tutti = fs.readdirSync(cartella).filter((f) => f.endsWith(".md")).sort()
   .map((f) => leggi(path.join(cartella, f)));
-const articoli = tutti.filter((p) => p.tipo !== "pagina");
+// Gli articoli seguono l'ordine dei gruppi (e, dentro ogni gruppo, quello dei file):
+// così "articolo precedente/successivo" ripercorre la home.
+const posizione = (a) => {
+  const i = GRUPPI.findIndex((g) => g.id === a.gruppo);
+  if (i < 0) throw new Error(`Gruppo "${a.gruppo}" sconosciuto in ${a.file}: aggiungilo a GRUPPI`);
+  return i;
+};
+const articoli = tutti.filter((p) => p.tipo !== "pagina").sort((a, b) => posizione(a) - posizione(b));
 const pagine = tutti.filter((p) => p.tipo === "pagina");
 
 /* ---------- Modelli ---------- */
@@ -110,16 +189,34 @@ const icona =
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#ffe45c"/><path d="M9 23 23 9M9 9l14 14" stroke="#1d1633" stroke-width="4" stroke-linecap="round"/></svg>'
   );
 
-function guscio({ titolo, descrizione, corpo, corrente = "", barra = false }) {
+function guscio({ titolo, descrizione, corpo, corrente = "", barra = false, percorso = corrente,
+  tipo = "website", aggiornato = "", base = "", indicizza = true, titoloSocial = titolo }) {
+  const assoluto = SITO.url + (percorso === "index.html" ? "" : percorso);
+  const meta = [
+    indicizza ? `<link rel="canonical" href="${assoluto}">` : '<meta name="robots" content="noindex">',
+    `<meta property="og:site_name" content="${SITO.nome}">`,
+    '<meta property="og:locale" content="it_IT">',
+    `<meta property="og:type" content="${tipo}">`,
+    `<meta property="og:title" content="${esc(titoloSocial)}">`,
+    `<meta property="og:description" content="${esc(descrizione)}">`,
+    indicizza ? `<meta property="og:url" content="${assoluto}">` : "",
+    `<meta property="og:image" content="${SITO.url}${SITO.anteprima.file}">`,
+    `<meta property="og:image:width" content="${SITO.anteprima.larghezza}">`,
+    `<meta property="og:image:height" content="${SITO.anteprima.altezza}">`,
+    `<meta property="og:image:alt" content="${esc(SITO.anteprima.alt)}">`,
+    '<meta name="twitter:card" content="summary_large_image">',
+    aggiornato ? `<meta property="article:modified_time" content="${aggiornato}">` : "",
+  ].filter(Boolean).join("\n");
   const voce = (href, testo, classe = "") =>
     `<a href="${href}"${classe ? ` class="${classe}"` : ""}${corrente === href ? ' aria-current="page"' : ""}>${testo}</a>`;
   return `<!DOCTYPE html>
 <html lang="it" data-theme="chiaro">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">${base ? `\n<base href="${base}">` : ""}
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(titolo)}</title>
 <meta name="description" content="${esc(descrizione)}">
+${meta}
 <link rel="icon" href="${icona}">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -145,7 +242,7 @@ ${corpo}
 <footer class="piede">
   <div class="piede-interno">
     <p>${SITO.nome} raccoglie analisi di idee, non consulenza finanziaria. Ogni numero citato rimanda alla sua fonte.</p>
-    <p><a href="fonti.html">Fonti e letture</a></p>
+    <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="${SIMULATORE.url}" target="_blank" rel="noopener">${SIMULATORE.nome}<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
   </div>
 </footer>
 <script src="assets/js/main.js"></script>
@@ -154,14 +251,30 @@ ${corpo}
 `;
 }
 
+function rimandoSimulatore(titolo, testo) {
+  return `<aside class="rimando" aria-label="${SIMULATORE.nome}">
+  <p class="rimando-etichetta">Dallo stesso autore</p>
+  <h2 class="rimando-titolo">${esc(titolo)}</h2>
+  <p>${esc(testo)}</p>
+  <a class="bottone" href="${SIMULATORE.url}" target="_blank" rel="noopener">Apri il simulatore<span aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a>
+</aside>`;
+}
+
 function paginaArticolo(a, i) {
   const gruppo = GRUPPI.find((g) => g.id === a.gruppo);
   const prima = articoli[i - 1];
   const dopo = articoli[i + 1];
+  const voci = a.sezioni.map((s) => `<li><a href="#${s.id}">${esc(s.testo)}</a></li>`).join("");
+  const sommarioBreve = a.sezioni.length
+    ? `<details class="sommario-breve">
+    <summary>In questa pagina</summary>
+    <nav aria-label="In questa pagina"><ol>${voci}</ol></nav>
+  </details>`
+    : "";
   const sommario = a.sezioni.length
     ? `<aside class="sommario-pagina" aria-label="In questa pagina">
     <h2>In questa pagina</h2>
-    <ol>${a.sezioni.map((s) => `<li><a href="#${s.id}">${esc(s.testo)}</a></li>`).join("")}</ol>
+    <ol>${voci}</ol>
   </aside>`
     : "";
   const corpo = `<article>
@@ -169,15 +282,17 @@ function paginaArticolo(a, i) {
   <p class="articolo-gruppo"><a href="index.html#${gruppo.id}">${esc(gruppo.nome)}</a></p>
   <h1>${esc(a.titolo)}</h1>
   <p class="articolo-sommario">${esc(a.sommario)}</p>
-  <p class="articolo-tempo">${a.minuti} minuti di lettura</p>
+  <p class="articolo-tempo">${a.minuti} minuti di lettura <span aria-hidden="true">·</span> Aggiornato <time datetime="${a.aggiornato}">${dataEstesa(a.aggiornato, a.file)}</time></p>
   <div class="scontro">
     <p class="scontro-tesi"><b>La tesi</b>${esc(a.tesi)}</p>
     <p class="scontro-obiezione"><b>L'obiezione più forte</b>${esc(a.obiezione)}</p>
   </div>
 </header>
 <div class="articolo-corpo">
+  ${sommarioBreve}
   <div class="prosa">
 ${a.html}
+${a.gruppo === "portafoglio" ? rimandoSimulatore("Prova queste idee sui tuoi numeri", "Nel simulatore inserisci i tuoi portafogli, per esempio un 60/40, un Permanent Portfolio o una versione risk parity, e ne confronti le statistiche.") : ""}
   </div>
   ${sommario}
 </div>
@@ -188,10 +303,13 @@ ${a.html}
 </nav>`;
   return guscio({
     titolo: `${a.titolo} | ${SITO.nome}`,
+    titoloSocial: a.titolo,
     descrizione: a.sommario,
     corpo,
     corrente: `${a.slug}.html`,
     barra: true,
+    tipo: "article",
+    aggiornato: a.aggiornato,
   });
 }
 
@@ -210,31 +328,33 @@ ${p.html}
 }
 
 function paginaIniziale() {
-  const gruppi = GRUPPI.map((g) => {
+  const gruppi = GRUPPI.map((g, n) => {
     const righe = articoli.filter((a) => a.gruppo === g.id).map((a) => `
     <div class="duello">
       <div>
         <h3 class="duello-tesi"><a href="${a.slug}.html">${esc(a.tesi)}</a></h3>
-        <p class="duello-articolo">${esc(a.titolo)}, ${a.minuti} minuti</p>
+        <p class="duello-articolo">${esc(a.titolo)} <span aria-hidden="true">·</span> ${a.minuti} minuti</p>
       </div>
       <p class="duello-obiezione">${esc(a.obiezione)}</p>
     </div>`).join("");
     return `  <section class="gruppo" id="${g.id}">
-    <h2>${esc(g.nome)}</h2>${righe}
+    <h2><span class="gruppo-numero">${String(n + 1).padStart(2, "0")}</span> ${esc(g.nome)}</h2>${righe}
   </section>`;
   }).join("\n");
 
   const corpo = `<section class="apertura">
   <h1>Ogni tesi vale quanto la migliore obiezione a cui sa rispondere.</h1>
-  <p>${NUMERI[articoli.length] ?? articoli.length} articoli su rendimenti, prezzi e portafogli. Ognuno parte dalla tesi nella sua forma più forte, poi le dà contro, con le formule e le fonti in vista.</p>
+  <p>${NUMERI[articoli.length] ?? articoli.length} articoli su rendimenti, prezzi, portafogli e pensione. Ognuno parte dalla tesi nella sua forma più forte, poi le dà contro, con le formule e le fonti in vista.</p>
   <div class="apertura-azioni">
-    <a class="bottone" href="${articoli[0].slug}.html">Comincia dal valore atteso</a>
+    <a class="bottone" href="${articoli[0].slug}.html">Inizia a leggere</a>
     <a href="come-stanno-insieme.html">Guarda dove le teorie si contraddicono</a>
   </div>
 </section>
 <section class="indice" aria-label="Tutti gli articoli">
-  <div class="indice-colonne" aria-hidden="true"><span>La tesi</span><span>L'obiezione più forte</span></div>
 ${gruppi}
+</section>
+<section class="indice-coda">
+${rimandoSimulatore("Dalle idee ai tuoi portafogli", "Il simulatore di portafogli permette di inserire le proprie allocazioni e analizzarne le statistiche: un modo per mettere alla prova sui numeri le idee discusse qui.")}
 </section>`;
   return guscio({
     titolo: `${SITO.nome} | ${SITO.motto}`,
@@ -252,13 +372,37 @@ const copia = (da, a) => {
   fs.copyFileSync(da, a);
 };
 
+function pagina404() {
+  const corpo = `<section class="apertura apertura-errore">
+  <p class="errore-codice">Errore 404</p>
+  <h1>Questa pagina non esiste.</h1>
+  <p>Il link potrebbe essere sbagliato, oppure l'articolo ha cambiato indirizzo. Gli articoli sono tutti nella pagina iniziale.</p>
+  <div class="apertura-azioni">
+    <a class="bottone" href="index.html">Vai agli articoli</a>
+    <a href="fonti.html">Fonti e letture</a>
+  </div>
+</section>`;
+  return guscio({
+    titolo: `Pagina non trovata | ${SITO.nome}`,
+    descrizione: "La pagina cercata non esiste.",
+    corpo,
+    percorso: "404.html",
+    // GitHub Pages serve questa pagina a qualunque indirizzo mancante, anche in
+    // sottocartelle: il base fa funzionare i link relativi da ogni profondità.
+    base: new URL(SITO.url).pathname,
+    indicizza: false,
+  });
+}
+
 scrivi("index.html", paginaIniziale());
+scrivi("404.html", pagina404());
 articoli.forEach((a, i) => scrivi(`${a.slug}.html`, paginaArticolo(a, i)));
 pagine.forEach((p) => scrivi(`${p.slug}.html`, paginaSemplice(p)));
 
 const risorse = path.join(USCITA, "assets");
 copia(path.join(QUI, "assets/css/style.css"), path.join(risorse, "css/style.css"));
 copia(path.join(QUI, "assets/js/main.js"), path.join(risorse, "js/main.js"));
+copia(path.join(QUI, SITO.anteprima.file), path.join(risorse, "img", path.basename(SITO.anteprima.file)));
 
 if (fs.existsSync(MODULI)) {
   copia(path.join(MODULI, "katex/dist/katex.min.css"), path.join(risorse, "katex/katex.min.css"));
@@ -273,4 +417,4 @@ if (fs.existsSync(MODULI)) {
   for (const f of caratteri) copia(path.join(MODULI, f), path.join(risorse, "fonts", path.basename(f)));
 }
 
-console.log(`Scritte ${articoli.length + pagine.length + 1} pagine in ${USCITA}`);
+console.log(`Scritte ${articoli.length + pagine.length + 2} pagine in ${USCITA}`);
