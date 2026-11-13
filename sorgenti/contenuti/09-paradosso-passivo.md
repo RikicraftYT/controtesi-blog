@@ -4,6 +4,7 @@ titolo: Il paradosso della gestione passiva
 tesi: La gestione attiva è un gioco a somma zero prima dei costi.
 obiezione: Solo in un mercato in cui nessuno emette né ritira azioni.
 gruppo: prezzi
+livello: intermedio
 sommario: L'aritmetica di Sharpe dice che il gestore attivo medio deve perdere contro l'indice. Regge quasi del tutto, ma non del tutto: gli indici cambiano e i flussi muovono i prezzi più di quanto prevede la teoria classica.
 aggiornato: 2026-11-11
 ---

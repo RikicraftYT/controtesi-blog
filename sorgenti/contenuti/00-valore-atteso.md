@@ -4,6 +4,7 @@ titolo: Valore atteso, la media che nessuno vive
 tesi: Se il valore atteso è positivo, conviene.
 obiezione: È una media su mondi paralleli. Tu ne vivi uno solo.
 gruppo: strumento
+livello: avanzato
 sommario: Prima di discutere le teorie conviene capire cosa promette una media, e cosa no. Con una scommessa che in media vince e quasi sempre perde.
 aggiornato: 2026-11-13
 ---

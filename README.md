@@ -17,6 +17,8 @@ Ogni tesi vale quanto la migliore obiezione a cui sa rispondere. Per questo gli 
 
 Le formule sono scritte per intero e ogni numero rimanda alla sua fonte.
 
+Ogni articolo ha un livello di difficoltà, intermedio o avanzato, e in home si possono filtrare per livello. Una ricerca interna trova gli articoli per parola. È in preparazione un percorso di base per chi comincia, con articoli che spiegano i concetti fondamentali senza formule complesse.
+
 ## Di cosa parla
 
 - **Il metro di giudizio**: il valore atteso e il costo della volatilità.

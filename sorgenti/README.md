@@ -41,11 +41,19 @@ slug: nome-del-file-html
 titolo: Titolo dell'articolo
 tesi: La tesi in una frase.
 obiezione: L'obiezione più forte in una frase.
-gruppo: strumento | rendimenti | prezzi | portafoglio | esposizioni | vita | sintesi
+gruppo: basi | strumento | rendimenti | prezzi | portafoglio | esposizioni | vita | sintesi
+livello: base | intermedio | avanzato
+prima: slug-di-un-altro-articolo, slug-di-un-altro   (facoltativo)
 sommario: Due righe che compaiono sotto il titolo e nei risultati di ricerca.
 aggiornato: 2026-11-11
 ---
 ```
+
+`livello` è obbligatorio. Gli articoli `base` non hanno `tesi` né `obiezione` (la build li accetta senza), in home mostrano titolo e sommario, e il blocco `::: difendibile` compare come «In sintesi». Per gli altri livelli `tesi` e `obiezione` sono obbligatorie: se mancano la build si ferma.
+
+`prima` elenca gli articoli da leggere prima: compaiono in un riquadro «Prima di leggere» in cima alla pagina. Uno slug che non esiste ferma la build.
+
+Gli articoli del gruppo `basi` sono un percorso: in home sono numerati e in testa all'articolo compare «passo 2 di 14». Finché il gruppo è vuoto non compare, e il bottone in home resta «Inizia a leggere»; con almeno un articolo diventa «Parti dalle basi».
 
 `aggiornato` (formato AAAA-MM-GG) è obbligatorio per gli articoli: compare sotto il titolo come «Aggiornato l'11 novembre 2026». Va cambiato quando si rivede il contenuto, non per correzioni di battitura.
 
@@ -76,6 +84,12 @@ Testo.
 ```
 
 Ogni titolo `##` diventa una voce del sommario della pagina.
+
+## Ricerca e filtro per livello
+
+La build scrive `../assets/js/indice-ricerca.js` con titolo, tesi, obiezione, sommario, titoli delle sezioni e testo di ogni articolo, senza formule. È un file JavaScript e non JSON perché così si carica anche aprendo il sito dal disco; `main.js` lo scarica solo quando si apre la ricerca. La ricerca ignora maiuscole e accenti, cerca i termini all'inizio delle parole e pesa di più titolo e tesi. Si apre con il bottone «Cerca», con `/` o con Ctrl+K.
+
+Il filtro per livello in home è un gruppo di bottoni: nasconde gli articoli degli altri livelli e i gruppi rimasti vuoti, e ricorda la scelta nel browser.
 
 ## Fonti
 

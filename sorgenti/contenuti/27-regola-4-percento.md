@@ -4,6 +4,7 @@ titolo: La regola del 4%, da dove viene e dove si rompe
 tesi: Il 4% è un tasso di prelievo sicuro.
 obiezione: È sicuro in un paese, in un secolo, per trent'anni.
 gruppo: vita
+livello: intermedio
 sommario: Il 4% nasce da due studi americani degli anni Novanta. Fuori dagli Stati Uniti, su orizzonti più lunghi o con valutazioni alte, il numero scende. Le regole flessibili lo rialzano, ma spostano il rischio sul tenore di vita.
 aggiornato: 2026-11-11
 ---

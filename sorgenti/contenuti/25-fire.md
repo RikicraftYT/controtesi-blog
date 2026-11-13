@@ -4,6 +4,7 @@ titolo: FIRE, l'aritmetica dell'indipendenza finanziaria
 tesi: Conta quanto risparmi, non quanto guadagni.
 obiezione: La formula funziona solo se il futuro somiglia a un foglio di calcolo.
 gruppo: vita
+livello: intermedio
 sommario: Il movimento FIRE riduce la libertà finanziaria a due numeri, il tasso di risparmio e il tasso di prelievo. Il primo è aritmetica solida. Il secondo è un'ipotesi presa in prestito da studi pensati per un altro problema.
 aggiornato: 2026-11-13
 ---

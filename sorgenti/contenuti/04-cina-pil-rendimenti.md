@@ -4,6 +4,7 @@ titolo: Il PIL cresce, le azioni meno
 tesi: Un'economia che cresce molto fa guadagnare chi ne compra le azioni.
 obiezione: Solo se la crescita arriva a chi le azioni le possiede già.
 gruppo: rendimenti
+livello: avanzato
 sommario: In vent'anni il PIL cinese è cresciuto del 13,5% l'anno e le azioni del mercato interno hanno reso il 9,5%. La differenza si spiega con una scomposizione in quattro parti. La voce che pesa di più è la diluizione: la crescita è stata finanziata emettendo azioni nuove.
 aggiornato: 2026-11-13
 ---

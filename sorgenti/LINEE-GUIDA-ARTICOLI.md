@@ -8,6 +8,8 @@ Un blog in italiano che prende un'idea diffusa sugli investimenti, la presenta n
 
 Non dà consigli personali, non indica prodotti da comprare, non fa previsioni di mercato. Ogni numero ha una fonte.
 
+Fanno eccezione gli articoli di **livello base**, per chi comincia: spiegano concetti su cui c'è poco da discutere (inflazione, interesse composto, diversificazione), quindi non hanno tesi, obiezioni né risposte. Hanno una struttura propria, descritta nella sezione 5.
+
 ## 2. Formato del file
 
 Si può mandare un articolo per file oppure più articoli in un file unico. Nel file unico ogni articolo comincia con una riga di separazione, seguita subito dall'intestazione:
@@ -39,8 +41,8 @@ La sezione «Da verificare» non viene pubblicata: serve a segnalare ciò che no
 | --- | --- | --- |
 | `slug` | sì | Minuscole, trattini, niente accenti né apostrofi. Diventa l'indirizzo della pagina e non va più cambiato. Esempio: `interesse-composto` |
 | `titolo` | sì | Forma «Argomento, sottotitolo che dice la tesi». Esempio: «Valore atteso, la media che nessuno vive». Al massimo 70 caratteri |
-| `tesi` | sì | Una frase, l'idea che l'articolo mette alla prova, come la direbbe chi ci crede. Al massimo 60 caratteri, con il punto finale |
-| `obiezione` | sì | Una o due frasi brevi, l'obiezione più forte. Al massimo 90 caratteri |
+| `tesi` | sì, tranne nel livello base | Una frase, l'idea che l'articolo mette alla prova, come la direbbe chi ci crede. Al massimo 60 caratteri, con il punto finale |
+| `obiezione` | sì, tranne nel livello base | Una o due frasi brevi, l'obiezione più forte. Al massimo 90 caratteri |
 | `livello` | sì | `base`, `intermedio` o `avanzato` (vedi sezione 4) |
 | `gruppo` | sì | Uno dei gruppi elencati sotto |
 | `sommario` | sì | Due o tre frasi, al massimo 300 caratteri. Compare sotto il titolo e nelle anteprime social |
@@ -73,12 +75,14 @@ Il livello dipende da quanto deve sapere il lettore, non dall'importanza del tem
 | Lunghezza | 600–900 parole | 700–1.200 parole | 900–1.600 parole |
 | Formule | Al massimo una, con numeri, spiegata riga per riga | Algebra semplice, sempre spiegata anche a parole | Libere, purché ogni simbolo sia definito |
 | Termini tecnici | Ognuno spiegato alla prima occorrenza | Spiegati quelli non di base | Spiegati quelli specialistici |
-| Obiezioni | 2–3 | 3–5 | 3–7 |
+| Obiezioni | Nessuna: l'articolo spiega | 3–5 | 3–7 |
 | Esempi | Numeri tondi, in euro, su una persona concreta | Dati reali con fonte | Dati reali, studi, confronti tra metodi |
 
 In caso di dubbio tra due livelli si sceglie quello più alto: per il lettore è meglio trovare un articolo più facile del previsto che il contrario.
 
 ## 5. Struttura dell'articolo
+
+### Livello intermedio e avanzato
 
 ```
 Paragrafo d'apertura (2–4 frasi): la tesi in breve e perché conta.
@@ -118,7 +122,38 @@ Regole:
 - **Ogni `::: obiezione` è seguita da una `::: risposta`**. Il titolo dell'obiezione sta sulla stessa riga di `::: obiezione`.
 - **Una sola `::: difendibile`**, alla fine.
 - **Le risposte possono dare ragione all'obiezione.** «Va concesso» e «Qui non c'è replica» sono risposte legittime: il blog si regge su questo.
-- **Livello base:** in fondo, prima della formulazione difendibile, una sezione «Per approfondire» con 1–3 rimandi ad articoli intermedi o avanzati del sito, ciascuno con una frase che dice che cosa si trova lì.
+### Livello base
+
+Niente tesi, obiezioni e risposte nell'intestazione e nel testo. Il blocco `::: difendibile` resta, e sul sito compare come «In sintesi».
+
+```
+Paragrafo d'apertura (2–4 frasi): una situazione concreta e la domanda a cui risponde l'articolo.
+
+## Il concetto        ← il titolo lo sceglie chi scrive
+Spiegazione con un esempio in euro.
+
+## Un esempio         ← oppure due sezioni di spiegazione
+Testo.
+
+## Gli equivoci più comuni        ← facoltativa
+Due o tre idee sbagliate che si sentono spesso, ciascuna in un breve paragrafo
+che inizia con l'idea in grassetto. Niente blocchi ::: obiezione.
+
+## Che cosa farne
+1. **Primo punto pratico.** Una o due frasi.
+2. ...
+3. ...
+
+## Per approfondire
+- [Titolo di un articolo del sito](slug.html): che cosa si trova lì, in una frase.
+
+::: difendibile
+Due o tre frasi che riassumono il concetto.
+:::
+```
+
+- «Che cosa farne» e «Per approfondire» sono obbligatorie. «Per approfondire» rimanda a 1–3 articoli intermedi o avanzati: è il ponte verso il resto del sito.
+- Gli articoli base del gruppo `basi` si leggono in ordine: sul sito compaiono come passi numerati.
 
 ## 6. Formule
 
@@ -175,7 +210,7 @@ Regole:
 
 ## 10. Indicazioni in più per il livello base
 
-- **La tesi è una frase che si sente dire**, vera solo in parte: «Tenere i soldi sul conto è la scelta sicura». L'obiezione la corregge senza ridicolizzarla.
+- **Si spiega, non si discute.** Niente tesi da smontare: l'articolo risponde a una domanda («perché i soldi fermi perdono valore?»). Le idee sbagliate più diffuse trovano posto, se servono, in «Gli equivoci più comuni».
 - **Un concetto per articolo.** Se servono due concetti, sono due articoli.
 - **Partire da una situazione concreta**: una persona con 10.000 € sul conto, uno stipendio, un orizzonte di dieci anni.
 - **Ogni termine tecnico spiegato la prima volta**, anche quelli che sembrano ovvi (rendimento, indice, ETF, volatilità).
@@ -187,7 +222,8 @@ Regole:
 
 - [ ] Intestazione completa, con `livello` e `gruppo` tra i valori ammessi
 - [ ] Slug unico, senza accenti, uguale a quello nella riga `ARTICOLO:`
-- [ ] Ogni obiezione ha la sua risposta, e c'è una sola formulazione difendibile
+- [ ] Intermedio e avanzato: ogni obiezione ha la sua risposta. Base: nessuna tesi, obiezione o risposta
+- [ ] Una sola `::: difendibile`, alla fine
 - [ ] Ogni numero ha un link a una fonte, e la fonte compare nella sezione fonti
 - [ ] Nessuna cella segnaposto e nessuna nota interna nel testo
 - [ ] Formule con la virgola decimale `{,}` e simboli spiegati
@@ -202,8 +238,6 @@ Regole:
 ---
 slug: interesse-composto
 titolo: Interesse composto, il tempo come ingrediente
-tesi: Conta quanto rende un investimento.
-obiezione: Conta anche per quanto tempo rende, e lì sta la differenza.
 livello: base
 gruppo: basi
 sommario: Un rendimento che si somma a se stesso anno dopo anno fa crescere il capitale in modo sempre più rapido. Per questo dieci anni in più contano spesso più di un punto di rendimento.
@@ -224,15 +258,9 @@ Con 1.000 € al 5% per trent'anni: $1.000 \times 1{,}05^{30} \approx 4.322$ €
 
 ...
 
-## Obiezioni e risposte
+## Gli equivoci più comuni
 
-::: obiezione Il 5% l'anno non è garantito
-...
-:::
-
-::: risposta
-...
-:::
+**«Il 5% l'anno è garantito».** ...
 
 ## Che cosa farne
 
@@ -251,23 +279,23 @@ Con 1.000 € al 5% per trent'anni: $1.000 \times 1{,}05^{30} \approx 4.322$ €
 
 ## Appendice: serie base proposta
 
-Ordine di lettura suggerito. Slug, tesi e obiezioni sono proposte: si possono cambiare, purché lo slug resti stabile una volta pubblicato.
+Ordine di lettura suggerito. Gli slug sono proposte: si possono cambiare, purché restino stabili una volta pubblicati.
 
-| # | Slug | Tesi | Obiezione | Per approfondire |
-| --- | --- | --- | --- | --- |
-| 1 | `conto-o-investimento` | Tenere i soldi sul conto è la scelta sicura. | È sicura in euro, non in ciò che gli euro comprano. | mercato-cresce |
-| 2 | `inflazione-rendimento-reale` | Un rendimento del 3% è un guadagno del 3%. | Non se nel frattempo i prezzi salgono del 2%. | azioni-campione-largo, oro |
-| 3 | `interesse-composto` | Conta quanto rende un investimento. | Conta anche per quanto tempo rende. | volatility-drag |
-| 4 | `rischio-e-rendimento` | Esistono investimenti che rendono molto senza rischi. | Se esistessero, tutti li comprerebbero e smetterebbero di rendere. | equity-premium-puzzle, mercati-efficienti |
-| 5 | `azioni-obbligazioni-liquidita` | Un'azione è una scommessa sul prezzo. | È una quota di un'impresa; il prezzo viene dopo. | mercato-cresce, etichette-e-rischi |
-| 6 | `diversificazione` | Diversificare vuol dire comprare tante cose. | Vuol dire comprare cose che non scendono insieme. | risk-parity, esposizione-geografica |
-| 7 | `fondi-etf-indici` | Un ETF è un investimento sicuro. | È un contenitore: il rischio dipende da che cosa c'è dentro. | paradosso-passivo, pochi-titoli |
-| 8 | `costi` | Un costo dell'1% l'anno è trascurabile. | Su trent'anni si porta via una parte rilevante del capitale finale. | paradosso-passivo |
-| 9 | `volatilita-e-perdite` | Se il portafoglio scende, ho perso. | Hai perso se vendi; il rischio vero è doverlo fare. | rischio-di-sequenza, code-grasse |
-| 10 | `orizzonte-e-emergenze` | Tutti i risparmi vanno investiti. | Quelli che ti serviranno presto no. | ciclo-di-vita |
-| 11 | `profilo-di-rischio` | La propensione al rischio si misura con un questionario. | Si misura con quello che fai quando il portafoglio perde il 30%. | finanza-comportamentale, ciclo-di-vita |
-| 12 | `market-timing` | Basta uscire prima dei crolli. | Bisogna anche rientrare prima dei rialzi, e i due momenti sono vicini. | cape-shiller, pac-o-pic |
-| 13 | `tasse-di-base` | Le tasse si pagano solo quando si guadagna. | C'è anche un'imposta annuale sul valore, che si paga comunque. | fire |
-| 14 | `scheda-di-un-fondo` | Il nome di un fondo dice che cosa contiene. | Lo dicono l'indice, la composizione e i costi. | quale-cina, esposizione-geografica |
+| # | Slug | Domanda a cui risponde | Per approfondire |
+| --- | --- | --- | --- |
+| 1 | `conto-o-investimento` | Perché i soldi fermi sul conto perdono valore? | mercato-cresce |
+| 2 | `inflazione-rendimento-reale` | Che differenza c'è tra rendimento nominale e reale? | azioni-campione-largo, oro |
+| 3 | `interesse-composto` | Perché il tempo conta quanto il rendimento? | volatility-drag |
+| 4 | `rischio-e-rendimento` | Perché non esistono rendimenti alti senza rischio? | equity-premium-puzzle, mercati-efficienti |
+| 5 | `azioni-obbligazioni-liquidita` | Che cosa si compra davvero con un'azione, un'obbligazione, un deposito? | mercato-cresce, etichette-e-rischi |
+| 6 | `diversificazione` | Perché diversificare non vuol dire solo comprare tante cose? | risk-parity, esposizione-geografica |
+| 7 | `fondi-etf-indici` | Che cosa sono un indice, un fondo e un ETF? | paradosso-passivo, pochi-titoli |
+| 8 | `costi` | Quanto pesa un costo dell'1% l'anno su trent'anni? | paradosso-passivo |
+| 9 | `volatilita-e-perdite` | Che cosa vuol dire che il portafoglio è sceso? | rischio-di-sequenza, code-grasse |
+| 10 | `orizzonte-e-emergenze` | Quali soldi non vanno investiti? | ciclo-di-vita |
+| 11 | `profilo-di-rischio` | Come si capisce quanto rischio si può sopportare? | finanza-comportamentale, ciclo-di-vita |
+| 12 | `market-timing` | Perché è così difficile entrare e uscire al momento giusto? | cape-shiller, pac-o-pic |
+| 13 | `tasse-di-base` | Quali tasse si pagano sugli investimenti in Italia? | fire |
+| 14 | `scheda-di-un-fondo` | Come si legge la scheda di un fondo? | quale-cina, esposizione-geografica |
 
 Per `tasse-di-base` servono fonti normative ufficiali (Agenzia delle Entrate, testi di legge) per ogni aliquota citata.

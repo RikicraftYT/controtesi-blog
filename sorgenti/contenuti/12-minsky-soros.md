@@ -4,6 +4,7 @@ titolo: Minsky e Soros, l'instabilità che nasce dall'interno
 tesi: Le crisi arrivano da shock esterni.
 obiezione: Le produce la stabilità stessa.
 gruppo: prezzi
+livello: intermedio
 sommario: Due teorie eterodosse sostengono che i mercati non tendono all'equilibrio ma se ne allontanano da soli. Per Minsky il motore è il debito, per Soros il circuito tra convinzioni e fondamentali. Nessuna delle due dice quando.
 aggiornato: 2026-11-13
 ---

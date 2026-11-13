@@ -4,6 +4,7 @@ titolo: Mercati adattivi, l'efficienza come ecosistema
 tesi: L'efficienza va e viene, come le risorse in un ecosistema.
 obiezione: Una teoria compatibile con qualsiasi osservazione non prevede niente.
 gruppo: prezzi
+livello: intermedio
 sommario: Andrew Lo propone di smettere di chiedersi se i mercati sono efficienti e di chiedersi quanto, dove e quando. Descrive bene. Prevede poco.
 aggiornato: 2026-11-11
 ---

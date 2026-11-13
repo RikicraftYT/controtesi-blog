@@ -33,6 +33,7 @@
       <a href="come-stanno-insieme.html">Mappa</a>
       <a href="fonti.html">Fonti</a>
     </nav>
+    <button class="cerca" type="button" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="cerca-parola">Cerca</span><span class="visivamente-nascosto"> negli articoli</span></button>
     <button class="tema" type="button" aria-pressed="false" aria-label="Passa al tema scuro"><span class="tema-parola">Tema </span><span class="tema-nome">scuro</span></button>
   </div>
   <div class="avanzamento" aria-hidden="true"></div>
@@ -40,10 +41,11 @@
 <main id="contenuto">
 <article>
 <header class="articolo-testa">
-  <p class="articolo-gruppo"><a href="index.html#rendimenti">Quanto rende il mercato</a></p>
+  <p class="articolo-gruppo"><a href="index.html#rendimenti">Quanto rende il mercato</a> <span aria-hidden="true">·</span> <span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span></p>
   <h1>Azioni nel lungo periodo, il campione largo</h1>
   <p class="articolo-sommario">La sicurezza delle azioni sul lungo periodo è misurata quasi sempre su un solo paese, il più fortunato. Con 39 paesi sviluppati la probabilità di perdere potere d'acquisto in trent'anni passa dall'1% al 12%.</p>
   <p class="articolo-tempo">3 minuti di lettura <span aria-hidden="true">·</span> Aggiornato <time datetime="2026-11-11">l'11 novembre 2026</time></p>
+  
   <div class="scontro">
     <p class="scontro-tesi"><b>La tesi</b>In trent'anni le azioni non perdono mai.</p>
     <p class="scontro-obiezione"><b>L'obiezione più forte</b>Non hanno mai perso negli Stati Uniti.</p>
@@ -132,6 +134,16 @@
     <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="https://portfolio-site-2zxf.onrender.com" target="_blank" rel="noopener">Simulatore di portafogli<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
   </div>
 </footer>
+<dialog class="ricerca" aria-labelledby="ricerca-etichetta">
+  <form class="ricerca-testa" role="search">
+    <label id="ricerca-etichetta" for="ricerca-campo" class="visivamente-nascosto">Cerca negli articoli</label>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+    <input id="ricerca-campo" type="search" placeholder="Cerca negli articoli" autocomplete="off" spellcheck="false" enterkeyhint="go">
+    <button type="button" class="ricerca-chiudi">Chiudi</button>
+  </form>
+  <p class="ricerca-stato" aria-live="polite"></p>
+  <ol class="ricerca-risultati"></ol>
+</dialog>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ titolo: Finanza comportamentale e limiti all'arbitraggio
 tesi: Gli errori degli irrazionali vengono corretti dai razionali.
 obiezione: Correggerli costa, e chi ci prova può fallire prima di avere ragione.
 gruppo: prezzi
+livello: intermedio
 sommario: Che gli investitori sbaglino non basta a rendere i prezzi sbagliati. Serve anche che nessuno riesca a correggerli. La finanza comportamentale sta in piedi su due gambe: la psicologia delle scelte e i limiti di chi dovrebbe arbitrare.
 aggiornato: 2026-11-11
 ---

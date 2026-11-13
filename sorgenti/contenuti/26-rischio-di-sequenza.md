@@ -4,6 +4,7 @@ titolo: Rischio di sequenza, l'ordine conta quanto la media
 tesi: Conta il rendimento medio.
 obiezione: Se versi o prelevi, conta l'ordine. Stessa media, esiti opposti.
 gruppo: vita
+livello: intermedio
 sommario: Due investitori con gli stessi rendimenti in ordine inverso finiscono in posti diversi. È il motivo per cui «in media cresce» non basta a chi vive del portafoglio.
 aggiornato: 2026-11-11
 ---

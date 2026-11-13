@@ -4,6 +4,7 @@ titolo: Mercati efficienti, due affermazioni e una sola regge
 tesi: I prezzi contengono già tutta l'informazione.
 obiezione: Se fosse vero, nessuno pagherebbe per informarsi. E chi farebbe i prezzi?
 gruppo: prezzi
+livello: intermedio
 sommario: «Non esistono pasti gratis» e «il prezzo è giusto» sembrano la stessa frase. Non lo sono, e confonderle è l'errore più comune su questa teoria.
 aggiornato: 2026-11-11
 ---

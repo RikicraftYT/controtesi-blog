@@ -4,6 +4,7 @@ titolo: CAPE di Shiller, quanto conta il prezzo d'ingresso
 tesi: Chi compra caro guadagna meno.
 obiezione: Il CAPE è sopra la media da trent'anni e il mercato è salito lo stesso.
 gruppo: rendimenti
+livello: intermedio
 sommario: Il prezzo che paghi sposta il rendimento a dieci anni più di ogni altra variabile osservabile. Ma non ti dice quando. Serve a tarare le aspettative, non a entrare e uscire.
 aggiornato: 2026-11-11
 ---

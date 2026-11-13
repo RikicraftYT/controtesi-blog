@@ -4,6 +4,7 @@ titolo: Equity premium puzzle, il premio che i modelli non spiegano
 tesi: Le azioni pagano un premio per il rischio.
 obiezione: Un premio così grande nessun modello lo giustifica. Forse è stata fortuna.
 gruppo: rendimenti
+livello: avanzato
 sommario: Che il premio azionario sia positivo è logica. Che sia stato del 6% l'anno è un enigma, e la spiegazione che scegli decide quanto aspettarti in futuro.
 aggiornato: 2026-11-13
 ---

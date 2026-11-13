@@ -4,6 +4,7 @@ titolo: Il mercato cresce nel tempo. Perché, senza guardare i grafici
 tesi: Il mercato globale, in media, cresce.
 obiezione: Tra crescita ed età della pietra c'è la stagnazione. Chiedere al Giappone.
 gruppo: rendimenti
+livello: intermedio
 sommario: «Altrimenti torniamo all'età della pietra» è un argomento vero ma incompleto. Qui c'è la versione che regge senza dati storici, e i cinque punti in cui scricchiola.
 aggiornato: 2026-11-13
 ---

@@ -4,6 +4,7 @@ titolo: Azioni nel lungo periodo, il campione largo
 tesi: In trent'anni le azioni non perdono mai.
 obiezione: Non hanno mai perso negli Stati Uniti.
 gruppo: rendimenti
+livello: intermedio
 sommario: La sicurezza delle azioni sul lungo periodo è misurata quasi sempre su un solo paese, il più fortunato. Con 39 paesi sviluppati la probabilità di perdere potere d'acquisto in trent'anni passa dall'1% al 12%.
 aggiornato: 2026-11-11
 ---

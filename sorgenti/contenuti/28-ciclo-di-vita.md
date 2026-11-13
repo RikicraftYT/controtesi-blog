@@ -4,6 +4,7 @@ titolo: Ciclo di vita, capitale umano e leva da giovani
 tesi: Da giovani si rischia di più, da vecchi di meno.
 obiezione: La regola dell'età confonde il portafoglio con la ricchezza.
 gruppo: vita
+livello: avanzato
 sommario: La ricchezza di una persona è la somma del portafoglio e dei redditi futuri. Guardarla per intero cambia l'asset allocation, fino a due proposte estreme: indebitarsi da giovani per comprare azioni, o tenere solo azioni per tutta la vita.
 aggiornato: 2026-11-11
 ---

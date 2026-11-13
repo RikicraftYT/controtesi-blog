@@ -4,6 +4,7 @@ titolo: Quale Cina compri
 tesi: Investire in Cina vuol dire comprare l'economia cinese.
 obiezione: Vuol dire scegliere tra almeno tre mercati, con settori, investitori e diritti diversi.
 gruppo: esposizioni
+livello: intermedio
 sommario: Le azioni cinesi sono quotate a Shanghai e Shenzhen, a Hong Kong e a New York. Non sono tre porte sullo stesso mercato: cambiano i settori, lo stile, chi fa i prezzi e che cosa possiedi davvero. L'indice che scegli decide quale Cina hai in portafoglio.
 aggiornato: 2026-11-13
 ---

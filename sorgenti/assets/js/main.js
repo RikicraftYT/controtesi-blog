@@ -202,4 +202,188 @@
     fig.insertBefore(svg, fig.firstChild);
     gioca();
   }
+  /* ----- Filtro per livello in home ----- */
+  var filtro = document.querySelector(".filtro");
+  if (filtro) {
+    filtro.hidden = false;
+    var bottoniFiltro = filtro.querySelectorAll("button");
+    var righe = document.querySelectorAll(".duello[data-livello]");
+    var gruppiHome = document.querySelectorAll(".gruppo");
+    var conteggio = filtro.querySelector(".filtro-conteggio");
+    var applicaFiltro = function (livello) {
+      var visibili = 0;
+      bottoniFiltro.forEach(function (b) {
+        b.setAttribute("aria-pressed", (b.getAttribute("data-livello") || "") === livello ? "true" : "false");
+      });
+      righe.forEach(function (r) {
+        var vis = !livello || r.getAttribute("data-livello") === livello;
+        r.hidden = !vis;
+        if (vis) visibili++;
+      });
+      gruppiHome.forEach(function (g) { g.hidden = !g.querySelector(".duello:not([hidden])"); });
+      conteggio.textContent = livello ? (visibili === 1 ? "1 articolo" : visibili + " articoli") : "";
+      try {
+        if (livello) localStorage.setItem("controtesi-livello", livello);
+        else localStorage.removeItem("controtesi-livello");
+      } catch (e) { /* preferenza non salvata */ }
+    };
+    filtro.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest("button") : null;
+      if (b) applicaFiltro(b.getAttribute("data-livello") || "");
+    });
+    var salvato = null;
+    try { salvato = localStorage.getItem("controtesi-livello"); } catch (e) { salvato = null; }
+    if (salvato && filtro.querySelector('[data-livello="' + salvato + '"]')) applicaFiltro(salvato);
+  }
+
+  /* ----- Ricerca ----- */
+  var dialogo = document.querySelector(".ricerca");
+  var bottoneCerca = document.querySelector(".cerca");
+  if (dialogo && bottoneCerca && typeof dialogo.showModal === "function") {
+    bottoneCerca.hidden = false;
+    var campo = dialogo.querySelector("#ricerca-campo");
+    var lista = dialogo.querySelector(".ricerca-risultati");
+    var stato = dialogo.querySelector(".ricerca-stato");
+    var indice = null, inCaricamento = false;
+
+    // Minuscole e senza accenti, carattere per carattere: la lunghezza resta uguale,
+    // così le posizioni trovate valgono anche nel testo originale.
+    var normalizza = function (s) {
+      var out = "";
+      for (var k = 0; k < s.length; k++) out += s.charAt(k).normalize("NFD").charAt(0).toLowerCase().charAt(0);
+      return out;
+    };
+    var escHtml = function (s) {
+      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    };
+    var prepara = function (a) {
+      return { a: a, t: normalizza(a.t), te: normalizza(a.te), so: normalizza(a.so), se: normalizza(a.se), x: normalizza(a.x) };
+    };
+    var carica = function (poi) {
+      if (indice) { poi(); return; }
+      if (inCaricamento) return;
+      inCaricamento = true;
+      stato.textContent = "Carico l'indice…";
+      var script = document.createElement("script");
+      script.src = "assets/js/indice-ricerca.js";
+      script.onload = function () {
+        indice = (window.CONTROTESI_INDICE || []).map(prepara);
+        stato.textContent = "";
+        poi();
+      };
+      script.onerror = function () { inCaricamento = false; stato.textContent = "La ricerca non è disponibile in questo momento."; };
+      document.head.appendChild(script);
+    };
+    // Un termine conta solo all'inizio di una parola: "cina" trova "Cina", non "vicina";
+    // "obbligaz" trova "obbligazioni" mentre si scrive.
+    var lettera = /[a-z0-9]/;
+    var trova = function (testo, t, da) {
+      var i = testo.indexOf(t, da);
+      while (i > 0 && lettera.test(testo.charAt(i - 1))) i = testo.indexOf(t, i + 1);
+      return i;
+    };
+    var conta = function (testo, t) {
+      var n = 0, i = trova(testo, t, 0);
+      while (i >= 0 && n < 10) { n++; i = trova(testo, t, i + t.length); }
+      return n;
+    };
+    // Evidenzia i termini in un testo, usando le posizioni trovate nella versione normalizzata.
+    var evidenzia = function (originale, normale, termini) {
+      var segni = [];
+      termini.forEach(function (t) {
+        var i = trova(normale, t, 0);
+        while (i >= 0) { segni.push([i, i + t.length]); i = trova(normale, t, i + t.length); }
+      });
+      segni.sort(function (a, b) { return a[0] - b[0]; });
+      var out = "", pos = 0;
+      segni.forEach(function (m) {
+        if (m[0] < pos) return;
+        out += escHtml(originale.slice(pos, m[0])) + "<mark>" + escHtml(originale.slice(m[0], m[1])) + "</mark>";
+        pos = m[1];
+      });
+      return out + escHtml(originale.slice(pos));
+    };
+    var estratto = function (v, termini) {
+      var primo = -1;
+      termini.forEach(function (t) {
+        var i = trova(v.x, t, 0);
+        if (i >= 0 && (primo < 0 || i < primo)) primo = i;
+      });
+      if (primo < 0) return evidenzia(v.a.so, v.so, termini);
+      var inizio = Math.max(0, primo - 70);
+      if (inizio > 0) inizio = v.a.x.indexOf(" ", inizio) + 1;
+      var fine = Math.min(v.a.x.length, inizio + 200);
+      var spazio = v.a.x.lastIndexOf(" ", fine);
+      if (fine < v.a.x.length && spazio > primo) fine = spazio;
+      return (inizio > 0 ? "… " : "") + evidenzia(v.a.x.slice(inizio, fine), v.x.slice(inizio, fine), termini) +
+        (fine < v.a.x.length ? " …" : "");
+    };
+    var cerca = function () {
+      var q = campo.value.trim();
+      var termini = normalizza(q).split(/[^a-z0-9%]+/).filter(function (t) { return t.length > 1; });
+      lista.innerHTML = "";
+      if (!termini.length) { stato.textContent = ""; return; }
+      var trovati = [];
+      indice.forEach(function (v) {
+        var punti = 0, tutti = true;
+        termini.forEach(function (t) {
+          var p = conta(v.t, t) * 12 + conta(v.te, t) * 6 + conta(v.so, t) * 4 + conta(v.se, t) * 3 + conta(v.x, t);
+          if (!p) tutti = false;
+          punti += p;
+        });
+        if (tutti) trovati.push({ v: v, punti: punti });
+      });
+      trovati.sort(function (a, b) { return b.punti - a.punti; });
+      stato.textContent = trovati.length
+        ? (trovati.length === 1 ? "1 articolo" : trovati.length + " articoli")
+        : "Nessun articolo contiene «" + q + "».";
+      trovati.slice(0, 20).forEach(function (r) {
+        var v = r.v, li = document.createElement("li");
+        li.innerHTML = '<a href="' + v.a.s + '.html">' +
+          '<span class="ricerca-titolo">' + evidenzia(v.a.t, v.t, termini) + "</span>" +
+          '<span class="ricerca-meta">' + escHtml(v.a.g) + " · " + escHtml(v.a.l) + "</span>" +
+          '<span class="ricerca-estratto">' + estratto(v, termini) + "</span></a>";
+        lista.appendChild(li);
+      });
+    };
+    var attesaRicerca;
+    campo.addEventListener("input", function () {
+      clearTimeout(attesaRicerca);
+      attesaRicerca = setTimeout(function () { if (indice) cerca(); }, 80);
+    });
+    dialogo.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var primo = lista.querySelector("a");
+      if (primo) primo.click();
+    });
+    var apri = function () {
+      if (!dialogo.open) dialogo.showModal();
+      campo.focus();
+      campo.select();
+      carica(function () { if (campo.value.trim()) cerca(); });
+    };
+    bottoneCerca.addEventListener("click", apri);
+    dialogo.querySelector(".ricerca-chiudi").addEventListener("click", function () { dialogo.close(); });
+    // Un clic sullo sfondo, fuori dal riquadro, chiude la ricerca.
+    dialogo.addEventListener("click", function (e) { if (e.target === dialogo) dialogo.close(); });
+    // Frecce su e giù per muoversi tra campo e risultati.
+    dialogo.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+      var link = Array.prototype.slice.call(lista.querySelectorAll("a"));
+      if (!link.length) return;
+      var i = link.indexOf(document.activeElement);
+      e.preventDefault();
+      if (e.key === "ArrowDown") (i < 0 ? link[0] : link[Math.min(i + 1, link.length - 1)]).focus();
+      else if (i <= 0) campo.focus();
+      else link[i - 1].focus();
+    });
+    // "/" oppure Ctrl+K (Cmd+K su Mac) aprono la ricerca da qualunque pagina.
+    document.addEventListener("keydown", function (e) {
+      var t = e.target, scrive = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+      if ((e.key === "/" && !scrive) || ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K"))) {
+        e.preventDefault();
+        apri();
+      }
+    });
+  }
 })();

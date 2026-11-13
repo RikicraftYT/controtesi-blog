@@ -4,6 +4,7 @@ titolo: Volatility drag, leva e ribilanciamento
 tesi: Ribilanciare genera rendimento dal nulla.
 obiezione: Genera rendimento solo se i prezzi tornano indietro.
 gruppo: strumento
+livello: avanzato
 sommario: La volatilità sottrae rendimento composto alla media aritmetica, in misura pari a metà della varianza. Questo spiega perché la leva giornaliera delude e perché il ribilanciamento sembra creare valore. Ma non è un premio gratuito.
 aggiornato: 2026-11-11
 ---

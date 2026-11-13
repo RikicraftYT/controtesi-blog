@@ -3,7 +3,7 @@
 Blog statico in italiano su teorie d'investimento, obiezioni e risposte. Le pagine HTML nella radice sono **generate**: non modificarle a mano.
 
 ## Come si lavora
-- I testi sono in `sorgenti/contenuti/*.md` (front matter: slug, titolo, tesi, obiezione, gruppo, sommario, tipo).
+- I testi sono in `sorgenti/contenuti/*.md` (front matter: slug, titolo, tesi, obiezione, gruppo, livello, sommario, aggiornato, prima, tipo; gli articoli di livello base non hanno tesi né obiezione).
 - Le regole per chi scrive gli articoli (formato, livelli, fonti, stile) sono in `sorgenti/LINEE-GUIDA-ARTICOLI.md`: usale per controllare gli articoli che arrivano.
 - Le note tecniche complete sono in `sorgenti/README.md`; il `README.md` nella radice è la presentazione pubblica del progetto e non deve contenere dettagli tecnici.
 - Per rigenerare le pagine: `cd sorgenti && npm install && npm run build`. Dopo ogni modifica ai Markdown, rigenera e committa anche gli HTML.
