@@ -7,6 +7,32 @@ sommario: Tutti i numeri citati negli articoli vengono dalle pagine qui sotto, c
 
 I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'11 e il 13 novembre 2026. Gli esempi numerici di [Valore atteso](valore-atteso.html), [Rischio di sequenza](rischio-di-sequenza.html), [Risk parity](risk-parity.html), [FIRE](fire.html) (la tabella degli anni al traguardo), [Volatility drag](volatility-drag.html) (ETF a leva e demone di Shannon) [Tutto subito o a rate](pac-o-pic.html) (costo atteso dell'attesa), [Dove investe davvero un indice globale](esposizione-geografica.html) (le due società) e [Quanto deve rendere per meritare un posto](hurdle-rate.html) (la tabella con l'ETF tematico) sono calcoli illustrativi su ipotesi dichiarate nel testo.
 
+## Per iniziare
+
+Pagine consultate il 13 novembre 2026. Sono calcoli illustrativi, con rendimenti e inflazione costanti: le tabelle sul potere d'acquisto in «Soldi fermi sul conto»; gli esempi con il 3% e il 2% in «Inflazione e rendimento reale»; tutti gli importi di «Interesse composto» e di «I costi»; la tabella delle perdite e dei recuperi in «Volatilità e perdite»; l'esempio dei 1.500 € al mese in «Orizzonte e fondo di emergenza»; gli esempi di imposta su 1.000 € di guadagno e di bollo su 20.000 € in «Le tasse di base». Il calo di potere d'acquisto del 2022–2023 e il rendimento reale del 2022 sono calcolati dai dati Istat citati.
+
+- [Perché la stabilità dei prezzi è importante](https://www.ecb.europa.eu/explainers/tell-me-more/html/stableprices.it.html) – Banca centrale europea
+- [Prezzi al consumo, dicembre 2022](https://www.istat.it/comunicato-stampa/prezzi-al-consumo-dicembre-2022/) – Istat, comunicato stampa, gennaio 2023
+- [Prezzi al consumo, dicembre 2024](https://www.istat.it/comunicato-stampa/prezzi-al-consumo-dicembre-2024/) – Istat, comunicato stampa, gennaio 2025
+- [Cosa facciamo, opuscolo informativo](https://www.fitd.it/Content/public/FITD_opuscolo_informativo_cosa_facciamo.pdf) – Fondo Interbancario di Tutela dei Depositi
+- [Global Investment Returns Yearbook 2026: Timeless lessons for today's investment challenges](https://www.ubs.com/global/en/media/display-page-ndp/en-20260303-global-investment-returns-yearbook-2026.html) – UBS, comunicato stampa, marzo 2026
+- [Sintesi dello Yearbook 2026](https://www.ubs.com/global/en/wealthmanagement/insights/marketnews/article.3435923.html) – UBS Chief Investment Office, 2026
+- [Hai deciso di investire: cosa devi fare?](https://www.consob.it/web/investor-education/hai-deciso-di-investire-cosa-devi-fare-) – Consob, educazione finanziaria
+- [Consigli utili per interagire con un professionista](https://www.consob.it/web/investor-education/consigli-utili-per-interagire-con-un-professionista) – Consob, educazione finanziaria
+- [Profilatura e valutazione di adeguatezza](https://www.consob.it/web/investor-education/profilatura-e-valutazione-di-adeguatezza) – Consob, educazione finanziaria
+- [MSCI World Index (USD), Index Factsheet](https://www.msci.com/documents/10199/178e6643-6ae6-47b9-82be-e1fc565ededb) – MSCI, 30 ottobre 2026
+- [Report on total costs of UCITS and AIFs, presentazione](https://www.esma.europa.eu/sites/default/files/2025-11/Report_on_costs_charged_by_UCITS_management_companies_and_AIFMs_to_investors_-_Webinar.pdf) – ESMA, novembre 2025
+- [Retail clients continue to lose out due to high investment products costs](https://www.esma.europa.eu/press-news/esma-news/retail-clients-continue-lose-out-due-high-investment-products-costs) – ESMA, comunicato
+- [J.P. Morgan Asset Management Releases 2025 Guide to Retirement](https://am.jpmorgan.com/us/en/asset-management/per/about-us/media/press-releases/jp-morgan-asset-management-releases-2025-guide-to-retirement) – J.P. Morgan Asset Management, comunicato stampa, 2025
+- [Reasons to stay invested](https://www.chase.com/personal/investments/learning-and-insights/article/reasons-to-stay-invested) – J.P. Morgan, su dati J.P. Morgan Asset Management
+- [Circolare n. 19/E del 27 giugno 2014, Modifica dell'aliquota di tassazione dei redditi di natura finanziaria](https://agenziaentrate.gov.it/portale/documents/20143/298850/Circolare+n19E+del+27+giugno+2014_Cir19e+del+27+06+14.pdf/429c76f6-6236-4071-79ae-65af4aadd134) – Agenzia delle Entrate
+- [Circolare n. 48/E del 21 dicembre 2012, imposta di bollo su estratti conto e prodotti finanziari](https://www.dirittobancario.it/wp-content/uploads/sites/default/files/allegati/circolare_agenzia_delle_entrate_21_dicembre_2012_n._48_e.pdf) – Agenzia delle Entrate, copia pubblicata da DirittoBancario.it
+- [Risoluzione n. 76/E del 6 novembre 2013, sui regimi dichiarativo, amministrato e gestito](https://www.dirittobancario.it/wp-content/uploads/sites/default/files/allegati/risoluzione_agenzia_delle_entrate_6_novembre_2013_n._76-e.pdf) – Agenzia delle Entrate, copia pubblicata da DirittoBancario.it
+- [Delibera sulla notifica dei KID dei PRIIPs](https://www.consob.it/documents/1912911/1979253/d21640.pdf/e4cb5bc5-6e7d-e2a8-9ea0-5da9e1739f08) – Consob, con i riferimenti al regolamento (UE) n. 1286/2014 e al regolamento delegato (UE) 2017/653
+- Testo unico delle imposte sui redditi, D.P.R. 22 dicembre 1986, n. 917, articoli 44, 67 e 68
+- Decreto legislativo 21 novembre 1997, n. 461, articoli 5, 6 e 7
+- Tariffa allegata al D.P.R. 26 ottobre 1972, n. 642, articolo 13, commi 2-bis e 2-ter
+
 ## Valore atteso
 
 - [The ergodicity problem in economics](https://www.nature.com/articles/s41567-019-0732-0) – Ole Peters, Nature Physics 2019

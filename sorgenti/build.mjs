@@ -43,10 +43,19 @@ function dataEstesa(iso, file) {
   return `${giorno} ${MESI[Number(m[2]) - 1]} ${m[1]}`;
 }
 
-const NUMERI = ["Zero", "Un", "Due", "Tre", "Quattro", "Cinque", "Sei", "Sette", "Otto", "Nove", "Dieci",
-  "Undici", "Dodici", "Tredici", "Quattordici", "Quindici", "Sedici", "Diciassette", "Diciotto", "Diciannove", "Venti",
-  "Ventuno", "Ventidue", "Ventitré", "Ventiquattro", "Venticinque", "Ventisei", "Ventisette", "Ventotto", "Ventinove", "Trenta",
-  "Trentuno", "Trentadue", "Trentatré", "Trentaquattro", "Trentacinque", "Trentasei", "Trentasette", "Trentotto", "Trentanove", "Quaranta"];
+// Numero in lettere, con la maiuscola, da 1 a 99: "Ventitré", "Quarantaquattro".
+const UNITA = ["", "uno", "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove", "dieci",
+  "undici", "dodici", "tredici", "quattordici", "quindici", "sedici", "diciassette", "diciotto", "diciannove"];
+const DECINE = ["", "", "venti", "trenta", "quaranta", "cinquanta", "sessanta", "settanta", "ottanta", "novanta"];
+function inLettere(n) {
+  if (n < 1 || n > 99) return String(n);
+  let t = n < 20 ? UNITA[n] : DECINE[Math.floor(n / 10)];
+  if (n >= 20 && n % 10) {
+    const u = UNITA[n % 10];
+    t = (u === "uno" || u === "otto" ? t.slice(0, -1) : t) + (u === "tre" ? "tré" : u);
+  }
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
 
 const GRUPPI = [
   { id: "basi", nome: "Per iniziare" },
@@ -417,7 +426,7 @@ function paginaIniziale() {
 
   const corpo = `<section class="apertura">
   <h1>Ogni tesi vale quanto la migliore obiezione a cui sa rispondere.</h1>
-  <p>${NUMERI[articoli.length] ?? articoli.length} articoli su rendimenti, prezzi, portafogli e pensione. Ognuno parte dalla tesi nella sua forma più forte, poi le dà contro, con le formule e le fonti in vista.${basi.length ? " Chi comincia ha un percorso di base, da leggere in ordine." : ""}</p>
+  <p>${inLettere(articoli.length)} articoli su rendimenti, prezzi, portafogli e pensione. ${basi.length ? "Chi comincia ha un percorso di base, da leggere in ordine. Gli altri partono dalla tesi nella sua forma più forte, poi le danno contro" : "Ognuno parte dalla tesi nella sua forma più forte, poi le dà contro"}, con le formule e le fonti in vista.</p>
   <div class="apertura-azioni">
     ${azioni}
   </div>

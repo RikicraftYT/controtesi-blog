@@ -17,10 +17,11 @@ Ogni tesi vale quanto la migliore obiezione a cui sa rispondere. Per questo gli 
 
 Le formule sono scritte per intero e ogni numero rimanda alla sua fonte.
 
-Ogni articolo ha un livello di difficoltà, intermedio o avanzato, e in home si possono filtrare per livello. Una ricerca interna trova gli articoli per parola. È in preparazione un percorso di base per chi comincia, con articoli che spiegano i concetti fondamentali senza formule complesse.
+Ogni articolo ha un livello di difficoltà (base, intermedio o avanzato), e in home si possono filtrare per livello. Una ricerca interna trova gli articoli per parola.
 
 ## Di cosa parla
 
+- **Per iniziare**: quattordici articoli da leggere in ordine per chi parte da zero, dall'inflazione all'interesse composto, da azioni e obbligazioni ai costi, alle tasse e alla scheda di un fondo. Spiegano i concetti senza tesi da discutere.
 - **Il metro di giudizio**: il valore atteso e il costo della volatilità.
 - **Quanto rende il mercato**: crescita di lungo periodo, il campione dei paesi sviluppati, perché la crescita del PIL non diventa per forza rendimento, premio per il rischio, i pochi titoli che fanno l'indice, prezzo d'ingresso.
 - **I prezzi sono giusti?**: mercati efficienti, gestione passiva, finanza comportamentale, mercati adattivi, Minsky e Soros, code grasse, factor investing.
