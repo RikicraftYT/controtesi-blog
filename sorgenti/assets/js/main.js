@@ -593,7 +593,7 @@
 
   /* ----- Grafici interattivi: interesse composto, valore temporale, FIRE ----- */
   var interattivi = document.querySelectorAll(".grafico[data-interattivo]");
-  if (interattivi.length) {
+  if (interattivi.length && window.ControtesiFormule) {
     var NS2 = "http://www.w3.org/2000/svg";
     var nodo = function (nome, attr, testo) {
       var n = document.createElementNS(NS2, nome);
@@ -601,30 +601,10 @@
       if (testo !== undefined) n.textContent = testo;
       return n;
     };
-    var num = function (v, dec) {
-      if (!isFinite(v)) return "—";
-      var parti = Math.abs(v).toFixed(dec || 0).split(".");
-      return (v < 0 ? "−" : "") + parti[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (parti[1] ? "," + parti[1] : "");
-    };
-    var tacche = function (min, max, quante) {
-      var passo = (max - min) / quante, mag = Math.pow(10, Math.floor(Math.log(passo) / Math.LN10));
-      var scelte = [1, 2, 2.5, 5, 10].map(function (k) { return k * mag; });
-      passo = scelte.filter(function (p) { return (max - min) / p <= quante; })[0] || 10 * mag;
-      var out = [];
-      for (var v = Math.ceil(min / passo - 1e-9) * passo; v <= max + 1e-9; v += passo) out.push(+v.toFixed(10));
-      return out;
-    };
-    var erf = function (x) {
-      var t = 1 / (1 + 0.3275911 * Math.abs(x));
-      var y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
-      return x >= 0 ? y : -y;
-    };
-    var Nc = function (x) { return 0.5 * (1 + erf(x / Math.SQRT2)); };
-    var bsCall = function (S, K, T, r, s) {
-      if (T <= 0) return Math.max(S - K, 0);
-      var d1 = (Math.log(S / K) + (r + s * s / 2) * T) / (s * Math.sqrt(T)), d2 = d1 - s * Math.sqrt(T);
-      return S * Nc(d1) - K * Math.exp(-r * T) * Nc(d2);
-    };
+    // Numeri, tacche, Black-Scholes e FIRE vengono da formule.js, lo stesso file usato dalla build.
+    var F = window.ControtesiFormule;
+    var num = F.numero, tacche = F.tacche;
+    var bsCall = function (S, K, T, r, s) { return F.blackScholes({ S: S, K: K, T: T, r: r, sigma: s }); };
     // Disegna un grafico a linee alla larghezza reale del contenitore.
     var disegnaLinee = function (cont, o) {
       var W = Math.max(280, Math.round(cont.clientWidth)), stretto = W < 480;
@@ -679,15 +659,15 @@
           { id: "anni", nome: "Anni", min: 5, max: 50, passo: 1, val: 40, fmt: function (v) { return num(v); } }
         ],
         disegna: function (p, cont, esito) {
-          var r = p.r / 100, c0 = 10000, comp = function (t) { return c0 * Math.pow(1 + r, t); };
-          var fin = comp(p.anni), semp = c0 * (1 + r * p.anni);
+          var r = p.r / 100, c0 = 10000, comp = function (t) { return F.composto(c0, r, t); };
+          var fin = comp(p.anni), semp = F.semplice(c0, r, p.anni);
           disegnaLinee(cont, {
             titolo: "10.000 € investiti per " + p.anni + " anni al " + num(p.r, 1) + "%",
             x: { min: 0, max: p.anni, etichetta: "anni", fmt: function (v) { return num(v); } },
             y: { min: 0, max: Math.max(12000, fin * 1.05), etichetta: "euro", fmt: function (v) { return num(v); } },
             serie: [
               { nome: "Interesse composto", colore: 1, f: comp },
-              { nome: "Interesse semplice", colore: 3, tratteggio: true, f: function (t) { return c0 * (1 + r * t); } },
+              { nome: "Interesse semplice", colore: 3, tratteggio: true, f: function (t) { return F.semplice(c0, r, t); } },
               { nome: "Capitale versato", colore: 4, tratteggio: true, f: function () { return c0; } }
             ],
             punti: [{ x: p.anni, y: fin, colore: 1, tip: "Dopo " + p.anni + " anni: " + num(fin) + " €" }]
@@ -729,7 +709,7 @@
         ],
         disegna: function (p, cont, esito) {
           var r = p.r / 100, w = p.w / 100;
-          var anni = function (sp) { var s2 = sp / 100; return Math.log(1 + r * (1 - s2) / (s2 * w)) / Math.log(1 + r); };
+          var anni = function (sp) { return F.anniFire(r, w, sp / 100); };
           disegnaLinee(cont, {
             titolo: "Anni al traguardo secondo il tasso di risparmio",
             x: { min: 5, max: 80, etichetta: "tasso di risparmio, %", fmt: function (v) { return num(v) + "%"; } },

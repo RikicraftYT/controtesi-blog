@@ -9,6 +9,19 @@
 // - attributi data-tip sui segni principali, che main.js mostra come tooltip.
 // I colori non sono scritti qui: le classi g-s1…g-s4 li prendono dal CSS, tema per tema.
 
+import fs from "node:fs";
+import vm from "node:vm";
+
+// Formule comuni con i grafici interattivi del browser (numeri, tacche, Black-Scholes, FIRE):
+// un solo file, assets/js/formule.js, letto qui e caricato nelle pagine.
+const F = (() => {
+  const contesto = {};
+  vm.runInNewContext(fs.readFileSync(new URL("../assets/js/formule.js", import.meta.url), "utf8"), contesto);
+  return contesto.ControtesiFormule;
+})();
+export const { numero, blackScholes } = F;
+const { tacche, erf } = F;
+
 const LARGO = 640;
 const STRETTO = 360;
 const CARATTERE = 7.1; // larghezza media di un carattere a 13px, per stimare le etichette
@@ -17,14 +30,6 @@ const CARATTERE = 7.1; // larghezza media di un carattere a 13px, per stimare le
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-// Numeri all'italiana: punto per le migliaia (anche a quattro cifre), virgola decimale.
-export function numero(v, dec = 0) {
-  if (!Number.isFinite(v)) return "—";
-  const segno = v < 0 ? "−" : "";
-  const [intera, decimali] = Math.abs(v).toFixed(dec).split(".");
-  const gruppi = intera.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  return segno + gruppi + (decimali ? "," + decimali : "");
-}
 // Formati: dec numero di decimali, oppure "auto" (fino a due, senza zeri finali);
 // tipo "probabilita" scrive 0,0001 come «1 su 10.000».
 const formato = (f = {}) => (v) => {
@@ -36,15 +41,6 @@ const formato = (f = {}) => (v) => {
 };
 const larghezzaTesto = (t, scala = 1) => String(t).length * CARATTERE * scala;
 
-// Tacche "pulite" per un intervallo lineare.
-function tacche(min, max, quante = 5) {
-  const passoGrezzo = (max - min) / quante;
-  const mag = 10 ** Math.floor(Math.log10(passoGrezzo));
-  const passo = [1, 2, 2.5, 5, 10].map((k) => k * mag).find((p) => (max - min) / p <= quante) ?? 10 * mag;
-  const out = [];
-  for (let v = Math.ceil(min / passo - 1e-9) * passo; v <= max + 1e-9; v += passo) out.push(+v.toFixed(10));
-  return out;
-}
 const tacheLog = (min, max) => {
   const out = [];
   for (let e = Math.floor(Math.log10(min)); e <= Math.ceil(Math.log10(max)); e++) {
@@ -62,29 +58,12 @@ function scala(asse, da, a) {
   return (v) => da + ((v - asse.min) / (asse.max - asse.min)) * (a - da);
 }
 
-/* ---------- Statistica e finanza per i generatori ---------- */
-
-const erf = (x) => {
-  // Abramowitz-Stegun 7.1.26, errore < 1,5e-7
-  const t = 1 / (1 + 0.3275911 * Math.abs(x));
-  const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
-  return x >= 0 ? y : -y;
-};
-const N = (x) => 0.5 * (1 + erf(x / Math.SQRT2));
-export function blackScholes({ S, K, T, r, sigma, tipo = "call" }) {
-  if (T <= 0) return tipo === "call" ? Math.max(S - K, 0) : Math.max(K - S, 0);
-  const d1 = (Math.log(S / K) + (r + sigma * sigma / 2) * T) / (sigma * Math.sqrt(T));
-  const d2 = d1 - sigma * Math.sqrt(T);
-  const c = S * N(d1) - K * Math.exp(-r * T) * N(d2);
-  return tipo === "call" ? c : c - S + K * Math.exp(-r * T);
-}
-
 // Ogni generatore restituisce una funzione f(x): il grafico la campiona, la tabella la valuta.
 const GENERATORI = {
   // c0 · base^x  (crescita composta; con base < 1 perdita di potere d'acquisto)
   esponenziale: ({ c0, base }) => (x) => c0 * base ** x,
   // c0 · (1 + tasso · x)  (interesse semplice)
-  semplice: ({ c0, tasso }) => (x) => c0 * (1 + tasso * x),
+  semplice: ({ c0, tasso }) => (x) => F.semplice(c0, tasso, x),
   costante: ({ valore }) => () => valore,
   // a · x + b
   lineare: ({ a = 1, b = 0 }) => (x) => a * x + b,
@@ -113,10 +92,7 @@ const GENERATORI = {
   "bs-premio": ({ K, giorni, r, sigma, tipo }) => (S) => blackScholes({ S, K, T: giorni / 365, r, sigma, tipo }),
   intrinseco: ({ K, tipo }) => (S) => (tipo === "put" ? Math.max(K - S, 0) : Math.max(S - K, 0)),
   // anni per arrivare al traguardo FIRE in funzione del tasso di risparmio (in %)
-  "fire-anni": ({ r, w }) => (sPerc) => {
-    const s = sPerc / 100;
-    return Math.log(1 + (r * (1 - s)) / (s * w)) / Math.log(1 + r);
-  },
+  "fire-anni": ({ r, w }) => (sPerc) => F.anniFire(r, w, sPerc / 100),
   // soglia di rendimento in funzione della correlazione: ρ · σi/σp · Rp
   soglia: ({ sigmaI, sigmaP, rp }) => (rho) => rho * (sigmaI / sigmaP) * rp,
 };
