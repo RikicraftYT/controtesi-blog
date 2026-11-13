@@ -41,7 +41,7 @@ slug: nome-del-file-html
 titolo: Titolo dell'articolo
 tesi: La tesi in una frase.
 obiezione: L'obiezione più forte in una frase.
-gruppo: basi | strumento | rendimenti | prezzi | portafoglio | esposizioni | vita | sintesi
+gruppo: basi | strumento | rendimenti | prezzi | portafoglio | derivati | esposizioni | vita | sintesi
 livello: base | intermedio | avanzato
 tag: azioni, dati storici   (uno o più, dal vocabolario TAG di build.mjs)
 prima: slug-di-un-altro-articolo, slug-di-un-altro   (facoltativo)

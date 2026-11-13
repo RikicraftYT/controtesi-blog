@@ -207,6 +207,36 @@ I dati dei paper MSCI sono riportati con la loro data di riferimento, indicata n
 - [Interview with Cliff Asness](https://www.aqr.com/-/media/AQR/Documents/Journal-Articles/Interview-with-Cliff-Asness-Journal-of-Private-Markets-Investing--Spring-2026.pdf?sc_lang=en) – Journal of Private Markets Investing, primavera 2026
 - [How Private Equity Funds Understate the Risk in Their Investments](https://www.morningstar.com/alternative-investments/how-private-equity-funds-understate-risk-their-investments) – Larry Swedroe, Morningstar
 
+## Opzioni
+
+Pagine consultate il 13 novembre 2026. Sono calcoli illustrativi, fatti con la formula di Black e Scholes e un tasso del 3%: i prezzi della put a 105 e a 90 e della call con volatilità al 20% e al 60% in «Valore temporale»; la tabella del premio per giorni alla scadenza; la call con strike 70 in «Profili di rendimento»; le greche e lo scenario della settimana in «Le greche». Sono illustrativi anche la tabella dei profili con premio 5 e l'esempio dei dadi, calcolato in modo esatto.
+
+- [Options](https://www.finra.org/investors/learn-to-invest/types-investments/options) – FINRA
+- [Options](https://www.finra.org/investors/investing/investment-products/options) – FINRA, esercizio, rivendita e scadenza
+- [Options A to Z: Basics and Greeks](https://www.finra.org/investors/insights/options-z-basics-greeks) – FINRA
+- [FAQ: Options Basics](https://www.optionseducation.org/referencelibrary/faq/basics) – Options Industry Council
+- [FAQ: Options Basics, stile americano ed europeo](https://prd-web.optionseducation.org/referencelibrary/faq/basics) – Options Industry Council
+- [FAQ: Options Assignment](https://prd-web.optionseducation.org/referencelibrary/faq/options-assignment) – Options Industry Council
+- [Cboe Global Markets Reports Trading Volume for December and Full Year 2025](https://ir.cboe.com/news/news-details/2026/Cboe-Global-Markets-Reports-Trading-Volume-for-December-and-Full-Year-2025/) – Cboe Global Markets, comunicato, 6 gennaio 2026
+- [Benchmark Indices Series: Income Generation and Smoother Returns with Cboe's BXM, BXMD, PUT and CMBO Indices](https://www.cboe.com/insights/posts/benchmark-indices-series-income-generation-and-smoother-returns-with-cboes-bxm-bxmd-put-and-cmbo-indices) – Matt Moran, Cboe, 20 luglio 2021
+- [Risposta n. 708 del 14 ottobre 2021, redditi di natura finanziaria art. 67, comma 1, lett. c-quater](https://www.agenziaentrate.gov.it/portale/documents/20143/3844145/Risposta+n.+708+del+2021.pdf/847e8598-a669-bd66-7494-4c647d16aafa) – Agenzia delle Entrate
+- [Press release: The Prize in Economic Sciences 1997](https://www.nobelprize.org/prizes/economics/1997/press-release/) – Accademia reale svedese delle scienze, 14 ottobre 1997
+- [Press release 1997, versione con «Other applications»](https://www.nobelprize.org/nobel_prizes/economic-sciences/laureates/1997/press.html) – Accademia reale svedese delle scienze
+- Black, F. e Scholes, M., «The Pricing of Options and Corporate Liabilities», Journal of Political Economy, 81(3), 1973
+- [Model Mind](https://robertcmerton.com/wp-content/uploads/2025/07/Model-Mind.pdf) – Robert C. Merton, sul modello del 1974 («On the Pricing of Corporate Debt», Journal of Finance)
+- [Expected Option Returns](https://scholarsarchive.byu.edu/facpub/9281) – Coval e Shumway, Journal of Finance, 2001, abstract
+- [Expected Option Returns](https://econpapers.repec.org/RePEc:bla:jfinan:v:56:y:2001:i:3:p:983-1009) – Coval e Shumway, Journal of Finance, 2001, scheda EconPapers
+- [Variance Risk Premiums](https://econpapers.repec.org/RePEc:oup:rfinst:v:22:y:2009:i:3:p:1311-1341) – Carr e Wu, Review of Financial Studies, 2009
+- [Variance Risk Premiums, testo](https://typeset.io/pdf/variance-risk-premiums-2r5d548tv2.pdf) – Carr e Wu, 2009, copia pubblicata da un sito terzo
+- [Covered Calls Uncovered](https://rpc.cfainstitute.org/research/financial-analysts-journal/2015/covered-calls-uncovered) – Israelov e Nielsen, Financial Analysts Journal, 2015
+- [Covered Call Strategies: One Fact and Eight Myths](https://www.aqr.com/-/media/AQR/Documents/Insights/Journal-Article/FAJ-Covered-Call-Strategies-One-Fact-and-Eight-Myths.pdf) – Israelov e Nielsen, Financial Analysts Journal, 2014
+- [Covered Call Strategies: One Fact and Eight Myths, scheda](https://econpapers.repec.org/RePEc:taf:ufajxx:v:70:y:2014:i:6:p:23-31) – EconPapers
+- [Early Option Exercise: Never Say Never](https://econpapers.repec.org/paper/cprceprdp/11019.htm) – Jensen e Pedersen, CEPR, pubblicato nel Journal of Financial Economics, 2016
+- [Retail Trading in Options and the Rise of the Big Three Wholesalers](https://lbsresearch.london.edu/id/eprint/2827) – Bryzgalova, Pavlova e Sikorskaya, Journal of Finance, 2023
+- [Retail investors lost billions of dollars day trading derivatives during the pandemic](https://zmescience.com/science/retail-investors-lost-billions-of-dollars-day-trading-derivatives-during-the-pandemic) – ZME Science, sullo studio di Bryzgalova, Pavlova e Sikorskaya
+- [Put-call parity at 50](https://caia.org/node/5599) – CAIA Association, su Stoll, «The Relationship between Put and Call Option Prices», Journal of Finance, 1969
+- [Covered Calls: A Devil's Bargain](https://rosetta.to/u/benfelixcsi/covered-calls-a-devil-s-bargain) – Ben Felix, video, trascrizione su sito terzo
+
 ## Libri per andare oltre
 
 - Dimson, Marsh, Staunton, *Triumph of the Optimists*

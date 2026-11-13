@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="chiaro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Le greche, che cosa compri insieme a una call | Controtesi</title>
+<meta name="description" content="Il prezzo di un'opzione reagisce al sottostante, al tempo, alla volatilità e ai tassi. Le greche misurano ciascuna di queste sensibilità. Servono a capire che una call non è una scommessa sola, ma tre.">
+<link rel="canonical" href="https://rikicraftyt.github.io/controtesi-blog/greche.html">
+<meta property="og:site_name" content="Controtesi">
+<meta property="og:locale" content="it_IT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Le greche, che cosa compri insieme a una call">
+<meta property="og:description" content="Il prezzo di un'opzione reagisce al sottostante, al tempo, alla volatilità e ai tassi. Le greche misurano ciascuna di queste sensibilità. Servono a capire che una call non è una scommessa sola, ma tre.">
+<meta property="og:url" content="https://rikicraftyt.github.io/controtesi-blog/greche.html">
+<meta property="og:image" content="https://rikicraftyt.github.io/controtesi-blog/assets/img/anteprima.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Controtesi. Idee d'investimento messe alla prova.">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:modified_time" content="2026-11-13">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%23ffe45c%22%2F%3E%3Cpath%20d%3D%22M9%2023%2023%209M9%209l14%2014%22%20stroke%3D%22%231d1633%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>try{var t=localStorage.getItem("controtesi-tema")||(matchMedia("(prefers-color-scheme: dark)").matches?"scuro":"chiaro");document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+</head>
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+<header class="testata">
+  <div class="testata-interno">
+    <a class="marchio" href="index.html" aria-label="Controtesi, pagina iniziale">Contro<span>tesi</span></a>
+    <nav class="menu" aria-label="Principale">
+      <a href="index.html" class="menu-inizio">Articoli</a>
+      <a href="come-stanno-insieme.html">Mappa</a>
+      <a href="fonti.html">Fonti</a>
+    </nav>
+    <button class="cerca" type="button" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="cerca-parola">Cerca</span><span class="visivamente-nascosto"> negli articoli</span></button>
+    <button class="tema" type="button" aria-pressed="false" aria-label="Passa al tema scuro"><span class="tema-parola">Tema </span><span class="tema-nome">scuro</span></button>
+  </div>
+  <div class="avanzamento" aria-hidden="true"></div>
+</header>
+<main id="contenuto">
+<article>
+<header class="articolo-testa">
+  <p class="articolo-gruppo"><a href="index.html?tema=derivati#articoli">Opzioni e derivati</a> <span aria-hidden="true">·</span> <span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span></p>
+  <h1>Le greche, che cosa compri insieme a una call</h1>
+  <p class="articolo-sommario">Il prezzo di un'opzione reagisce al sottostante, al tempo, alla volatilità e ai tassi. Le greche misurano ciascuna di queste sensibilità. Servono a capire che una call non è una scommessa sola, ma tre.</p>
+  <p class="articolo-tempo">6 minuti di lettura <span aria-hidden="true">·</span> Aggiornato <time datetime="2026-11-13">il 13 novembre 2026</time></p>
+  <ul class="articolo-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli">opzioni</a></li><li><a href="index.html?tag=volatilit%C3%A0#articoli">volatilità</a></li></ul>
+  <p class="prima-di-leggere"><b>Prima di leggere</b> <a href="valore-temporale.html">Valore temporale, perché un'opzione vale più del suo incasso</a></p>
+  <div class="scontro">
+    <p class="scontro-tesi"><b>La tesi</b>Comprare una call è scommettere sul rialzo.</p>
+    <p class="scontro-obiezione"><b>L'obiezione più forte</b>Si scommette anche sulla volatilità e contro il tempo: si può avere ragione e perdere.</p>
+  </div>
+</header>
+<div class="articolo-corpo">
+  <details class="sommario-breve">
+    <summary>In questa pagina</summary>
+    <nav aria-label="In questa pagina"><ol><li><a href="#le-cinque-sensibilita">Le cinque sensibilità</a></li><li><a href="#un-esempio-con-i-numeri">Un esempio con i numeri</a></li><li><a href="#tre-scommesse-in-una">Tre scommesse in una</a></li><li><a href="#il-caso-tipico-le-trimestrali">Il caso tipico: le trimestrali</a></li><li><a href="#delta-come-probabilita-con-prudenza">Delta come probabilità, con prudenza</a></li><li><a href="#obiezioni-e-risposte">Obiezioni e risposte</a></li><li><a href="#che-cosa-farne">Che cosa farne</a></li></ol></nav>
+  </details>
+  <div class="prosa">
+<p>Compri una call perché pensi che l'azione salirà. L'azione sale, e la call perde valore. Non è un errore del mercato: è successo qualcos'altro nello stesso tempo. Le <em>greche</em>, chiamate così perché indicate con lettere greche, separano i diversi motivi per cui il prezzo di un'opzione si muove. L'articolo le presenta una per una e mostra che cosa cambia nel modo di pensare una posizione.</p>
+<h2 id="le-cinque-sensibilita" tabindex="-1">Le cinque sensibilità</h2>
+<p>L'autorità statunitense di vigilanza sugli intermediari ne dà definizioni sintetiche, riprese qui sotto.</p>
+<ul>
+<li><strong>Delta</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span></span></span></span>). Di quanto cambia il premio <a href="https://www.finra.org/investors/insights/options-z-basics-greeks" target="_blank" rel="noopener">per un dollaro di variazione del sottostante</a>. Va da 0 a 1 per le call, da 0 a −1 per le put. Una call con delta 0,5 guadagna circa 50 centesimi se l'azione sale di un euro.</li>
+<li><strong>Gamma</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi></mrow><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Γ</span></span></span></span>). Di quanto cambia il delta quando il sottostante si muove di un euro. È <a href="https://www.finra.org/investors/insights/options-z-basics-greeks" target="_blank" rel="noopener">massima per le opzioni al prezzo vicine alla scadenza</a>.</li>
+<li><strong>Theta</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi></mrow><annotation encoding="application/x-tex">\Theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Θ</span></span></span></span>). Di quanto cambia il premio per ogni giorno che passa. Per chi compra è negativa: è il decadimento temporale visto in <a href="valore-temporale.html">Valore temporale</a>.</li>
+<li><strong>Vega</strong>. Di quanto cambia il premio per un punto di variazione della volatilità implicita. (Non è una lettera greca, ma il nome è rimasto.)</li>
+<li><strong>Rho</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span></span></span></span>). Di quanto cambia il premio per un punto di variazione dei tassi d'interesse. Conta soprattutto per le scadenze lunghe.</li>
+</ul>
+<h2 id="un-esempio-con-i-numeri" tabindex="-1">Un esempio con i numeri</h2>
+<p>Una call al prezzo, strike 100, azione a 100, 30 giorni, volatilità implicita 20%. In un modello standard:</p>
+<div class="tabella" tabindex="0" role="region" aria-label="Tabella"><table>
+<thead>
+<tr>
+<th>Greca</th>
+<th>Valore</th>
+<th>Che cosa vuol dire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prezzo</td>
+<td>2,41</td>
+<td>il premio di oggi</td>
+</tr>
+<tr>
+<td>Delta</td>
+<td>0,53</td>
+<td>+0,53 se l'azione sale di 1</td>
+</tr>
+<tr>
+<td>Theta</td>
+<td>−0,04</td>
+<td>−0,04 ogni giorno</td>
+</tr>
+<tr>
+<td>Vega</td>
+<td>0,11</td>
+<td>+0,11 per un punto di volatilità</td>
+</tr>
+</tbody>
+</table></div>
+<p>Valori illustrativi con un tasso del 3%.</p>
+<p>Ora una situazione. In una settimana l'azione sale di 1, a 101: la call guadagna circa 0,53. Nello stesso tempo passano sette giorni: perde circa 0,30. E la volatilità implicita scende dal 20% al 16%: perde circa 0,45. Sommate, le tre voci danno circa −0,22. Ricalcolando il prezzo con la formula la call vale 2,27, cioè 0,14 in meno: la somma è approssimata perché le greche cambiano mentre il prezzo si muove, ma il segno è lo stesso. Avevi ragione sulla direzione e hai perso. L'esempio è illustrativo.</p>
+<h2 id="tre-scommesse-in-una" tabindex="-1">Tre scommesse in una</h2>
+<p>L'esempio rende evidente una cosa che il profilo alla scadenza nasconde. Chi compra una call o una put non prende solo una posizione sulla direzione. È anche <strong>lungo volatilità</strong>, perché guadagna se le oscillazioni attese aumentano, e <strong>corto tempo</strong>, perché perde ogni giorno che passa senza movimenti.</p>
+<p>Da qui una distinzione utile tra due famiglie di strategie.</p>
+<ul>
+<li><strong>Strategie direzionali.</strong> Puntano sul movimento del prezzo: delta grande, il resto il più possibile piccolo.</li>
+<li><strong>Strategie sulla volatilità.</strong> Puntano su quanto il prezzo si muoverà, non sul verso: delta vicino a zero, vega e gamma grandi. Ne è un esempio lo <em>straddle</em>, descritto in <a href="strategie-combinate.html">Strategie con più opzioni</a>.</li>
+</ul>
+<h2 id="il-caso-tipico-le-trimestrali" tabindex="-1">Il caso tipico: le trimestrali</h2>
+<p>Prima della pubblicazione dei conti trimestrali di un'azienda l'incertezza è massima, e la volatilità implicita sale. Subito dopo l'annuncio l'incertezza si risolve e la volatilità implicita crolla: gli operatori lo chiamano <em>volatility crush</em>. Chi ha comprato opzioni il giorno prima può vedere l'azione muoversi nella direzione giusta e l'opzione perdere valore, perché il calo della vega pesa più del guadagno del delta.</p>
+<p>Lo stesso vale per i dividendi, ma in modo prevedibile. Un dividendo noto fa scendere il prezzo dell'azione il giorno in cui si stacca: il mercato lo sa e lo incorpora nel premio in anticipo. Le call valgono un po' meno, le put un po' di più.</p>
+<h2 id="delta-come-probabilita-con-prudenza" tabindex="-1">Delta come probabilità, con prudenza</h2>
+<p>Il delta viene spesso letto come la probabilità che l'opzione scada nel denaro. È un'approssimazione: le due grandezze sono vicine ma non uguali, e la probabilità che ne risulta è quella implicita nei prezzi, che contiene un premio per il rischio. Una call con delta 0,2 non scade nel denaro una volta su cinque, se non per caso.</p>
+<h2 id="obiezioni-e-risposte" tabindex="-1">Obiezioni e risposte</h2>
+<section class="voce obiezione"><p class="voce-etichetta">Obiezione</p><h3 class="voce-titolo">Le greche servono solo ai professionisti</h3>
+<p>Chi compra qualche opzione ogni tanto non ha bisogno di questo apparato.</p>
+</section>
+<section class="voce risposta"><p class="voce-etichetta">Risposta</p>
+<p>Ha bisogno almeno del theta e della vega, perché sono le due forze che lavorano contro chi compra senza che lo si veda. Il resto può restare sullo sfondo. L'apparato completo serve a chi costruisce posizioni con molte gambe o deve coprirle.</p>
+</section>
+<section class="voce obiezione"><p class="voce-etichetta">Obiezione</p><h3 class="voce-titolo">Basta il delta per capire il rischio</h3>
+<p>Il delta dice quanto la posizione si comporta come l'azione. Il resto sono dettagli.</p>
+</section>
+<section class="voce risposta"><p class="voce-etichetta">Risposta</p>
+<p>Il delta cambia, ed è proprio la gamma a dirlo. Una posizione con delta piccolo può diventare grande in poche ore, soprattutto vicino alla scadenza. Chi vende opzioni con delta basso lo scopre quando il mercato si muove molto: la posizione, che sembrava quasi neutra, si comporta all'improvviso come molte azioni.</p>
+</section>
+<section class="voce obiezione"><p class="voce-etichetta">Obiezione</p><h3 class="voce-titolo">Le greche dipendono dal modello</h3>
+<p>Sono derivate da Black e Scholes, che ha ipotesi false. Quindi sono numeri inaffidabili.</p>
+</section>
+<section class="voce risposta"><p class="voce-etichetta">Risposta</p>
+<p>In parte è vero: modelli diversi danno greche leggermente diverse, soprattutto per le opzioni molto fuori dal denaro. Ma il segno e l'ordine di grandezza sono robusti. Che una call comprata perda valore con il tempo e lo guadagni con la volatilità non dipende dal modello.</p>
+</section>
+<h2 id="che-cosa-farne" tabindex="-1">Che cosa farne</h2>
+<ol>
+<li><strong>Prima di comprare, guarda theta e vega.</strong> Dicono quanto perdi se il prezzo resta fermo e se la volatilità scende.</li>
+<li><strong>Evita di comprare volatilità già alta.</strong> Prima di un evento atteso il premio include già il movimento che temi o speri.</li>
+<li><strong>Distingui direzione e volatilità.</strong> Chiediti su quale delle due stai davvero scommettendo.</li>
+</ol>
+<section class="voce difendibile"><p class="voce-etichetta">Formulazione difendibile</p>
+<p>Chi compra una call scommette sul rialzo, ma anche sull'aumento della volatilità e contro il passare del tempo. Le greche misurano separatamente queste tre esposizioni. Ignorarle è il modo più comune di avere ragione sulla direzione e perdere lo stesso.</p>
+</section>
+
+
+  </div>
+  <aside class="sommario-pagina" aria-label="In questa pagina">
+    <h2>In questa pagina</h2>
+    <ol><li><a href="#le-cinque-sensibilita">Le cinque sensibilità</a></li><li><a href="#un-esempio-con-i-numeri">Un esempio con i numeri</a></li><li><a href="#tre-scommesse-in-una">Tre scommesse in una</a></li><li><a href="#il-caso-tipico-le-trimestrali">Il caso tipico: le trimestrali</a></li><li><a href="#delta-come-probabilita-con-prudenza">Delta come probabilità, con prudenza</a></li><li><a href="#obiezioni-e-risposte">Obiezioni e risposte</a></li><li><a href="#che-cosa-farne">Che cosa farne</a></li></ol>
+  </aside>
+</div>
+</article>
+<nav class="vicini" aria-label="Altri articoli">
+  <a class="prima" href="valore-temporale.html"><small>Articolo precedente</small><b>Valore temporale, perché un'opzione vale più del suo incasso</b></a>
+  <a class="dopo" href="esercizio-e-assegnazione.html"><small>Articolo successivo</small><b>Esercizio e assegnazione, che cosa succede alla scadenza</b></a>
+</nav>
+</main>
+<footer class="piede">
+  <div class="piede-interno">
+    <p>Controtesi raccoglie analisi di idee, non consulenza finanziaria. Ogni numero citato rimanda alla sua fonte.</p>
+    <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="https://portfolio-site-2zxf.onrender.com" target="_blank" rel="noopener">Simulatore di portafogli<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
+  </div>
+</footer>
+<dialog class="ricerca" aria-labelledby="ricerca-etichetta">
+  <form class="ricerca-testa" role="search">
+    <label id="ricerca-etichetta" for="ricerca-campo" class="visivamente-nascosto">Cerca negli articoli</label>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+    <input id="ricerca-campo" type="search" placeholder="Cerca negli articoli" autocomplete="off" spellcheck="false" enterkeyhint="go">
+    <button type="button" class="ricerca-chiudi">Chiudi</button>
+  </form>
+  <p class="ricerca-stato" aria-live="polite"></p>
+  <ol class="ricerca-risultati"></ol>
+  <a class="ricerca-tutti" href="index.html#articoli" hidden>Vedi tutti i risultati, con filtri e tag <span aria-hidden="true">→</span></a>
+</dialog>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

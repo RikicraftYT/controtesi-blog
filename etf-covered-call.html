@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="chiaro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ETF covered call, la distribuzione non è il rendimento | Controtesi</title>
+<meta name="description" content="Gli ETF che vendono call sulle azioni che possiedono distribuiscono somme alte e regolari. Ma la distribuzione non misura quanto rende il fondo: conta il rendimento totale, che con questa strategia tende a essere più basso dell'indice nei mercati in crescita.">
+<link rel="canonical" href="https://rikicraftyt.github.io/controtesi-blog/etf-covered-call.html">
+<meta property="og:site_name" content="Controtesi">
+<meta property="og:locale" content="it_IT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ETF covered call, la distribuzione non è il rendimento">
+<meta property="og:description" content="Gli ETF che vendono call sulle azioni che possiedono distribuiscono somme alte e regolari. Ma la distribuzione non misura quanto rende il fondo: conta il rendimento totale, che con questa strategia tende a essere più basso dell'indice nei mercati in crescita.">
+<meta property="og:url" content="https://rikicraftyt.github.io/controtesi-blog/etf-covered-call.html">
+<meta property="og:image" content="https://rikicraftyt.github.io/controtesi-blog/assets/img/anteprima.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Controtesi. Idee d'investimento messe alla prova.">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:modified_time" content="2026-11-13">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%23ffe45c%22%2F%3E%3Cpath%20d%3D%22M9%2023%2023%209M9%209l14%2014%22%20stroke%3D%22%231d1633%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>try{var t=localStorage.getItem("controtesi-tema")||(matchMedia("(prefers-color-scheme: dark)").matches?"scuro":"chiaro");document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+</head>
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+<header class="testata">
+  <div class="testata-interno">
+    <a class="marchio" href="index.html" aria-label="Controtesi, pagina iniziale">Contro<span>tesi</span></a>
+    <nav class="menu" aria-label="Principale">
+      <a href="index.html" class="menu-inizio">Articoli</a>
+      <a href="come-stanno-insieme.html">Mappa</a>
+      <a href="fonti.html">Fonti</a>
+    </nav>
+    <button class="cerca" type="button" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="cerca-parola">Cerca</span><span class="visivamente-nascosto"> negli articoli</span></button>
+    <button class="tema" type="button" aria-pressed="false" aria-label="Passa al tema scuro"><span class="tema-parola">Tema </span><span class="tema-nome">scuro</span></button>
+  </div>
+  <div class="avanzamento" aria-hidden="true"></div>
+</header>
+<main id="contenuto">
+<article>
+<header class="articolo-testa">
+  <p class="articolo-gruppo"><a href="index.html?tema=derivati#articoli">Opzioni e derivati</a> <span aria-hidden="true">·</span> <span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span></p>
+  <h1>ETF covered call, la distribuzione non è il rendimento</h1>
+  <p class="articolo-sommario">Gli ETF che vendono call sulle azioni che possiedono distribuiscono somme alte e regolari. Ma la distribuzione non misura quanto rende il fondo: conta il rendimento totale, che con questa strategia tende a essere più basso dell'indice nei mercati in crescita.</p>
+  <p class="articolo-tempo">5 minuti di lettura <span aria-hidden="true">·</span> Aggiornato <time datetime="2026-11-13">il 13 novembre 2026</time></p>
+  <ul class="articolo-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli">opzioni</a></li><li><a href="index.html?tag=fondi%20ed%20ETF#articoli">fondi ed ETF</a></li><li><a href="index.html?tag=costi#articoli">costi</a></li></ul>
+  <p class="prima-di-leggere"><b>Prima di leggere</b> <a href="vendere-opzioni.html">Vendere opzioni, un reddito che è un premio assicurativo</a>, <a href="fondi-etf-indici.html">Fondi, ETF e indici: tre parole da distinguere</a></p>
+  <div class="scontro">
+    <p class="scontro-tesi"><b>La tesi</b>Un ETF covered call paga un reddito alto e stabile.</p>
+    <p class="scontro-obiezione"><b>L'obiezione più forte</b>La distribuzione è in parte capitale restituito, e il rialzo è stato ceduto in cambio.</p>
+  </div>
+</header>
+<div class="articolo-corpo">
+  <details class="sommario-breve">
+    <summary>In questa pagina</summary>
+    <nav aria-label="In questa pagina"><ol><li><a href="#come-funzionano">Come funzionano</a></li><li><a href="#distribuzione-e-rendimento">Distribuzione e rendimento</a></li><li><a href="#che-cosa-dicono-i-dati">Che cosa dicono i dati</a></li><li><a href="#obiezioni-e-risposte">Obiezioni e risposte</a></li><li><a href="#che-cosa-farne">Che cosa farne</a></li></ol></nav>
+  </details>
+  <div class="prosa">
+<p>Un ETF che investe nelle principali azioni americane e distribuisce l'1,5% l'anno, accanto a uno che investe nelle stesse azioni e distribuisce il 10%. Il secondo sembra ovviamente migliore. Sono i fondi <em>covered call</em>, cresciuti molto negli ultimi anni, che vendono opzioni sulle azioni che possiedono e girano i premi agli investitori. L'articolo spiega da dove viene quella distribuzione e perché non è il numero da guardare.</p>
+<h2 id="come-funzionano" tabindex="-1">Come funzionano</h2>
+<p>Il fondo possiede un paniere di azioni, spesso un indice. Ogni mese vende call sull'indice o sulle singole azioni, di solito al prezzo o poco fuori dal denaro. Incassa il premio e lo distribuisce. Se a scadenza l'indice è salito oltre lo strike, il fondo perde la differenza: il rialzo oltre lo strike va a chi ha comprato le call.</p>
+<p>È la strategia covered call descritta in <a href="vendere-opzioni.html">Vendere opzioni</a>, confezionata in un fondo. La versione di riferimento è un indice della Borsa delle opzioni di Chicago che, sull'S&amp;P 500, <a href="https://www.cboe.com/insights/posts/benchmark-indices-series-income-generation-and-smoother-returns-with-cboes-bxm-bxmd-put-and-cmbo-indices" target="_blank" rel="noopener">ha incassato in media un premio lordo dell'1,7% al mese dal 2006</a>. Annualizzato è circa il 20%: è da lì che vengono le distribuzioni a due cifre.</p>
+<h2 id="distribuzione-e-rendimento" tabindex="-1">Distribuzione e rendimento</h2>
+<p>La distribuzione è ciò che il fondo versa agli investitori. Il rendimento totale è la distribuzione più la variazione del valore delle quote. Le due cose sono diverse:</p>
+<div class="formula"><div class="formula-affiancata"><p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>rendimento totale</mtext><mo>=</mo><mtext>distribuzione</mtext><mo>+</mo><mtext>variazione del valore</mtext></mrow><annotation encoding="application/x-tex">\text{rendimento totale} = \text{distribuzione} \acapo + \text{variazione del valore}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">rendimento totale</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">distribuzione</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">variazione del valore</span></span></span></span></span></span></p>
+</div><div class="formula-righe"><p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="center" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mtext>rendimento totale</mtext><mo>=</mo><mtext>distribuzione</mtext></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo>+</mo><mtext>variazione del valore</mtext></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{gathered}\text{rendimento totale} = \text{distribuzione} \\ + \text{variazione del valore}\end{gathered}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.7em;vertical-align:-1.1em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em;"><span style="top:-3.76em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">rendimento totale</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">distribuzione</span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mord text"><span class="mord">variazione del valore</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em;"><span></span></span></span></span></span></span></span></span></span></span></span></p></div></div>
+<p>Un fondo può distribuire il 10% e perdere l'8% di valore: il rendimento totale è il 2%. Distribuire non crea ricchezza: sposta denaro dal fondo al conto dell'investitore.</p>
+<p>Nel caso delle covered call c'è di più. Il premio incassato non è un guadagno netto, perché nello stesso momento il fondo si prende un obbligo: cedere il rialzo oltre lo strike. Nei mercati in forte crescita quell'obbligo costa più del premio. Il commentatore canadese Ben Felix, gestore di portafogli, lo riassume così: <a href="https://rosetta.to/u/benfelixcsi/covered-calls-a-devil-s-bargain" target="_blank" rel="noopener">rendimenti da distribuzione più alti implicano meccanicamente rendimenti totali attesi più bassi</a>.</p>
+<h2 id="che-cosa-dicono-i-dati" tabindex="-1">Che cosa dicono i dati</h2>
+<p>L'indice della Borsa di Chicago ha avuto, dal 1986, <a href="https://www.cboe.com/insights/posts/benchmark-indices-series-income-generation-and-smoother-returns-with-cboes-bxm-bxmd-put-and-cmbo-indices" target="_blank" rel="noopener">oscillazioni minori e perdite massime meno gravi dell'S&amp;P 500, ma rendimenti annui inferiori</a>. È coerente con la scomposizione di Israelov e Nielsen: la covered call è soprattutto un'esposizione all'azionario, ridotta, più una vendita di volatilità, che rende, più una scommessa sulle inversioni di mercato, che <a href="https://rpc.cfainstitute.org/research/financial-analysts-journal/2015/covered-calls-uncovered" target="_blank" rel="noopener">contribuisce per circa un quarto al rischio ma rende poco</a>.</p>
+<p>I fondi reali aggiungono costi di gestione e di negoziazione più alti di un ETF indicizzato. E le distribuzioni hanno una conseguenza fiscale in Italia: sono tassate quando vengono incassate, mentre la crescita di un fondo ad accumulazione è tassata solo alla vendita, come spiega <a href="tasse-di-base.html">Le tasse di base</a>. Pagare le imposte prima riduce il capitale che continua a crescere.</p>
+<h2 id="obiezioni-e-risposte" tabindex="-1">Obiezioni e risposte</h2>
+<section class="voce obiezione"><p class="voce-etichetta">Obiezione</p><h3 class="voce-titolo">A chi vive di rendita serve un flusso regolare</h3>
+<p>Un pensionato ha bisogno di entrate mensili. Una distribuzione stabile gli evita di vendere quote.</p>
+</section>
+<section class="voce risposta"><p class="voce-etichetta">Risposta</p>
+<p>Lo stesso flusso si ottiene vendendo ogni mese una parte di un fondo ad accumulazione, e il risultato economico è identico. La differenza è psicologica: vendere quote sembra intaccare il capitale, ricevere una distribuzione no. Ma anche la distribuzione intacca il capitale, perché il valore delle quote scende dello stesso importo. Come prelevare in modo sostenibile è il tema di <a href="regola-4-percento.html">La regola del 4%</a>.</p>
+</section>
+<section class="voce obiezione"><p class="voce-etichetta">Obiezione</p><h3 class="voce-titolo">Oscilla meno, quindi è più sicuro</h3>
+<p>I dati mostrano che questi fondi perdono meno nelle crisi.</p>
+</section>
+<section class="voce risposta"><p class="voce-etichetta">Risposta</p>
+<p>Perdono un po' meno, perché il premio attutisce la caduta. Ma partecipano solo in parte alla risalita, perché il rialzo oltre lo strike è ceduto. Dopo un crollo seguito da un forte recupero, chi ha venduto le call può trovarsi più indietro di chi non le ha vendute, pur avendo perso meno all'inizio. Lo stesso risultato si ottiene con un portafoglio che contiene meno azioni e più obbligazioni, senza i costi e senza cedere il rialzo.</p>
+</section>
+<section class="voce obiezione"><p class="voce-etichetta">Obiezione</p><h3 class="voce-titolo">In mercati laterali rende di più</h3>
+<p>Se l'indice resta fermo, il fondo incassa i premi e l'indice no.</p>
+</section>
+<section class="voce risposta"><p class="voce-etichetta">Risposta</p>
+<p>È vero, ed è il caso in cui la strategia dà il meglio. Il problema è che non si sa in anticipo quando il mercato sarà laterale. Scegliere questi fondi per quel motivo è una previsione sul mercato, con i limiti visti in <a href="market-timing.html">Market timing</a>.</p>
+</section>
+<section class="voce obiezione"><p class="voce-etichetta">Obiezione</p><h3 class="voce-titolo">Il premio di volatilità esiste</h3>
+<p>Gli studi dicono che vendere volatilità rende. Un fondo covered call è il modo più semplice per incassarlo.</p>
+</section>
+<section class="voce risposta"><p class="voce-etichetta">Risposta</p>
+<p>Va concesso: è il modo più accessibile, e gli stessi Israelov e Nielsen lo riconoscono. Ma in una covered call la vendita di volatilità pesa per circa il 10% del rischio. Chi compra questi fondi per il premio di volatilità ne riceve poco, insieme a molta esposizione azionaria ridotta e a una scommessa non compensata.</p>
+</section>
+<h2 id="che-cosa-farne" tabindex="-1">Che cosa farne</h2>
+<ol>
+<li><strong>Confronta il rendimento totale, non la distribuzione.</strong> Sullo stesso periodo, con l'indice da cui il fondo parte.</li>
+<li><strong>Guarda i costi.</strong> Un fondo covered call costa di solito più di un ETF indicizzato sulle stesse azioni.</li>
+<li><strong>Chiediti se vuoi un flusso o un rendimento.</strong> Se vuoi un flusso, vendere quote di un fondo ad accumulazione lo produce senza cedere il rialzo.</li>
+</ol>
+<section class="voce difendibile"><p class="voce-etichetta">Formulazione difendibile</p>
+<p>Un fondo covered call distribuisce molto perché vende il rialzo delle azioni che possiede. La distribuzione non è un rendimento: conta il rendimento totale, che tende a restare sotto quello dell'indice quando i mercati crescono. Oscilla meno, ma lo stesso risultato si ottiene con meno azioni e senza cedere il rialzo.</p>
+</section>
+
+
+  </div>
+  <aside class="sommario-pagina" aria-label="In questa pagina">
+    <h2>In questa pagina</h2>
+    <ol><li><a href="#come-funzionano">Come funzionano</a></li><li><a href="#distribuzione-e-rendimento">Distribuzione e rendimento</a></li><li><a href="#che-cosa-dicono-i-dati">Che cosa dicono i dati</a></li><li><a href="#obiezioni-e-risposte">Obiezioni e risposte</a></li><li><a href="#che-cosa-farne">Che cosa farne</a></li></ol>
+  </aside>
+</div>
+</article>
+<nav class="vicini" aria-label="Altri articoli">
+  <a class="prima" href="vendere-opzioni.html"><small>Articolo precedente</small><b>Vendere opzioni, un reddito che è un premio assicurativo</b></a>
+  <a class="dopo" href="strategie-combinate.html"><small>Articolo successivo</small><b>Strategie con più opzioni, mattoncini e parità put-call</b></a>
+</nav>
+</main>
+<footer class="piede">
+  <div class="piede-interno">
+    <p>Controtesi raccoglie analisi di idee, non consulenza finanziaria. Ogni numero citato rimanda alla sua fonte.</p>
+    <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="https://portfolio-site-2zxf.onrender.com" target="_blank" rel="noopener">Simulatore di portafogli<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
+  </div>
+</footer>
+<dialog class="ricerca" aria-labelledby="ricerca-etichetta">
+  <form class="ricerca-testa" role="search">
+    <label id="ricerca-etichetta" for="ricerca-campo" class="visivamente-nascosto">Cerca negli articoli</label>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+    <input id="ricerca-campo" type="search" placeholder="Cerca negli articoli" autocomplete="off" spellcheck="false" enterkeyhint="go">
+    <button type="button" class="ricerca-chiudi">Chiudi</button>
+  </form>
+  <p class="ricerca-stato" aria-live="polite"></p>
+  <ol class="ricerca-risultati"></ol>
+  <a class="ricerca-tutti" href="index.html#articoli" hidden>Vedi tutti i risultati, con filtri e tag <span aria-hidden="true">→</span></a>
+</dialog>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

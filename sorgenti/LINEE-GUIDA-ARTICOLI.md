@@ -60,6 +60,7 @@ La data di aggiornamento la aggiunge chi integra l'articolo nel sito.
 | `rendimenti` | Quanto rende il mercato | Rendimenti di lungo periodo, premi, valutazioni |
 | `prezzi` | I prezzi sono giusti? | Efficienza, comportamento, anomalie |
 | `portafoglio` | Come costruire il portafoglio | Strategie e attività |
+| `derivati` | Opzioni e derivati | Opzioni, futures e strategie che li usano |
 | `esposizioni` | Che cosa possiedi davvero | Leggere i rischi di ciò che si ha |
 | `vita` | Dal risparmio alla pensione | Accumulo, prelievo, ciclo di vita |
 | `sintesi` | Trarre le conclusioni | Solo per la Mappa |
@@ -68,7 +69,7 @@ Se un articolo non entra in nessun gruppo, va detto nella sezione «Da verificar
 
 **Tag disponibili**
 
-inflazione · liquidità · interesse composto · rischio · volatilità · azioni · obbligazioni · oro · fondi ed ETF · costi · tasse · diversificazione · asset allocation · leva · valutazioni · dati storici · efficienza dei mercati · comportamento · fattori · geografia · Cina · pensione · pianificazione · statistica
+inflazione · liquidità · interesse composto · rischio · volatilità · azioni · obbligazioni · oro · fondi ed ETF · costi · tasse · diversificazione · asset allocation · leva · valutazioni · dati storici · efficienza dei mercati · comportamento · fattori · geografia · Cina · pensione · pianificazione · statistica · opzioni
 
 I tag servono ai lettori per filtrare gli articoli in home. Vanno scritti esattamente così, minuscole comprese. Un tag nuovo si propone nella sezione «Da verificare», non si inventa nell'intestazione.
 

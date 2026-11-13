@@ -26,6 +26,7 @@ Ogni articolo ha un livello di difficoltà (base, intermedio o avanzato), e in h
 - **Quanto rende il mercato**: crescita di lungo periodo, il campione dei paesi sviluppati, perché la crescita del PIL non diventa per forza rendimento, premio per il rischio, i pochi titoli che fanno l'indice, prezzo d'ingresso.
 - **I prezzi sono giusti?**: mercati efficienti, gestione passiva, finanza comportamentale, mercati adattivi, Minsky e Soros, code grasse, factor investing.
 - **Come costruire il portafoglio**: risk parity, Permanent Portfolio, oro, trend following.
+- **Opzioni e derivati**: come funzionano le opzioni, valore temporale e greche, esercizio, vendita di opzioni, ETF covered call, strategie combinate.
 - **Che cosa possiedi davvero**: dove investe un indice globale, quale Cina c'è negli indici, il total portfolio approach, i rischi dietro le etichette, quanto deve rendere un investimento per meritare un posto.
 - **Dal risparmio alla pensione**: entrare tutto subito o a rate, FIRE, il rischio di sequenza, la regola del 4%, il ciclo di vita.
 - **Trarre le conclusioni**: dove queste idee si contraddicono e quali combinazioni stanno in piedi.
