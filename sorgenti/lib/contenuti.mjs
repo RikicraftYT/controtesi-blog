@@ -69,6 +69,17 @@ export function leggiContenuti(cartella) {
     for (const t of a.tag) if (!TAG.includes(t)) throw new Error(`Tag "${t}" in ${a.file} non è nel vocabolario TAG di config.mjs`);
     if (a.base) a.html = a.html.replace('<p class="voce-etichetta">Formulazione difendibile</p>', '<p class="voce-etichetta">In sintesi</p>');
   }
+  // Slug unici, anche rispetto ai vecchi indirizzi (campo "vecchi") da reindirizzare.
+  const usati = new Map();
+  for (const p of [...articoli, ...pagine]) {
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(p.slug ?? "")) throw new Error(`Slug "${p.slug ?? ""}" non valido in ${p.file}: solo minuscole, cifre e trattini`);
+    p.vecchi = elenco(p.vecchi);
+    for (const s of [p.slug, ...p.vecchi]) {
+      if (["index", "404"].includes(s)) throw new Error(`Lo slug "${s}" in ${p.file} è riservato`);
+      if (usati.has(s)) throw new Error(`Lo slug "${s}" compare sia in ${usati.get(s)} sia in ${p.file}`);
+      usati.set(s, p.file);
+    }
+  }
   for (const a of articoli) {
     a.prerequisiti = elenco(a.prima).map((slug) => {
       const b = articoli.find((x) => x.slug === slug);

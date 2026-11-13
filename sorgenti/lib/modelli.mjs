@@ -9,15 +9,32 @@ const etichettaLivello = (l) =>
 const linkTag = (t) => `index.html?tag=${encodeURIComponent(t)}#articoli`;
 const gruppoDi = (a) => GRUPPI.find((g) => g.id === a.gruppo);
 
+// Immagini di anteprima per articolo (generate da npm run anteprime): la build le usa
+// quando esistono, altrimenti ricorre a quella generale del sito.
+export const CARTELLA_ANTEPRIME = "assets/img/anteprime";
+let conAnteprima = new Set();
+export const impostaAnteprime = (slugs) => { conAnteprima = new Set(slugs); };
+const anteprimaDi = (a) => conAnteprima.has(a.slug)
+  ? { file: `${CARTELLA_ANTEPRIME}/${a.slug}.png`, larghezza: SITO.anteprima.larghezza, altezza: SITO.anteprima.altezza,
+    alt: `${a.titolo}. ${SITO.nome}, ${SITO.motto.toLowerCase()}.` }
+  : SITO.anteprima;
+
 const icona =
   "data:image/svg+xml," +
   encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#ffe45c"/><path d="M9 23 23 9M9 9l14 14" stroke="#1d1633" stroke-width="4" stroke-linecap="round"/></svg>'
   );
 
+// Caratteri da scaricare subito: quelli del testo e dei titoli (il corsivo arriva dopo).
+const PRECARICA = ["bricolage-grotesque-latin-wght-normal.woff2", "newsreader-latin-wght-normal.woff2"];
+
 export function guscio({ titolo, descrizione, corpo, corrente = "", barra = false, percorso = corrente,
-  tipo = "website", aggiornato = "", base = "", indicizza = true, titoloSocial = titolo, formule = false }) {
+  tipo = "website", aggiornato = "", base = "", indicizza = true, titoloSocial = titolo,
+  immagine = SITO.anteprima, dati = null }) {
   const assoluto = SITO.url + (percorso === "index.html" ? "" : percorso);
+  // KaTeX e le formule dei grafici interattivi si caricano solo dove servono.
+  const katex = corpo.includes('class="katex');
+  const formule = corpo.includes("data-interattivo");
   const meta = [
     indicizza ? `<link rel="canonical" href="${assoluto}">` : '<meta name="robots" content="noindex">',
     `<meta property="og:site_name" content="${SITO.nome}">`,
@@ -26,12 +43,16 @@ export function guscio({ titolo, descrizione, corpo, corrente = "", barra = fals
     `<meta property="og:title" content="${esc(titoloSocial)}">`,
     `<meta property="og:description" content="${esc(descrizione)}">`,
     indicizza ? `<meta property="og:url" content="${assoluto}">` : "",
-    `<meta property="og:image" content="${SITO.url}${SITO.anteprima.file}">`,
-    `<meta property="og:image:width" content="${SITO.anteprima.larghezza}">`,
-    `<meta property="og:image:height" content="${SITO.anteprima.altezza}">`,
-    `<meta property="og:image:alt" content="${esc(SITO.anteprima.alt)}">`,
+    `<meta property="og:image" content="${SITO.url}${immagine.file}">`,
+    `<meta property="og:image:width" content="${immagine.larghezza}">`,
+    `<meta property="og:image:height" content="${immagine.altezza}">`,
+    `<meta property="og:image:alt" content="${esc(immagine.alt)}">`,
     '<meta name="twitter:card" content="summary_large_image">',
     aggiornato ? `<meta property="article:modified_time" content="${aggiornato}">` : "",
+    '<meta name="theme-color" content="#f1effa" media="(prefers-color-scheme: light)">',
+    '<meta name="theme-color" content="#15102a" media="(prefers-color-scheme: dark)">',
+    `<link rel="alternate" type="application/atom+xml" title="${SITO.nome}" href="feed.xml">`,
+    dati ? `<script type="application/ld+json">${JSON.stringify(dati).replace(/</g, "\\u003c")}</script>` : "",
   ].filter(Boolean).join("\n");
   const voce = (href, testo, classe = "") =>
     `<a href="${href}"${classe ? ` class="${classe}"` : ""}${corrente === href ? ' aria-current="page"' : ""}>${testo}</a>`;
@@ -44,8 +65,9 @@ export function guscio({ titolo, descrizione, corpo, corrente = "", barra = fals
 <meta name="description" content="${esc(descrizione)}">
 ${meta}
 <link rel="icon" href="${icona}">
-<link rel="stylesheet" href="assets/katex/katex.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="apple-touch-icon" href="assets/img/icona-180.png">
+${PRECARICA.map((f) => `<link rel="preload" href="assets/fonts/${f}" as="font" type="font/woff2" crossorigin>`).join("\n")}
+${katex ? '<link rel="stylesheet" href="assets/katex/katex.min.css">\n' : ""}<link rel="stylesheet" href="assets/css/style.css">
 <script>try{var t=localStorage.getItem("controtesi-tema")||(matchMedia("(prefers-color-scheme: dark)").matches?"scuro":"chiaro");document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>
@@ -55,7 +77,7 @@ ${meta}
     <a class="marchio" href="index.html" aria-label="${SITO.nome}, pagina iniziale">Contro<span>tesi</span></a>
     <nav class="menu" aria-label="Principale">
       ${voce("index.html", "Articoli", "menu-inizio")}
-      ${voce("come-stanno-insieme.html", "Mappa")}
+      ${voce("come-stanno-insieme.html", "Contraddizioni")}
       ${voce("fonti.html", "Fonti")}
     </nav>
     <button class="cerca" type="button" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="cerca-parola">Cerca</span><span class="visivamente-nascosto"> negli articoli</span></button>
@@ -69,7 +91,7 @@ ${corpo}
 <footer class="piede">
   <div class="piede-interno">
     <p>${SITO.nome} raccoglie analisi di idee, non consulenza finanziaria. Ogni numero citato rimanda alla sua fonte.</p>
-    <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="${SIMULATORE.url}" target="_blank" rel="noopener">${SIMULATORE.nome}<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
+    <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="feed.xml">Feed degli articoli</a> <a href="${SIMULATORE.url}" target="_blank" rel="noopener">${SIMULATORE.nome}<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
   </div>
 </footer>
 <dialog class="ricerca" aria-labelledby="ricerca-etichetta">
@@ -150,7 +172,20 @@ ${RIMANDI[a.gruppo] ? rimandoSimulatore(...RIMANDI[a.gruppo]) : ""}
     barra: true,
     tipo: "article",
     aggiornato: a.aggiornato,
-    formule: a.html.includes("data-interattivo"),
+    immagine: anteprimaDi(a),
+    dati: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: a.titolo,
+      description: a.sommario,
+      dateModified: a.aggiornato,
+      inLanguage: "it",
+      mainEntityOfPage: `${SITO.url}${a.slug}.html`,
+      image: `${SITO.url}${anteprimaDi(a).file}`,
+      articleSection: gruppo.nome,
+      keywords: a.tag.join(", "),
+      isPartOf: { "@type": "WebSite", name: SITO.nome, url: SITO.url },
+    },
   });
 }
 
@@ -247,6 +282,7 @@ ${rimandoSimulatore("Dalle idee ai tuoi portafogli", "Il simulatore di portafogl
     descrizione: SITO.descrizione,
     corpo,
     corrente: "index.html",
+    dati: { "@context": "https://schema.org", "@type": "WebSite", name: SITO.nome, url: SITO.url, description: SITO.descrizione, inLanguage: "it" },
   });
 }
 
@@ -270,4 +306,70 @@ export function pagina404() {
     base: new URL(SITO.url).pathname,
     indicizza: false,
   });
+}
+
+// Pagina al vecchio indirizzo di un articolo che ha cambiato slug: rimanda al nuovo.
+export function paginaSpostata(p) {
+  const nuovo = `${p.slug}.html`;
+  return `<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>${esc(p.titolo)} | ${SITO.nome}</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="${SITO.url}${nuovo}">
+<meta http-equiv="refresh" content="0; url=${nuovo}">
+<script>location.replace("${nuovo}" + location.search + location.hash)</script>
+</head>
+<body>
+<p>L'articolo si è spostato: <a href="${nuovo}">${esc(p.titolo)}</a>.</p>
+</body>
+</html>
+`;
+}
+
+// Sitemap per i motori di ricerca: home, articoli e pagine, con la data di aggiornamento.
+export function sitemap({ articoli, pagine }) {
+  const ultima = articoli.map((a) => a.aggiornato).sort().at(-1);
+  const voci = [
+    { loc: SITO.url, mod: ultima },
+    ...articoli.map((a) => ({ loc: `${SITO.url}${a.slug}.html`, mod: a.aggiornato })),
+    ...pagine.map((p) => ({ loc: `${SITO.url}${p.slug}.html`, mod: p.aggiornato ?? ultima })),
+  ];
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${voci.map((v) => `  <url><loc>${esc(v.loc)}</loc><lastmod>${v.mod}</lastmod></url>`).join("\n")}
+</urlset>
+`;
+}
+
+// Feed Atom degli articoli, dal più recente. Un articolo rivisto (data "aggiornato" nuova)
+// torna in cima, così chi segue il feed vede anche gli aggiornamenti.
+export function feed({ articoli }) {
+  const ordinati = [...articoli].sort((a, b) => b.aggiornato.localeCompare(a.aggiornato) || articoli.indexOf(a) - articoli.indexOf(b));
+  const quando = (d) => `${d}T00:00:00Z`;
+  const voce = (a) => {
+    const url = `${SITO.url}${a.slug}.html`;
+    const testo = a.base ? a.sommario : `${a.sommario}\n\nLa tesi: ${a.tesi}\nL'obiezione più forte: ${a.obiezione}`;
+    return `  <entry>
+    <title>${esc(a.titolo)}</title>
+    <link href="${url}"/>
+    <id>${url}</id>
+    <updated>${quando(a.aggiornato)}</updated>
+    <category term="${esc(gruppoDi(a).nome)}"/>
+    <summary>${esc(testo)}</summary>
+  </entry>`;
+  };
+  return `<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="it">
+  <title>${esc(SITO.nome)}</title>
+  <subtitle>${esc(SITO.motto)}</subtitle>
+  <link href="${SITO.url}feed.xml" rel="self"/>
+  <link href="${SITO.url}"/>
+  <id>${SITO.url}</id>
+  <updated>${quando(ordinati[0].aggiornato)}</updated>
+  <author><name>${esc(SITO.nome)}</name></author>
+${ordinati.map(voce).join("\n")}
+</feed>
+`;
 }
