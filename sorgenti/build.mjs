@@ -45,13 +45,15 @@ function dataEstesa(iso, file) {
 
 const NUMERI = ["Zero", "Un", "Due", "Tre", "Quattro", "Cinque", "Sei", "Sette", "Otto", "Nove", "Dieci",
   "Undici", "Dodici", "Tredici", "Quattordici", "Quindici", "Sedici", "Diciassette", "Diciotto", "Diciannove", "Venti",
-  "Ventuno", "Ventidue", "Ventitré", "Ventiquattro", "Venticinque", "Ventisei", "Ventisette", "Ventotto", "Ventinove", "Trenta"];
+  "Ventuno", "Ventidue", "Ventitré", "Ventiquattro", "Venticinque", "Ventisei", "Ventisette", "Ventotto", "Ventinove", "Trenta",
+  "Trentuno", "Trentadue", "Trentatré", "Trentaquattro", "Trentacinque", "Trentasei", "Trentasette", "Trentotto", "Trentanove", "Quaranta"];
 
 const GRUPPI = [
   { id: "strumento", nome: "Il metro di giudizio" },
   { id: "rendimenti", nome: "Quanto rende il mercato" },
   { id: "prezzi", nome: "I prezzi sono giusti?" },
   { id: "portafoglio", nome: "Come costruire il portafoglio" },
+  { id: "esposizioni", nome: "Che cosa possiedi davvero" },
   { id: "vita", nome: "Dal risparmio alla pensione" },
   { id: "sintesi", nome: "Trarre le conclusioni" },
 ];
@@ -251,6 +253,14 @@ ${corpo}
 `;
 }
 
+// Riquadro del simulatore in fondo agli articoli di questi gruppi: [titolo, testo].
+const RIMANDI = {
+  portafoglio: ["Prova queste idee sui tuoi numeri",
+    "Nel simulatore inserisci i tuoi portafogli, per esempio un 60/40, un Permanent Portfolio o una versione risk parity, e ne confronti le statistiche."],
+  esposizioni: ["Guarda dentro il tuo portafoglio",
+    "Nel simulatore inserisci il portafoglio che hai e ne analizzi le statistiche: il primo passo per sapere quanto rischio porta davvero, prima di aggiungere qualcosa."],
+};
+
 function rimandoSimulatore(titolo, testo) {
   return `<aside class="rimando" aria-label="${SIMULATORE.nome}">
   <p class="rimando-etichetta">Dallo stesso autore</p>
@@ -292,7 +302,7 @@ function paginaArticolo(a, i) {
   ${sommarioBreve}
   <div class="prosa">
 ${a.html}
-${a.gruppo === "portafoglio" ? rimandoSimulatore("Prova queste idee sui tuoi numeri", "Nel simulatore inserisci i tuoi portafogli, per esempio un 60/40, un Permanent Portfolio o una versione risk parity, e ne confronti le statistiche.") : ""}
+${RIMANDI[a.gruppo] ? rimandoSimulatore(...RIMANDI[a.gruppo]) : ""}
   </div>
   ${sommario}
 </div>
