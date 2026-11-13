@@ -33,6 +33,7 @@
       <a href="come-stanno-insieme.html">Mappa</a>
       <a href="fonti.html">Fonti</a>
     </nav>
+    <button class="cerca" type="button" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="cerca-parola">Cerca</span><span class="visivamente-nascosto"> negli articoli</span></button>
     <button class="tema" type="button" aria-pressed="false" aria-label="Passa al tema scuro"><span class="tema-parola">Tema </span><span class="tema-nome">scuro</span></button>
   </div>
   <div class="avanzamento" aria-hidden="true"></div>
@@ -40,10 +41,12 @@
 <main id="contenuto">
 <article>
 <header class="articolo-testa">
-  <p class="articolo-gruppo"><a href="index.html#strumento">Il metro di giudizio</a></p>
+  <p class="articolo-gruppo"><a href="index.html?tema=strumento#articoli">Il metro di giudizio</a> <span aria-hidden="true">·</span> <span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span></p>
   <h1>Volatility drag, leva e ribilanciamento</h1>
   <p class="articolo-sommario">La volatilità sottrae rendimento composto alla media aritmetica, in misura pari a metà della varianza. Questo spiega perché la leva giornaliera delude e perché il ribilanciamento sembra creare valore. Ma non è un premio gratuito.</p>
   <p class="articolo-tempo">3 minuti di lettura <span aria-hidden="true">·</span> Aggiornato <time datetime="2026-11-11">l'11 novembre 2026</time></p>
+  <ul class="articolo-tag" aria-label="Tag"><li><a href="index.html?tag=volatilit%C3%A0#articoli">volatilità</a></li><li><a href="index.html?tag=leva#articoli">leva</a></li><li><a href="index.html?tag=interesse%20composto#articoli">interesse composto</a></li><li><a href="index.html?tag=statistica#articoli">statistica</a></li></ul>
+  
   <div class="scontro">
     <p class="scontro-tesi"><b>La tesi</b>Ribilanciare genera rendimento dal nulla.</p>
     <p class="scontro-obiezione"><b>L'obiezione più forte</b>Genera rendimento solo se i prezzi tornano indietro.</p>
@@ -110,7 +113,7 @@
 </article>
 <nav class="vicini" aria-label="Altri articoli">
   <a class="prima" href="valore-atteso.html"><small>Articolo precedente</small><b>Valore atteso, la media che nessuno vive</b></a>
-  <a class="dopo" href="pac-o-pic.html"><small>Articolo successivo</small><b>Tutto subito o a rate</b></a>
+  <a class="dopo" href="mercato-cresce.html"><small>Articolo successivo</small><b>Il mercato cresce nel tempo. Perché, senza guardare i grafici</b></a>
 </nav>
 </main>
 <footer class="piede">
@@ -119,6 +122,17 @@
     <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="https://portfolio-site-2zxf.onrender.com" target="_blank" rel="noopener">Simulatore di portafogli<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
   </div>
 </footer>
+<dialog class="ricerca" aria-labelledby="ricerca-etichetta">
+  <form class="ricerca-testa" role="search">
+    <label id="ricerca-etichetta" for="ricerca-campo" class="visivamente-nascosto">Cerca negli articoli</label>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+    <input id="ricerca-campo" type="search" placeholder="Cerca negli articoli" autocomplete="off" spellcheck="false" enterkeyhint="go">
+    <button type="button" class="ricerca-chiudi">Chiudi</button>
+  </form>
+  <p class="ricerca-stato" aria-live="polite"></p>
+  <ol class="ricerca-risultati"></ol>
+  <a class="ricerca-tutti" href="index.html#articoli" hidden>Vedi tutti i risultati, con filtri e tag <span aria-hidden="true">→</span></a>
+</dialog>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

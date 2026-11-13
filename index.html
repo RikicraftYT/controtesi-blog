@@ -32,6 +32,7 @@
       <a href="come-stanno-insieme.html">Mappa</a>
       <a href="fonti.html">Fonti</a>
     </nav>
+    <button class="cerca" type="button" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="cerca-parola">Cerca</span><span class="visivamente-nascosto"> negli articoli</span></button>
     <button class="tema" type="button" aria-pressed="false" aria-label="Passa al tema scuro"><span class="tema-parola">Tema </span><span class="tema-nome">scuro</span></button>
   </div>
   
@@ -39,244 +40,490 @@
 <main id="contenuto">
 <section class="apertura">
   <h1>Ogni tesi vale quanto la migliore obiezione a cui sa rispondere.</h1>
-  <p>Trenta articoli su rendimenti, prezzi, portafogli e pensione. Ognuno parte dalla tesi nella sua forma più forte, poi le dà contro, con le formule e le fonti in vista.</p>
+  <p>Cinquantasette articoli su rendimenti, prezzi, portafogli e pensione. Chi comincia ha un percorso di base, da leggere in ordine. Gli altri partono dalla tesi nella sua forma più forte, poi le danno contro, con le formule e le fonti in vista.</p>
   <div class="apertura-azioni">
-    <a class="bottone" href="valore-atteso.html">Inizia a leggere</a>
-    <a href="come-stanno-insieme.html">Guarda dove le teorie si contraddicono</a>
+    <a class="bottone" href="conto-o-investimento.html">Parti dalle basi</a>
+    <a href="valore-atteso.html">Conosci già le basi? Vai alle tesi</a>
   </div>
 </section>
-<section class="indice" aria-label="Tutti gli articoli">
-  <section class="gruppo" id="strumento">
-    <h2><span class="gruppo-numero">01</span> Il metro di giudizio</h2>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="valore-atteso.html">Se il valore atteso è positivo, conviene.</a></h3>
-        <p class="duello-articolo">Valore atteso, la media che nessuno vive <span aria-hidden="true">·</span> 4 minuti</p>
-      </div>
-      <p class="duello-obiezione">È una media su mondi paralleli. Tu ne vivi uno solo.</p>
+<section class="esplora" id="articoli" aria-labelledby="esplora-titolo">
+  <div class="esplora-testa">
+    <h2 id="esplora-titolo">Tutti gli articoli</h2>
+    <form class="esplora-ricerca" role="search" hidden>
+      <label for="esplora-campo" class="visivamente-nascosto">Cerca tra gli articoli</label>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+      <input id="esplora-campo" type="search" placeholder="Cerca negli articoli" autocomplete="off" spellcheck="false">
+    </form>
+    <div class="esplora-filtri" hidden>
+      <details class="filtro-menu" data-filtro="tema">
+        <summary>Tema <span class="filtro-quanti"></span></summary>
+        <div class="filtro-pannello">
+          <label><input type="checkbox" name="tema" value="basi"> <span>Per iniziare</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tema" value="strumento"> <span>Il metro di giudizio</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tema" value="rendimenti"> <span>Quanto rende il mercato</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tema" value="prezzi"> <span>I prezzi sono giusti?</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tema" value="portafoglio"> <span>Come costruire il portafoglio</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tema" value="derivati"> <span>Opzioni e derivati</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tema" value="esposizioni"> <span>Che cosa possiedi davvero</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tema" value="vita"> <span>Dal risparmio alla pensione</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tema" value="oltre"> <span>Oltre il portafoglio</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tema" value="sintesi"> <span>Trarre le conclusioni</span> <span class="filtro-conta"></span></label>
+        </div>
+      </details>
+      <details class="filtro-menu" data-filtro="livello">
+        <summary>Livello <span class="filtro-quanti"></span></summary>
+        <div class="filtro-pannello">
+          <label><input type="checkbox" name="livello" value="base"> <span>Base</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="livello" value="intermedio"> <span>Intermedio</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="livello" value="avanzato"> <span>Avanzato</span> <span class="filtro-conta"></span></label>
+        </div>
+      </details>
+      <details class="filtro-menu" data-filtro="tag">
+        <summary>Tag <span class="filtro-quanti"></span></summary>
+        <div class="filtro-pannello">
+          <label><input type="checkbox" name="tag" value="asset allocation"> <span>asset allocation</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="azioni"> <span>azioni</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="Cina"> <span>Cina</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="comportamento"> <span>comportamento</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="costi"> <span>costi</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="dati storici"> <span>dati storici</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="diversificazione"> <span>diversificazione</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="efficienza dei mercati"> <span>efficienza dei mercati</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="fattori"> <span>fattori</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="fondi ed ETF"> <span>fondi ed ETF</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="geografia"> <span>geografia</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="inflazione"> <span>inflazione</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="interesse composto"> <span>interesse composto</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="leva"> <span>leva</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="liquidità"> <span>liquidità</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="metodo"> <span>metodo</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="obbligazioni"> <span>obbligazioni</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="opzioni"> <span>opzioni</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="oro"> <span>oro</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="pensione"> <span>pensione</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="pianificazione"> <span>pianificazione</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="rischio"> <span>rischio</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="statistica"> <span>statistica</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="tasse"> <span>tasse</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="valutazioni"> <span>valutazioni</span> <span class="filtro-conta"></span></label>
+          <label><input type="checkbox" name="tag" value="volatilità"> <span>volatilità</span> <span class="filtro-conta"></span></label>
+        </div>
+      </details>
+      <label class="esplora-ordine"><span>Ordina</span>
+        <select id="esplora-ordine">
+          <option value="percorso">Percorso consigliato</option>
+          <option value="rilevanza">Rilevanza</option>
+          <option value="recenti">Più recenti</option>
+          <option value="brevi">Più brevi</option>
+        </select>
+      </label>
     </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="volatility-drag.html">Ribilanciare genera rendimento dal nulla.</a></h3>
-        <p class="duello-articolo">Volatility drag, leva e ribilanciamento <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Genera rendimento solo se i prezzi tornano indietro.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="pac-o-pic.html">Entrare a rate riduce il rischio.</a></h3>
-        <p class="duello-articolo">Tutto subito o a rate <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Lo rimanda soltanto.</p>
-    </div>
-  </section>
-  <section class="gruppo" id="rendimenti">
-    <h2><span class="gruppo-numero">02</span> Quanto rende il mercato</h2>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="mercato-cresce.html">Il mercato globale, in media, cresce.</a></h3>
-        <p class="duello-articolo">Il mercato cresce nel tempo. Perché, senza guardare i grafici <span aria-hidden="true">·</span> 4 minuti</p>
-      </div>
-      <p class="duello-obiezione">Tra crescita ed età della pietra c'è la stagnazione. Chiedere al Giappone.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="azioni-campione-largo.html">In trent'anni le azioni non perdono mai.</a></h3>
-        <p class="duello-articolo">Azioni nel lungo periodo, il campione largo <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Non hanno mai perso negli Stati Uniti.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="cina-pil-rendimenti.html">Un'economia che cresce molto fa guadagnare chi ne compra le azioni.</a></h3>
-        <p class="duello-articolo">Il PIL cresce, le azioni meno <span aria-hidden="true">·</span> 9 minuti</p>
-      </div>
-      <p class="duello-obiezione">Solo se la crescita arriva a chi le azioni le possiede già.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="equity-premium-puzzle.html">Le azioni pagano un premio per il rischio.</a></h3>
-        <p class="duello-articolo">Equity premium puzzle, il premio che i modelli non spiegano <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Un premio così grande nessun modello lo giustifica. Forse è stata fortuna.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="pochi-titoli.html">Le azioni rendono più dei titoli di Stato.</a></h3>
-        <p class="duello-articolo">Pochi titoli fanno tutto il rendimento <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">La maggior parte delle azioni no.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="cape-shiller.html">Chi compra caro guadagna meno.</a></h3>
-        <p class="duello-articolo">CAPE di Shiller, quanto conta il prezzo d'ingresso <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Il CAPE è sopra la media da trent'anni e il mercato è salito lo stesso.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="rischio-di-sequenza.html">Conta il rendimento medio.</a></h3>
-        <p class="duello-articolo">Rischio di sequenza, l'ordine conta quanto la media <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Se versi o prelevi, conta l'ordine. Stessa media, esiti opposti.</p>
-    </div>
-  </section>
-  <section class="gruppo" id="prezzi">
-    <h2><span class="gruppo-numero">03</span> I prezzi sono giusti?</h2>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="mercati-efficienti.html">I prezzi contengono già tutta l'informazione.</a></h3>
-        <p class="duello-articolo">Mercati efficienti, due affermazioni e una sola regge <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Se fosse vero, nessuno pagherebbe per informarsi. E chi farebbe i prezzi?</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="paradosso-passivo.html">La gestione attiva è un gioco a somma zero prima dei costi.</a></h3>
-        <p class="duello-articolo">Il paradosso della gestione passiva <span aria-hidden="true">·</span> 4 minuti</p>
-      </div>
-      <p class="duello-obiezione">Solo in un mercato in cui nessuno emette né ritira azioni.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="finanza-comportamentale.html">Gli errori degli irrazionali vengono corretti dai razionali.</a></h3>
-        <p class="duello-articolo">Finanza comportamentale e limiti all'arbitraggio <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Correggerli costa, e chi ci prova può fallire prima di avere ragione.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="mercati-adattivi.html">L'efficienza va e viene, come le risorse in un ecosistema.</a></h3>
-        <p class="duello-articolo">Mercati adattivi, l'efficienza come ecosistema <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Una teoria compatibile con qualsiasi osservazione non prevede niente.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="minsky-soros.html">Le crisi arrivano da shock esterni.</a></h3>
-        <p class="duello-articolo">Minsky e Soros, l'instabilità che nasce dall'interno <span aria-hidden="true">·</span> 4 minuti</p>
-      </div>
-      <p class="duello-obiezione">Le produce la stabilità stessa.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="code-grasse.html">La volatilità misura il rischio.</a></h3>
-        <p class="duello-articolo">Code grasse, perché la gaussiana sottostima i crolli <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Misura il rischio dei giorni normali.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="factor-investing.html">Value, size e momentum rendono più del mercato.</a></h3>
-        <p class="duello-articolo">Factor investing, premi al rischio o errori di prezzo <span aria-hidden="true">·</span> 4 minuti</p>
-      </div>
-      <p class="duello-obiezione">Dopo la pubblicazione i premi si riducono di circa un terzo.</p>
-    </div>
-  </section>
-  <section class="gruppo" id="portafoglio">
-    <h2><span class="gruppo-numero">04</span> Come costruire il portafoglio</h2>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="risk-parity.html">Va bilanciato il rischio, non il capitale.</a></h3>
-        <p class="duello-articolo">Risk parity, dividere il rischio e non il capitale <span aria-hidden="true">·</span> 5 minuti</p>
-      </div>
-      <p class="duello-obiezione">Funziona finché azioni e obbligazioni non scendono insieme. Nel 2022 è successo.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="permanent-portfolio.html">Un attivo per ogni regime economico, in parti uguali.</a></h3>
-        <p class="duello-articolo">Permanent Portfolio, quattro attivi e nessuna previsione <span aria-hidden="true">·</span> 4 minuti</p>
-      </div>
-      <p class="duello-obiezione">Tre quarti del capitale rinunciano al premio azionario.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="oro.html">L'oro conserva il potere d'acquisto.</a></h3>
-        <p class="duello-articolo">Oro, protezione dall'inflazione? <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Lo conserva sui secoli, non sui decenni in cui vivi.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="trend-following.html">Seguire il trend è speculazione senza fondamento.</a></h3>
-        <p class="duello-articolo">Trend following, comprare ciò che sale <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">Ha funzionato per più di un secolo, su decine di mercati.</p>
-    </div>
-  </section>
-  <section class="gruppo" id="esposizioni">
-    <h2><span class="gruppo-numero">05</span> Che cosa possiedi davvero</h2>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="esposizione-geografica.html">Un indice azionario globale è per due terzi una scommessa sugli Stati Uniti.</a></h3>
-        <p class="duello-articolo">Dove investe davvero un indice globale <span aria-hidden="true">·</span> 9 minuti</p>
-      </div>
-      <p class="duello-obiezione">Lo è per sede legale. Per ricavi, impianti e fornitori lo è per poco più del 40%.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="quale-cina.html">Investire in Cina vuol dire comprare l'economia cinese.</a></h3>
-        <p class="duello-articolo">Quale Cina compri <span aria-hidden="true">·</span> 9 minuti</p>
-      </div>
-      <p class="duello-obiezione">Vuol dire scegliere tra almeno tre mercati, con settori, investitori e diritti diversi.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="tpa.html">L'asset allocation strategica decide quasi tutto il risultato.</a></h3>
-        <p class="duello-articolo">Total Portfolio Approach, oltre le caselle <span aria-hidden="true">·</span> 7 minuti</p>
-      </div>
-      <p class="duello-obiezione">Decide i pesi delle caselle, non i rischi che ci stanno dentro.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="etichette-e-rischi.html">Un portafoglio 75/25 ha il rischio di un 75/25.</a></h3>
-        <p class="duello-articolo">Etichette e rischi <span aria-hidden="true">·</span> 7 minuti</p>
-      </div>
-      <p class="duello-obiezione">Dipende da che cosa c'è dentro il 75.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="hurdle-rate.html">Un investimento va aggiunto se ha un buon rendimento atteso.</a></h3>
-        <p class="duello-articolo">Quanto deve rendere per meritare un posto <span aria-hidden="true">·</span> 7 minuti</p>
-      </div>
-      <p class="duello-obiezione">Va aggiunto se rende più di quanto costa in rischio al portafoglio che hai già.</p>
-    </div>
-  </section>
-  <section class="gruppo" id="vita">
-    <h2><span class="gruppo-numero">06</span> Dal risparmio alla pensione</h2>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="fire.html">Conta quanto risparmi, non quanto guadagni.</a></h3>
-        <p class="duello-articolo">FIRE, l'aritmetica dell'indipendenza finanziaria <span aria-hidden="true">·</span> 3 minuti</p>
-      </div>
-      <p class="duello-obiezione">La formula funziona solo se il futuro somiglia a un foglio di calcolo.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="regola-4-percento.html">Il 4% è un tasso di prelievo sicuro.</a></h3>
-        <p class="duello-articolo">La regola del 4%, da dove viene e dove si rompe <span aria-hidden="true">·</span> 4 minuti</p>
-      </div>
-      <p class="duello-obiezione">È sicuro in un paese, in un secolo, per trent'anni.</p>
-    </div>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="ciclo-di-vita.html">Da giovani si rischia di più, da vecchi di meno.</a></h3>
-        <p class="duello-articolo">Ciclo di vita, capitale umano e leva da giovani <span aria-hidden="true">·</span> 4 minuti</p>
-      </div>
-      <p class="duello-obiezione">La regola dell'età confonde il portafoglio con la ricchezza.</p>
-    </div>
-  </section>
-  <section class="gruppo" id="sintesi">
-    <h2><span class="gruppo-numero">07</span> Trarre le conclusioni</h2>
-    <div class="duello">
-      <div>
-        <h3 class="duello-tesi"><a href="come-stanno-insieme.html">Si possono sostenere tutte queste idee insieme.</a></h3>
-        <p class="duello-articolo">Come stanno insieme, tensioni e posizioni coerenti <span aria-hidden="true">·</span> 6 minuti</p>
-      </div>
-      <p class="duello-obiezione">No. Alcune coppie si contraddicono, e conviene sapere quali.</p>
-    </div>
-  </section>
+    <div class="esplora-attivi" hidden></div>
+    <p class="esplora-conteggio" aria-live="polite">Cinquantasette articoli</p>
+  </div>
+  <div class="esplora-griglia">
+    <article class="scheda" data-slug="conto-o-investimento" data-gruppo="basi" data-livello="base" data-tag="inflazione|liquidità" data-ordine="0" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 1</p>
+      <h3 class="scheda-titolo"><a href="conto-o-investimento.html">Soldi fermi sul conto, il costo che non si vede</a></h3>
+      <p class="scheda-sommario">Il saldo del conto non scende, ma ogni anno compra un po' meno. Si chiama inflazione, ed è il motivo per cui tenere tutto fermo non è una scelta senza costi.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=inflazione#articoli" data-tag="inflazione">inflazione</a></li><li><a href="index.html?tag=liquidit%C3%A0#articoli" data-tag="liquidità">liquidità</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="inflazione-rendimento-reale" data-gruppo="basi" data-livello="base" data-tag="inflazione|dati storici" data-ordine="1" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 2</p>
+      <h3 class="scheda-titolo"><a href="inflazione-rendimento-reale.html">Inflazione e rendimento reale, quello che resta davvero</a></h3>
+      <p class="scheda-sommario">Un rendimento del 3% non vale sempre lo stesso. Dipende da quanto sono saliti i prezzi nel frattempo. La differenza tra rendimento nominale e reale è la prima cosa da guardare in ogni confronto.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=inflazione#articoli" data-tag="inflazione">inflazione</a></li><li><a href="index.html?tag=dati%20storici#articoli" data-tag="dati storici">dati storici</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="interesse-composto" data-gruppo="basi" data-livello="base" data-tag="interesse composto" data-ordine="2" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 3</p>
+      <h3 class="scheda-titolo"><a href="interesse-composto.html">Interesse composto, il tempo come ingrediente</a></h3>
+      <p class="scheda-sommario">Un rendimento che si somma a se stesso anno dopo anno fa crescere il capitale in modo sempre più rapido. Per questo dieci anni in più contano spesso più di un punto di rendimento.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=interesse%20composto#articoli" data-tag="interesse composto">interesse composto</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="rischio-e-rendimento" data-gruppo="basi" data-livello="base" data-tag="rischio|azioni|obbligazioni|dati storici" data-ordine="3" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 4</p>
+      <h3 class="scheda-titolo"><a href="rischio-e-rendimento.html">Rischio e rendimento, perché crescono insieme</a></h3>
+      <p class="scheda-sommario">Chi promette rendimenti alti senza rischio promette qualcosa che non esiste. Il rendimento in più è il compenso per l'incertezza, e capire questo legame protegge da molte scelte sbagliate.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li><li><a href="index.html?tag=azioni#articoli" data-tag="azioni">azioni</a></li><li><a href="index.html?tag=obbligazioni#articoli" data-tag="obbligazioni">obbligazioni</a></li><li><a href="index.html?tag=dati%20storici#articoli" data-tag="dati storici">dati storici</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="azioni-obbligazioni-liquidita" data-gruppo="basi" data-livello="base" data-tag="azioni|obbligazioni|liquidità" data-ordine="4" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 5</p>
+      <h3 class="scheda-titolo"><a href="azioni-obbligazioni-liquidita.html">Azioni, obbligazioni, liquidità: che cosa compri</a></h3>
+      <p class="scheda-sommario">Dietro quasi ogni investimento ci sono tre cose: una quota di un'azienda, un prestito, o denaro disponibile subito. Sapere che cosa si possiede davvero spiega perché ciascuna si comporta in modo diverso.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=azioni#articoli" data-tag="azioni">azioni</a></li><li><a href="index.html?tag=obbligazioni#articoli" data-tag="obbligazioni">obbligazioni</a></li><li><a href="index.html?tag=liquidit%C3%A0#articoli" data-tag="liquidità">liquidità</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="diversificazione" data-gruppo="basi" data-livello="base" data-tag="diversificazione|rischio" data-ordine="5" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 6</p>
+      <h3 class="scheda-titolo"><a href="diversificazione.html">Diversificazione, non basta comprare tante cose</a></h3>
+      <p class="scheda-sommario">Dividere i soldi tra molti investimenti riduce il rischio solo se questi non salgono e scendono insieme. Diversificare vuol dire possedere cose che dipendono da cause diverse.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=diversificazione#articoli" data-tag="diversificazione">diversificazione</a></li><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="fondi-etf-indici" data-gruppo="basi" data-livello="base" data-tag="fondi ed ETF|costi" data-ordine="6" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 7</p>
+      <h3 class="scheda-titolo"><a href="fondi-etf-indici.html">Fondi, ETF e indici: tre parole da distinguere</a></h3>
+      <p class="scheda-sommario">Un indice è un elenco, un fondo è un contenitore, un ETF è un fondo che si compra in Borsa. La differenza che conta di più è un'altra: se il fondo copia un indice o prova a batterlo.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=fondi%20ed%20ETF#articoli" data-tag="fondi ed ETF">fondi ed ETF</a></li><li><a href="index.html?tag=costi#articoli" data-tag="costi">costi</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="costi" data-gruppo="basi" data-livello="base" data-tag="costi|fondi ed ETF|interesse composto" data-ordine="7" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 8</p>
+      <h3 class="scheda-titolo"><a href="costi.html">I costi, l'1% che vale un quarto del risultato</a></h3>
+      <p class="scheda-sommario">Un costo dell'1% l'anno sembra piccolo. Su trent'anni porta via circa un quarto del capitale finale, perché si accumula come un interesse composto al contrario. È l'unica variabile di un investimento che conosci in anticipo.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=costi#articoli" data-tag="costi">costi</a></li><li><a href="index.html?tag=fondi%20ed%20ETF#articoli" data-tag="fondi ed ETF">fondi ed ETF</a></li><li><a href="index.html?tag=interesse%20composto#articoli" data-tag="interesse composto">interesse composto</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="volatilita-e-perdite" data-gruppo="basi" data-livello="base" data-tag="volatilità|rischio" data-ordine="8" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 9</p>
+      <h3 class="scheda-titolo"><a href="volatilita-e-perdite.html">Volatilità e perdite, quando il portafoglio scende</a></h3>
+      <p class="scheda-sommario">Un investimento che scende non è per forza un investimento sbagliato. Capire la differenza tra un'oscillazione e una perdita definitiva, e sapere quanto può scendere ciò che possiedi, evita di vendere nel momento peggiore.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=volatilit%C3%A0#articoli" data-tag="volatilità">volatilità</a></li><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="orizzonte-e-emergenze" data-gruppo="basi" data-livello="base" data-tag="liquidità|pianificazione" data-ordine="9" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 10</p>
+      <h3 class="scheda-titolo"><a href="orizzonte-e-emergenze.html">Orizzonte e fondo di emergenza, i soldi da non investire</a></h3>
+      <p class="scheda-sommario">Prima di investire bisogna sapere quando serviranno i soldi. Quelli per gli imprevisti e per le spese vicine non vanno investiti in attività che oscillano, perché potresti doverli ritirare nel momento sbagliato.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=liquidit%C3%A0#articoli" data-tag="liquidità">liquidità</a></li><li><a href="index.html?tag=pianificazione#articoli" data-tag="pianificazione">pianificazione</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="profilo-di-rischio" data-gruppo="basi" data-livello="base" data-tag="rischio|comportamento|pianificazione" data-ordine="10" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 11</p>
+      <h3 class="scheda-titolo"><a href="profilo-di-rischio.html">Profilo di rischio, quanto puoi e quanto vuoi rischiare</a></h3>
+      <p class="scheda-sommario">Il rischio che puoi permetterti e quello che riesci a sopportare sono due cose diverse. Il profilo giusto rispetta entrambe, e si scopre più guardando la propria situazione che rispondendo a un questionario.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li><li><a href="index.html?tag=comportamento#articoli" data-tag="comportamento">comportamento</a></li><li><a href="index.html?tag=pianificazione#articoli" data-tag="pianificazione">pianificazione</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="market-timing" data-gruppo="basi" data-livello="base" data-tag="comportamento|valutazioni" data-ordine="11" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 12</p>
+      <h3 class="scheda-titolo"><a href="market-timing.html">Market timing, entrare e uscire al momento giusto</a></h3>
+      <p class="scheda-sommario">Vendere prima dei ribassi e ricomprare prima dei rialzi sembra buon senso. Richiede però di indovinare due volte, e i giorni migliori arrivano quasi sempre accanto ai peggiori. Per questo riesce così raramente.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=comportamento#articoli" data-tag="comportamento">comportamento</a></li><li><a href="index.html?tag=valutazioni#articoli" data-tag="valutazioni">valutazioni</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="tasse-di-base" data-gruppo="basi" data-livello="base" data-tag="tasse" data-ordine="12" data-data="2026-11-13" data-minuti="5">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 13</p>
+      <h3 class="scheda-titolo"><a href="tasse-di-base.html">Le tasse di base, quanto resta dopo il fisco</a></h3>
+      <p class="scheda-sommario">In Italia i guadagni degli investimenti sono tassati quasi sempre al 26%, i titoli di Stato al 12,5%, e su ciò che possiedi si paga un'imposta di bollo annuale. Di solito pensa a tutto la banca, ma conoscere le regole evita sorprese.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 5 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=tasse#articoli" data-tag="tasse">tasse</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="scheda-di-un-fondo" data-gruppo="basi" data-livello="base" data-tag="fondi ed ETF|costi|rischio" data-ordine="13" data-data="2026-11-13" data-minuti="5">
+      <p class="scheda-occhiello">Per iniziare <span aria-hidden="true">·</span> passo 14</p>
+      <h3 class="scheda-titolo"><a href="scheda-di-un-fondo.html">La scheda di un fondo, che cosa guardare e dove</a></h3>
+      <p class="scheda-sommario">Ogni fondo venduto in Europa ha un documento di tre pagine con le stesse sezioni nello stesso ordine. Sapere dove trovare obiettivo, rischio, costi e durata consigliata permette di confrontare due prodotti in dieci minuti.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="1"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Base</span></span> <span aria-hidden="true">·</span> 5 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=fondi%20ed%20ETF#articoli" data-tag="fondi ed ETF">fondi ed ETF</a></li><li><a href="index.html?tag=costi#articoli" data-tag="costi">costi</a></li><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="valore-atteso" data-gruppo="strumento" data-livello="avanzato" data-tag="rischio|leva|statistica" data-ordine="14" data-data="2026-11-13" data-minuti="5">
+      <p class="scheda-occhiello">Il metro di giudizio</p>
+      <h3 class="scheda-titolo"><a href="valore-atteso.html">Valore atteso, la media che nessuno vive</a></h3>
+      <p class="scheda-sommario">Prima di discutere le teorie conviene capire cosa promette una media, e cosa no. Con una scommessa che in media vince e quasi sempre perde.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 5 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li><li><a href="index.html?tag=leva#articoli" data-tag="leva">leva</a></li><li><a href="index.html?tag=statistica#articoli" data-tag="statistica">statistica</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="volatility-drag" data-gruppo="strumento" data-livello="avanzato" data-tag="volatilità|leva|interesse composto|statistica" data-ordine="15" data-data="2026-11-11" data-minuti="3">
+      <p class="scheda-occhiello">Il metro di giudizio</p>
+      <h3 class="scheda-titolo"><a href="volatility-drag.html">Volatility drag, leva e ribilanciamento</a></h3>
+      <p class="scheda-sommario">La volatilità sottrae rendimento composto alla media aritmetica, in misura pari a metà della varianza. Questo spiega perché la leva giornaliera delude e perché il ribilanciamento sembra creare valore. Ma non è un premio gratuito.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=volatilit%C3%A0#articoli" data-tag="volatilità">volatilità</a></li><li><a href="index.html?tag=leva#articoli" data-tag="leva">leva</a></li><li><a href="index.html?tag=interesse%20composto#articoli" data-tag="interesse composto">interesse composto</a></li><li><a href="index.html?tag=statistica#articoli" data-tag="statistica">statistica</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="mercato-cresce" data-gruppo="rendimenti" data-livello="intermedio" data-tag="azioni|dati storici|valutazioni" data-ordine="16" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Quanto rende il mercato</p>
+      <h3 class="scheda-titolo"><a href="mercato-cresce.html">Il mercato cresce nel tempo. Perché, senza guardare i grafici</a></h3>
+      <p class="scheda-sommario">Che le azioni rendano nel lungo periodo si mostra di solito con i grafici. Qui c'è un argomento che regge senza dati storici, e i cinque punti in cui scricchiola.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=azioni#articoli" data-tag="azioni">azioni</a></li><li><a href="index.html?tag=dati%20storici#articoli" data-tag="dati storici">dati storici</a></li><li><a href="index.html?tag=valutazioni#articoli" data-tag="valutazioni">valutazioni</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="azioni-campione-largo" data-gruppo="rendimenti" data-livello="intermedio" data-tag="azioni|dati storici|geografia" data-ordine="17" data-data="2026-11-13" data-minuti="3">
+      <p class="scheda-occhiello">Quanto rende il mercato</p>
+      <h3 class="scheda-titolo"><a href="azioni-campione-largo.html">Azioni nel lungo periodo, il campione largo</a></h3>
+      <p class="scheda-sommario">La sicurezza delle azioni sul lungo periodo è misurata quasi sempre su un solo paese, il più fortunato. Con 39 paesi sviluppati la probabilità di perdere potere d'acquisto in trent'anni passa dall'1% al 12%.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=azioni#articoli" data-tag="azioni">azioni</a></li><li><a href="index.html?tag=dati%20storici#articoli" data-tag="dati storici">dati storici</a></li><li><a href="index.html?tag=geografia#articoli" data-tag="geografia">geografia</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="cina-pil-rendimenti" data-gruppo="rendimenti" data-livello="avanzato" data-tag="Cina|azioni|valutazioni" data-ordine="18" data-data="2026-11-13" data-minuti="9">
+      <p class="scheda-occhiello">Quanto rende il mercato</p>
+      <h3 class="scheda-titolo"><a href="cina-pil-rendimenti.html">Il PIL cresce, le azioni meno</a></h3>
+      <p class="scheda-sommario">In vent'anni il PIL cinese è cresciuto del 13,5% l'anno e le azioni del mercato interno hanno reso il 9,5%. La differenza si spiega con una scomposizione in quattro parti. La voce che pesa di più è la diluizione: la crescita è stata finanziata emettendo azioni nuove.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 9 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=Cina#articoli" data-tag="Cina">Cina</a></li><li><a href="index.html?tag=azioni#articoli" data-tag="azioni">azioni</a></li><li><a href="index.html?tag=valutazioni#articoli" data-tag="valutazioni">valutazioni</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="equity-premium-puzzle" data-gruppo="rendimenti" data-livello="avanzato" data-tag="azioni|dati storici|comportamento" data-ordine="19" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Quanto rende il mercato</p>
+      <h3 class="scheda-titolo"><a href="equity-premium-puzzle.html">Equity premium puzzle, il premio che i modelli non spiegano</a></h3>
+      <p class="scheda-sommario">Che il premio azionario sia positivo è logica. Che sia stato del 6% l'anno è un enigma, e la spiegazione che scegli decide quanto aspettarti in futuro.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=azioni#articoli" data-tag="azioni">azioni</a></li><li><a href="index.html?tag=dati%20storici#articoli" data-tag="dati storici">dati storici</a></li><li><a href="index.html?tag=comportamento#articoli" data-tag="comportamento">comportamento</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="pochi-titoli" data-gruppo="rendimenti" data-livello="intermedio" data-tag="azioni|diversificazione|statistica" data-ordine="20" data-data="2026-11-11" data-minuti="3">
+      <p class="scheda-occhiello">Quanto rende il mercato</p>
+      <h3 class="scheda-titolo"><a href="pochi-titoli.html">Pochi titoli fanno tutto il rendimento</a></h3>
+      <p class="scheda-sommario">Il mercato batte i titoli di Stato a breve, ma la maggioranza delle singole azioni non ci riesce. Il premio viene da una piccola minoranza di società. È l'argomento più forte a favore dell'indice e contro la selezione di pochi titoli.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=azioni#articoli" data-tag="azioni">azioni</a></li><li><a href="index.html?tag=diversificazione#articoli" data-tag="diversificazione">diversificazione</a></li><li><a href="index.html?tag=statistica#articoli" data-tag="statistica">statistica</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="cape-shiller" data-gruppo="rendimenti" data-livello="intermedio" data-tag="valutazioni|azioni" data-ordine="21" data-data="2026-11-11" data-minuti="3">
+      <p class="scheda-occhiello">Quanto rende il mercato</p>
+      <h3 class="scheda-titolo"><a href="cape-shiller.html">CAPE di Shiller, quanto conta il prezzo d'ingresso</a></h3>
+      <p class="scheda-sommario">Il prezzo che paghi sposta il rendimento a dieci anni più di ogni altra variabile osservabile. Ma non ti dice quando. Serve a tarare le aspettative, non a entrare e uscire.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=valutazioni#articoli" data-tag="valutazioni">valutazioni</a></li><li><a href="index.html?tag=azioni#articoli" data-tag="azioni">azioni</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="mercati-efficienti" data-gruppo="prezzi" data-livello="intermedio" data-tag="efficienza dei mercati" data-ordine="22" data-data="2026-11-11" data-minuti="3">
+      <p class="scheda-occhiello">I prezzi sono giusti?</p>
+      <h3 class="scheda-titolo"><a href="mercati-efficienti.html">Mercati efficienti, due affermazioni e una sola regge</a></h3>
+      <p class="scheda-sommario">«Non esistono pasti gratis» e «il prezzo è giusto» sembrano la stessa frase. Non lo sono, e confonderle è l'errore più comune su questa teoria.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=efficienza%20dei%20mercati#articoli" data-tag="efficienza dei mercati">efficienza dei mercati</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="paradosso-passivo" data-gruppo="prezzi" data-livello="intermedio" data-tag="efficienza dei mercati|fondi ed ETF|costi" data-ordine="23" data-data="2026-11-11" data-minuti="4">
+      <p class="scheda-occhiello">I prezzi sono giusti?</p>
+      <h3 class="scheda-titolo"><a href="paradosso-passivo.html">Il paradosso della gestione passiva</a></h3>
+      <p class="scheda-sommario">L'aritmetica di Sharpe dice che il gestore attivo medio deve perdere contro l'indice. Regge quasi del tutto, ma non del tutto: gli indici cambiano e i flussi muovono i prezzi più di quanto prevede la teoria classica.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=efficienza%20dei%20mercati#articoli" data-tag="efficienza dei mercati">efficienza dei mercati</a></li><li><a href="index.html?tag=fondi%20ed%20ETF#articoli" data-tag="fondi ed ETF">fondi ed ETF</a></li><li><a href="index.html?tag=costi#articoli" data-tag="costi">costi</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="bogle-e-indicizzazione" data-gruppo="prezzi" data-livello="intermedio" data-tag="fondi ed ETF|costi|efficienza dei mercati" data-ordine="24" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">I prezzi sono giusti?</p>
+      <h3 class="scheda-titolo"><a href="bogle-e-indicizzazione.html">Bogle e l'indicizzazione, quando la soluzione diventa il mercato</a></h3>
+      <p class="scheda-sommario">John Bogle ha reso l'investimento indicizzato accessibile a tutti. Pochi mesi prima di morire ha avvertito che il suo successo poneva un problema nuovo. Non tanto per i prezzi, quanto per il controllo delle aziende.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=fondi%20ed%20ETF#articoli" data-tag="fondi ed ETF">fondi ed ETF</a></li><li><a href="index.html?tag=costi#articoli" data-tag="costi">costi</a></li><li><a href="index.html?tag=efficienza%20dei%20mercati#articoli" data-tag="efficienza dei mercati">efficienza dei mercati</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="finanza-comportamentale" data-gruppo="prezzi" data-livello="intermedio" data-tag="comportamento|efficienza dei mercati" data-ordine="25" data-data="2026-11-11" data-minuti="3">
+      <p class="scheda-occhiello">I prezzi sono giusti?</p>
+      <h3 class="scheda-titolo"><a href="finanza-comportamentale.html">Finanza comportamentale e limiti all'arbitraggio</a></h3>
+      <p class="scheda-sommario">Che gli investitori sbaglino non basta a rendere i prezzi sbagliati. Serve anche che nessuno riesca a correggerli. La finanza comportamentale sta in piedi su due gambe: la psicologia delle scelte e i limiti di chi dovrebbe arbitrare.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=comportamento#articoli" data-tag="comportamento">comportamento</a></li><li><a href="index.html?tag=efficienza%20dei%20mercati#articoli" data-tag="efficienza dei mercati">efficienza dei mercati</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="mercati-adattivi" data-gruppo="prezzi" data-livello="intermedio" data-tag="efficienza dei mercati|comportamento" data-ordine="26" data-data="2026-11-11" data-minuti="3">
+      <p class="scheda-occhiello">I prezzi sono giusti?</p>
+      <h3 class="scheda-titolo"><a href="mercati-adattivi.html">Mercati adattivi, l'efficienza come ecosistema</a></h3>
+      <p class="scheda-sommario">Andrew Lo propone di smettere di chiedersi se i mercati sono efficienti e di chiedersi quanto, dove e quando. Descrive bene. Prevede poco.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=efficienza%20dei%20mercati#articoli" data-tag="efficienza dei mercati">efficienza dei mercati</a></li><li><a href="index.html?tag=comportamento#articoli" data-tag="comportamento">comportamento</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="minsky-soros" data-gruppo="prezzi" data-livello="intermedio" data-tag="leva|efficienza dei mercati" data-ordine="27" data-data="2026-11-13" data-minuti="3">
+      <p class="scheda-occhiello">I prezzi sono giusti?</p>
+      <h3 class="scheda-titolo"><a href="minsky-soros.html">Minsky e Soros, l'instabilità che nasce dall'interno</a></h3>
+      <p class="scheda-sommario">Due teorie eterodosse sostengono che i mercati non tendono all'equilibrio ma se ne allontanano da soli. Per Minsky il motore è il debito, per Soros il circuito tra convinzioni e fondamentali. Nessuna delle due dice quando.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=leva#articoli" data-tag="leva">leva</a></li><li><a href="index.html?tag=efficienza%20dei%20mercati#articoli" data-tag="efficienza dei mercati">efficienza dei mercati</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="caos-di-secondo-ordine" data-gruppo="prezzi" data-livello="intermedio" data-tag="efficienza dei mercati|metodo" data-ordine="28" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">I prezzi sono giusti?</p>
+      <h3 class="scheda-titolo"><a href="caos-di-secondo-ordine.html">Caos di primo e secondo ordine, perché la Borsa non è il meteo</a></h3>
+      <p class="scheda-sommario">Yuval Noah Harari distingue i sistemi caotici che ignorano le previsioni da quelli che reagiscono a esse. I mercati sono del secondo tipo: una previsione resa pubblica cambia il risultato che prevede.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=efficienza%20dei%20mercati#articoli" data-tag="efficienza dei mercati">efficienza dei mercati</a></li><li><a href="index.html?tag=metodo#articoli" data-tag="metodo">metodo</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="code-grasse" data-gruppo="prezzi" data-livello="intermedio" data-tag="rischio|volatilità|statistica" data-ordine="29" data-data="2026-11-13" data-minuti="3">
+      <p class="scheda-occhiello">I prezzi sono giusti?</p>
+      <h3 class="scheda-titolo"><a href="code-grasse.html">Code grasse, perché la gaussiana sottostima i crolli</a></h3>
+      <p class="scheda-sommario">I rendimenti finanziari hanno eventi estremi molto più frequenti di quanto preveda una distribuzione normale. Mandelbrot lo documentò nel 1963. Cambia il modo di leggere deviazione standard, VaR e correlazioni.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li><li><a href="index.html?tag=volatilit%C3%A0#articoli" data-tag="volatilità">volatilità</a></li><li><a href="index.html?tag=statistica#articoli" data-tag="statistica">statistica</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="factor-investing" data-gruppo="prezzi" data-livello="avanzato" data-tag="fattori|efficienza dei mercati" data-ordine="30" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">I prezzi sono giusti?</p>
+      <h3 class="scheda-titolo"><a href="factor-investing.html">Factor investing, premi al rischio o errori di prezzo</a></h3>
+      <p class="scheda-sommario">Alcune caratteristiche delle azioni hanno reso più di quanto spieghi il rischio di mercato. Se è rischio dura, se è errore si consuma. Non è facile dire quale.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=fattori#articoli" data-tag="fattori">fattori</a></li><li><a href="index.html?tag=efficienza%20dei%20mercati#articoli" data-tag="efficienza dei mercati">efficienza dei mercati</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="risk-parity" data-gruppo="portafoglio" data-livello="avanzato" data-tag="asset allocation|leva|obbligazioni|diversificazione" data-ordine="31" data-data="2026-11-13" data-minuti="5">
+      <p class="scheda-occhiello">Come costruire il portafoglio</p>
+      <h3 class="scheda-titolo"><a href="risk-parity.html">Risk parity, dividere il rischio e non il capitale</a></h3>
+      <p class="scheda-sommario">Un 60/40 è per il 95% una scommessa azionaria. Risk parity lo corregge, ma per trasformare l'equilibrio in rendimento ha bisogno di leva e di correlazioni che stiano ferme.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 5 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=asset%20allocation#articoli" data-tag="asset allocation">asset allocation</a></li><li><a href="index.html?tag=leva#articoli" data-tag="leva">leva</a></li><li><a href="index.html?tag=obbligazioni#articoli" data-tag="obbligazioni">obbligazioni</a></li><li><a href="index.html?tag=diversificazione#articoli" data-tag="diversificazione">diversificazione</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="permanent-portfolio" data-gruppo="portafoglio" data-livello="intermedio" data-tag="asset allocation|oro|obbligazioni" data-ordine="32" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Come costruire il portafoglio</p>
+      <h3 class="scheda-titolo"><a href="permanent-portfolio.html">Permanent Portfolio, quattro attivi e nessuna previsione</a></h3>
+      <p class="scheda-sommario">Azioni, obbligazioni lunghe, oro e liquidità al 25% ciascuno. Harry Browne rinuncia a prevedere e a stimare. Il conto arriva sotto forma di rendimento atteso.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=asset%20allocation#articoli" data-tag="asset allocation">asset allocation</a></li><li><a href="index.html?tag=oro#articoli" data-tag="oro">oro</a></li><li><a href="index.html?tag=obbligazioni#articoli" data-tag="obbligazioni">obbligazioni</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="oro" data-gruppo="portafoglio" data-livello="intermedio" data-tag="oro|inflazione" data-ordine="33" data-data="2026-11-11" data-minuti="3">
+      <p class="scheda-occhiello">Come costruire il portafoglio</p>
+      <h3 class="scheda-titolo"><a href="oro.html">Oro, protezione dall'inflazione?</a></h3>
+      <p class="scheda-sommario">L'oro è un quarto del Permanent Portfolio e la copertura più citata contro l'inflazione. I dati dicono che il suo prezzo reale oscilla troppo per svolgere quel compito su orizzonti umani. Il suo ruolo è un altro.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=oro#articoli" data-tag="oro">oro</a></li><li><a href="index.html?tag=inflazione#articoli" data-tag="inflazione">inflazione</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="trend-following" data-gruppo="portafoglio" data-livello="intermedio" data-tag="fattori|asset allocation" data-ordine="34" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Come costruire il portafoglio</p>
+      <h3 class="scheda-titolo"><a href="trend-following.html">Trend following, comprare ciò che sale</a></h3>
+      <p class="scheda-sommario">Comprare i mercati che salgono e vendere allo scoperto quelli che scendono ha avuto rendimenti positivi in ogni decennio dal 1880 e ha reso bene nei crolli azionari. È l'anomalia più difficile da conciliare con l'efficienza, e la più difficile da mantenere in portafoglio.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=fattori#articoli" data-tag="fattori">fattori</a></li><li><a href="index.html?tag=asset%20allocation#articoli" data-tag="asset allocation">asset allocation</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="opzioni-come-funzionano" data-gruppo="derivati" data-livello="intermedio" data-tag="opzioni" data-ordine="35" data-data="2026-11-13" data-minuti="7">
+      <p class="scheda-occhiello">Opzioni e derivati</p>
+      <h3 class="scheda-titolo"><a href="opzioni-come-funzionano.html">Opzioni, un diritto che si compra e un obbligo che si vende</a></h3>
+      <p class="scheda-sommario">Un'opzione dà a chi la compra il diritto di comprare o vendere un titolo a un prezzo fissato, entro una data. Chi la vende si prende l'obbligo corrispondente. Quattro parametri bastano a descriverla, ma le combinazioni possibili sono migliaia.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 7 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli" data-tag="opzioni">opzioni</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="profili-di-rendimento" data-gruppo="derivati" data-livello="intermedio" data-tag="opzioni|rischio" data-ordine="36" data-data="2026-11-13" data-minuti="6">
+      <p class="scheda-occhiello">Opzioni e derivati</p>
+      <h3 class="scheda-titolo"><a href="profili-di-rendimento.html">Profili di rendimento, la forma del rischio</a></h3>
+      <p class="scheda-sommario">Il profilo di rendimento mostra quanto vale una posizione per ogni prezzo del sottostante. Un'azione è una retta; le opzioni la piegano. Si può scegliere la forma, non ottenerne una migliore in ogni caso.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 6 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli" data-tag="opzioni">opzioni</a></li><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="valore-temporale" data-gruppo="derivati" data-livello="avanzato" data-tag="opzioni|volatilità|statistica" data-ordine="37" data-data="2026-11-13" data-minuti="7">
+      <p class="scheda-occhiello">Opzioni e derivati</p>
+      <h3 class="scheda-titolo"><a href="valore-temporale.html">Valore temporale, perché un'opzione vale più del suo incasso</a></h3>
+      <p class="scheda-sommario">Il premio di un'opzione ha due parti: il valore intrinseco, cioè ciò che renderebbe oggi, e il valore temporale, cioè la possibilità che renda di più. La seconda cresce con il tempo e con la volatilità, e la formula di Black e Scholes la misura.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 7 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli" data-tag="opzioni">opzioni</a></li><li><a href="index.html?tag=volatilit%C3%A0#articoli" data-tag="volatilità">volatilità</a></li><li><a href="index.html?tag=statistica#articoli" data-tag="statistica">statistica</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="greche" data-gruppo="derivati" data-livello="avanzato" data-tag="opzioni|volatilità" data-ordine="38" data-data="2026-11-13" data-minuti="6">
+      <p class="scheda-occhiello">Opzioni e derivati</p>
+      <h3 class="scheda-titolo"><a href="greche.html">Le greche, che cosa compri insieme a una call</a></h3>
+      <p class="scheda-sommario">Il prezzo di un'opzione reagisce al sottostante, al tempo, alla volatilità e ai tassi. Le greche misurano ciascuna di queste sensibilità. Servono a capire che una call non è una scommessa sola, ma tre.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 6 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli" data-tag="opzioni">opzioni</a></li><li><a href="index.html?tag=volatilit%C3%A0#articoli" data-tag="volatilità">volatilità</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="esercizio-e-assegnazione" data-gruppo="derivati" data-livello="intermedio" data-tag="opzioni" data-ordine="39" data-data="2026-11-13" data-minuti="5">
+      <p class="scheda-occhiello">Opzioni e derivati</p>
+      <h3 class="scheda-titolo"><a href="esercizio-e-assegnazione.html">Esercizio e assegnazione, che cosa succede alla scadenza</a></h3>
+      <p class="scheda-sommario">Chi compra un'opzione può esercitarla, rivenderla o lasciarla scadere. Esercitarla prima del tempo raramente conviene, e chi l'ha venduta viene scelto a caso. Alla scadenza può darsi che nessun titolo passi di mano.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 5 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli" data-tag="opzioni">opzioni</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="vendere-opzioni" data-gruppo="derivati" data-livello="avanzato" data-tag="opzioni|volatilità|rischio|leva" data-ordine="40" data-data="2026-11-13" data-minuti="7">
+      <p class="scheda-occhiello">Opzioni e derivati</p>
+      <h3 class="scheda-titolo"><a href="vendere-opzioni.html">Vendere opzioni, un reddito che è un premio assicurativo</a></h3>
+      <p class="scheda-sommario">Chi vende opzioni incassa un premio e, nella maggior parte dei mesi, lo tiene. I dati mostrano che in media è un'attività remunerata. Ma il guadagno è il compenso per assicurare gli altri contro i crolli, e i crolli arrivano tutti insieme.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 7 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli" data-tag="opzioni">opzioni</a></li><li><a href="index.html?tag=volatilit%C3%A0#articoli" data-tag="volatilità">volatilità</a></li><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li><li><a href="index.html?tag=leva#articoli" data-tag="leva">leva</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="etf-covered-call" data-gruppo="derivati" data-livello="intermedio" data-tag="opzioni|fondi ed ETF|costi" data-ordine="41" data-data="2026-11-13" data-minuti="5">
+      <p class="scheda-occhiello">Opzioni e derivati</p>
+      <h3 class="scheda-titolo"><a href="etf-covered-call.html">ETF covered call, la distribuzione non è il rendimento</a></h3>
+      <p class="scheda-sommario">Gli ETF che vendono call sulle azioni che possiedono distribuiscono somme alte e regolari. Ma la distribuzione non misura quanto rende il fondo: conta il rendimento totale, che con questa strategia tende a essere più basso dell'indice nei mercati in crescita.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 5 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli" data-tag="opzioni">opzioni</a></li><li><a href="index.html?tag=fondi%20ed%20ETF#articoli" data-tag="fondi ed ETF">fondi ed ETF</a></li><li><a href="index.html?tag=costi#articoli" data-tag="costi">costi</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="strategie-combinate" data-gruppo="derivati" data-livello="avanzato" data-tag="opzioni|costi" data-ordine="42" data-data="2026-11-13" data-minuti="7">
+      <p class="scheda-occhiello">Opzioni e derivati</p>
+      <h3 class="scheda-titolo"><a href="strategie-combinate.html">Strategie con più opzioni, mattoncini e parità put-call</a></h3>
+      <p class="scheda-sommario">Unendo due o più opzioni si ottengono profili diversi: spread, straddle, strangle, butterfly. La parità put-call mostra che molti di questi sono equivalenti tra loro. Ogni gamba ha un costo, e la complessità moltiplica i costi più dei vantaggi.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 7 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=opzioni#articoli" data-tag="opzioni">opzioni</a></li><li><a href="index.html?tag=costi#articoli" data-tag="costi">costi</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="esposizione-geografica" data-gruppo="esposizioni" data-livello="intermedio" data-tag="geografia|azioni|diversificazione" data-ordine="43" data-data="2026-11-13" data-minuti="9">
+      <p class="scheda-occhiello">Che cosa possiedi davvero</p>
+      <h3 class="scheda-titolo"><a href="esposizione-geografica.html">Dove investe davvero un indice globale</a></h3>
+      <p class="scheda-sommario">Il peso di un paese in un indice dice dove le società hanno la sede, non dove vendono, producono e comprano. Misurata così, l'esposizione agli Stati Uniti scende e quella alla Cina quintuplica. Ma l'esposizione economica non è diversificazione, e i due concetti vanno tenuti distinti.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 9 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=geografia#articoli" data-tag="geografia">geografia</a></li><li><a href="index.html?tag=azioni#articoli" data-tag="azioni">azioni</a></li><li><a href="index.html?tag=diversificazione#articoli" data-tag="diversificazione">diversificazione</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="quale-cina" data-gruppo="esposizioni" data-livello="intermedio" data-tag="Cina|geografia|fondi ed ETF" data-ordine="44" data-data="2026-11-13" data-minuti="9">
+      <p class="scheda-occhiello">Che cosa possiedi davvero</p>
+      <h3 class="scheda-titolo"><a href="quale-cina.html">Quale Cina compri</a></h3>
+      <p class="scheda-sommario">Le azioni cinesi sono quotate a Shanghai e Shenzhen, a Hong Kong e a New York. Non sono tre porte sullo stesso mercato: cambiano i settori, lo stile, chi fa i prezzi e che cosa possiedi davvero. L'indice che scegli decide quale Cina hai in portafoglio.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 9 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=Cina#articoli" data-tag="Cina">Cina</a></li><li><a href="index.html?tag=geografia#articoli" data-tag="geografia">geografia</a></li><li><a href="index.html?tag=fondi%20ed%20ETF#articoli" data-tag="fondi ed ETF">fondi ed ETF</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="tpa" data-gruppo="esposizioni" data-livello="intermedio" data-tag="asset allocation" data-ordine="45" data-data="2026-11-13" data-minuti="7">
+      <p class="scheda-occhiello">Che cosa possiedi davvero</p>
+      <h3 class="scheda-titolo"><a href="tpa.html">Total Portfolio Approach, oltre le caselle</a></h3>
+      <p class="scheda-sommario">I grandi fondi pensione stanno abbandonando l'allocazione per classi di attivo a favore di un approccio in cui ogni investimento è giudicato per il contributo al portafoglio intero. L'idea è solida. Le prove che renda di più lo sono molto meno.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 7 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=asset%20allocation#articoli" data-tag="asset allocation">asset allocation</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="etichette-e-rischi" data-gruppo="esposizioni" data-livello="avanzato" data-tag="asset allocation|rischio|diversificazione" data-ordine="46" data-data="2026-11-13" data-minuti="7">
+      <p class="scheda-occhiello">Che cosa possiedi davvero</p>
+      <h3 class="scheda-titolo"><a href="etichette-e-rischi.html">Etichette e rischi</a></h3>
+      <p class="scheda-sommario">Due portafogli con la stessa ripartizione tra attività di crescita e difensive possono avere rischi diversi, e uno stesso rischio può corrispondere a ripartizioni diverse. Un caso di studio di MSCI lo mostra con i numeri: che cosa si vede quando si sommano i fattori invece delle etichette.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 7 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=asset%20allocation#articoli" data-tag="asset allocation">asset allocation</a></li><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li><li><a href="index.html?tag=diversificazione#articoli" data-tag="diversificazione">diversificazione</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="hurdle-rate" data-gruppo="esposizioni" data-livello="avanzato" data-tag="asset allocation|oro|rischio" data-ordine="47" data-data="2026-11-13" data-minuti="7">
+      <p class="scheda-occhiello">Che cosa possiedi davvero</p>
+      <h3 class="scheda-titolo"><a href="hurdle-rate.html">Quanto deve rendere per meritare un posto</a></h3>
+      <p class="scheda-sommario">Ogni nuovo investimento ha una soglia di rendimento che dipende dal portafoglio in cui entra. Si calcola con una moltiplicazione. Nel caso di studio di MSCI, oro e intelligenza artificiale hanno la stessa volatilità e soglie che distano più di sette punti.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 7 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=asset%20allocation#articoli" data-tag="asset allocation">asset allocation</a></li><li><a href="index.html?tag=oro#articoli" data-tag="oro">oro</a></li><li><a href="index.html?tag=rischio#articoli" data-tag="rischio">rischio</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="pac-o-pic" data-gruppo="vita" data-livello="intermedio" data-tag="comportamento|pianificazione" data-ordine="48" data-data="2026-11-11" data-minuti="3">
+      <p class="scheda-occhiello">Dal risparmio alla pensione</p>
+      <h3 class="scheda-titolo"><a href="pac-o-pic.html">Tutto subito o a rate</a></h3>
+      <p class="scheda-sommario">Chi ha una somma da investire e la diluisce nel tempo ottiene in media meno di chi la investe subito, circa due volte su tre. Il piano di accumulo è un'altra cosa: lì non c'è nessuna somma che aspetta.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=comportamento#articoli" data-tag="comportamento">comportamento</a></li><li><a href="index.html?tag=pianificazione#articoli" data-tag="pianificazione">pianificazione</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="fire" data-gruppo="vita" data-livello="intermedio" data-tag="pensione|pianificazione" data-ordine="49" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Dal risparmio alla pensione</p>
+      <h3 class="scheda-titolo"><a href="fire.html">FIRE, l'aritmetica dell'indipendenza finanziaria</a></h3>
+      <p class="scheda-sommario">Il movimento FIRE riduce la libertà finanziaria a due numeri, il tasso di risparmio e il tasso di prelievo. Il primo è aritmetica solida. Il secondo è un'ipotesi presa in prestito da studi pensati per un altro problema.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=pensione#articoli" data-tag="pensione">pensione</a></li><li><a href="index.html?tag=pianificazione#articoli" data-tag="pianificazione">pianificazione</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="rischio-di-sequenza" data-gruppo="vita" data-livello="intermedio" data-tag="pensione|volatilità" data-ordine="50" data-data="2026-11-11" data-minuti="3">
+      <p class="scheda-occhiello">Dal risparmio alla pensione</p>
+      <h3 class="scheda-titolo"><a href="rischio-di-sequenza.html">Rischio di sequenza, l'ordine conta quanto la media</a></h3>
+      <p class="scheda-sommario">Due investitori con gli stessi rendimenti in ordine inverso finiscono in posti diversi. È il motivo per cui «in media cresce» non basta a chi vive del portafoglio.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 3 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=pensione#articoli" data-tag="pensione">pensione</a></li><li><a href="index.html?tag=volatilit%C3%A0#articoli" data-tag="volatilità">volatilità</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="regola-4-percento" data-gruppo="vita" data-livello="intermedio" data-tag="pensione|valutazioni|dati storici" data-ordine="51" data-data="2026-11-11" data-minuti="4">
+      <p class="scheda-occhiello">Dal risparmio alla pensione</p>
+      <h3 class="scheda-titolo"><a href="regola-4-percento.html">La regola del 4%, da dove viene e dove si rompe</a></h3>
+      <p class="scheda-sommario">Il 4% nasce da due studi americani degli anni Novanta. Fuori dagli Stati Uniti, su orizzonti più lunghi o con valutazioni alte, il numero scende. Le regole flessibili lo rialzano, ma spostano il rischio sul tenore di vita.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=pensione#articoli" data-tag="pensione">pensione</a></li><li><a href="index.html?tag=valutazioni#articoli" data-tag="valutazioni">valutazioni</a></li><li><a href="index.html?tag=dati%20storici#articoli" data-tag="dati storici">dati storici</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="ciclo-di-vita" data-gruppo="vita" data-livello="avanzato" data-tag="pensione|asset allocation|leva" data-ordine="52" data-data="2026-11-11" data-minuti="4">
+      <p class="scheda-occhiello">Dal risparmio alla pensione</p>
+      <h3 class="scheda-titolo"><a href="ciclo-di-vita.html">Ciclo di vita, capitale umano e leva da giovani</a></h3>
+      <p class="scheda-sommario">La ricchezza di una persona è la somma del portafoglio e dei redditi futuri. Guardarla per intero cambia l'asset allocation, fino a due proposte estreme: indebitarsi da giovani per comprare azioni, o tenere solo azioni per tutta la vita.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-11">11 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=pensione#articoli" data-tag="pensione">pensione</a></li><li><a href="index.html?tag=asset%20allocation#articoli" data-tag="asset allocation">asset allocation</a></li><li><a href="index.html?tag=leva#articoli" data-tag="leva">leva</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="input-di-qualita" data-gruppo="oltre" data-livello="intermedio" data-tag="metodo|comportamento" data-ordine="53" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Oltre il portafoglio</p>
+      <h3 class="scheda-titolo"><a href="input-di-qualita.html">Input di qualità, la dieta delle informazioni</a></h3>
+      <p class="scheda-sommario">Una decisione non può essere migliore delle informazioni da cui parte. Feed, notizie dell'ultima ora e contenuti scritti per il clic occupano tempo e attenzione senza dare contesto. Per chi investe il costo è doppio, perché spingono anche ad agire.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=metodo#articoli" data-tag="metodo">metodo</a></li><li><a href="index.html?tag=comportamento#articoli" data-tag="comportamento">comportamento</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="pensiero-di-terzo-livello" data-gruppo="oltre" data-livello="intermedio" data-tag="metodo|comportamento" data-ordine="54" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Oltre il portafoglio</p>
+      <h3 class="scheda-titolo"><a href="pensiero-di-terzo-livello.html">Pensiero di terzo livello, cambiare idea non basta</a></h3>
+      <p class="scheda-sommario">Nat Eliason descrive tre stadi: credere a ciò che si è ricevuto, convertirsi a una dottrina scelta, e infine usare le dottrine come strumenti. Negli investimenti il secondo stadio è il più comune e il più difficile da riconoscere dall'interno.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=metodo#articoli" data-tag="metodo">metodo</a></li><li><a href="index.html?tag=comportamento#articoli" data-tag="comportamento">comportamento</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="cassa-e-patrimonio" data-gruppo="oltre" data-livello="intermedio" data-tag="pianificazione|interesse composto" data-ordine="55" data-data="2026-11-13" data-minuti="4">
+      <p class="scheda-occhiello">Oltre il portafoglio</p>
+      <h3 class="scheda-titolo"><a href="cassa-e-patrimonio.html">Cassa e patrimonio, due tempi per due tipi di progetto</a></h3>
+      <p class="scheda-sommario">Nat Eliason distingue le attività che producono denaro subito da quelle che costruiscono valore nel tempo. È la distinzione tra reddito e capitale che vale per gli investimenti, applicata al lavoro e ai progetti personali.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span> <span aria-hidden="true">·</span> 4 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=pianificazione#articoli" data-tag="pianificazione">pianificazione</a></li><li><a href="index.html?tag=interesse%20composto#articoli" data-tag="interesse composto">interesse composto</a></li></ul>
+    </article>
+    <article class="scheda" data-slug="come-stanno-insieme" data-gruppo="sintesi" data-livello="avanzato" data-tag="efficienza dei mercati|asset allocation" data-ordine="56" data-data="2026-11-13" data-minuti="7">
+      <p class="scheda-occhiello">Trarre le conclusioni</p>
+      <h3 class="scheda-titolo"><a href="come-stanno-insieme.html">Come stanno insieme, tensioni e posizioni coerenti</a></h3>
+      <p class="scheda-sommario">Mercati efficienti e risk parity non possono essere entrambi veri in forma forte. Una mappa delle contraddizioni e tre modi coerenti di uscirne.</p>
+      <p class="scheda-meta"><span class="livello" data-punti="3"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Avanzato</span></span> <span aria-hidden="true">·</span> 7 minuti <span aria-hidden="true">·</span> <time datetime="2026-11-13">13 nov 2026</time></p>
+      <ul class="scheda-tag" aria-label="Tag"><li><a href="index.html?tag=efficienza%20dei%20mercati#articoli" data-tag="efficienza dei mercati">efficienza dei mercati</a></li><li><a href="index.html?tag=asset%20allocation#articoli" data-tag="asset allocation">asset allocation</a></li></ul>
+    </article>
+  </div>
+  <p class="esplora-vuoto" hidden>Nessun articolo corrisponde. <button type="button" class="esplora-azzera">Cancella i filtri</button></p>
+  <div class="esplora-altri"><button type="button" class="bottone-secondario" hidden>Mostra altri</button></div>
 </section>
 <section class="indice-coda">
 <aside class="rimando" aria-label="Simulatore di portafogli">
@@ -293,6 +540,17 @@
     <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="https://portfolio-site-2zxf.onrender.com" target="_blank" rel="noopener">Simulatore di portafogli<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
   </div>
 </footer>
+<dialog class="ricerca" aria-labelledby="ricerca-etichetta">
+  <form class="ricerca-testa" role="search">
+    <label id="ricerca-etichetta" for="ricerca-campo" class="visivamente-nascosto">Cerca negli articoli</label>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+    <input id="ricerca-campo" type="search" placeholder="Cerca negli articoli" autocomplete="off" spellcheck="false" enterkeyhint="go">
+    <button type="button" class="ricerca-chiudi">Chiudi</button>
+  </form>
+  <p class="ricerca-stato" aria-live="polite"></p>
+  <ol class="ricerca-risultati"></ol>
+  <a class="ricerca-tutti" href="index.html#articoli" hidden>Vedi tutti i risultati, con filtri e tag <span aria-hidden="true">→</span></a>
+</dialog>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

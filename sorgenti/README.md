@@ -31,6 +31,8 @@ Dopo ogni modifica a testi, stile o script, rigenera e committa anche gli HTML. 
 
 ## Scrivere un articolo
 
+Le regole complete per chi scrive (livelli, struttura, fonti, stile, controllo finale) sono in [`LINEE-GUIDA-ARTICOLI.md`](LINEE-GUIDA-ARTICOLI.md). Qui sotto solo il formato tecnico.
+
 Ogni file in `contenuti/` inizia con un'intestazione:
 
 ```
@@ -39,11 +41,20 @@ slug: nome-del-file-html
 titolo: Titolo dell'articolo
 tesi: La tesi in una frase.
 obiezione: L'obiezione più forte in una frase.
-gruppo: strumento | rendimenti | prezzi | portafoglio | esposizioni | vita | sintesi
+gruppo: basi | strumento | rendimenti | prezzi | portafoglio | derivati | esposizioni | vita | oltre | sintesi
+livello: base | intermedio | avanzato
+tag: azioni, dati storici   (uno o più, dal vocabolario TAG di build.mjs)
+prima: slug-di-un-altro-articolo, slug-di-un-altro   (facoltativo)
 sommario: Due righe che compaiono sotto il titolo e nei risultati di ricerca.
 aggiornato: 2026-11-11
 ---
 ```
+
+`livello` è obbligatorio. Gli articoli `base` non hanno `tesi` né `obiezione` (la build li accetta senza), in home mostrano titolo e sommario, e il blocco `::: difendibile` compare come «In sintesi». Per gli altri livelli `tesi` e `obiezione` sono obbligatorie: se mancano la build si ferma.
+
+`prima` elenca gli articoli da leggere prima: compaiono in un riquadro «Prima di leggere» in cima alla pagina. Uno slug che non esiste ferma la build.
+
+Gli articoli del gruppo `basi` sono un percorso: in home sono numerati e in testa all'articolo compare «passo 2 di 14». Finché il gruppo è vuoto non compare, e il bottone in home resta «Inizia a leggere»; con almeno un articolo diventa «Parti dalle basi».
 
 `aggiornato` (formato AAAA-MM-GG) è obbligatorio per gli articoli: compare sotto il titolo come «Aggiornato l'11 novembre 2026». Va cambiato quando si rivede il contenuto, non per correzioni di battitura.
 
@@ -74,6 +85,16 @@ Testo.
 ```
 
 Ogni titolo `##` diventa una voce del sommario della pagina.
+
+## Ricerca, filtri e tag
+
+La home non elenca più gli articoli per gruppo: ha una sezione «Tutti gli articoli» con un campo di ricerca, tre menu di filtri a scelta multipla (tema, livello, tag, ciascuno con il numero di articoli accanto alle voci), l'ordinamento (percorso consigliato, rilevanza, più recenti, più brevi), le etichette dei filtri attivi e una griglia di schede che si apre dodici alla volta. Senza JavaScript le schede si vedono comunque tutte, nell'ordine del percorso.
+
+Lo stato della ricerca finisce nell'indirizzo (`index.html?q=inflazione&livello=base&tag=costi#articoli`), quindi si può condividere. I tag nelle schede e sotto il titolo degli articoli usano lo stesso meccanismo, come il nome del gruppo sopra il titolo (`?tema=rendimenti`).
+
+I tag ammessi sono nell'elenco `TAG` di `build.mjs`: un tag che non c'è ferma la build. Per aggiungerne uno basta inserirlo nell'elenco.
+
+La build scrive anche `../assets/js/indice-ricerca.js` con titolo, tesi, obiezione, sommario, tag, titoli delle sezioni e testo di ogni articolo, senza formule. È un file JavaScript e non JSON perché così si carica anche aprendo il sito dal disco; `main.js` lo scarica solo alla prima ricerca. La ricerca ignora maiuscole e accenti, cerca i termini all'inizio delle parole e pesa di più titolo e tag. La stessa ricerca è nella finestra «Cerca» della testata (bottone, `/` o Ctrl+K), che rimanda alla home per i risultati completi.
 
 ## Fonti
 

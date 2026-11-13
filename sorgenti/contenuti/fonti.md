@@ -7,6 +7,32 @@ sommario: Tutti i numeri citati negli articoli vengono dalle pagine qui sotto, c
 
 I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'11 e il 13 novembre 2026. Gli esempi numerici di [Valore atteso](valore-atteso.html), [Rischio di sequenza](rischio-di-sequenza.html), [Risk parity](risk-parity.html), [FIRE](fire.html) (la tabella degli anni al traguardo), [Volatility drag](volatility-drag.html) (ETF a leva e demone di Shannon) [Tutto subito o a rate](pac-o-pic.html) (costo atteso dell'attesa), [Dove investe davvero un indice globale](esposizione-geografica.html) (le due società) e [Quanto deve rendere per meritare un posto](hurdle-rate.html) (la tabella con l'ETF tematico) sono calcoli illustrativi su ipotesi dichiarate nel testo.
 
+## Per iniziare
+
+Pagine consultate il 13 novembre 2026. Sono calcoli illustrativi, con rendimenti e inflazione costanti: le tabelle sul potere d'acquisto in «Soldi fermi sul conto»; gli esempi con il 3% e il 2% in «Inflazione e rendimento reale»; tutti gli importi di «Interesse composto» e di «I costi»; la tabella delle perdite e dei recuperi in «Volatilità e perdite»; l'esempio dei 1.500 € al mese in «Orizzonte e fondo di emergenza»; gli esempi di imposta su 1.000 € di guadagno e di bollo su 20.000 € in «Le tasse di base». Il calo di potere d'acquisto del 2022–2023 e il rendimento reale del 2022 sono calcolati dai dati Istat citati.
+
+- [Perché la stabilità dei prezzi è importante](https://www.ecb.europa.eu/explainers/tell-me-more/html/stableprices.it.html) – Banca centrale europea
+- [Prezzi al consumo, dicembre 2022](https://www.istat.it/comunicato-stampa/prezzi-al-consumo-dicembre-2022/) – Istat, comunicato stampa, gennaio 2023
+- [Prezzi al consumo, dicembre 2024](https://www.istat.it/comunicato-stampa/prezzi-al-consumo-dicembre-2024/) – Istat, comunicato stampa, gennaio 2025
+- [Cosa facciamo, opuscolo informativo](https://www.fitd.it/Content/public/FITD_opuscolo_informativo_cosa_facciamo.pdf) – Fondo Interbancario di Tutela dei Depositi
+- [Global Investment Returns Yearbook 2026: Timeless lessons for today's investment challenges](https://www.ubs.com/global/en/media/display-page-ndp/en-20260303-global-investment-returns-yearbook-2026.html) – UBS, comunicato stampa, marzo 2026
+- [Sintesi dello Yearbook 2026](https://www.ubs.com/global/en/wealthmanagement/insights/marketnews/article.3435923.html) – UBS Chief Investment Office, 2026
+- [Hai deciso di investire: cosa devi fare?](https://www.consob.it/web/investor-education/hai-deciso-di-investire-cosa-devi-fare-) – Consob, educazione finanziaria
+- [Consigli utili per interagire con un professionista](https://www.consob.it/web/investor-education/consigli-utili-per-interagire-con-un-professionista) – Consob, educazione finanziaria
+- [Profilatura e valutazione di adeguatezza](https://www.consob.it/web/investor-education/profilatura-e-valutazione-di-adeguatezza) – Consob, educazione finanziaria
+- [MSCI World Index (USD), Index Factsheet](https://www.msci.com/documents/10199/178e6643-6ae6-47b9-82be-e1fc565ededb) – MSCI, 30 ottobre 2026
+- [Report on total costs of UCITS and AIFs, presentazione](https://www.esma.europa.eu/sites/default/files/2025-11/Report_on_costs_charged_by_UCITS_management_companies_and_AIFMs_to_investors_-_Webinar.pdf) – ESMA, novembre 2025
+- [Retail clients continue to lose out due to high investment products costs](https://www.esma.europa.eu/press-news/esma-news/retail-clients-continue-lose-out-due-high-investment-products-costs) – ESMA, comunicato
+- [J.P. Morgan Asset Management Releases 2025 Guide to Retirement](https://am.jpmorgan.com/us/en/asset-management/per/about-us/media/press-releases/jp-morgan-asset-management-releases-2025-guide-to-retirement) – J.P. Morgan Asset Management, comunicato stampa, 2025
+- [Reasons to stay invested](https://www.chase.com/personal/investments/learning-and-insights/article/reasons-to-stay-invested) – J.P. Morgan, su dati J.P. Morgan Asset Management
+- [Circolare n. 19/E del 27 giugno 2014, Modifica dell'aliquota di tassazione dei redditi di natura finanziaria](https://agenziaentrate.gov.it/portale/documents/20143/298850/Circolare+n19E+del+27+giugno+2014_Cir19e+del+27+06+14.pdf/429c76f6-6236-4071-79ae-65af4aadd134) – Agenzia delle Entrate
+- [Circolare n. 48/E del 21 dicembre 2012, imposta di bollo su estratti conto e prodotti finanziari](https://www.dirittobancario.it/wp-content/uploads/sites/default/files/allegati/circolare_agenzia_delle_entrate_21_dicembre_2012_n._48_e.pdf) – Agenzia delle Entrate, copia pubblicata da DirittoBancario.it
+- [Risoluzione n. 76/E del 6 novembre 2013, sui regimi dichiarativo, amministrato e gestito](https://www.dirittobancario.it/wp-content/uploads/sites/default/files/allegati/risoluzione_agenzia_delle_entrate_6_novembre_2013_n._76-e.pdf) – Agenzia delle Entrate, copia pubblicata da DirittoBancario.it
+- [Delibera sulla notifica dei KID dei PRIIPs](https://www.consob.it/documents/1912911/1979253/d21640.pdf/e4cb5bc5-6e7d-e2a8-9ea0-5da9e1739f08) – Consob, con i riferimenti al regolamento (UE) n. 1286/2014 e al regolamento delegato (UE) 2017/653
+- Testo unico delle imposte sui redditi, D.P.R. 22 dicembre 1986, n. 917, articoli 44, 67 e 68
+- Decreto legislativo 21 novembre 1997, n. 461, articoli 5, 6 e 7
+- Tariffa allegata al D.P.R. 26 ottobre 1972, n. 642, articolo 13, commi 2-bis e 2-ter
+
 ## Valore atteso
 
 - [The ergodicity problem in economics](https://www.nature.com/articles/s41567-019-0732-0) – Ole Peters, Nature Physics 2019
@@ -20,7 +46,12 @@ I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'
 - [Stocks for the long run? Evidence from a broad sample of developed markets](https://econpapers.repec.org/RePEc:eee:jfinec:v:143:y:2022:i:1:p:409-433) – Anarkulova, Cederburg, O'Doherty, Journal of Financial Economics 2022
 - [The Long-Horizon Returns of Stocks, Bonds, and Bills](https://business.unl.edu/academic-programs/departments/finance/about/seminar-series/documents/MikeODoherty.pdf) – stessi autori
 - [The Long-Term Safety of Stocks May Be Overstated](https://business.missouri.edu/news/long-term-safety-stocks-may-be-overstated-heres-why) – University of Missouri
-- [Myopic Loss Aversion and the Equity Premium Puzzle](https://www.nber.org/system/files/working_papers/w4369/w4369.pdf) – Benartzi e Thaler, NBER
+- The Equity Premium: A Puzzle – Mehra e Prescott, Journal of Monetary Economics 1985
+- [Myopic Loss Aversion and the Equity Premium Puzzle](https://www.nber.org/system/files/working_papers/w4369/w4369.pdf) – Benartzi e Thaler, NBER, poi Quarterly Journal of Economics 1995
+- The Equity Risk Premium: A Solution – Rietz, Journal of Monetary Economics 1988
+- Rare Disasters and Asset Markets in the Twentieth Century – Barro, Quarterly Journal of Economics 2006
+- By Force of Habit: A Consumption-Based Explanation of Aggregate Stock Market Behavior – Campbell e Cochrane, Journal of Political Economy 1999
+- Risks for the Long Run: A Potential Resolution of Asset Pricing Puzzles – Bansal e Yaron, Journal of Finance 2004
 - [Equity premium puzzle](https://en.wikipedia.org/wiki/Equity_premium_puzzle) – Wikipedia, con bibliografia
 - [One trade at a time](https://arxiv.org/pdf/1507.07214.pdf) – rassegna sullo stato del puzzle
 
@@ -41,6 +72,8 @@ I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'
 - [The Adaptive Markets Hypothesis](https://web.mit.edu/~alo/www/Papers/JPM2004.html) – Andrew Lo, Journal of Portfolio Management 2004 ([testo su SSRN](https://papers.ssrn.com/abstract=602222))
 - [Reconciling Efficient Markets with Behavioral Finance](https://www.cxoadvisory.com/?p=336) – CXO Advisory, sintesi
 - [Lo: Adaptive Markets](https://www.investing.com/analysis/lo-adaptive-markets-200278166) – Investing.com, commento
+- Common Risk Factors in the Returns on Stocks and Bonds – Fama e French, Journal of Financial Economics 1993
+- A Five-Factor Asset Pricing Model – Fama e French, Journal of Financial Economics 2015
 - [Does Academic Research Destroy Stock Return Predictability?](https://doi.org/10.1111/jofi.12365) – McLean e Pontiff, Journal of Finance 2016
 - [Published Results Impact Future Results](https://www.etf.com/sections/index-investor-corner/swedroe-published-results-impact-future-results) – Swedroe
 - [MoneySense sul premio value](https://moneysense.ca/?p=36813) – value a grande capitalizzazione contro S&P 500 dal 1927
@@ -127,6 +160,7 @@ I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'
 ## Trend following e oro
 
 - [A Century of Evidence on Trend-Following Investing](https://fairmodel.econ.yale.edu/ec439/hurst.pdf) – Hurst, Ooi, Pedersen, Journal of Portfolio Management 2017
+- Time Series Momentum – Moskowitz, Ooi, Pedersen, Journal of Financial Economics 2012
 - [Time Series Momentum, the historical evidence](https://alphaarchitect.com/time-series-momentum-aka-trend-following-the-historical-evidence/) – Alpha Architect
 - [The Golden Dilemma](https://people.duke.edu/~charvey/Research/Published_Papers/P113_The_golden_dilemma.pdf) – Erb e Harvey, Financial Analysts Journal 2013
 - [Sintesi dello studio](https://archive.investmentoffice.com/io/Investment_Thoughts/Academia/The_Golden_Dilemma.php) – Investment Office
@@ -172,6 +206,52 @@ I dati dei paper MSCI sono riportati con la loro data di riferimento, indicata n
 - [The End of the Allocation Bucket](https://www.universalassetowners.com/intelligence/uao-daily-brief-2026-07-01/) – Universal Asset Owners, 1° luglio 2026
 - [Interview with Cliff Asness](https://www.aqr.com/-/media/AQR/Documents/Journal-Articles/Interview-with-Cliff-Asness-Journal-of-Private-Markets-Investing--Spring-2026.pdf?sc_lang=en) – Journal of Private Markets Investing, primavera 2026
 - [How Private Equity Funds Understate the Risk in Their Investments](https://www.morningstar.com/alternative-investments/how-private-equity-funds-understate-risk-their-investments) – Larry Swedroe, Morningstar
+
+## Opzioni
+
+Pagine consultate il 13 novembre 2026. Sono calcoli illustrativi, fatti con la formula di Black e Scholes e un tasso del 3%: i prezzi della put a 105 e a 90 e della call con volatilità al 20% e al 60% in «Valore temporale»; la tabella del premio per giorni alla scadenza; la call con strike 70 in «Profili di rendimento»; le greche e lo scenario della settimana in «Le greche». Sono illustrativi anche la tabella dei profili con premio 5 e l'esempio dei dadi, calcolato in modo esatto.
+
+- [Options](https://www.finra.org/investors/learn-to-invest/types-investments/options) – FINRA
+- [Options](https://www.finra.org/investors/investing/investment-products/options) – FINRA, esercizio, rivendita e scadenza
+- [Options A to Z: Basics and Greeks](https://www.finra.org/investors/insights/options-z-basics-greeks) – FINRA
+- [FAQ: Options Basics](https://www.optionseducation.org/referencelibrary/faq/basics) – Options Industry Council
+- [FAQ: Options Basics, stile americano ed europeo](https://prd-web.optionseducation.org/referencelibrary/faq/basics) – Options Industry Council
+- [FAQ: Options Assignment](https://prd-web.optionseducation.org/referencelibrary/faq/options-assignment) – Options Industry Council
+- [Cboe Global Markets Reports Trading Volume for December and Full Year 2025](https://ir.cboe.com/news/news-details/2026/Cboe-Global-Markets-Reports-Trading-Volume-for-December-and-Full-Year-2025/) – Cboe Global Markets, comunicato, 6 gennaio 2026
+- [Benchmark Indices Series: Income Generation and Smoother Returns with Cboe's BXM, BXMD, PUT and CMBO Indices](https://www.cboe.com/insights/posts/benchmark-indices-series-income-generation-and-smoother-returns-with-cboes-bxm-bxmd-put-and-cmbo-indices) – Matt Moran, Cboe, 20 luglio 2021
+- [Risposta n. 708 del 14 ottobre 2021, redditi di natura finanziaria art. 67, comma 1, lett. c-quater](https://www.agenziaentrate.gov.it/portale/documents/20143/3844145/Risposta+n.+708+del+2021.pdf/847e8598-a669-bd66-7494-4c647d16aafa) – Agenzia delle Entrate
+- [Press release: The Prize in Economic Sciences 1997](https://www.nobelprize.org/prizes/economics/1997/press-release/) – Accademia reale svedese delle scienze, 14 ottobre 1997
+- [Press release 1997, versione con «Other applications»](https://www.nobelprize.org/nobel_prizes/economic-sciences/laureates/1997/press.html) – Accademia reale svedese delle scienze
+- Black, F. e Scholes, M., «The Pricing of Options and Corporate Liabilities», Journal of Political Economy, 81(3), 1973
+- [Model Mind](https://robertcmerton.com/wp-content/uploads/2025/07/Model-Mind.pdf) – Robert C. Merton, sul modello del 1974 («On the Pricing of Corporate Debt», Journal of Finance)
+- [Expected Option Returns](https://scholarsarchive.byu.edu/facpub/9281) – Coval e Shumway, Journal of Finance, 2001, abstract
+- [Expected Option Returns](https://econpapers.repec.org/RePEc:bla:jfinan:v:56:y:2001:i:3:p:983-1009) – Coval e Shumway, Journal of Finance, 2001, scheda EconPapers
+- [Variance Risk Premiums](https://econpapers.repec.org/RePEc:oup:rfinst:v:22:y:2009:i:3:p:1311-1341) – Carr e Wu, Review of Financial Studies, 2009
+- [Variance Risk Premiums, testo](https://typeset.io/pdf/variance-risk-premiums-2r5d548tv2.pdf) – Carr e Wu, 2009, copia pubblicata da un sito terzo
+- [Covered Calls Uncovered](https://rpc.cfainstitute.org/research/financial-analysts-journal/2015/covered-calls-uncovered) – Israelov e Nielsen, Financial Analysts Journal, 2015
+- [Covered Call Strategies: One Fact and Eight Myths](https://www.aqr.com/-/media/AQR/Documents/Insights/Journal-Article/FAJ-Covered-Call-Strategies-One-Fact-and-Eight-Myths.pdf) – Israelov e Nielsen, Financial Analysts Journal, 2014
+- [Covered Call Strategies: One Fact and Eight Myths, scheda](https://econpapers.repec.org/RePEc:taf:ufajxx:v:70:y:2014:i:6:p:23-31) – EconPapers
+- [Early Option Exercise: Never Say Never](https://econpapers.repec.org/paper/cprceprdp/11019.htm) – Jensen e Pedersen, CEPR, pubblicato nel Journal of Financial Economics, 2016
+- [Retail Trading in Options and the Rise of the Big Three Wholesalers](https://lbsresearch.london.edu/id/eprint/2827) – Bryzgalova, Pavlova e Sikorskaya, Journal of Finance, 2023
+- [Retail investors lost billions of dollars day trading derivatives during the pandemic](https://zmescience.com/science/retail-investors-lost-billions-of-dollars-day-trading-derivatives-during-the-pandemic) – ZME Science, sullo studio di Bryzgalova, Pavlova e Sikorskaya
+- [Put-call parity at 50](https://caia.org/node/5599) – CAIA Association, su Stoll, «The Relationship between Put and Call Option Prices», Journal of Finance, 1969
+- [Covered Calls: A Devil's Bargain](https://rosetta.to/u/benfelixcsi/covered-calls-a-devil-s-bargain) – Ben Felix, video, trascrizione su sito terzo
+
+## Oltre il portafoglio, Bogle, caos
+
+Testi citati per autore e titolo: sono la base degli articoli «Input di qualità», «Pensiero di terzo livello», «Cassa e patrimonio», «Bogle e l'indicizzazione» e «Caos di primo e secondo ordine».
+
+- Cultivating High-Quality Inputs for High-Quality Outputs – Nat Eliason, saggio
+- Level 3 Thinking: A Unified Theory of Self-Improvement – Nat Eliason, saggio
+- Fast Cash vs. Slow Equity – Nat Eliason, saggio, con gli esempi di Growth Machine e di Kit
+- Divertirsi da morire (Amusing Ourselves to Death) – Neil Postman, 1985
+- Crony Beliefs – Kevin Simler, Melting Asphalt, 2016
+- Deep Work – Cal Newport, 2016
+- The Acceleration of Addictiveness – Paul Graham, 2010
+- On John Bogle and index investing – MrRIP, Retire In Progress, 19 gennaio 2019
+- Bogle Sounds a Warning on Index Funds – John C. Bogle, The Wall Street Journal, 29 novembre 2018
+- First and Second Order Chaos – Daniel Miessler, 11 marzo 2017
+- Sapiens. Da animali a dèi – Yuval Noah Harari, 2011
 
 ## Libri per andare oltre
 

@@ -17,14 +17,19 @@ Ogni tesi vale quanto la migliore obiezione a cui sa rispondere. Per questo gli 
 
 Le formule sono scritte per intero e ogni numero rimanda alla sua fonte.
 
+Ogni articolo ha un livello di difficoltà (base, intermedio o avanzato), e in home si possono filtrare per livello. Una ricerca interna trova gli articoli per parola.
+
 ## Di cosa parla
 
-- **Il metro di giudizio**: il valore atteso, il costo della volatilità, entrare tutto subito o a rate.
-- **Quanto rende il mercato**: crescita di lungo periodo, il campione dei paesi sviluppati, perché la crescita del PIL non diventa per forza rendimento, premio per il rischio, i pochi titoli che fanno l'indice, prezzo d'ingresso, ordine dei rendimenti.
-- **I prezzi sono giusti?**: mercati efficienti, gestione passiva, finanza comportamentale, mercati adattivi, Minsky e Soros, code grasse, factor investing.
+- **Per iniziare**: quattordici articoli da leggere in ordine per chi parte da zero, dall'inflazione all'interesse composto, da azioni e obbligazioni ai costi, alle tasse e alla scheda di un fondo. Spiegano i concetti senza tesi da discutere.
+- **Il metro di giudizio**: il valore atteso e il costo della volatilità.
+- **Quanto rende il mercato**: crescita di lungo periodo, il campione dei paesi sviluppati, perché la crescita del PIL non diventa per forza rendimento, premio per il rischio, i pochi titoli che fanno l'indice, prezzo d'ingresso.
+- **I prezzi sono giusti?**: mercati efficienti, gestione passiva e l'eredità di Bogle, finanza comportamentale, mercati adattivi, Minsky e Soros, perché i mercati reagiscono alle previsioni, code grasse, factor investing.
 - **Come costruire il portafoglio**: risk parity, Permanent Portfolio, oro, trend following.
+- **Opzioni e derivati**: come funzionano le opzioni, valore temporale e greche, esercizio, vendita di opzioni, ETF covered call, strategie combinate.
 - **Che cosa possiedi davvero**: dove investe un indice globale, quale Cina c'è negli indici, il total portfolio approach, i rischi dietro le etichette, quanto deve rendere un investimento per meritare un posto.
-- **Dal risparmio alla pensione**: FIRE, la regola del 4%, il ciclo di vita.
+- **Dal risparmio alla pensione**: entrare tutto subito o a rate, FIRE, il rischio di sequenza, la regola del 4%, il ciclo di vita.
+- **Oltre il portafoglio**: come scegliere le informazioni, come cambiare idea senza cadere in una nuova dottrina, perché alcuni progetti rendono subito e altri tardi.
 - **Trarre le conclusioni**: dove queste idee si contraddicono e quali combinazioni stanno in piedi.
 
 ## Per chi è

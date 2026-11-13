@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Controtesi. Idee d'investimento messe alla prova.">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="article:modified_time" content="2026-11-11">
+<meta property="article:modified_time" content="2026-11-13">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%23ffe45c%22%2F%3E%3Cpath%20d%3D%22M9%2023%2023%209M9%209l14%2014%22%20stroke%3D%22%231d1633%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -33,6 +33,7 @@
       <a href="come-stanno-insieme.html">Mappa</a>
       <a href="fonti.html">Fonti</a>
     </nav>
+    <button class="cerca" type="button" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="cerca-parola">Cerca</span><span class="visivamente-nascosto"> negli articoli</span></button>
     <button class="tema" type="button" aria-pressed="false" aria-label="Passa al tema scuro"><span class="tema-parola">Tema </span><span class="tema-nome">scuro</span></button>
   </div>
   <div class="avanzamento" aria-hidden="true"></div>
@@ -40,10 +41,12 @@
 <main id="contenuto">
 <article>
 <header class="articolo-testa">
-  <p class="articolo-gruppo"><a href="index.html#vita">Dal risparmio alla pensione</a></p>
+  <p class="articolo-gruppo"><a href="index.html?tema=vita#articoli">Dal risparmio alla pensione</a> <span aria-hidden="true">·</span> <span class="livello" data-punti="2"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span><span class="livello-nome"><span class="visivamente-nascosto">Livello </span>Intermedio</span></span></p>
   <h1>FIRE, l'aritmetica dell'indipendenza finanziaria</h1>
   <p class="articolo-sommario">Il movimento FIRE riduce la libertà finanziaria a due numeri, il tasso di risparmio e il tasso di prelievo. Il primo è aritmetica solida. Il secondo è un'ipotesi presa in prestito da studi pensati per un altro problema.</p>
-  <p class="articolo-tempo">3 minuti di lettura <span aria-hidden="true">·</span> Aggiornato <time datetime="2026-11-11">l'11 novembre 2026</time></p>
+  <p class="articolo-tempo">4 minuti di lettura <span aria-hidden="true">·</span> Aggiornato <time datetime="2026-11-13">il 13 novembre 2026</time></p>
+  <ul class="articolo-tag" aria-label="Tag"><li><a href="index.html?tag=pensione#articoli">pensione</a></li><li><a href="index.html?tag=pianificazione#articoli">pianificazione</a></li></ul>
+  
   <div class="scontro">
     <p class="scontro-tesi"><b>La tesi</b>Conta quanto risparmi, non quanto guadagni.</p>
     <p class="scontro-obiezione"><b>L'obiezione più forte</b>La formula funziona solo se il futuro somiglia a un foglio di calcolo.</p>
@@ -94,7 +97,7 @@
 </table></div>
 <p>I valori escono dalla formula qui sopra e coincidono con quelli della tabella originale.</p>
 <h2 id="quanto-pesa-ciascuna-leva" tabindex="-1">Quanto pesa ciascuna leva</h2>
-<p>Il rendimento conta meno di quanto si crede. <a href="https://earlyretirementnow.com/2017/11/01/shockingly-simple-complicated-random-math-behind-early-retirement/" target="_blank" rel="noopener">Early Retirement Now</a> fa il confronto: con il 60% di risparmio e il 5% di rendimento servono 12,2 anni; con il 55% di risparmio servono 12,3 anni anche se il rendimento sale all'8%. Cinque punti di risparmio valgono più di tre punti di rendimento, e il risparmio è l'unica delle due variabili che controlli.</p>
+<p>Il rendimento conta meno di quanto si crede. <a href="https://earlyretirementnow.com/2017/11/01/shockingly-simple-complicated-random-math-behind-early-retirement/" target="_blank" rel="noopener">Early Retirement Now</a> fa il confronto: con il 60% di risparmio e il 5% di rendimento servono 12,2 anni; con il 55% di risparmio servono 12,3 anni anche se il rendimento sale all'8%. Sono i numeri di Early Retirement Now, calcolati con ipotesi un po' diverse dalla formula qui sopra, che darebbe circa 12,4 e 12,6 anni: il confronto non cambia. Cinque punti di risparmio valgono più di tre punti di rendimento, e il risparmio è l'unica delle due variabili che controlli.</p>
 <h2 id="obiezioni-e-risposte" tabindex="-1">Obiezioni e risposte</h2>
 <section class="voce obiezione"><p class="voce-etichetta">Obiezione</p><h3 class="voce-titolo">Il rendimento del 5% reale non è garantito</h3>
 <p>La formula usa un rendimento costante. I rendimenti veri arrivano in sequenza casuale, e <a href="valore-atteso.html">il valore atteso non è il percorso tipico</a>.</p>
@@ -133,8 +136,8 @@
 </div>
 </article>
 <nav class="vicini" aria-label="Altri articoli">
-  <a class="prima" href="hurdle-rate.html"><small>Articolo precedente</small><b>Quanto deve rendere per meritare un posto</b></a>
-  <a class="dopo" href="regola-4-percento.html"><small>Articolo successivo</small><b>La regola del 4%, da dove viene e dove si rompe</b></a>
+  <a class="prima" href="pac-o-pic.html"><small>Articolo precedente</small><b>Tutto subito o a rate</b></a>
+  <a class="dopo" href="rischio-di-sequenza.html"><small>Articolo successivo</small><b>Rischio di sequenza, l'ordine conta quanto la media</b></a>
 </nav>
 </main>
 <footer class="piede">
@@ -143,6 +146,17 @@
     <p class="piede-link"><a href="fonti.html">Fonti e letture</a> <a href="https://portfolio-site-2zxf.onrender.com" target="_blank" rel="noopener">Simulatore di portafogli<span class="esterno" aria-hidden="true"> ↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span></a></p>
   </div>
 </footer>
+<dialog class="ricerca" aria-labelledby="ricerca-etichetta">
+  <form class="ricerca-testa" role="search">
+    <label id="ricerca-etichetta" for="ricerca-campo" class="visivamente-nascosto">Cerca negli articoli</label>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+    <input id="ricerca-campo" type="search" placeholder="Cerca negli articoli" autocomplete="off" spellcheck="false" enterkeyhint="go">
+    <button type="button" class="ricerca-chiudi">Chiudi</button>
+  </form>
+  <p class="ricerca-stato" aria-live="polite"></p>
+  <ol class="ricerca-risultati"></ol>
+  <a class="ricerca-tutti" href="index.html#articoli" hidden>Vedi tutti i risultati, con filtri e tag <span aria-hidden="true">→</span></a>
+</dialog>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
