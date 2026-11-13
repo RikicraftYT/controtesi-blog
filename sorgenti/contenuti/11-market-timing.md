@@ -2,6 +2,7 @@
 slug: market-timing
 titolo: Market timing, entrare e uscire al momento giusto
 livello: base
+tag: comportamento, valutazioni
 gruppo: basi
 sommario: Vendere prima dei ribassi e ricomprare prima dei rialzi sembra buon senso. Richiede però di indovinare due volte, e i giorni migliori arrivano quasi sempre accanto ai peggiori. Per questo riesce così raramente.
 aggiornato: 2026-11-13

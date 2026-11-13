@@ -5,6 +5,7 @@ tesi: La volatilità misura il rischio.
 obiezione: Misura il rischio dei giorni normali.
 gruppo: prezzi
 livello: intermedio
+tag: rischio, volatilità, statistica
 sommario: I rendimenti finanziari hanno eventi estremi molto più frequenti di quanto preveda una distribuzione normale. Mandelbrot lo documentò nel 1963. Cambia il modo di leggere deviazione standard, VaR e correlazioni.
 aggiornato: 2026-11-13
 ---

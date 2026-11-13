@@ -2,6 +2,7 @@
 slug: azioni-obbligazioni-liquidita
 titolo: Azioni, obbligazioni, liquidità: che cosa compri
 livello: base
+tag: azioni, obbligazioni, liquidità
 gruppo: basi
 sommario: Dietro quasi ogni investimento ci sono tre cose: una quota di un'azienda, un prestito, o denaro disponibile subito. Sapere che cosa si possiede davvero spiega perché ciascuna si comporta in modo diverso.
 aggiornato: 2026-11-13

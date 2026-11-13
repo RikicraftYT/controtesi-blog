@@ -5,6 +5,7 @@ tesi: Un investimento va aggiunto se ha un buon rendimento atteso.
 obiezione: Va aggiunto se rende più di quanto costa in rischio al portafoglio che hai già.
 gruppo: esposizioni
 livello: avanzato
+tag: asset allocation, oro, rischio
 sommario: Ogni nuovo investimento ha una soglia di rendimento che dipende dal portafoglio in cui entra. Si calcola con una moltiplicazione. Nel caso di studio di MSCI, oro e intelligenza artificiale hanno la stessa volatilità e soglie che distano più di sette punti.
 aggiornato: 2026-11-13
 ---

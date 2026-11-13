@@ -2,6 +2,7 @@
 slug: conto-o-investimento
 titolo: Soldi fermi sul conto, il costo che non si vede
 livello: base
+tag: inflazione, liquidità
 gruppo: basi
 sommario: Il saldo del conto non scende, ma ogni anno compra un po' meno. Si chiama inflazione, ed è il motivo per cui tenere tutto fermo non è una scelta senza costi.
 aggiornato: 2026-11-13

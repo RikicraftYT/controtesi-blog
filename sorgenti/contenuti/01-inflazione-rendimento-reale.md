@@ -2,6 +2,7 @@
 slug: inflazione-rendimento-reale
 titolo: Inflazione e rendimento reale, quello che resta davvero
 livello: base
+tag: inflazione, dati storici
 gruppo: basi
 sommario: Un rendimento del 3% non vale sempre lo stesso. Dipende da quanto sono saliti i prezzi nel frattempo. La differenza tra rendimento nominale e reale è la prima cosa da guardare in ogni confronto.
 aggiornato: 2026-11-13

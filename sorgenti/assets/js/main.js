@@ -202,50 +202,9 @@
     fig.insertBefore(svg, fig.firstChild);
     gioca();
   }
-  /* ----- Filtro per livello in home ----- */
-  var filtro = document.querySelector(".filtro");
-  if (filtro) {
-    filtro.hidden = false;
-    var bottoniFiltro = filtro.querySelectorAll("button");
-    var righe = document.querySelectorAll(".duello[data-livello]");
-    var gruppiHome = document.querySelectorAll(".gruppo");
-    var conteggio = filtro.querySelector(".filtro-conteggio");
-    var applicaFiltro = function (livello) {
-      var visibili = 0;
-      bottoniFiltro.forEach(function (b) {
-        b.setAttribute("aria-pressed", (b.getAttribute("data-livello") || "") === livello ? "true" : "false");
-      });
-      righe.forEach(function (r) {
-        var vis = !livello || r.getAttribute("data-livello") === livello;
-        r.hidden = !vis;
-        if (vis) visibili++;
-      });
-      gruppiHome.forEach(function (g) { g.hidden = !g.querySelector(".duello:not([hidden])"); });
-      conteggio.textContent = livello ? (visibili === 1 ? "1 articolo" : visibili + " articoli") : "";
-      try {
-        if (livello) localStorage.setItem("controtesi-livello", livello);
-        else localStorage.removeItem("controtesi-livello");
-      } catch (e) { /* preferenza non salvata */ }
-    };
-    filtro.addEventListener("click", function (e) {
-      var b = e.target.closest ? e.target.closest("button") : null;
-      if (b) applicaFiltro(b.getAttribute("data-livello") || "");
-    });
-    var salvato = null;
-    try { salvato = localStorage.getItem("controtesi-livello"); } catch (e) { salvato = null; }
-    if (salvato && filtro.querySelector('[data-livello="' + salvato + '"]')) applicaFiltro(salvato);
-  }
-
-  /* ----- Ricerca ----- */
-  var dialogo = document.querySelector(".ricerca");
-  var bottoneCerca = document.querySelector(".cerca");
-  if (dialogo && bottoneCerca && typeof dialogo.showModal === "function") {
-    bottoneCerca.hidden = false;
-    var campo = dialogo.querySelector("#ricerca-campo");
-    var lista = dialogo.querySelector(".ricerca-risultati");
-    var stato = dialogo.querySelector(".ricerca-stato");
-    var indice = null, inCaricamento = false;
-
+  /* ----- Motore di ricerca, comune alla finestra "Cerca" e alla home ----- */
+  var Motore = (function () {
+    var indice = null, inAttesa = [], inCaricamento = false;
     // Minuscole e senza accenti, carattere per carattere: la lunghezza resta uguale,
     // così le posizioni trovate valgono anche nel testo originale.
     var normalizza = function (s) {
@@ -255,24 +214,6 @@
     };
     var escHtml = function (s) {
       return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-    };
-    var prepara = function (a) {
-      return { a: a, t: normalizza(a.t), te: normalizza(a.te), so: normalizza(a.so), se: normalizza(a.se), x: normalizza(a.x) };
-    };
-    var carica = function (poi) {
-      if (indice) { poi(); return; }
-      if (inCaricamento) return;
-      inCaricamento = true;
-      stato.textContent = "Carico l'indice…";
-      var script = document.createElement("script");
-      script.src = "assets/js/indice-ricerca.js";
-      script.onload = function () {
-        indice = (window.CONTROTESI_INDICE || []).map(prepara);
-        stato.textContent = "";
-        poi();
-      };
-      script.onerror = function () { inCaricamento = false; stato.textContent = "La ricerca non è disponibile in questo momento."; };
-      document.head.appendChild(script);
     };
     // Un termine conta solo all'inizio di una parola: "cina" trova "Cina", non "vicina";
     // "obbligaz" trova "obbligazioni" mentre si scrive.
@@ -287,10 +228,44 @@
       while (i >= 0 && n < 10) { n++; i = trova(testo, t, i + t.length); }
       return n;
     };
-    // Evidenzia i termini in un testo, usando le posizioni trovate nella versione normalizzata.
-    var evidenzia = function (originale, normale, termini) {
+    var termini = function (q) {
+      return normalizza(q.trim()).split(/[^a-z0-9%]+/).filter(function (t) { return t.length > 1; });
+    };
+    var carica = function (poi, errore) {
+      if (indice) { poi(); return; }
+      inAttesa.push(poi);
+      if (inCaricamento) return;
+      inCaricamento = true;
+      var script = document.createElement("script");
+      script.src = "assets/js/indice-ricerca.js";
+      script.onload = function () {
+        indice = (window.CONTROTESI_INDICE || []).map(function (a) {
+          return { a: a, t: normalizza(a.t), te: normalizza(a.te), so: normalizza(a.so),
+            se: normalizza(a.se), tg: normalizza(a.tg || ""), x: normalizza(a.x) };
+        });
+        var lista = inAttesa; inAttesa = [];
+        lista.forEach(function (f) { f(); });
+      };
+      script.onerror = function () { inCaricamento = false; inAttesa = []; if (errore) errore(); };
+      document.head.appendChild(script);
+    };
+    // Articoli che contengono tutti i termini, con un punteggio: titolo e tag pesano di più.
+    var cerca = function (ts) {
+      var trovati = [];
+      indice.forEach(function (v) {
+        var punti = 0, tutti = true;
+        ts.forEach(function (t) {
+          var p = conta(v.t, t) * 12 + conta(v.tg, t) * 8 + conta(v.te, t) * 6 + conta(v.so, t) * 4 + conta(v.se, t) * 3 + conta(v.x, t);
+          if (!p) tutti = false;
+          punti += p;
+        });
+        if (tutti) trovati.push({ v: v, punti: punti });
+      });
+      return trovati.sort(function (a, b) { return b.punti - a.punti; });
+    };
+    var evidenzia = function (originale, normale, ts) {
       var segni = [];
-      termini.forEach(function (t) {
+      ts.forEach(function (t) {
         var i = trova(normale, t, 0);
         while (i >= 0) { segni.push([i, i + t.length]); i = trova(normale, t, i + t.length); }
       });
@@ -303,53 +278,58 @@
       });
       return out + escHtml(originale.slice(pos));
     };
-    var estratto = function (v, termini) {
+    var estratto = function (v, ts) {
       var primo = -1;
-      termini.forEach(function (t) {
+      ts.forEach(function (t) {
         var i = trova(v.x, t, 0);
         if (i >= 0 && (primo < 0 || i < primo)) primo = i;
       });
-      if (primo < 0) return evidenzia(v.a.so, v.so, termini);
+      if (primo < 0) return evidenzia(v.a.so, v.so, ts);
       var inizio = Math.max(0, primo - 70);
       if (inizio > 0) inizio = v.a.x.indexOf(" ", inizio) + 1;
       var fine = Math.min(v.a.x.length, inizio + 200);
       var spazio = v.a.x.lastIndexOf(" ", fine);
       if (fine < v.a.x.length && spazio > primo) fine = spazio;
-      return (inizio > 0 ? "… " : "") + evidenzia(v.a.x.slice(inizio, fine), v.x.slice(inizio, fine), termini) +
+      return (inizio > 0 ? "… " : "") + evidenzia(v.a.x.slice(inizio, fine), v.x.slice(inizio, fine), ts) +
         (fine < v.a.x.length ? " …" : "");
     };
-    var cerca = function () {
-      var q = campo.value.trim();
-      var termini = normalizza(q).split(/[^a-z0-9%]+/).filter(function (t) { return t.length > 1; });
+    return { normalizza: normalizza, escHtml: escHtml, termini: termini, carica: carica, cerca: cerca,
+      evidenzia: evidenzia, estratto: estratto, pronto: function () { return !!indice; } };
+  })();
+
+  /* ----- Finestra "Cerca" ----- */
+  var dialogo = document.querySelector(".ricerca");
+  var bottoneCerca = document.querySelector(".cerca");
+  if (dialogo && bottoneCerca && typeof dialogo.showModal === "function") {
+    bottoneCerca.hidden = false;
+    var campo = dialogo.querySelector("#ricerca-campo");
+    var lista = dialogo.querySelector(".ricerca-risultati");
+    var stato = dialogo.querySelector(".ricerca-stato");
+    var tutti = dialogo.querySelector(".ricerca-tutti");
+
+    var cercaDialogo = function () {
+      var q = campo.value.trim(), ts = Motore.termini(q);
       lista.innerHTML = "";
-      if (!termini.length) { stato.textContent = ""; return; }
-      var trovati = [];
-      indice.forEach(function (v) {
-        var punti = 0, tutti = true;
-        termini.forEach(function (t) {
-          var p = conta(v.t, t) * 12 + conta(v.te, t) * 6 + conta(v.so, t) * 4 + conta(v.se, t) * 3 + conta(v.x, t);
-          if (!p) tutti = false;
-          punti += p;
-        });
-        if (tutti) trovati.push({ v: v, punti: punti });
-      });
-      trovati.sort(function (a, b) { return b.punti - a.punti; });
+      tutti.hidden = !ts.length;
+      tutti.href = "index.html?q=" + encodeURIComponent(q) + "#articoli";
+      if (!ts.length) { stato.textContent = ""; return; }
+      var trovati = Motore.cerca(ts);
       stato.textContent = trovati.length
         ? (trovati.length === 1 ? "1 articolo" : trovati.length + " articoli")
         : "Nessun articolo contiene «" + q + "».";
-      trovati.slice(0, 20).forEach(function (r) {
+      trovati.slice(0, 8).forEach(function (r) {
         var v = r.v, li = document.createElement("li");
         li.innerHTML = '<a href="' + v.a.s + '.html">' +
-          '<span class="ricerca-titolo">' + evidenzia(v.a.t, v.t, termini) + "</span>" +
-          '<span class="ricerca-meta">' + escHtml(v.a.g) + " · " + escHtml(v.a.l) + "</span>" +
-          '<span class="ricerca-estratto">' + estratto(v, termini) + "</span></a>";
+          '<span class="ricerca-titolo">' + Motore.evidenzia(v.a.t, v.t, ts) + "</span>" +
+          '<span class="ricerca-meta">' + Motore.escHtml(v.a.g) + " · " + Motore.escHtml(v.a.l) + "</span>" +
+          '<span class="ricerca-estratto">' + Motore.estratto(v, ts) + "</span></a>";
         lista.appendChild(li);
       });
     };
     var attesaRicerca;
     campo.addEventListener("input", function () {
       clearTimeout(attesaRicerca);
-      attesaRicerca = setTimeout(function () { if (indice) cerca(); }, 80);
+      attesaRicerca = setTimeout(function () { if (Motore.pronto()) cercaDialogo(); }, 80);
     });
     dialogo.querySelector("form").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -360,7 +340,9 @@
       if (!dialogo.open) dialogo.showModal();
       campo.focus();
       campo.select();
-      carica(function () { if (campo.value.trim()) cerca(); });
+      if (!Motore.pronto()) stato.textContent = "Carico l'indice…";
+      Motore.carica(function () { stato.textContent = ""; if (campo.value.trim()) cercaDialogo(); },
+        function () { stato.textContent = "La ricerca non è disponibile in questo momento."; });
     };
     bottoneCerca.addEventListener("click", apri);
     dialogo.querySelector(".ricerca-chiudi").addEventListener("click", function () { dialogo.close(); });
@@ -369,7 +351,7 @@
     // Frecce su e giù per muoversi tra campo e risultati.
     dialogo.addEventListener("keydown", function (e) {
       if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
-      var link = Array.prototype.slice.call(lista.querySelectorAll("a"));
+      var link = Array.prototype.slice.call(dialogo.querySelectorAll(".ricerca-risultati a, .ricerca-tutti:not([hidden])"));
       if (!link.length) return;
       var i = link.indexOf(document.activeElement);
       e.preventDefault();
@@ -379,11 +361,204 @@
     });
     // "/" oppure Ctrl+K (Cmd+K su Mac) aprono la ricerca da qualunque pagina.
     document.addEventListener("keydown", function (e) {
-      var t = e.target, scrive = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+      var t = e.target, scrive = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable);
       if ((e.key === "/" && !scrive) || ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K"))) {
         e.preventDefault();
         apri();
       }
+    });
+  }
+
+  /* ----- Home: esplora gli articoli (ricerca, filtri, ordinamento) ----- */
+  var esplora = document.querySelector(".esplora");
+  if (esplora) {
+    var PER_PAGINA = 12;
+    var schede = Array.prototype.slice.call(esplora.querySelectorAll(".scheda"));
+    var griglia = esplora.querySelector(".esplora-griglia");
+    var campoE = esplora.querySelector("#esplora-campo");
+    var ordineE = esplora.querySelector("#esplora-ordine");
+    var attivi = esplora.querySelector(".esplora-attivi");
+    var conteggioE = esplora.querySelector(".esplora-conteggio");
+    var vuoto = esplora.querySelector(".esplora-vuoto");
+    var altri = esplora.querySelector(".esplora-altri button");
+    var menu = Array.prototype.slice.call(esplora.querySelectorAll(".filtro-menu"));
+    var NOMI = { tema: "Tema", livello: "Livello", tag: "Tag" };
+    var mostrati = PER_PAGINA, ordineScelto = false;
+    esplora.querySelector(".esplora-ricerca").hidden = false;
+    esplora.querySelector(".esplora-filtri").hidden = false;
+
+    var dati = schede.map(function (el) {
+      return {
+        el: el, slug: el.getAttribute("data-slug"), tema: el.getAttribute("data-gruppo"),
+        livello: el.getAttribute("data-livello"), tag: el.getAttribute("data-tag").split("|"),
+        ordine: Number(el.getAttribute("data-ordine")), data: el.getAttribute("data-data"),
+        minuti: Number(el.getAttribute("data-minuti")),
+        testo: Motore.normalizza(el.querySelector(".scheda-titolo").textContent + " " +
+          el.querySelector(".scheda-sommario").textContent + " " + el.getAttribute("data-tag").replace(/\|/g, " "))
+      };
+    });
+    var scelti = function (nome) {
+      return Array.prototype.slice.call(esplora.querySelectorAll('input[name="' + nome + '"]:checked'))
+        .map(function (i) { return i.value; });
+    };
+    var etichetta = function (nome, valore) {
+      var i = esplora.querySelector('input[name="' + nome + '"][value="' + CSS.escape(valore) + '"]');
+      return i ? i.parentNode.querySelector("span").textContent : valore;
+    };
+    var passa = function (d, filtri, salta) {
+      return Object.keys(filtri).every(function (nome) {
+        if (nome === salta || !filtri[nome].length) return true;
+        if (nome === "tag") return filtri.tag.some(function (t) { return d.tag.indexOf(t) >= 0; });
+        return filtri[nome].indexOf(d[nome]) >= 0;
+      });
+    };
+
+    var aggiorna = function (daUtente) {
+      var q = campoE.value.trim(), ts = Motore.termini(q);
+      var filtri = { tema: scelti("tema"), livello: scelti("livello"), tag: scelti("tag") };
+      // Con una ricerca in corso l'ordine passa a "Rilevanza", se non l'ha scelto chi legge.
+      if (!ordineScelto) ordineE.value = ts.length ? "rilevanza" : "percorso";
+      var punti = {};
+      if (ts.length) {
+        if (Motore.pronto()) Motore.cerca(ts).forEach(function (r) { punti[r.v.a.s] = r.punti; });
+        else {
+          dati.forEach(function (d) {
+            if (ts.every(function (t) { return d.testo.indexOf(t) >= 0; })) punti[d.slug] = 1;
+          });
+          Motore.carica(function () { aggiorna(false); });
+        }
+      }
+      var trovaQ = function (d) { return !ts.length || punti[d.slug] > 0; };
+      var visibili = dati.filter(function (d) { return trovaQ(d) && passa(d, filtri); });
+      var o = ordineE.value;
+      visibili.sort(function (a, b) {
+        if (o === "rilevanza" && ts.length) return (punti[b.slug] - punti[a.slug]) || (a.ordine - b.ordine);
+        if (o === "recenti") return (b.data < a.data ? -1 : b.data > a.data ? 1 : 0) || (a.ordine - b.ordine);
+        if (o === "brevi") return (a.minuti - b.minuti) || (a.ordine - b.ordine);
+        return a.ordine - b.ordine;
+      });
+      // Conteggi accanto a ogni voce: quanti articoli avresti scegliendola, con gli altri filtri attivi.
+      menu.forEach(function (m) {
+        var nome = m.getAttribute("data-filtro");
+        m.querySelectorAll("label").forEach(function (l) {
+          var v = l.querySelector("input").value;
+          var n = dati.filter(function (d) {
+            if (!trovaQ(d) || !passa(d, filtri, nome)) return false;
+            return nome === "tag" ? d.tag.indexOf(v) >= 0 : d[nome] === v;
+          }).length;
+          l.querySelector(".filtro-conta").textContent = n;
+          l.classList.toggle("filtro-zero", n === 0 && !l.querySelector("input").checked);
+        });
+        var k = filtri[nome].length;
+        m.querySelector(".filtro-quanti").textContent = k ? "(" + k + ")" : "";
+        m.classList.toggle("filtro-attivo", k > 0);
+      });
+      // Etichette dei filtri attivi, rimovibili una per una.
+      attivi.innerHTML = "";
+      var nAttivi = 0;
+      if (q) {
+        nAttivi++;
+        attivi.insertAdjacentHTML("beforeend", '<button type="button" data-togli="q">«' + Motore.escHtml(q) +
+          '» <span aria-hidden="true">×</span><span class="visivamente-nascosto">, togli la ricerca</span></button>');
+      }
+      Object.keys(filtri).forEach(function (nome) {
+        filtri[nome].forEach(function (v) {
+          nAttivi++;
+          attivi.insertAdjacentHTML("beforeend", '<button type="button" data-togli="' + nome + '" data-valore="' +
+            Motore.escHtml(v) + '"><span class="attivo-tipo">' + NOMI[nome] + ":</span> " + Motore.escHtml(etichetta(nome, v)) +
+            ' <span aria-hidden="true">×</span><span class="visivamente-nascosto">, togli il filtro</span></button>');
+        });
+      });
+      if (nAttivi) attivi.insertAdjacentHTML("beforeend", '<button type="button" class="attivi-azzera" data-togli="tutto">Cancella filtri</button>');
+      attivi.hidden = !nAttivi;
+      // Griglia: ordine nuovo, e solo le prime schede fino a "Mostra altri".
+      if (daUtente) mostrati = PER_PAGINA;
+      dati.forEach(function (d) { d.el.hidden = true; });
+      visibili.forEach(function (d, k) { griglia.appendChild(d.el); d.el.hidden = k >= mostrati; });
+      var resto = visibili.length - mostrati;
+      altri.hidden = resto <= 0;
+      altri.textContent = resto <= PER_PAGINA ? (resto === 1 ? "Mostra l'ultimo articolo" : "Mostra gli ultimi " + resto) : "Mostra altri " + PER_PAGINA + " (ne restano " + resto + ")";
+      conteggioE.textContent = visibili.length === 1 ? "1 articolo" : visibili.length + " articoli";
+      vuoto.hidden = visibili.length > 0;
+      // Lo stato finisce nell'indirizzo, così una ricerca o un filtro si possono condividere.
+      var par = new URLSearchParams();
+      if (q) par.set("q", q);
+      Object.keys(filtri).forEach(function (nome) { if (filtri[nome].length) par.set(nome, filtri[nome].join(",")); });
+      if (ordineScelto && o !== "percorso") par.set("ordine", o);
+      var cerca = par.toString();
+      try { history.replaceState(null, "", location.pathname + (cerca ? "?" + cerca : "") + location.hash); } catch (e) { /* file:// */ }
+    };
+
+    // Stato iniziale dall'indirizzo (?q=, ?tema=, ?livello=, ?tag=, ?ordine=).
+    var par = new URLSearchParams(location.search);
+    campoE.value = par.get("q") || "";
+    ["tema", "livello", "tag"].forEach(function (nome) {
+      (par.get(nome) || "").split(",").filter(Boolean).forEach(function (v) {
+        var i = esplora.querySelector('input[name="' + nome + '"][value="' + CSS.escape(v) + '"]');
+        if (i) i.checked = true;
+      });
+    });
+    if (par.get("ordine") && ordineE.querySelector('option[value="' + par.get("ordine") + '"]')) {
+      ordineE.value = par.get("ordine"); ordineScelto = true;
+    }
+    aggiorna(true);
+
+    var attesaE;
+    campoE.addEventListener("input", function () {
+      clearTimeout(attesaE);
+      attesaE = setTimeout(function () { aggiorna(true); }, 120);
+    });
+    esplora.querySelector(".esplora-ricerca").addEventListener("submit", function (e) { e.preventDefault(); campoE.blur(); });
+    esplora.addEventListener("change", function (e) {
+      if (e.target === ordineE) ordineScelto = true;
+      if (e.target.name || e.target === ordineE) aggiorna(true);
+    });
+    altri.addEventListener("click", function () {
+      var primoNuovo = mostrati;
+      mostrati += PER_PAGINA;
+      aggiorna(false);
+      var visibiliOra = griglia.querySelectorAll(".scheda:not([hidden])");
+      if (visibiliOra[primoNuovo]) visibiliOra[primoNuovo].querySelector("a").focus();
+    });
+    var azzera = function () {
+      campoE.value = "";
+      esplora.querySelectorAll(".filtro-menu input:checked").forEach(function (i) { i.checked = false; });
+      ordineScelto = false;
+      aggiorna(true);
+    };
+    vuoto.querySelector("button").addEventListener("click", azzera);
+    attivi.addEventListener("click", function (e) {
+      var b = e.target.closest("button");
+      if (!b) return;
+      var cosa = b.getAttribute("data-togli");
+      if (cosa === "tutto") { azzera(); return; }
+      if (cosa === "q") campoE.value = "";
+      else {
+        var i = esplora.querySelector('input[name="' + cosa + '"][value="' + CSS.escape(b.getAttribute("data-valore")) + '"]');
+        if (i) i.checked = false;
+      }
+      aggiorna(true);
+    });
+    // Un clic su un tag di una scheda filtra per quel tag, senza ricaricare la pagina.
+    griglia.addEventListener("click", function (e) {
+      var a = e.target.closest(".scheda-tag a");
+      if (!a) return;
+      e.preventDefault();
+      var i = esplora.querySelector('input[name="tag"][value="' + CSS.escape(a.getAttribute("data-tag")) + '"]');
+      if (i) { i.checked = true; aggiorna(true); esplora.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    });
+    // Un solo menu aperto alla volta; si chiudono con un clic fuori o con Esc.
+    menu.forEach(function (m) {
+      m.addEventListener("toggle", function () {
+        if (m.open) menu.forEach(function (altro) { if (altro !== m) altro.open = false; });
+      });
+    });
+    document.addEventListener("click", function (e) {
+      menu.forEach(function (m) { if (m.open && !m.contains(e.target)) m.open = false; });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      menu.forEach(function (m) { if (m.open) { m.open = false; m.querySelector("summary").focus(); } });
     });
   }
 })();

@@ -2,6 +2,7 @@
 slug: interesse-composto
 titolo: Interesse composto, il tempo come ingrediente
 livello: base
+tag: interesse composto
 gruppo: basi
 sommario: Un rendimento che si somma a se stesso anno dopo anno fa crescere il capitale in modo sempre più rapido. Per questo dieci anni in più contano spesso più di un punto di rendimento.
 aggiornato: 2026-11-13

@@ -2,6 +2,7 @@
 slug: diversificazione
 titolo: Diversificazione, non basta comprare tante cose
 livello: base
+tag: diversificazione, rischio
 gruppo: basi
 sommario: Dividere i soldi tra molti investimenti riduce il rischio solo se questi non salgono e scendono insieme. Diversificare vuol dire possedere cose che dipendono da cause diverse.
 aggiornato: 2026-11-13

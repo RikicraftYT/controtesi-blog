@@ -5,6 +5,7 @@ tesi: L'asset allocation strategica decide quasi tutto il risultato.
 obiezione: Decide i pesi delle caselle, non i rischi che ci stanno dentro.
 gruppo: esposizioni
 livello: intermedio
+tag: asset allocation
 sommario: I grandi fondi pensione stanno abbandonando l'allocazione per classi di attivo a favore di un approccio in cui ogni investimento è giudicato per il contributo al portafoglio intero. L'idea è solida. Le prove che renda di più lo sono molto meno.
 aggiornato: 2026-11-13
 ---

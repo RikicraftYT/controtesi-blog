@@ -2,6 +2,7 @@
 slug: orizzonte-e-emergenze
 titolo: Orizzonte e fondo di emergenza, i soldi da non investire
 livello: base
+tag: liquidità, pianificazione
 gruppo: basi
 sommario: Prima di investire bisogna sapere quando serviranno i soldi. Quelli per gli imprevisti e per le spese vicine non vanno investiti in attività che oscillano, perché potresti doverli ritirare nel momento sbagliato.
 aggiornato: 2026-11-13

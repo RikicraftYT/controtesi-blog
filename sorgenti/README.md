@@ -43,6 +43,7 @@ tesi: La tesi in una frase.
 obiezione: L'obiezione più forte in una frase.
 gruppo: basi | strumento | rendimenti | prezzi | portafoglio | esposizioni | vita | sintesi
 livello: base | intermedio | avanzato
+tag: azioni, dati storici   (uno o più, dal vocabolario TAG di build.mjs)
 prima: slug-di-un-altro-articolo, slug-di-un-altro   (facoltativo)
 sommario: Due righe che compaiono sotto il titolo e nei risultati di ricerca.
 aggiornato: 2026-11-11
@@ -85,11 +86,15 @@ Testo.
 
 Ogni titolo `##` diventa una voce del sommario della pagina.
 
-## Ricerca e filtro per livello
+## Ricerca, filtri e tag
 
-La build scrive `../assets/js/indice-ricerca.js` con titolo, tesi, obiezione, sommario, titoli delle sezioni e testo di ogni articolo, senza formule. È un file JavaScript e non JSON perché così si carica anche aprendo il sito dal disco; `main.js` lo scarica solo quando si apre la ricerca. La ricerca ignora maiuscole e accenti, cerca i termini all'inizio delle parole e pesa di più titolo e tesi. Si apre con il bottone «Cerca», con `/` o con Ctrl+K.
+La home non elenca più gli articoli per gruppo: ha una sezione «Tutti gli articoli» con un campo di ricerca, tre menu di filtri a scelta multipla (tema, livello, tag, ciascuno con il numero di articoli accanto alle voci), l'ordinamento (percorso consigliato, rilevanza, più recenti, più brevi), le etichette dei filtri attivi e una griglia di schede che si apre dodici alla volta. Senza JavaScript le schede si vedono comunque tutte, nell'ordine del percorso.
 
-Il filtro per livello in home è un gruppo di bottoni: nasconde gli articoli degli altri livelli e i gruppi rimasti vuoti, e ricorda la scelta nel browser.
+Lo stato della ricerca finisce nell'indirizzo (`index.html?q=inflazione&livello=base&tag=costi#articoli`), quindi si può condividere. I tag nelle schede e sotto il titolo degli articoli usano lo stesso meccanismo, come il nome del gruppo sopra il titolo (`?tema=rendimenti`).
+
+I tag ammessi sono nell'elenco `TAG` di `build.mjs`: un tag che non c'è ferma la build. Per aggiungerne uno basta inserirlo nell'elenco.
+
+La build scrive anche `../assets/js/indice-ricerca.js` con titolo, tesi, obiezione, sommario, tag, titoli delle sezioni e testo di ogni articolo, senza formule. È un file JavaScript e non JSON perché così si carica anche aprendo il sito dal disco; `main.js` lo scarica solo alla prima ricerca. La ricerca ignora maiuscole e accenti, cerca i termini all'inizio delle parole e pesa di più titolo e tag. La stessa ricerca è nella finestra «Cerca» della testata (bottone, `/` o Ctrl+K), che rimanda alla home per i risultati completi.
 
 ## Fonti
 

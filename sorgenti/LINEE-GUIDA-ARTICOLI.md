@@ -45,6 +45,7 @@ La sezione «Da verificare» non viene pubblicata: serve a segnalare ciò che no
 | `obiezione` | sì, tranne nel livello base | Una o due frasi brevi, l'obiezione più forte. Al massimo 90 caratteri |
 | `livello` | sì | `base`, `intermedio` o `avanzato` (vedi sezione 4) |
 | `gruppo` | sì | Uno dei gruppi elencati sotto |
+| `tag` | sì | Da uno a quattro tag dal vocabolario qui sotto, separati da virgola. Esempio: `azioni, dati storici` |
 | `sommario` | sì | Due o tre frasi, al massimo 300 caratteri. Compare sotto il titolo e nelle anteprime social |
 | `prima` | no | Slug degli articoli da leggere prima, separati da virgola. Esempio: `interesse-composto, inflazione-rendimento-reale` |
 
@@ -64,6 +65,12 @@ La data di aggiornamento la aggiunge chi integra l'articolo nel sito.
 | `sintesi` | Trarre le conclusioni | Solo per la Mappa |
 
 Se un articolo non entra in nessun gruppo, va detto nella sezione «Da verificare», con una proposta di nome.
+
+**Tag disponibili**
+
+inflazione · liquidità · interesse composto · rischio · volatilità · azioni · obbligazioni · oro · fondi ed ETF · costi · tasse · diversificazione · asset allocation · leva · valutazioni · dati storici · efficienza dei mercati · comportamento · fattori · geografia · Cina · pensione · pianificazione · statistica
+
+I tag servono ai lettori per filtrare gli articoli in home. Vanno scritti esattamente così, minuscole comprese. Un tag nuovo si propone nella sezione «Da verificare», non si inventa nell'intestazione.
 
 ## 4. I tre livelli
 
@@ -220,7 +227,7 @@ Due o tre frasi che riassumono il concetto.
 
 ## 11. Controllo finale prima di mandare il file
 
-- [ ] Intestazione completa, con `livello` e `gruppo` tra i valori ammessi
+- [ ] Intestazione completa, con `livello`, `gruppo` e `tag` tra i valori ammessi
 - [ ] Slug unico, senza accenti, uguale a quello nella riga `ARTICOLO:`
 - [ ] Intermedio e avanzato: ogni obiezione ha la sua risposta. Base: nessuna tesi, obiezione o risposta
 - [ ] Una sola `::: difendibile`, alla fine
@@ -240,6 +247,7 @@ slug: interesse-composto
 titolo: Interesse composto, il tempo come ingrediente
 livello: base
 gruppo: basi
+tag: interesse composto
 sommario: Un rendimento che si somma a se stesso anno dopo anno fa crescere il capitale in modo sempre più rapido. Per questo dieci anni in più contano spesso più di un punto di rendimento.
 prima: inflazione-rendimento-reale
 ---

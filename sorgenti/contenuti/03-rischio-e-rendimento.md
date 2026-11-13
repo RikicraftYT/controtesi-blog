@@ -2,6 +2,7 @@
 slug: rischio-e-rendimento
 titolo: Rischio e rendimento, perché crescono insieme
 livello: base
+tag: rischio, azioni, obbligazioni, dati storici
 gruppo: basi
 sommario: Chi promette rendimenti alti senza rischio promette qualcosa che non esiste. Il rendimento in più è il compenso per l'incertezza, e capire questo legame protegge da molte scelte sbagliate.
 aggiornato: 2026-11-13

@@ -5,6 +5,7 @@ tesi: Value, size e momentum rendono più del mercato.
 obiezione: Dopo la pubblicazione i premi si riducono di circa un terzo.
 gruppo: prezzi
 livello: avanzato
+tag: fattori, efficienza dei mercati
 sommario: Alcune caratteristiche delle azioni hanno reso più di quanto spieghi il rischio di mercato. Se è rischio dura, se è errore si consuma. Non è facile dire quale.
 aggiornato: 2026-11-13
 ---

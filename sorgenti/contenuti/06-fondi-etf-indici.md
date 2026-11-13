@@ -2,6 +2,7 @@
 slug: fondi-etf-indici
 titolo: Fondi, ETF e indici: tre parole da distinguere
 livello: base
+tag: fondi ed ETF, costi
 gruppo: basi
 sommario: Un indice è un elenco, un fondo è un contenitore, un ETF è un fondo che si compra in Borsa. La differenza che conta di più è un'altra: se il fondo copia un indice o prova a batterlo.
 aggiornato: 2026-11-13

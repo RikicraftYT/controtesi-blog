@@ -5,8 +5,9 @@ tesi: In trent'anni le azioni non perdono mai.
 obiezione: Non hanno mai perso negli Stati Uniti.
 gruppo: rendimenti
 livello: intermedio
+tag: azioni, dati storici, geografia
 sommario: La sicurezza delle azioni sul lungo periodo è misurata quasi sempre su un solo paese, il più fortunato. Con 39 paesi sviluppati la probabilità di perdere potere d'acquisto in trent'anni passa dall'1% al 12%.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 In [Il mercato cresce nel tempo](mercato-cresce.html) l'obiezione del campione distorto era una tra tante. Qui ha i suoi numeri.
@@ -45,7 +46,7 @@ In quegli scenari anche obbligazioni e liquidità vengono distrutte, spesso pegg
 :::
 
 ::: risposta
-Vero, ed è coerente con l'argomento "età della pietra": nei casi estremi nessuna attività finanziaria nazionale si salva. La domanda rilevante è relativa, e nel confronto le azioni restano l'attività con la coda sinistra meno grave sul lungo periodo.
+Vero, ed è coerente con il caso estremo discusso in [Il mercato cresce nel tempo](mercato-cresce.html): nei casi estremi nessuna attività finanziaria nazionale si salva. La domanda rilevante è relativa, e nel confronto le azioni restano l'attività con la coda sinistra meno grave sul lungo periodo.
 :::
 
 ::: obiezione Il ricampionamento costruisce storie mai esistite

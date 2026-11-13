@@ -5,6 +5,7 @@ tesi: Seguire il trend è speculazione senza fondamento.
 obiezione: Ha funzionato per più di un secolo, su decine di mercati.
 gruppo: portafoglio
 livello: intermedio
+tag: fattori, asset allocation
 sommario: Comprare i mercati che salgono e vendere allo scoperto quelli che scendono ha avuto rendimenti positivi in ogni decennio dal 1880 e ha reso bene nei crolli azionari. È l'anomalia più difficile da conciliare con l'efficienza, e la più difficile da mantenere in portafoglio.
 aggiornato: 2026-11-13
 ---

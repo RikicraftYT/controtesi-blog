@@ -5,6 +5,7 @@ tesi: L'oro conserva il potere d'acquisto.
 obiezione: Lo conserva sui secoli, non sui decenni in cui vivi.
 gruppo: portafoglio
 livello: intermedio
+tag: oro, inflazione
 sommario: L'oro è un quarto del Permanent Portfolio e la copertura più citata contro l'inflazione. I dati dicono che il suo prezzo reale oscilla troppo per svolgere quel compito su orizzonti umani. Il suo ruolo è un altro.
 aggiornato: 2026-11-11
 ---

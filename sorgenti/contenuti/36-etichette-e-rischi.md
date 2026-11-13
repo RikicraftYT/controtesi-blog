@@ -5,6 +5,7 @@ tesi: Un portafoglio 75/25 ha il rischio di un 75/25.
 obiezione: Dipende da che cosa c'è dentro il 75.
 gruppo: esposizioni
 livello: avanzato
+tag: asset allocation, rischio, diversificazione
 sommario: Due portafogli con la stessa ripartizione tra attività di crescita e difensive possono avere rischi diversi, e uno stesso rischio può corrispondere a ripartizioni diverse. Un caso di studio di MSCI lo mostra con i numeri: che cosa si vede quando si sommano i fattori invece delle etichette.
 aggiornato: 2026-11-13
 ---

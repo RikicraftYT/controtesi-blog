@@ -5,6 +5,7 @@ tesi: Un indice azionario globale è per due terzi una scommessa sugli Stati Uni
 obiezione: Lo è per sede legale. Per ricavi, impianti e fornitori lo è per poco più del 40%.
 gruppo: esposizioni
 livello: intermedio
+tag: geografia, azioni, diversificazione
 sommario: Il peso di un paese in un indice dice dove le società hanno la sede, non dove vendono, producono e comprano. Misurata così, l'esposizione agli Stati Uniti scende e quella alla Cina quintuplica. Ma l'esposizione economica non è diversificazione, e i due concetti vanno tenuti distinti.
 aggiornato: 2026-11-13
 ---

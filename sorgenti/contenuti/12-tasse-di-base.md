@@ -2,6 +2,7 @@
 slug: tasse-di-base
 titolo: Le tasse di base, quanto resta dopo il fisco
 livello: base
+tag: tasse
 gruppo: basi
 sommario: In Italia i guadagni degli investimenti sono tassati quasi sempre al 26%, i titoli di Stato al 12,5%, e su ciò che possiedi si paga un'imposta di bollo annuale. Di solito pensa a tutto la banca, ma conoscere le regole evita sorprese.
 aggiornato: 2026-11-13

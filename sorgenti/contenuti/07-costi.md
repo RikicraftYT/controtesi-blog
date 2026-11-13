@@ -2,6 +2,7 @@
 slug: costi
 titolo: I costi, l'1% che vale un quarto del risultato
 livello: base
+tag: costi, fondi ed ETF, interesse composto
 gruppo: basi
 sommario: Un costo dell'1% l'anno sembra piccolo. Su trent'anni porta via circa un quarto del capitale finale, perché si accumula come un interesse composto al contrario. È l'unica variabile di un investimento che conosci in anticipo.
 aggiornato: 2026-11-13

@@ -2,10 +2,11 @@
 slug: mercato-cresce
 titolo: Il mercato cresce nel tempo. Perché, senza guardare i grafici
 tesi: Il mercato globale, in media, cresce.
-obiezione: Tra crescita ed età della pietra c'è la stagnazione. Chiedere al Giappone.
+obiezione: Tra crescita e crollo c'è una terza via: decenni di ristagno, come in Giappone.
 gruppo: rendimenti
 livello: intermedio
-sommario: «Altrimenti torniamo all'età della pietra» è un argomento vero ma incompleto. Qui c'è la versione che regge senza dati storici, e i cinque punti in cui scricchiola.
+tag: azioni, dati storici, valutazioni
+sommario: Che le azioni rendano nel lungo periodo si mostra di solito con i grafici. Qui c'è un argomento che regge senza dati storici, e i cinque punti in cui scricchiola.
 aggiornato: 2026-11-13
 ---
 
@@ -29,11 +30,11 @@ $$
 r_{\text{realizzato}} \approx \frac{D}{P} + g + \Delta\%\!\left(\frac{P}{E}\right)
 $$
 
-## Cosa vuol dire «altrimenti torniamo all'età della pietra»
+## Il caso estremo
 
-Rendimenti azionari globali *permanentemente* negativi richiedono che il capitale produttivo nel suo insieme distrugga valore senza fine: utili aggregati in contrazione stabile, oppure espropri generalizzati. In quel mondo titoli di Stato, depositi e valute non sono rifugi, perché sono promesse garantite dalla stessa economia.
+Che cosa servirebbe perché il rendimento dell'azionario globale fosse negativo non per un decennio, ma per sempre? Il capitale produttivo nel suo insieme dovrebbe distruggere valore senza fine: utili aggregati in calo stabile, oppure espropri generalizzati.
 
-La frase quindi non dice «non può succedere». Dice che, se succede, nessuna alternativa finanziaria ti protegge, e dunque quello scenario non serve a scegliere tra un'attività e l'altra.
+È uno scenario possibile, ma non aiuta a scegliere. Se si verificasse, titoli di Stato, depositi e valute non sarebbero un rifugio, perché sono promesse pagate dalla stessa economia. Nessuna alternativa finanziaria proteggerebbe. I rischi che contano per decidere sono quelli intermedi: decenni di rendimenti bassi, mercati nazionali che falliscono, prezzi d'ingresso troppo alti. Sono le obiezioni che seguono.
 
 ## Obiezioni e risposte
 
@@ -53,8 +54,8 @@ L'azionista incassa la crescita degli utili *per azione*. Nuove emissioni e nuov
 La tesi non richiede crescita del PIL: richiede un premio al rischio positivo. L'obiezione però ridimensiona l'ottimismo, perché il $g$ dell'azionista è più basso di quello dell'economia. Il caso più netto è la Cina: [Il PIL cresce, le azioni meno](cina-pil-rendimenti.html).
 :::
 
-::: obiezione Falsa dicotomia
-Tra crescita ed età della pietra c'è la stagnazione. Il Giappone, primo mercato del mondo a fine 1989, [nei trent'anni successivi ha reso il −21% reale](https://corpgov.law.harvard.edu/2021/12/13/stocks-for-the-long-run-evidence-from-a-broad-sample-of-developed-markets). Nessun crollo di civiltà, eppure una generazione di rendimenti negativi.
+::: obiezione Tra crescita e crollo c'è il ristagno
+Tra un'economia che cresce e una che crolla c'è una terza possibilità: decenni fermi. Il Giappone, primo mercato del mondo a fine 1989, [nei trent'anni successivi ha reso il −21% reale](https://corpgov.law.harvard.edu/2021/12/13/stocks-for-the-long-run-evidence-from-a-broad-sample-of-developed-markets). Nessun crollo dell'economia, eppure una generazione di rendimenti negativi.
 :::
 
 ::: risposta

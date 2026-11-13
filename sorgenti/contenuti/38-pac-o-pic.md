@@ -5,6 +5,7 @@ tesi: Entrare a rate riduce il rischio.
 obiezione: Lo rimanda soltanto.
 gruppo: vita
 livello: intermedio
+tag: comportamento, pianificazione
 sommario: Chi ha una somma da investire e la diluisce nel tempo ottiene in media meno di chi la investe subito, circa due volte su tre. Il piano di accumulo è un'altra cosa: lì non c'è nessuna somma che aspetta.
 aggiornato: 2026-11-11
 ---

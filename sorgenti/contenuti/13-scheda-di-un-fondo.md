@@ -2,6 +2,7 @@
 slug: scheda-di-un-fondo
 titolo: La scheda di un fondo, che cosa guardare e dove
 livello: base
+tag: fondi ed ETF, costi, rischio
 gruppo: basi
 sommario: Ogni fondo venduto in Europa ha un documento di tre pagine con le stesse sezioni nello stesso ordine. Sapere dove trovare obiettivo, rischio, costi e durata consigliata permette di confrontare due prodotti in dieci minuti.
 aggiornato: 2026-11-13

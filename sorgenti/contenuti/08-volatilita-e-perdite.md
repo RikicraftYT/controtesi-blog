@@ -2,6 +2,7 @@
 slug: volatilita-e-perdite
 titolo: Volatilità e perdite, quando il portafoglio scende
 livello: base
+tag: volatilità, rischio
 gruppo: basi
 sommario: Un investimento che scende non è per forza un investimento sbagliato. Capire la differenza tra un'oscillazione e una perdita definitiva, e sapere quanto può scendere ciò che possiedi, evita di vendere nel momento peggiore.
 aggiornato: 2026-11-13

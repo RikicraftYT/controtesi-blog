@@ -5,6 +5,7 @@ tesi: Le azioni rendono più dei titoli di Stato.
 obiezione: La maggior parte delle azioni no.
 gruppo: rendimenti
 livello: intermedio
+tag: azioni, diversificazione, statistica
 sommario: Il mercato batte i titoli di Stato a breve, ma la maggioranza delle singole azioni non ci riesce. Il premio viene da una piccola minoranza di società. È l'argomento più forte a favore dell'indice e contro la selezione di pochi titoli.
 aggiornato: 2026-11-11
 ---

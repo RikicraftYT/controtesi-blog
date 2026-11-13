@@ -5,6 +5,7 @@ tesi: Si possono sostenere tutte queste idee insieme.
 obiezione: No. Alcune coppie si contraddicono, e conviene sapere quali.
 gruppo: sintesi
 livello: avanzato
+tag: efficienza dei mercati, asset allocation
 sommario: Mercati efficienti e risk parity non possono essere entrambi veri in forma forte. Una mappa delle contraddizioni e tre modi coerenti di uscirne.
 aggiornato: 2026-11-13
 ---

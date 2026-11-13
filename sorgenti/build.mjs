@@ -78,6 +78,15 @@ const etichettaLivello = (l) =>
   `<span class="livello" data-punti="${LIVELLI[l].punti}"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span>` +
   `<span class="livello-nome"><span class="visivamente-nascosto">Livello </span>${LIVELLI[l].nome}</span></span>`;
 
+// Vocabolario dei tag: un articolo può usare solo questi (campo "tag", separati da virgola).
+const TAG = ["inflazione", "liquidità", "interesse composto", "rischio", "volatilità", "azioni", "obbligazioni",
+  "oro", "fondi ed ETF", "costi", "tasse", "diversificazione", "asset allocation", "leva", "valutazioni",
+  "dati storici", "efficienza dei mercati", "comportamento", "fattori", "geografia", "Cina", "pensione",
+  "pianificazione", "statistica"];
+const MESI_BREVI = ["gen", "feb", "mar", "apr", "mag", "giu", "lug", "ago", "set", "ott", "nov", "dic"];
+const dataBreve = (iso) => { const [a, m, g] = iso.split("-"); return `${Number(g)} ${MESI_BREVI[Number(m) - 1]} ${a}`; };
+const linkTag = (t) => `index.html?tag=${encodeURIComponent(t)}#articoli`;
+
 /* ---------- Markdown ---------- */
 
 const slugify = (s) =>
@@ -207,6 +216,9 @@ for (const a of articoli) {
   if (!LIVELLI[a.livello]) throw new Error(`Livello "${a.livello ?? ""}" non valido in ${a.file}: usa base, intermedio o avanzato`);
   a.base = a.livello === "base";
   if (!a.base && (!a.tesi || !a.obiezione)) throw new Error(`Tesi o obiezione mancante in ${a.file}`);
+  a.tag = (a.tag ?? "").split(",").map((t) => t.trim()).filter(Boolean);
+  if (!a.tag.length) throw new Error(`Nessun tag in ${a.file}`);
+  for (const t of a.tag) if (!TAG.includes(t)) throw new Error(`Tag "${t}" in ${a.file} non è nel vocabolario TAG di build.mjs`);
   if (a.base) a.html = a.html.replace('<p class="voce-etichetta">Formulazione difendibile</p>', '<p class="voce-etichetta">In sintesi</p>');
 }
 for (const a of articoli) {
@@ -294,6 +306,7 @@ ${corpo}
   </form>
   <p class="ricerca-stato" aria-live="polite"></p>
   <ol class="ricerca-risultati"></ol>
+  <a class="ricerca-tutti" href="index.html#articoli" hidden>Vedi tutti i risultati, con filtri e tag <span aria-hidden="true">→</span></a>
 </dialog>
 <script src="assets/js/main.js"></script>
 </body>
@@ -337,10 +350,11 @@ function paginaArticolo(a, i) {
     : "";
   const corpo = `<article>
 <header class="articolo-testa">
-  <p class="articolo-gruppo"><a href="index.html#${gruppo.id}">${esc(gruppo.nome)}</a>${a.gruppo === "basi" ? ` <span aria-hidden="true">·</span> passo ${basi.indexOf(a) + 1} di ${basi.length}` : ""} <span aria-hidden="true">·</span> ${etichettaLivello(a.livello)}</p>
+  <p class="articolo-gruppo"><a href="index.html?tema=${gruppo.id}#articoli">${esc(gruppo.nome)}</a>${a.gruppo === "basi" ? ` <span aria-hidden="true">·</span> passo ${basi.indexOf(a) + 1} di ${basi.length}` : ""} <span aria-hidden="true">·</span> ${etichettaLivello(a.livello)}</p>
   <h1>${esc(a.titolo)}</h1>
   <p class="articolo-sommario">${esc(a.sommario)}</p>
   <p class="articolo-tempo">${a.durata} di lettura <span aria-hidden="true">·</span> Aggiornato <time datetime="${a.aggiornato}">${dataEstesa(a.aggiornato, a.file)}</time></p>
+  <ul class="articolo-tag" aria-label="Tag">${a.tag.map((t) => `<li><a href="${linkTag(t)}">${esc(t)}</a></li>`).join("")}</ul>
   ${a.prerequisiti.length ? `<p class="prima-di-leggere"><b>Prima di leggere</b> ${a.prerequisiti.map((b) => `<a href="${b.slug}.html">${esc(b.titolo)}</a>`).join(", ")}</p>` : ""}
   ${a.base ? "" : `<div class="scontro">
     <p class="scontro-tesi"><b>La tesi</b>${esc(a.tesi)}</p>
@@ -387,36 +401,61 @@ ${p.html}
 }
 
 function paginaIniziale() {
-  const riga = (a, k) => a.base ? `
-    <div class="duello duello-base" data-livello="${a.livello}">
-      <div>
-        <h3 class="duello-tesi">${a.gruppo === "basi" ? `<span class="passo">${k + 1}</span> ` : ""}<a href="${a.slug}.html">${esc(a.titolo)}</a></h3>
-        <p class="duello-articolo">${a.durata} <span aria-hidden="true">·</span> ${etichettaLivello(a.livello)}</p>
-      </div>
-      <p class="duello-sommario">${esc(a.sommario)}</p>
-    </div>` : `
-    <div class="duello" data-livello="${a.livello}">
-      <div>
-        <h3 class="duello-tesi"><a href="${a.slug}.html">${esc(a.tesi)}</a></h3>
-        <p class="duello-articolo">${esc(a.titolo)} <span aria-hidden="true">·</span> ${a.durata} <span aria-hidden="true">·</span> ${etichettaLivello(a.livello)}</p>
-      </div>
-      <p class="duello-obiezione">${esc(a.obiezione)}</p>
-    </div>`;
-  // I gruppi vuoti (per esempio "Per iniziare" prima che esistano articoli base) non compaiono.
-  const pieni = GRUPPI.filter((g) => articoli.some((a) => a.gruppo === g.id));
-  const gruppi = pieni.map((g, n) => {
-    const righe = articoli.filter((a) => a.gruppo === g.id).map(riga).join("");
-    return `  <section class="gruppo" id="${g.id}">
-    <h2><span class="gruppo-numero">${String(n + 1).padStart(2, "0")}</span> ${esc(g.nome)}</h2>${righe}
-  </section>`;
-  }).join("\n");
-  const presenti = Object.keys(LIVELLI).filter((l) => articoli.some((a) => a.livello === l));
-  const filtro = `<div class="filtro" role="group" aria-label="Mostra gli articoli per livello" hidden>
-    <span class="filtro-etichetta" aria-hidden="true">Livello</span>
-    <button type="button" data-livello="" aria-pressed="true">Tutti</button>
-    ${presenti.map((l) => `<button type="button" data-livello="${l}" aria-pressed="false">${LIVELLI[l].nome}</button>`).join("\n    ")}
-    <span class="filtro-conteggio" aria-live="polite"></span>
-  </div>`;
+  // Schede degli articoli: tutte nell'HTML (si leggono anche senza JavaScript);
+  // main.js aggiunge ricerca, filtri, ordinamento e "Mostra altri".
+  const scheda = (a, k) => {
+    const gruppo = GRUPPI.find((g) => g.id === a.gruppo);
+    const passo = a.gruppo === "basi" ? ` <span aria-hidden="true">·</span> passo ${basi.indexOf(a) + 1}` : "";
+    return `
+    <article class="scheda" data-slug="${a.slug}" data-gruppo="${a.gruppo}" data-livello="${a.livello}" data-tag="${esc(a.tag.join("|"))}" data-ordine="${k}" data-data="${a.aggiornato}" data-minuti="${a.minuti}">
+      <p class="scheda-occhiello">${esc(gruppo.nome)}${passo}</p>
+      <h3 class="scheda-titolo"><a href="${a.slug}.html">${esc(a.titolo)}</a></h3>
+      <p class="scheda-sommario">${esc(a.sommario)}</p>
+      <p class="scheda-meta">${etichettaLivello(a.livello)} <span aria-hidden="true">·</span> ${a.durata} <span aria-hidden="true">·</span> <time datetime="${a.aggiornato}">${dataBreve(a.aggiornato)}</time></p>
+      <ul class="scheda-tag" aria-label="Tag">${a.tag.map((t) => `<li><a href="${linkTag(t)}" data-tag="${esc(t)}">${esc(t)}</a></li>`).join("")}</ul>
+    </article>`;
+  };
+  const schede = articoli.map(scheda).join("");
+  const opzioni = (nome, voci) => voci.map(([valore, etichetta]) =>
+    `<label><input type="checkbox" name="${nome}" value="${esc(valore)}"> <span>${esc(etichetta)}</span> <span class="filtro-conta"></span></label>`).join("\n          ");
+  const temi = GRUPPI.filter((g) => articoli.some((a) => a.gruppo === g.id)).map((g) => [g.id, g.nome]);
+  const livelli = Object.keys(LIVELLI).filter((l) => articoli.some((a) => a.livello === l)).map((l) => [l, LIVELLI[l].nome]);
+  const tagUsati = TAG.filter((t) => articoli.some((a) => a.tag.includes(t))).sort((x, y) => x.localeCompare(y, "it")).map((t) => [t, t]);
+  const menuFiltro = (nome, etichetta, voci) => `<details class="filtro-menu" data-filtro="${nome}">
+        <summary>${etichetta} <span class="filtro-quanti"></span></summary>
+        <div class="filtro-pannello">
+          ${opzioni(nome, voci)}
+        </div>
+      </details>`;
+  const esplora = `<section class="esplora" id="articoli" aria-labelledby="esplora-titolo">
+  <div class="esplora-testa">
+    <h2 id="esplora-titolo">Tutti gli articoli</h2>
+    <form class="esplora-ricerca" role="search" hidden>
+      <label for="esplora-campo" class="visivamente-nascosto">Cerca tra gli articoli</label>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+      <input id="esplora-campo" type="search" placeholder="Cerca negli articoli" autocomplete="off" spellcheck="false">
+    </form>
+    <div class="esplora-filtri" hidden>
+      ${menuFiltro("tema", "Tema", temi)}
+      ${menuFiltro("livello", "Livello", livelli)}
+      ${menuFiltro("tag", "Tag", tagUsati)}
+      <label class="esplora-ordine"><span>Ordina</span>
+        <select id="esplora-ordine">
+          <option value="percorso">Percorso consigliato</option>
+          <option value="rilevanza">Rilevanza</option>
+          <option value="recenti">Più recenti</option>
+          <option value="brevi">Più brevi</option>
+        </select>
+      </label>
+    </div>
+    <div class="esplora-attivi" hidden></div>
+    <p class="esplora-conteggio" aria-live="polite">${inLettere(articoli.length)} articoli</p>
+  </div>
+  <div class="esplora-griglia">${schede}
+  </div>
+  <p class="esplora-vuoto" hidden>Nessun articolo corrisponde. <button type="button" class="esplora-azzera">Cancella i filtri</button></p>
+  <div class="esplora-altri"><button type="button" class="bottone-secondario" hidden>Mostra altri</button></div>
+</section>`;
   const primaTesi = articoli.find((a) => !a.base);
   const azioni = basi.length
     ? `<a class="bottone" href="${basi[0].slug}.html">Parti dalle basi</a>
@@ -431,10 +470,7 @@ function paginaIniziale() {
     ${azioni}
   </div>
 </section>
-<section class="indice" aria-label="Tutti gli articoli">
-  ${filtro}
-${gruppi}
-</section>
+${esplora}
 <section class="indice-coda">
 ${rimandoSimulatore("Dalle idee ai tuoi portafogli", "Il simulatore di portafogli permette di inserire le proprie allocazioni e analizzarne le statistiche: un modo per mettere alla prova sui numeri le idee discusse qui.")}
 </section>`;
@@ -508,6 +544,7 @@ const indiceRicerca = articoli.map((a) => ({
   g: GRUPPI.find((g) => g.id === a.gruppo).nome,
   l: LIVELLI[a.livello].nome,
   se: a.sezioni.map((x) => x.testo).join(" · "),
+  tg: a.tag.join(" · "),
   x: testoPiano(a.sorgente),
 }));
 scrivi("assets/js/indice-ricerca.js", `window.CONTROTESI_INDICE=${JSON.stringify(indiceRicerca)};\n`);

@@ -5,6 +5,7 @@ tesi: Un attivo per ogni regime economico, in parti uguali.
 obiezione: Tre quarti del capitale rinunciano al premio azionario.
 gruppo: portafoglio
 livello: intermedio
+tag: asset allocation, oro, obbligazioni
 sommario: Azioni, obbligazioni lunghe, oro e liquidità al 25% ciascuno. Harry Browne rinuncia a prevedere e a stimare. Il conto arriva sotto forma di rendimento atteso.
 aggiornato: 2026-11-13
 ---

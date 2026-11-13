@@ -2,6 +2,7 @@
 slug: profilo-di-rischio
 titolo: Profilo di rischio, quanto puoi e quanto vuoi rischiare
 livello: base
+tag: rischio, comportamento, pianificazione
 gruppo: basi
 sommario: Il rischio che puoi permetterti e quello che riesci a sopportare sono due cose diverse. Il profilo giusto rispetta entrambe, e si scopre più guardando la propria situazione che rispondendo a un questionario.
 aggiornato: 2026-11-13
