@@ -59,7 +59,7 @@ Anche chi riconosce un prezzo sbagliato può non riuscire a correggerlo. Scommet
 :::
 
 ::: risposta
-Questa obiezione separa le due affermazioni iniziali. I prezzi possono essere sbagliati a lungo *e* non offrire profitti facili. Vedere una bolla non equivale a saperla sfruttare.
+Questa obiezione separa le due affermazioni iniziali. I prezzi possono essere sbagliati a lungo *e* non offrire profitti facili. Vedere una bolla non equivale a saperla sfruttare. Il meccanismo è sviluppato in [Finanza comportamentale](finanza-comportamentale.html).
 :::
 
 ::: obiezione Anomalie
@@ -67,7 +67,7 @@ Value, momentum, bassa volatilità: rendimenti non spiegati dal rischio di merca
 :::
 
 ::: risposta
-O sono compensi per rischi non catturati dal modello, o si riducono dopo la pubblicazione e i costi. È il tema di [Factor investing](factor-investing.html).
+O sono compensi per rischi non catturati dal modello, o si riducono dopo la pubblicazione e i costi. È il tema di [Factor investing](factor-investing.html) e, per i soli prezzi passati, di [Trend following](trend-following.html).
 :::
 
 ::: obiezione Se tutti indicizzano, chi fa i prezzi?
@@ -75,7 +75,7 @@ La crescita della gestione passiva ridurrebbe l'efficienza su cui la gestione pa
 :::
 
 ::: risposta
-È Grossman-Stiglitz in pratica: man mano che gli attivi diminuiscono, il compenso per chi resta sale e ne richiama altri. I prezzi li fissa chi scambia al margine, non chi detiene. [Mercati adattivi](mercati-adattivi.html) descrive questa dinamica come un ecosistema.
+È Grossman-Stiglitz in pratica: man mano che gli attivi diminuiscono, il compenso per chi resta sale e ne richiama altri. I prezzi li fissa chi scambia al margine, non chi detiene. [Mercati adattivi](mercati-adattivi.html) descrive questa dinamica come un ecosistema, e [Il paradosso della gestione passiva](paradosso-passivo.html) ne discute i limiti.
 :::
 
 ::: difendibile

@@ -5,7 +5,7 @@ tesi: Value, size e momentum rendono più del mercato.
 obiezione: Dopo la pubblicazione i premi si riducono di circa un terzo.
 gruppo: prezzi
 sommario: Alcune caratteristiche delle azioni hanno reso più di quanto spieghi il rischio di mercato. Se è rischio dura, se è errore si consuma. Non è facile dire quale.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 Alcune caratteristiche delle azioni sono state associate a rendimenti più alti di quanto spieghi il solo rischio di mercato. La domanda che decide tutto è se siano compensi per un rischio, e quindi destinati a durare, oppure errori di prezzo, destinati a ridursi una volta noti.
@@ -21,7 +21,7 @@ $$
 I dati non lo confermano: titoli piccoli e titoli a basso prezzo rispetto al patrimonio hanno reso più di quanto il loro $\beta$ giustifichi. Fama e French (1993) aggiungono due fattori, poi altri due nel 2015:
 
 $$
-E[r_i] - r_f = \beta_i\,\text{MKT} + s_i\,\text{SMB} \acapo + h_i\,\text{HML} + r_i\,\text{RMW} + c_i\,\text{CMA}
+E[r_i] - r_f = \beta_i\,\text{MKT} + s_i\,\text{SMB} \acapo + h_i\,\text{HML} + p_i\,\text{RMW} + c_i\,\text{CMA}
 $$
 
 Ogni fattore è il rendimento di un portafoglio lungo su un gruppo di titoli e corto sul gruppo opposto.
@@ -34,7 +34,7 @@ Ogni fattore è il rendimento di un portafoglio lungo su un gruppo di titoli e c
 | Investimento (CMA) | Investono poco / molto | Legato al costo del capitale | Eccesso di espansione dei manager |
 | Momentum | Vincitori / perdenti a 12 mesi | Debole; crolli improvvisi | Reazione lenta alle notizie |
 
-Il momentum non fa parte del modello Fama-French a cinque fattori, ma è l'anomalia più robusta e la più difficile da conciliare con l'efficienza.
+Il momentum non fa parte del modello Fama-French a cinque fattori, ma è l'anomalia più robusta e la più difficile da conciliare con l'efficienza. Applicato a interi mercati invece che ai singoli titoli diventa il [trend following](trend-following.html).
 
 ## Obiezioni e risposte
 
@@ -51,7 +51,7 @@ McLean e Pontiff hanno riesaminato [97 variabili pubblicate](https://doi.org/10.
 :::
 
 ::: risposta
-Il risultato va letto nei due sensi. Parte del premio era errore di prezzo ed è stata arbitrata; parte sopravvive. I fattori con costi di arbitraggio alti si riducono meno, come previsto dai limiti all'arbitraggio. Aspettarsi metà del premio storico è più realistico che aspettarselo intero.
+Il risultato va letto nei due sensi. Parte del premio era errore di prezzo ed è stata arbitrata; parte sopravvive. I fattori con costi di arbitraggio alti si riducono meno, come previsto dai limiti all'arbitraggio. Aspettarsi due terzi del premio storico, o meno per prudenza, è più realistico che aspettarselo intero.
 :::
 
 ::: obiezione Il premio di carta non è quello incassabile

@@ -5,7 +5,7 @@ tesi: Va bilanciato il rischio, non il capitale.
 obiezione: Funziona finché azioni e obbligazioni non scendono insieme. Nel 2022 è successo.
 gruppo: portafoglio
 sommario: Un 60/40 è per il 95% una scommessa azionaria. Risk parity lo corregge, ma per trasformare l'equilibrio in rendimento ha bisogno di leva e di correlazioni che stiano ferme.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 Dividere il capitale in parti uguali non divide il rischio in parti uguali. Risk parity parte da questa osservazione corretta, ma per trasformarla in rendimento ha bisogno di due ipotesi fragili: correlazioni stabili e leva a buon mercato.
@@ -14,7 +14,7 @@ Dividere il capitale in parti uguali non divide il rischio in parti uguali. Risk
 
 Le etichette tradizionali nascondono esposizioni comuni. Azioni, obbligazioni societarie e immobiliare quotato dipendono tutte dalla crescita economica. Un portafoglio con sei classi di attivo può avere un solo rischio dominante.
 
-L'allocazione per fattori di rischio scompone ogni attivo nelle sue sensibilità a pochi motori macro: crescita, inflazione, tassi reali, credito, liquidità. Poi bilancia quelle, non le etichette.
+L'allocazione per fattori di rischio scompone ogni attivo nelle sue sensibilità a pochi motori macro: crescita, inflazione, tassi reali, credito, liquidità. Poi bilancia quelle, non le etichette. Il tema è ripreso, con un caso numerico, in [Etichette e rischi](etichette-e-rischi.html).
 
 ## La matematica
 
@@ -57,7 +57,7 @@ La matrice $\Sigma$ è stimata sul passato. Dal 2000 la correlazione mobile a 24
 :::
 
 ::: risposta
-Il segno della correlazione dipende dal regime. È negativa quando lo shock riguarda la crescita, positiva quando riguarda l'inflazione, e [vicina a zero sul periodo 1927–2021](https://www.evidenceinvestor.com/post/when-stocks-and-bonds-fall-together). Un risk parity ben costruito bilancia per regimi macro e include materie prime e titoli indicizzati all'inflazione. Nel 2022 i fondi con quelle esposizioni hanno retto meglio.
+Il segno della correlazione dipende dal regime. È negativa quando lo shock riguarda la crescita, positiva quando riguarda l'inflazione, e [vicina a zero sul periodo 1927–2021](https://www.evidenceinvestor.com/post/when-stocks-and-bonds-fall-together). Un risk parity ben costruito bilancia per regimi macro e include materie prime e titoli indicizzati all'inflazione. È la difesa teorica; il 2022 è stato il banco di prova, e per la categoria nel suo insieme è andato male.
 :::
 
 ::: obiezione La leva ha costi e può essere revocata
@@ -65,7 +65,7 @@ Il segno della correlazione dipende dal regime. È negativa quando lo shock rigu
 :::
 
 ::: risposta
-Per chi accede a leva tramite futures i costi sono inferiori a quelli ipotizzati. Resta il rischio che non si elimina: la riduzione forzata della leva nel momento peggiore, che trasforma una perdita temporanea in permanente. È lo stato assorbente di cui parla [Valore atteso](valore-atteso.html).
+Per chi accede a leva tramite futures i costi possono essere inferiori a quelli ipotizzati. Resta il rischio che non si elimina: la riduzione forzata della leva nel momento peggiore, che trasforma una perdita temporanea in permanente. È lo stato assorbente di cui parla [Valore atteso](valore-atteso.html). E oltre una certa leva cala anche il rendimento composto, come mostra [Volatility drag](volatility-drag.html).
 :::
 
 ::: obiezione Volatilità non è rischio
@@ -73,7 +73,7 @@ Pareggiare le volatilità ignora asimmetrie, code e liquidità. Un'obbligazione 
 :::
 
 ::: risposta
-Limite reale del metodo. Si può sostituire la volatilità con misure di perdita estrema, al prezzo di stime più instabili.
+Limite reale del metodo, e [Code grasse](code-grasse.html) spiega perché pesa. Si può sostituire la volatilità con misure di perdita estrema, al prezzo di stime più instabili.
 :::
 
 ::: obiezione Il backtest coincide con quarant'anni di tassi in discesa

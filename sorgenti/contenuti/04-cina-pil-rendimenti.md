@@ -28,18 +28,17 @@ $$
 \text{rendimento} \approx \Delta\% \,\text{ricavi per azione} \acapo + \Delta\% \,\text{margine} + \Delta\% \,\text{multiplo} \acapo + \text{dividendi}
 $$
 
-Da dicembre 2001 a giugno 2021 le quattro voci, in punti percentuali l'anno, sono andate così:
+La scomposizione del paper copre un periodo un po' diverso da quello dei rendimenti citati sopra, da dicembre 2001 a giugno 2021. Tre delle quattro voci, in punti percentuali l'anno, sono andate così:
 
 | | MSCI China A | MSCI China | MSCI USA |
 |---|---|---|---|
 | Ricavi per azione | +11,9 | +9,85 | +3,53 |
 | Margine di profitto | −0,27 | −1,09 | +4,21 |
-| Multiplo | negativo | positivo | negativo |
 | Dividendi | +1,8 | +2,8 | +2,0 |
 
-I valori del multiplo non sono leggibili nelle tabelle del paper; il testo ne indica solo il segno.
+La quarta voce, la variazione del multiplo, il paper non la quantifica: indica solo che è stata negativa per l'MSCI China A e per l'MSCI USA, positiva per l'MSCI China.
 
-Le azioni cinesi hanno avuto ricavi per azione in crescita tre volte più rapida di quelle americane. Le azioni americane hanno reso quanto le A cinesi perché i margini sono più che raddoppiati, dal 4,9% all'11,05% dei ricavi, mentre quelli cinesi scendevano.
+Le azioni cinesi hanno avuto ricavi per azione in crescita tre volte più rapida di quelle americane. Le azioni americane hanno compensato con i margini, più che raddoppiati dal 4,9% all'11,05% dei ricavi, mentre quelli cinesi scendevano.
 
 ## Prima voce: la diluizione
 

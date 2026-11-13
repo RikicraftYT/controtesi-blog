@@ -5,7 +5,7 @@ tesi: Se il valore atteso è positivo, conviene.
 obiezione: È una media su mondi paralleli. Tu ne vivi uno solo.
 gruppo: strumento
 sommario: Prima di discutere le teorie conviene capire cosa promette una media, e cosa no. Con una scommessa che in media vince e quasi sempre perde.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 Ogni tesi di questo blog è un'affermazione su un valore atteso, e il valore atteso è una media su molti mondi possibili, non ciò che accade a un singolo investitore nel tempo. La distanza tra le due cose spiega buona parte delle obiezioni che troverai negli altri articoli.
@@ -42,13 +42,13 @@ Dopo 100 giocate il valore atteso è circa 131 volte il capitale iniziale. Il pe
 
 ### La media non è la mediana
 
-Con rendimenti composti la ricchezza finale ha una distribuzione molto asimmetrica. Se il rendimento logaritmico ha media $\mu$ e volatilità $\sigma$:
+Con rendimenti composti la ricchezza finale ha una distribuzione molto asimmetrica. Se il capitale cresce a un tasso medio istantaneo $\mu$ con volatilità $\sigma$ (il modello standard, detto moto browniano geometrico):
 
 $$
 E[W_T] = W_0\, e^{\mu T} \qquad\quad \text{Mediana}[W_T] = W_0\, e^{(\mu - \sigma^2/2)\,T}
 $$
 
-Con $\mu = 7\%$, $\sigma = 18\%$ e $T = 30$ anni, il valore atteso è circa 8,2 volte il capitale e la mediana circa 5. Lo studio sui paesi sviluppati citato in [Il mercato cresce nel tempo](mercato-cresce.html) mostra lo stesso scarto nei dati: [un dollaro diventa in media 7,34 dollari reali in 30 anni](https://www.cxoadvisory.com/?p=34496), eppure nel 12% dei casi vale meno di un dollaro.
+Con $\mu = 7\%$, $\sigma = 18\%$ e $T = 30$ anni, il valore atteso è circa 8,2 volte il capitale e la mediana circa 5. Lo studio sui paesi sviluppati citato in [Il mercato cresce nel tempo](mercato-cresce.html) mostra lo stesso scarto nei dati: [un dollaro diventa in media 7,34 dollari reali in 30 anni](https://www.cxoadvisory.com/?p=34496), eppure nel 12% dei casi vale meno di un dollaro. La stessa asimmetria, applicata ai singoli titoli, spiega perché [pochi titoli fanno tutto il rendimento](pochi-titoli.html).
 
 ### L'utilità non è lineare
 
@@ -89,7 +89,7 @@ $$
 f^{*} = \frac{\mu - r_f}{\sigma^2}
 $$
 
-Con premio 5% e volatilità 18% la quota ottimale è circa 1,5 volte il capitale; con premio 3% scende a 0,9. Poiché il premio vero è incerto, puntare la quota di Kelly piena significa spesso puntare troppo.
+Con premio 5% e volatilità 18% la quota ottimale è circa 1,5 volte il capitale; con premio 3% scende a 0,9. Poiché il premio vero è incerto, puntare la quota di Kelly piena significa spesso puntare troppo. La stessa formula torna, come leva ottimale, in [Volatility drag](volatility-drag.html).
 :::
 
 ::: obiezione «L'economia dell'ergodicità non dice nulla di nuovo»

@@ -19,12 +19,12 @@ Le formule sono scritte per intero e ogni numero rimanda alla sua fonte.
 
 ## Di cosa parla
 
-- **Il metro di giudizio**: il valore atteso, il costo della volatilità, entrare tutto subito o a rate.
-- **Quanto rende il mercato**: crescita di lungo periodo, il campione dei paesi sviluppati, perché la crescita del PIL non diventa per forza rendimento, premio per il rischio, i pochi titoli che fanno l'indice, prezzo d'ingresso, ordine dei rendimenti.
+- **Il metro di giudizio**: il valore atteso e il costo della volatilità.
+- **Quanto rende il mercato**: crescita di lungo periodo, il campione dei paesi sviluppati, perché la crescita del PIL non diventa per forza rendimento, premio per il rischio, i pochi titoli che fanno l'indice, prezzo d'ingresso.
 - **I prezzi sono giusti?**: mercati efficienti, gestione passiva, finanza comportamentale, mercati adattivi, Minsky e Soros, code grasse, factor investing.
 - **Come costruire il portafoglio**: risk parity, Permanent Portfolio, oro, trend following.
 - **Che cosa possiedi davvero**: dove investe un indice globale, quale Cina c'è negli indici, il total portfolio approach, i rischi dietro le etichette, quanto deve rendere un investimento per meritare un posto.
-- **Dal risparmio alla pensione**: FIRE, la regola del 4%, il ciclo di vita.
+- **Dal risparmio alla pensione**: entrare tutto subito o a rate, FIRE, il rischio di sequenza, la regola del 4%, il ciclo di vita.
 - **Trarre le conclusioni**: dove queste idee si contraddicono e quali combinazioni stanno in piedi.
 
 ## Per chi è

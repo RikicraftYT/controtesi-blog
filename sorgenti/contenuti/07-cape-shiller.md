@@ -18,7 +18,7 @@ $$
 \text{CAPE} = \frac{P}{\tfrac{1}{10}\sum_{t=1}^{10} E_t^{\,\text{reale}}} \qquad\quad E[r_{\text{reale}}] \approx \frac{1}{\text{CAPE}}
 $$
 
-Con un CAPE di 30 la stima è circa 3,3% reale annuo; con un CAPE di 15, circa 6,7%. È il termine $\Delta(P/E)$ di [Il mercato cresce nel tempo](mercato-cresce.html) reso misurabile.
+Con un CAPE di 30 la stima è circa 3,3% reale annuo; con un CAPE di 15, circa 6,7%. È il termine $\Delta\%(P/E)$ di [Il mercato cresce nel tempo](mercato-cresce.html) reso misurabile.
 
 ## L'evidenza
 
@@ -55,7 +55,7 @@ Il Giappone era caro nel 1986 ed è salito altri tre anni; gli USA sono sopra la
 :::
 
 ::: risposta
-Vero, e va concesso. L'uso difendibile è un altro: stimare rendimenti attesi realistici per decidere quanto risparmiare e quanto prelevare (vedi [Rischio di sequenza](rischio-di-sequenza.html)), e pesare le aree geografiche.
+Vero, e va concesso. L'uso difendibile è un altro: stimare rendimenti attesi realistici per decidere quanto risparmiare e quanto prelevare (vedi [Rischio di sequenza](rischio-di-sequenza.html) e [La regola del 4%](regola-4-percento.html)), e pesare le aree geografiche.
 :::
 
 ::: obiezione Prevedibilità non vuol dire inefficienza

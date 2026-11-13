@@ -20,7 +20,12 @@ I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'
 - [Stocks for the long run? Evidence from a broad sample of developed markets](https://econpapers.repec.org/RePEc:eee:jfinec:v:143:y:2022:i:1:p:409-433) – Anarkulova, Cederburg, O'Doherty, Journal of Financial Economics 2022
 - [The Long-Horizon Returns of Stocks, Bonds, and Bills](https://business.unl.edu/academic-programs/departments/finance/about/seminar-series/documents/MikeODoherty.pdf) – stessi autori
 - [The Long-Term Safety of Stocks May Be Overstated](https://business.missouri.edu/news/long-term-safety-stocks-may-be-overstated-heres-why) – University of Missouri
-- [Myopic Loss Aversion and the Equity Premium Puzzle](https://www.nber.org/system/files/working_papers/w4369/w4369.pdf) – Benartzi e Thaler, NBER
+- The Equity Premium: A Puzzle – Mehra e Prescott, Journal of Monetary Economics 1985
+- [Myopic Loss Aversion and the Equity Premium Puzzle](https://www.nber.org/system/files/working_papers/w4369/w4369.pdf) – Benartzi e Thaler, NBER, poi Quarterly Journal of Economics 1995
+- The Equity Risk Premium: A Solution – Rietz, Journal of Monetary Economics 1988
+- Rare Disasters and Asset Markets in the Twentieth Century – Barro, Quarterly Journal of Economics 2006
+- By Force of Habit: A Consumption-Based Explanation of Aggregate Stock Market Behavior – Campbell e Cochrane, Journal of Political Economy 1999
+- Risks for the Long Run: A Potential Resolution of Asset Pricing Puzzles – Bansal e Yaron, Journal of Finance 2004
 - [Equity premium puzzle](https://en.wikipedia.org/wiki/Equity_premium_puzzle) – Wikipedia, con bibliografia
 - [One trade at a time](https://arxiv.org/pdf/1507.07214.pdf) – rassegna sullo stato del puzzle
 
@@ -41,6 +46,8 @@ I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'
 - [The Adaptive Markets Hypothesis](https://web.mit.edu/~alo/www/Papers/JPM2004.html) – Andrew Lo, Journal of Portfolio Management 2004 ([testo su SSRN](https://papers.ssrn.com/abstract=602222))
 - [Reconciling Efficient Markets with Behavioral Finance](https://www.cxoadvisory.com/?p=336) – CXO Advisory, sintesi
 - [Lo: Adaptive Markets](https://www.investing.com/analysis/lo-adaptive-markets-200278166) – Investing.com, commento
+- Common Risk Factors in the Returns on Stocks and Bonds – Fama e French, Journal of Financial Economics 1993
+- A Five-Factor Asset Pricing Model – Fama e French, Journal of Financial Economics 2015
 - [Does Academic Research Destroy Stock Return Predictability?](https://doi.org/10.1111/jofi.12365) – McLean e Pontiff, Journal of Finance 2016
 - [Published Results Impact Future Results](https://www.etf.com/sections/index-investor-corner/swedroe-published-results-impact-future-results) – Swedroe
 - [MoneySense sul premio value](https://moneysense.ca/?p=36813) – value a grande capitalizzazione contro S&P 500 dal 1927
@@ -127,6 +134,7 @@ I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'
 ## Trend following e oro
 
 - [A Century of Evidence on Trend-Following Investing](https://fairmodel.econ.yale.edu/ec439/hurst.pdf) – Hurst, Ooi, Pedersen, Journal of Portfolio Management 2017
+- Time Series Momentum – Moskowitz, Ooi, Pedersen, Journal of Financial Economics 2012
 - [Time Series Momentum, the historical evidence](https://alphaarchitect.com/time-series-momentum-aka-trend-following-the-historical-evidence/) – Alpha Architect
 - [The Golden Dilemma](https://people.duke.edu/~charvey/Research/Published_Papers/P113_The_golden_dilemma.pdf) – Erb e Harvey, Financial Analysts Journal 2013
 - [Sintesi dello studio](https://archive.investmentoffice.com/io/Investment_Thoughts/Academia/The_Golden_Dilemma.php) – Investment Office

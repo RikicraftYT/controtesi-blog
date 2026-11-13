@@ -5,7 +5,7 @@ tesi: Il mercato globale, in media, cresce.
 obiezione: Tra crescita ed età della pietra c'è la stagnazione. Chiedere al Giappone.
 gruppo: rendimenti
 sommario: «Altrimenti torniamo all'età della pietra» è un argomento vero ma incompleto. Qui c'è la versione che regge senza dati storici, e i cinque punti in cui scricchiola.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 La tesi regge su un argomento di equilibrio, non sulla storia: nessuno detiene un'attività rischiosa senza aspettarsi un compenso, quindi il prezzo si aggiusta finché il rendimento atteso è positivo. È una tesi sul rendimento *atteso*. Non garantisce nulla sul rendimento *realizzato* in un dato arco di vita.
@@ -22,10 +22,10 @@ Da qui seguono tre cose.
 
 1. **Il rendimento atteso è positivo anche a crescita zero.** Con $g = 0$ resta $D/P$: un'economia stazionaria che produce utili li distribuisce.
 2. **Il rendimento atteso lo fissa il prezzo.** Se le prospettive peggiorano, $P$ scende finché $r$ torna a compensare il rischio. La perdita colpisce chi deteneva prima, non chi compra dopo.
-3. **Su orizzonti finiti conta anche la valutazione.** Il rendimento realizzato aggiunge un terzo termine, la variazione del multiplo:
+3. **Su orizzonti finiti conta anche la valutazione.** Il rendimento realizzato aggiunge un terzo termine, la variazione percentuale del multiplo:
 
 $$
-r_{\text{realizzato}} \approx \frac{D}{P} + g + \Delta\!\left(\frac{P}{E}\right)
+r_{\text{realizzato}} \approx \frac{D}{P} + g + \Delta\%\!\left(\frac{P}{E}\right)
 $$
 
 ## Cosa vuol dire «altrimenti torniamo all'età della pietra»
@@ -41,7 +41,7 @@ I dati più citati sono americani: [1 dollaro investito in azioni USA nel 1900 v
 :::
 
 ::: risposta
-I fallimenti sono nazionali, e un portafoglio globale li diluisce. In un [lavoro successivo](https://business.unl.edu/academic-programs/departments/finance/about/seminar-series/documents/MikeODoherty.pdf) gli stessi autori stimano la perdita a 30 anni al 12,6% per le azioni domestiche e al 4,1% per un paniere internazionale. Resta che 4% non è zero.
+I fallimenti sono nazionali, e un portafoglio globale li diluisce. I numeri sono discussi in [Azioni nel lungo periodo, il campione largo](azioni-campione-largo.html). In un [lavoro successivo](https://business.unl.edu/academic-programs/departments/finance/about/seminar-series/documents/MikeODoherty.pdf), con un metodo un po' diverso e quindi numeri non identici, gli stessi autori stimano la perdita a 30 anni al 12,6% per le azioni domestiche e al 4,1% per un paniere internazionale. Resta che 4% non è zero.
 :::
 
 ::: obiezione La crescita del PIL non è il rendimento dell'azionista
@@ -49,15 +49,15 @@ L'azionista incassa la crescita degli utili *per azione*. Nuove emissioni e nuov
 :::
 
 ::: risposta
-La tesi non richiede crescita del PIL: richiede un premio al rischio positivo. L'obiezione però ridimensiona l'ottimismo, perché il $g$ dell'azionista è più basso di quello dell'economia.
+La tesi non richiede crescita del PIL: richiede un premio al rischio positivo. L'obiezione però ridimensiona l'ottimismo, perché il $g$ dell'azionista è più basso di quello dell'economia. Il caso più netto è la Cina: [Il PIL cresce, le azioni meno](cina-pil-rendimenti.html).
 :::
 
 ::: obiezione Falsa dicotomia
-Tra crescita ed età della pietra c'è la stagnazione. L'indice Nikkei ha rivisto il massimo del 1989 solo nel 2024. Nessun crollo di civiltà, eppure una generazione di rendimenti nulli.
+Tra crescita ed età della pietra c'è la stagnazione. Il Giappone, primo mercato del mondo a fine 1989, [nei trent'anni successivi ha reso il −21% reale](https://corpgov.law.harvard.edu/2021/12/13/stocks-for-the-long-run-evidence-from-a-broad-sample-of-developed-markets). Nessun crollo di civiltà, eppure una generazione di rendimenti negativi.
 :::
 
 ::: risposta
-Il Giappone del 1989 è un caso di valutazione d'ingresso estrema, non di fallimento dell'argomento: il terzo termine della formula ha mangiato gli altri due. Si mitiga con diversificazione geografica e ingresso graduale, non si elimina. Ne parla [l'articolo sul CAPE](cape-shiller.html).
+Il Giappone del 1989 è un caso di valutazione d'ingresso estrema, non di fallimento dell'argomento: il terzo termine della formula ha mangiato gli altri due. Si mitiga con la diversificazione geografica e, per chi investe dal reddito, con versamenti distribuiti su molti anni; diluire in pochi mesi una somma già disponibile aiuta poco, come spiega [Tutto subito o a rate](pac-o-pic.html). Non si elimina. Ne parla [l'articolo sul CAPE](cape-shiller.html).
 :::
 
 ::: obiezione Limiti alla crescita

@@ -5,7 +5,7 @@ tesi: Un attivo per ogni regime economico, in parti uguali.
 obiezione: Tre quarti del capitale rinunciano al premio azionario.
 gruppo: portafoglio
 sommario: Azioni, obbligazioni lunghe, oro e liquidità al 25% ciascuno. Harry Browne rinuncia a prevedere e a stimare. Il conto arriva sotto forma di rendimento atteso.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 È la versione senza leva e senza stime dell'idea di [Risk parity](risk-parity.html): quattro attivi in parti uguali, uno per ogni regime economico. Rinuncia a rendimento atteso in cambio di perdite massime contenute, e la rinuncia è più grande di quanto i backtest facciano sembrare.
@@ -23,16 +23,16 @@ Browne parte da un'ammissione: il regime economico futuro non è prevedibile. In
 
 Tre attivi su quattro sono molto volatili. La stabilità del portafoglio nasce dal fatto che le loro correlazioni di lungo periodo sono vicine a zero, e dal ribilanciamento che vende ciò che è salito e compra ciò che è sceso.
 
-L'effetto è quello della formula $g \approx \mu - \sigma^2/2$ vista in [Rischio di sequenza](rischio-di-sequenza.html): meno volatilità a parità di media significa più crescita composta e meno dipendenza dall'ordine dei rendimenti. Per chi preleva è una proprietà di valore.
+L'effetto è quello della formula $g \approx \mu - \sigma^2/2$ vista in [Rischio di sequenza](rischio-di-sequenza.html) e in [Volatility drag](volatility-drag.html): meno volatilità a parità di media significa più crescita composta e meno dipendenza dall'ordine dei rendimenti. Per chi preleva è una proprietà di valore.
 
 ## Obiezioni e risposte
 
 ::: obiezione Un quarto in oro
-L'oro non produce flussi di cassa, quindi l'argomento di [Il mercato cresce nel tempo](mercato-cresce.html) non gli si applica: non c'è motivo teorico per un rendimento reale positivo. Tra il 1980 e il 2000 ha perso gran parte del suo valore reale.
+L'oro non produce flussi di cassa, quindi l'argomento di [Il mercato cresce nel tempo](mercato-cresce.html) non gli si applica: non c'è motivo teorico per un rendimento reale positivo. [Tra il 1980 e il 2001 ha perso circa l'85% del potere d'acquisto](https://www.etf.com/sections/index-investor-corner/swedroe-debunking-gold-mythology), come racconta [Oro](oro.html).
 :::
 
 ::: risposta
-Nel portafoglio l'oro non è lì per rendere ma per essere scorrelato e reagire all'inflazione inattesa. Il suo contributo passa dal ribilanciamento. Resta che un quarto del capitale ha rendimento reale atteso vicino a zero.
+Nel portafoglio l'oro non è lì per rendere ma per essere scorrelato e reagire all'inflazione inattesa. Il suo contributo passa dal ribilanciamento. Resta che un quarto del capitale ha rendimento reale atteso vicino a zero. Quanto debba rendere un'attività poco correlata per meritare il suo posto lo calcola [Quanto deve rendere](hurdle-rate.html).
 :::
 
 ::: obiezione Un quarto in liquidità

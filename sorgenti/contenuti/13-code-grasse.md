@@ -5,7 +5,7 @@ tesi: La volatilità misura il rischio.
 obiezione: Misura il rischio dei giorni normali.
 gruppo: prezzi
 sommario: I rendimenti finanziari hanno eventi estremi molto più frequenti di quanto preveda una distribuzione normale. Mandelbrot lo documentò nel 1963. Cambia il modo di leggere deviazione standard, VaR e correlazioni.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 Quasi tutti i numeri usati per descrivere il rischio, dalla deviazione standard allo Sharpe ratio, presuppongono che i rendimenti si distribuiscano in modo simile a una gaussiana. È un'approssimazione buona al centro e pessima ai bordi.
@@ -26,7 +26,7 @@ L'esempio classico è il 19 ottobre 1987. Secondo [una rassegna sul tema](https:
 
 **La deviazione standard è instabile.** Se le code sono pesanti, la varianza campionaria non converge bene: basta un evento per cambiarla molto. La volatilità misurata in un periodo tranquillo dice poco su quella del periodo successivo.
 
-**Pochi giorni fanno il risultato.** Come [pochi titoli fanno il rendimento dell'indice](pochi-titoli.html), pochi giorni fanno il rendimento di un decennio, nel bene e nel male.
+**I giorni estremi pesano più della loro frequenza.** Con code pesanti, una parte sproporzionata del risultato di un periodo dipende da pochi giorni, nel bene e nel male: è la stessa asimmetria per cui [pochi titoli fanno il rendimento dell'indice](pochi-titoli.html).
 
 **Le correlazioni cambiano nelle code.** Attività poco correlate nei giorni normali scendono insieme nei giorni estremi. È uno dei punti deboli della [risk parity](risk-parity.html).
 
@@ -61,7 +61,7 @@ Per il teorema del limite centrale, sommando molti rendimenti la distribuzione t
 :::
 
 ::: risposta
-Converge, ma lentamente quando le code sono pesanti, e non converge se i rendimenti non sono indipendenti. I crolli arrivano a grappoli. Il [campione largo](azioni-campione-largo.html) mostra code pesanti anche a trent'anni.
+Converge, ma lentamente quando le code sono pesanti, e non converge se i rendimenti non sono indipendenti. I crolli arrivano a grappoli. E anche a trent'anni la coda sinistra resta ampia: nel [campione largo](azioni-campione-largo.html) la probabilità di perdita reale è di una su otto.
 :::
 
 ::: difendibile

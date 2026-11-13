@@ -3,7 +3,7 @@ slug: rischio-di-sequenza
 titolo: Rischio di sequenza, l'ordine conta quanto la media
 tesi: Conta il rendimento medio.
 obiezione: Se versi o prelevi, conta l'ordine. Stessa media, esiti opposti.
-gruppo: rendimenti
+gruppo: vita
 sommario: Due investitori con gli stessi rendimenti in ordine inverso finiscono in posti diversi. È il motivo per cui «in media cresce» non basta a chi vive del portafoglio.
 aggiornato: 2026-11-11
 ---
@@ -42,7 +42,7 @@ Per chi accumula il segno si inverte: rendimenti cattivi all'inizio sono un vant
 
 ## Il legame con gli altri articoli
 
-La ricerca sui tassi di prelievo sostenibili, da Bengen in poi, nasce da qui. [Kitces](https://www.kitces.com/blog/understanding-sequence-of-return-risk-safe-withdrawal-rates-bear-market-crashes-and-bad-decades/) mostra che a decidere l'esito non è tanto il crollo nell'anno del ritiro quanto il rendimento *reale* del primo decennio. Il [CAPE](cape-shiller.html) è lo strumento migliore, per quanto rumoroso, per stimare proprio quel decennio.
+La ricerca sui tassi di prelievo sostenibili, [da Bengen in poi](regola-4-percento.html), nasce da qui, e chi vuole smettere presto di lavorare ne dipende ancora di più: vedi [FIRE](fire.html). [Kitces](https://www.kitces.com/blog/understanding-sequence-of-return-risk-safe-withdrawal-rates-bear-market-crashes-and-bad-decades/) mostra che a decidere l'esito non è tanto il crollo nell'anno del ritiro quanto il rendimento *reale* del primo decennio. Il [CAPE](cape-shiller.html) è lo strumento migliore, per quanto rumoroso, per stimare proprio quel decennio.
 
 C'è anche un effetto più sottile che vale per tutti. Il rendimento composto $g$ è inferiore a quello medio aritmetico $\mu$ di circa metà della varianza:
 
@@ -50,7 +50,7 @@ $$
 g \approx \mu - \frac{\sigma^2}{2}
 $$
 
-Ridurre la volatilità a parità di rendimento medio aumenta quindi la crescita composta. È lo stesso scarto tra media e mediana di [Valore atteso](valore-atteso.html), ed è l'argomento più solido a favore dei portafogli bilanciati come [risk parity](risk-parity.html) e [Permanent Portfolio](permanent-portfolio.html).
+Ridurre la volatilità a parità di rendimento medio aumenta quindi la crescita composta. È lo stesso scarto tra media e mediana di [Valore atteso](valore-atteso.html), sviluppato in [Volatility drag](volatility-drag.html), ed è l'argomento più solido a favore dei portafogli bilanciati come [risk parity](risk-parity.html) e [Permanent Portfolio](permanent-portfolio.html).
 
 ## Obiezioni e risposte
 

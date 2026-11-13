@@ -5,7 +5,7 @@ tesi: Le crisi arrivano da shock esterni.
 obiezione: Le produce la stabilità stessa.
 gruppo: prezzi
 sommario: Due teorie eterodosse sostengono che i mercati non tendono all'equilibrio ma se ne allontanano da soli. Per Minsky il motore è il debito, per Soros il circuito tra convinzioni e fondamentali. Nessuna delle due dice quando.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 L'[ipotesi dei mercati adattivi](mercati-adattivi.html) ammette che l'efficienza vari nel tempo. Minsky e Soros vanno oltre: l'instabilità non è un incidente, è il modo normale in cui funziona un sistema finanziario.
@@ -35,7 +35,7 @@ Né Minsky né Soros forniscono equazioni da stimare. "Prima o poi crolla" non �
 :::
 
 ::: risposta
-Per Minsky l'obiezione valeva più ieri di oggi: le misure di leva e di qualità del credito nei modelli macro-finanziari recenti derivano da lì. Per Soros vale ancora in buona parte. Resta un'affermazione verificabile: le crisi dovrebbero seguire le espansioni del credito, non capitare a caso.
+Per Soros vale in buona parte. Per Minsky meno di quanto sembri. Resta un'affermazione verificabile: le crisi dovrebbero seguire le espansioni del credito, non capitare a caso.
 :::
 
 ::: obiezione Se è prevedibile, qualcuno ci guadagna e la elimina

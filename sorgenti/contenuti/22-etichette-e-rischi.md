@@ -10,7 +10,7 @@ aggiornato: 2026-11-13
 
 "Azioni", "obbligazioni", "immobili", "private equity" sono nomi di contenitori. Il rischio sta nei fattori che ci sono dentro: mercato azionario, tassi, credito, valute, dimensione delle società, area geografica. Lo stesso fattore può stare in più contenitori, ed è lì che i conti per etichetta sbagliano.
 
-Il secondo paper MSCI, *Total-Portfolio Approach: Framework in Practice*, segue un fondo pensione pubblico americano ipotetico: 75% in attività di crescita e 25% difensive, con un terzo del capitale in mercati privati. Due episodi del caso meritano di essere ricostruiti.
+Il secondo paper MSCI sul [total portfolio approach](tpa.html), *Total-Portfolio Approach: Framework in Practice*, segue un fondo pensione pubblico americano ipotetico: 75% in attività di crescita e 25% difensive, con un terzo del capitale in mercati privati. Due episodi del caso meritano di essere ricostruiti.
 
 ## Primo episodio: il private equity che disfa le scelte
 

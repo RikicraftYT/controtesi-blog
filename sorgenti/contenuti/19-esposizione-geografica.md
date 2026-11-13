@@ -18,12 +18,12 @@ Una [nota di ricerca di MSCI](https://www.msci.com/research-and-insights/quick-t
 |---|---|---|
 | Domicilio | Dove ha sede la società? | circa 64% |
 | Ricavi | Dove sono i clienti? | poco meno del 44% |
-| Attività dirette | Dove sono impianti e uffici? | non riportata nel testo |
+| Attività dirette | Dove sono impianti e uffici? | — |
 | Filiera | Dove sono i fornitori di primo e secondo livello? | quasi 42% |
 
-Mettendo insieme ricavi, attività e filiera, l'esposizione agli Stati Uniti risulta poco più del 40%. Il resto si sposta verso la Cina, Taiwan e il resto del mondo.
+La nota non riporta la quota per le attività dirette. Mettendo insieme ricavi, attività e filiera, l'esposizione agli Stati Uniti risulta poco più del 40%. Il resto si sposta verso la Cina, Taiwan e il resto del mondo.
 
-Il caso opposto è la Cina. Nell'indice pesa il 2,5%. Per ricavi, quasi il 12% di ciò che le società dell'indice incassano viene da lì. Nella filiera dei beni, la dipendenza dalla Cina è dell'8% e quella da Taiwan del 6%. Un investitore che legge solo la tabella dei pesi crede di avere un'esposizione marginale alla Cina; ne ha una quasi cinque volte più grande.
+Il caso opposto è la Cina. Nell'indice pesa il 2,5%. Per ricavi, quasi il 12% di ciò che le società dell'indice incassano viene da lì. Nella filiera dei beni, la dipendenza dalla Cina è dell'8% e quella da Taiwan del 6%. Un investitore che legge solo la tabella dei pesi crede di avere un'esposizione marginale alla Cina; ne ha una quasi cinque volte più grande. Quale Cina ci sia dentro un indice globale, e perché vi pesi così poco, è il tema di [Quale Cina compri](quale-cina.html).
 
 ## Come si calcola
 
@@ -85,7 +85,7 @@ Ripartire "Resto del mondo" in base al PIL presuppone che una società venda in 
 :::
 
 ::: risposta
-Va concesso. I numeri hanno un margine d'errore che nessuno pubblica, e la precisione al decimale è apparente. L'ordine di grandezza però è robusto, perché fonti indipendenti con metodi diversi convergono: circa il 40% dei ricavi delle grandi società americane viene dall'estero, secondo MSCI, FactSet e Morningstar. La differenza tra il 64% e una cifra vicina al 44% è troppo larga per essere un artefatto del metodo.
+Va concesso. I numeri hanno un margine d'errore che nessuno pubblica, e la precisione al decimale è apparente. L'ordine di grandezza però è robusto, perché fonti indipendenti con metodi diversi convergono: circa il 40% dei ricavi delle grandi società americane viene dall'estero, secondo MSCI e secondo i dati FactSet sull'S&P 500. La differenza tra il 64% e una cifra vicina al 44% è troppo larga per essere un artefatto del metodo.
 :::
 
 ::: obiezione I ricavi non sono utili, e gli utili non sono valore

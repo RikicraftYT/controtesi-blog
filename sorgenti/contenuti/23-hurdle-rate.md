@@ -30,7 +30,7 @@ Il ragionamento è lo stesso del CAPM, con una differenza decisiva: il beta non 
 
 ## Il caso: oro contro intelligenza artificiale
 
-Nel paper MSCI *Total-Portfolio Approach: Framework in Practice* il fondo, arrivato allo stadio in cui ogni investimento compete con tutti gli altri, valuta due idee opposte: una posizione concentrata sulla filiera dell'intelligenza artificiale e un'allocazione in oro fisico. Con le caselle, le due idee non si sarebbero mai incontrate: una sarebbe stata confrontata con un indice azionario, l'altra con le alternative liquide.
+Nel paper MSCI *Total-Portfolio Approach: Framework in Practice* il fondo, che applica il [total portfolio approach](tpa.html) ed è arrivato allo stadio in cui ogni investimento compete con tutti gli altri, valuta due idee opposte: una posizione concentrata sulla filiera dell'intelligenza artificiale e un'allocazione in oro fisico. Con le caselle, le due idee non si sarebbero mai incontrate: una sarebbe stata confrontata con un indice azionario, l'altra con le alternative liquide.
 
 Il portafoglio ha volatilità 11,31% e rendimento atteso in eccesso 5,65%.
 
@@ -94,7 +94,7 @@ Ciò che è salito pesa già molto in portafoglio, quindi ha un beta alto e una 
 :::
 
 ::: risposta
-Non lo scarta: gli chiede di più. È la traduzione in numeri di un principio semplice: raddoppiare su ciò che già domina il portafoglio richiede una convinzione proporzionale. In [Come stanno insieme](come-stanno-insieme.html) il criterio era lo stesso, senza la formula.
+Non lo scarta: gli chiede di più. È la traduzione in numeri di un principio semplice: raddoppiare su ciò che già domina il portafoglio richiede una convinzione proporzionale.
 :::
 
 ## Che cosa resta a un privato

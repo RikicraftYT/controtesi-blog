@@ -5,7 +5,7 @@ tesi: Conta quanto risparmi, non quanto guadagni.
 obiezione: La formula funziona solo se il futuro somiglia a un foglio di calcolo.
 gruppo: vita
 sommario: Il movimento FIRE riduce la libertà finanziaria a due numeri, il tasso di risparmio e il tasso di prelievo. Il primo è aritmetica solida. Il secondo è un'ipotesi presa in prestito da studi pensati per un altro problema.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 FIRE sta per *Financial Independence, Retire Early*. Tolta la retorica, è un'identità contabile con due parametri: quanto del reddito metti da parte e quanto del capitale puoi spendere ogni anno senza esaurirlo. Il primo parametro regge bene alle critiche. Il secondo molto meno.
@@ -37,7 +37,7 @@ I valori escono dalla formula qui sopra e coincidono con quelli della tabella or
 
 ## Quanto pesa ciascuna leva
 
-Il rendimento conta meno di quanto si crede. [Early Retirement Now](https://earlyretirementnow.com/2017/11/01/shockingly-simple-complicated-random-math-behind-early-retirement/) fa il confronto: con il 60% di risparmio e il 5% di rendimento servono 12,2 anni; con il 55% di risparmio servono 12,3 anni anche se il rendimento sale all'8%. Cinque punti di risparmio valgono più di tre punti di rendimento, e il risparmio è l'unica delle due variabili che controlli.
+Il rendimento conta meno di quanto si crede. [Early Retirement Now](https://earlyretirementnow.com/2017/11/01/shockingly-simple-complicated-random-math-behind-early-retirement/) fa il confronto: con il 60% di risparmio e il 5% di rendimento servono 12,2 anni; con il 55% di risparmio servono 12,3 anni anche se il rendimento sale all'8%. Sono i numeri di Early Retirement Now, calcolati con ipotesi un po' diverse dalla formula qui sopra, che darebbe circa 12,4 e 12,6 anni: il confronto non cambia. Cinque punti di risparmio valgono più di tre punti di rendimento, e il risparmio è l'unica delle due variabili che controlli.
 
 ## Obiezioni e risposte
 

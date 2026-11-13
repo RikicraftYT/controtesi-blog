@@ -5,7 +5,7 @@ tesi: Seguire il trend è speculazione senza fondamento.
 obiezione: Ha funzionato per più di un secolo, su decine di mercati.
 gruppo: portafoglio
 sommario: Comprare i mercati che salgono e vendere allo scoperto quelli che scendono ha avuto rendimenti positivi in ogni decennio dal 1880 e ha reso bene nei crolli azionari. È l'anomalia più difficile da conciliare con l'efficienza, e la più difficile da mantenere in portafoglio.
-aggiornato: 2026-11-11
+aggiornato: 2026-11-13
 ---
 
 Nel [factor investing](factor-investing.html) il momentum confronta i titoli tra loro. Il trend following confronta ogni mercato con se stesso: se negli ultimi mesi è salito lo compri, se è sceso lo vendi allo scoperto. Si applica a indici azionari, obbligazioni, valute e materie prime, con contratti futures.
@@ -25,7 +25,7 @@ Gli autori lavorano per AQR. Le serie dell'Ottocento sono ricostruite e in parte
 :::
 
 ::: risposta
-Il conflitto d'interesse è dichiarato e va tenuto presente. Però il risultato era già stato documentato su dati dal 1985 prima che lo studio lo estendesse all'indietro, e un test fuori campione che va nel passato è più convincente di uno ottimizzato sui dati recenti. Costi e commissioni sono inclusi nella simulazione.
+Il conflitto d'interesse è dichiarato e va tenuto presente. Però il risultato era già stato documentato da Moskowitz, Ooi e Pedersen su dati dal 1985 prima che lo studio lo estendesse all'indietro, e un test fuori campione che va nel passato è più convincente di uno ottimizzato sui dati recenti. Costi e commissioni sono inclusi nella simulazione.
 :::
 
 ::: obiezione Dopo il 2008 ha deluso per un decennio
