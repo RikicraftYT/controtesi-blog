@@ -332,7 +332,17 @@ a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offse
 .formula.a-righe .formula-righe { display: block; }
 
 /* Tabelle */
-.tabella { overflow-x: auto; margin: 1.8rem 0; -webkit-overflow-scrolling: touch; }
+.tabella {
+  overflow-x: auto; margin: 1.8rem 0; -webkit-overflow-scrolling: touch;
+  /* Ombre ai bordi solo quando la tabella scorre: le coperture "local" seguono il
+     contenuto e nascondono l'ombra quando si è già al bordo. */
+  --ombra: color-mix(in srgb, var(--inchiostro) 24%, transparent);
+  background:
+    linear-gradient(to right, var(--carta) 40%, transparent) left / 2.5rem 100% no-repeat local,
+    linear-gradient(to left, var(--carta) 40%, transparent) right / 2.5rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, var(--ombra), transparent) left / 0.9rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, var(--ombra), transparent) right / 0.9rem 100% no-repeat scroll;
+}
 .tabella table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: 1.02rem; line-height: 1.4; }
 .tabella th {
   font-family: var(--titoli); font-weight: 600; font-size: 0.95rem; text-align: left;

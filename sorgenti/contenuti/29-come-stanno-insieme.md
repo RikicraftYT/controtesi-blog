@@ -32,6 +32,10 @@ Le idee di questo blog non si possono sostenere tutte nella forma forte: alcune 
 | [Tutto subito o a rate](pac-o-pic.html) e finanza comportamentale | La media favorisce l'investimento immediato, l'avversione alle perdite le rate | Conta la strategia che riesci a mantenere, sapendo quanto costa |
 | [Oro](oro.html) e Permanent Portfolio | Il quarto dedicato all'inflazione non la copre su orizzonti utili | L'oro si difende come diversificazione, con una quota piccola |
 | [Pochi titoli](pochi-titoli.html) e selezione dei titoli | Se pochi titoli fanno tutto il rendimento, basterebbe trovarli | Un portafoglio concentrato ha buone probabilità di non contenerli: l'indice li contiene tutti |
+| [Crescita del mercato](mercato-cresce.html) e [PIL cinese](cina-pil-rendimenti.html) | Un'economia che cresce molto dovrebbe premiare le sue azioni | Conta la crescita per azione: diluizione e margini possono assorbire quella del PIL |
+| Campione largo e [esposizione geografica](esposizione-geografica.html) | Diversificare tra paesi, ma i pesi per paese misurano la sede, non dove si vende | La sede conta per il rischio di paese e di listino, i ricavi per gli shock commerciali: servono entrambe |
+| [Etichette e rischi](etichette-e-rischi.html) e le allocazioni per classi | Stessa ripartizione, rischi diversi; stesso rischio, ripartizioni diverse | Si contano i fattori su tutto ciò che si possiede, case e reddito da lavoro compresi |
+| [Soglia di rendimento](hurdle-rate.html) e [Pochi titoli](pochi-titoli.html) | I vincitori pesano già molto, quindi ogni aggiunta deve rendere di più | Non si escludono: si chiede loro un rendimento atteso proporzionale a quanto ne possiedi già |
 | [Mercati adattivi](mercati-adattivi.html) e tutto il resto | Ogni regola funziona solo in un ambiente | Nessuna regola va trattata come permanente |
 
 ## Tre posizioni coerenti

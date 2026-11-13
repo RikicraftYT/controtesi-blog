@@ -2,10 +2,10 @@
 slug: fonti
 titolo: Fonti e letture
 tipo: pagina
-sommario: Tutti i numeri citati negli articoli vengono dalle pagine qui sotto, consultate l'11 novembre 2026.
+sommario: Tutti i numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'11 e il 13 novembre 2026.
 ---
 
-I numeri citati negli articoli vengono dalle pagine qui sotto, consultate l'11 novembre 2026. Gli esempi numerici di [Valore atteso](valore-atteso.html), [Rischio di sequenza](rischio-di-sequenza.html), [Risk parity](risk-parity.html), [FIRE](fire.html) (la tabella degli anni al traguardo), [Volatility drag](volatility-drag.html) (ETF a leva e demone di Shannon) e [Tutto subito o a rate](pac-o-pic.html) (costo atteso dell'attesa) sono calcoli illustrativi su ipotesi dichiarate nel testo.
+I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'11 e il 13 novembre 2026. Gli esempi numerici di [Valore atteso](valore-atteso.html), [Rischio di sequenza](rischio-di-sequenza.html), [Risk parity](risk-parity.html), [FIRE](fire.html) (la tabella degli anni al traguardo), [Volatility drag](volatility-drag.html) (ETF a leva e demone di Shannon) [Tutto subito o a rate](pac-o-pic.html) (costo atteso dell'attesa), [Dove investe davvero un indice globale](esposizione-geografica.html) (le due società) e [Quanto deve rendere per meritare un posto](hurdle-rate.html) (la tabella con l'ETF tematico) sono calcoli illustrativi su ipotesi dichiarate nel testo.
 
 ## Valore atteso
 
@@ -132,6 +132,46 @@ I numeri citati negli articoli vengono dalle pagine qui sotto, consultate l'11 n
 - [Sintesi dello studio](https://archive.investmentoffice.com/io/Investment_Thoughts/Academia/The_Golden_Dilemma.php) – Investment Office
 - [Debunking Gold Mythology](https://www.etf.com/sections/index-investor-corner/swedroe-debunking-gold-mythology) – Larry Swedroe, ETF.com
 - [Aggiornamento del 2013 di The Golden Dilemma](https://www.cxoadvisory.com/?p=21042) – CXO Advisory
+
+## Esposizione geografica
+
+- [Do you know the real geographic exposure of your portfolio?](https://www.msci.com/research-and-insights/quick-take/do-you-know-the-real-geographic-exposure-of-your-portfolio) – Liz Houston e S.K. Kim, MSCI, 25 giugno 2026
+- [MSCI Economic Exposure Data Methodology](https://www.msci.com/documents/10199/a41ac042-6034-a1ca-04b9-d6bc0c498b61) – MSCI, luglio 2025
+- [MSCI Segment Data Methodology](https://www.msci.com/documents/10199/0b9077b1-f82e-0457-c8f6-04a7037079dc) – MSCI, giugno 2024
+- [S&P 500 Index International Revenue By Sector](https://www.ftportfolios.com/Commentary/MarketCommentary/2026/9/24/sp-500-index-international-revenue-by-sector) – First Trust su dati FactSet, 24 settembre 2026
+- [Stocks In the New Millennium](https://www.ftportfolios.com/Commentary/MarketCommentary/2026/1/15/stocks-in-the-new-millenium) – First Trust, quota dei ricavi esteri dell'S&P 500
+- [STOXX Focus indices: Rethinking country exposure with a revenue-based lens](https://stoxx.com/stoxx-focus-indices-rethinking-country-exposure-with-a-revenue-based-lens/) – STOXX, aprile 2026
+- [Società statunitensi per esposizione dei ricavi, dopo i dazi del 2 aprile 2025](https://stoxx.com/?p=84077) – STOXX, dati a fine marzo 2026
+- [Multinationals and the Gains from International Diversification](https://www.nber.org/papers/w6733) – Rowland e Tesar, NBER 1998, poi Review of Economic Dynamics 2004
+- [How Global is Your Mutual Fund? International Diversification from Multinationals](https://nber.org/system/files/working_papers/w27648/w27648.pdf) – Demirci, Ferreira, Matos, Sialm, NBER 2020
+- [Your Aussie shares ETF isn't very Aussie](https://www.morningstar.com.au/etfs/future-focus-your-aussie-shares-etf-isnt-very-aussie) – Morningstar, sull'argomento di Bogle
+- [Does Home Country Bias Affect Investor Returns?](https://morningstar.co.uk/uk/news/181795/does-home-country-bias-affect-investor-returns.aspx) – John Rekenthaler, Morningstar
+
+## Cina
+
+I dati dei paper MSCI sono riportati con la loro data di riferimento, indicata nel testo.
+
+- Foundations of Dedicated China Allocations, Part 1: Investment Policy and Asset Allocation – Wei, Xu, Xu, MSCI Research Insights, febbraio 2021
+- Foundations of Dedicated China Allocations, Part 2: Configuring and Implementing Asset Allocation – Wei, Xu, Xu, MSCI Research Insights, marzo 2021
+- Foundations of Dedicated China Allocation, Part 3: Market-Capitalization Weighted Indexes and Asset Allocation – Wei, Xu, Xu, MSCI Research Insight, novembre 2021
+- Understanding drivers of excess returns – Wei e Lyu, MSCI Research, maggio 2024
+- [Investor Bulletin: U.S.-Listed Companies Operating Chinese Businesses Through a VIE Structure](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/investor-bulletin-us-listed-companies-operating-chinese-businesses-through-vie-structure) – SEC, settembre 2021
+- [The New Face of Emerging Markets](https://www.marquetteassociates.com/new-face-emerging-markets/) – Marquette Associates, giugno 2026
+- [Economic growth and equity returns](https://site.warrington.ufl.edu/ritter/files/2015/04/Economic-growth-and-equity-returns-2005.pdf) – Jay Ritter, Pacific-Basin Finance Journal 2005
+- [Growth and Stocks Seem Unrelated](https://marginalrevolution.com/marginalrevolution/2005/11/economic_growth-2.html) – Marginal Revolution, sintesi dei risultati di Ritter
+
+## Total Portfolio Approach
+
+- Beyond Asset-Class Silos: The Total-Portfolio Approach – Hollo, Melas, Ruban, MSCI Research Insights, luglio 2026
+- Total-Portfolio Approach: Framework in Practice – Hollo, Melas, Ruban, MSCI Research Insights, novembre 2026
+- [Does Asset Allocation Policy Explain 40, 90, or 100 Percent of Performance?](https://rpc.cfainstitute.org/research/financial-analysts-journal/2000/does-asset-allocation-policy-explain-40-90-or-100-percent-of-performance) – Ibbotson e Kaplan, Financial Analysts Journal 2000
+- [Total Portfolio Approach: A Quant Lens](https://www.aqr.com/-/media/AQR/Documents/Alternative-Thinking/AQR-Alternative-Thinking---Total-Portfolio-Approach.pdf?sc_lang=en) – AQR, Alternative Thinking 2026 n. 2
+- [WTW's Urwin defends TPA value-add as attribution scrutiny intensifies](https://www.top1000funds.com/portfolio-construction/tpa/wtws-urwin-defends-tpa-value-add-as-attribution-scrutiny-intensifies/) – Top1000funds
+- [CalPERS Board Votes to Approve Total Portfolio Approach](https://www.ai-cio.com/news/calpers-board-votes-to-approve-total-portfolio-approach/) – Chief Investment Officer, novembre 2025
+- [US pension fund CalPERS adopts total portfolio approach](https://preqin.com/news/us-pension-fund-calpers-adopts-total-portfolio-approach) – Preqin
+- [The End of the Allocation Bucket](https://www.universalassetowners.com/intelligence/uao-daily-brief-2026-07-01/) – Universal Asset Owners, 1° luglio 2026
+- [Interview with Cliff Asness](https://www.aqr.com/-/media/AQR/Documents/Journal-Articles/Interview-with-Cliff-Asness-Journal-of-Private-Markets-Investing--Spring-2026.pdf?sc_lang=en) – Journal of Private Markets Investing, primavera 2026
+- [How Private Equity Funds Understate the Risk in Their Investments](https://www.morningstar.com/alternative-investments/how-private-equity-funds-understate-risk-their-investments) – Larry Swedroe, Morningstar
 
 ## Libri per andare oltre
 

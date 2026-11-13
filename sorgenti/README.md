@@ -39,7 +39,7 @@ slug: nome-del-file-html
 titolo: Titolo dell'articolo
 tesi: La tesi in una frase.
 obiezione: L'obiezione più forte in una frase.
-gruppo: strumento | rendimenti | prezzi | portafoglio | vita | sintesi
+gruppo: strumento | rendimenti | prezzi | portafoglio | esposizioni | vita | sintesi
 sommario: Due righe che compaiono sotto il titolo e nei risultati di ricerca.
 aggiornato: 2026-11-11
 ---
@@ -82,7 +82,8 @@ Ogni numero o affermazione citata deve avere un link nel testo e la stessa fonte
 ## Impostazioni in `build.mjs`
 
 - `SITO.url`: indirizzo pubblico del sito. Serve per l'anteprima sui social, il link canonico e la pagina 404. Se il sito cambia indirizzo, va aggiornato qui.
-- `SIMULATORE`: nome e indirizzo del simulatore di portafogli, segnalato in home, nel piè di pagina e in fondo agli articoli del gruppo `portafoglio`.
+- `SIMULATORE`: nome e indirizzo del simulatore di portafogli, segnalato in home e nel piè di pagina.
+- `RIMANDI`: gruppi in fondo ai cui articoli compare il riquadro del simulatore, con titolo e testo per ciascun gruppo (oggi `portafoglio` ed `esposizioni`).
 - `GRUPPI`: nomi e ordine dei gruppi in home.
 
 ## Immagine di anteprima
