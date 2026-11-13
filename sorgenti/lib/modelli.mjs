@@ -77,7 +77,7 @@ ${katex ? '<link rel="stylesheet" href="assets/katex/katex.min.css">\n' : ""}<li
     <a class="marchio" href="index.html" aria-label="${SITO.nome}, pagina iniziale">Contro<span>tesi</span></a>
     <nav class="menu" aria-label="Principale">
       ${voce("index.html", "Articoli", "menu-inizio")}
-      ${voce("come-stanno-insieme.html", "Contraddizioni")}
+      ${voce("come-stanno-insieme.html", "Tensioni")}
       ${voce("fonti.html", "Fonti")}
     </nav>
     <button class="cerca" type="button" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="cerca-parola">Cerca</span><span class="visivamente-nascosto"> negli articoli</span></button>
@@ -111,6 +111,22 @@ ${formule ? '<script src="assets/js/formule.js"></script>\n' : ""}<script src="a
 `;
 }
 
+// Sommario della pagina: a tendina su telefono e tablet, laterale sugli schermi larghi.
+function sommari(sezioni) {
+  if (!sezioni.length) return { sommarioBreve: "", sommario: "" };
+  const voci = sezioni.map((s) => `<li><a href="#${s.id}">${esc(s.testo)}</a></li>`).join("");
+  return {
+    sommarioBreve: `<details class="sommario-breve">
+    <summary>In questa pagina</summary>
+    <nav aria-label="In questa pagina"><ol>${voci}</ol></nav>
+  </details>`,
+    sommario: `<aside class="sommario-pagina" aria-label="In questa pagina">
+    <h2>In questa pagina</h2>
+    <ol>${voci}</ol>
+  </aside>`,
+  };
+}
+
 function rimandoSimulatore(titolo, testo) {
   return `<aside class="rimando" aria-label="${SIMULATORE.nome}">
   <p class="rimando-etichetta">Dallo stesso autore</p>
@@ -124,19 +140,7 @@ export function paginaArticolo(a, i, { articoli, basi }) {
   const gruppo = gruppoDi(a);
   const prima = articoli[i - 1];
   const dopo = articoli[i + 1];
-  const voci = a.sezioni.map((s) => `<li><a href="#${s.id}">${esc(s.testo)}</a></li>`).join("");
-  const sommarioBreve = a.sezioni.length
-    ? `<details class="sommario-breve">
-    <summary>In questa pagina</summary>
-    <nav aria-label="In questa pagina"><ol>${voci}</ol></nav>
-  </details>`
-    : "";
-  const sommario = a.sezioni.length
-    ? `<aside class="sommario-pagina" aria-label="In questa pagina">
-    <h2>In questa pagina</h2>
-    <ol>${voci}</ol>
-  </aside>`
-    : "";
+  const { sommarioBreve, sommario } = sommari(a.sezioni);
   const corpo = `<article>
 <header class="articolo-testa">
   <p class="articolo-gruppo"><a href="index.html?tema=${gruppo.id}#articoli">${esc(gruppo.nome)}</a>${a.gruppo === "basi" ? ` <span aria-hidden="true">·</span> passo ${basi.indexOf(a) + 1} di ${basi.length}` : ""} <span aria-hidden="true">·</span> ${etichettaLivello(a.livello)}</p>
@@ -190,14 +194,17 @@ ${RIMANDI[a.gruppo] ? rimandoSimulatore(...RIMANDI[a.gruppo]) : ""}
 }
 
 export function paginaSemplice(p) {
+  const { sommarioBreve, sommario } = sommari(p.sezioni);
   const corpo = `<article class="pagina">
 <header class="articolo-testa">
   <h1>${esc(p.titolo)}</h1>
 </header>
 <div class="articolo-corpo">
+  ${sommarioBreve}
   <div class="prosa">
 ${p.html}
   </div>
+  ${sommario}
 </div>
 </article>`;
   return guscio({ titolo: `${p.titolo} | ${SITO.nome}`, descrizione: p.sommario, corpo, corrente: `${p.slug}.html` });
@@ -218,10 +225,19 @@ export function paginaIniziale({ articoli, basi }) {
       <ul class="scheda-tag" aria-label="Tag">${a.tag.map((t) => `<li><a href="${linkTag(t)}" data-tag="${esc(t)}">${esc(t)}</a></li>`).join("")}</ul>
     </article>`;
   };
-  const schede = articoli.map(scheda).join("");
+  // Separatori dei gruppi, numerati: compaiono nell'ordine del percorso senza filtri
+  // (main.js li nasconde negli altri casi). Sono solo visivi: ogni scheda dice già il
+  // suo gruppo nell'occhiello, quindi gli screen reader non li leggono due volte.
+  const gruppiUsati = GRUPPI.filter((g) => articoli.some((a) => a.gruppo === g.id));
+  const separatore = (g) => {
+    const n = articoli.filter((a) => a.gruppo === g.id).length;
+    return `
+    <div class="esplora-gruppo" data-gruppo="${g.id}" aria-hidden="true"><span class="esplora-gruppo-numero">${String(gruppiUsati.indexOf(g) + 1).padStart(2, "0")}</span> <span class="esplora-gruppo-nome">${esc(g.nome)}</span> <span class="esplora-gruppo-quanti">${n === 1 ? "1 articolo" : `${n} articoli`}</span></div>`;
+  };
+  const schede = articoli.map((a, k) => (k === 0 || articoli[k - 1].gruppo !== a.gruppo ? separatore(gruppoDi(a)) : "") + scheda(a, k)).join("");
   const opzioni = (nome, voci) => voci.map(([valore, etichetta]) =>
     `<label><input type="checkbox" name="${nome}" value="${esc(valore)}"> <span>${esc(etichetta)}</span> <span class="filtro-conta"></span></label>`).join("\n          ");
-  const temi = GRUPPI.filter((g) => articoli.some((a) => a.gruppo === g.id)).map((g) => [g.id, g.nome]);
+  const temi = gruppiUsati.map((g) => [g.id, g.nome]);
   const livelli = Object.keys(LIVELLI).filter((l) => articoli.some((a) => a.livello === l)).map((l) => [l, LIVELLI[l].nome]);
   const tagUsati = TAG.filter((t) => articoli.some((a) => a.tag.includes(t))).sort((x, y) => x.localeCompare(y, "it")).map((t) => [t, t]);
   const menuFiltro = (nome, etichetta, voci) => `<details class="filtro-menu" data-filtro="${nome}">

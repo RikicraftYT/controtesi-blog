@@ -387,6 +387,9 @@
     esplora.querySelector(".esplora-ricerca").hidden = false;
     esplora.querySelector(".esplora-filtri").hidden = false;
 
+    var separatori = {};
+    esplora.querySelectorAll(".esplora-gruppo").forEach(function (el) { separatori[el.getAttribute("data-gruppo")] = el; });
+
     var dati = schede.map(function (el) {
       return {
         el: el, slug: el.getAttribute("data-slug"), tema: el.getAttribute("data-gruppo"),
@@ -473,8 +476,19 @@
       attivi.hidden = !nAttivi;
       // Griglia: ordine nuovo, e solo le prime schede fino a "Mostra altri".
       if (daUtente) mostrati = PER_PAGINA;
+      // Nell'ordine del percorso, senza filtri né ricerca, i gruppi hanno il loro separatore.
+      var conGruppi = o === "percorso" && !nAttivi, precedente = null;
       dati.forEach(function (d) { d.el.hidden = true; });
-      visibili.forEach(function (d, k) { griglia.appendChild(d.el); d.el.hidden = k >= mostrati; });
+      Object.keys(separatori).forEach(function (g) { separatori[g].hidden = true; });
+      visibili.forEach(function (d, k) {
+        if (conGruppi && d.tema !== precedente && separatori[d.tema]) {
+          griglia.appendChild(separatori[d.tema]);
+          separatori[d.tema].hidden = k >= mostrati;
+        }
+        precedente = d.tema;
+        griglia.appendChild(d.el);
+        d.el.hidden = k >= mostrati;
+      });
       var resto = visibili.length - mostrati;
       altri.hidden = resto <= 0;
       altri.textContent = resto <= PER_PAGINA ? (resto === 1 ? "Mostra l'ultimo articolo" : "Mostra gli ultimi " + resto) : "Mostra altri " + PER_PAGINA + " (ne restano " + resto + ")";
@@ -737,26 +751,40 @@
         l.innerHTML = "<span>" + c.nome + ": <output></output></span>";
         var input = document.createElement("input");
         input.type = "range"; input.id = id; input.min = c.min; input.max = c.max; input.step = c.passo; input.value = c.val;
+        // Gli screen reader leggono il valore con la sua unità ("5%", non "5").
+        input.setAttribute("aria-valuetext", c.fmt(c.val));
         l.appendChild(input);
         uscite[c.id] = l.querySelector("output");
         uscite[c.id].textContent = c.fmt(c.val);
         input.addEventListener("input", function () {
           stato[c.id] = Number(input.value);
           uscite[c.id].textContent = c.fmt(stato[c.id]);
+          input.setAttribute("aria-valuetext", c.fmt(stato[c.id]));
           ridisegna();
+          annuncia();
         });
         comandi.appendChild(l);
       });
       var cont = document.createElement("div");
       var esito = document.createElement("p");
       esito.className = "grafico-esito";
-      esito.setAttribute("aria-live", "polite");
+      // L'esito si aggiorna subito sullo schermo; agli screen reader lo si annuncia solo
+      // quando il cursore si ferma, non a ogni passo.
+      var voce = document.createElement("p");
+      voce.className = "visivamente-nascosto";
+      voce.setAttribute("aria-live", "polite");
+      var attesaVoce;
+      var annuncia = function () {
+        clearTimeout(attesaVoce);
+        attesaVoce = setTimeout(function () { voce.textContent = esito.textContent; }, 700);
+      };
       // La versione statica (per chi non ha JavaScript) lascia il posto a quella interattiva.
       fig.querySelectorAll(".grafico-largo, .grafico-stretto").forEach(function (d) { d.hidden = true; });
       var titolo = fig.querySelector(".grafico-titolo");
       titolo.parentNode.insertBefore(comandi, titolo.nextSibling);
       comandi.parentNode.insertBefore(cont, comandi.nextSibling);
       cont.parentNode.insertBefore(esito, cont.nextSibling);
+      esito.parentNode.insertBefore(voce, esito.nextSibling);
       var ridisegna = function () { modello.disegna(stato, cont, esito); };
       ridisegna();
       var larghezza = cont.clientWidth, attesaG;

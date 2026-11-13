@@ -603,9 +603,12 @@ export function grafico(json, dove = "") {
   const largo = disegna(spec, LARGO, id + "l");
   const stretto = disegna(spec, STRETTO, id + "s");
   const t = tabella(spec);
-  const tab = t ? `<details class="grafico-dati"><summary>Dati del grafico</summary><div class="tabella" tabindex="0" role="region" aria-label="Dati del grafico"><table>
-<thead><tr>${t.testa.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead>
-<tbody>${t.righe.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></details>` : "";
+  // Tabella dei dati: la prima colonna contiene le voci delle righe (th scope="row");
+  // se la sua intestazione è vuota, la cella d'angolo è una td.
+  const angolo = (h) => (h === "" ? "<td></td>" : `<th scope="col">${esc(h)}</th>`);
+  const tab = t ? `<details class="grafico-dati"><summary>Dati del grafico</summary><div class="tabella" tabindex="0" role="region" aria-label="${esc(`Dati del grafico: ${spec.titolo}`)}"><table>
+<thead><tr>${angolo(t.testa[0])}${t.testa.slice(1).map((h) => `<th scope="col">${esc(h)}</th>`).join("")}</tr></thead>
+<tbody>${t.righe.map((r) => `<tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></details>` : "";
   const interattivo = spec.interattivo ? ` data-interattivo="${esc(spec.interattivo)}"` : "";
   return `<figure class="grafico"${interattivo}>
 <p class="grafico-titolo">${esc(spec.titolo)}</p>

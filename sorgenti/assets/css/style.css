@@ -90,6 +90,8 @@ body {
 
 a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
 @media (hover: hover) { a:hover { text-decoration-thickness: 0.16em; } }
+/* Freccia dei link esterni nel testo: piccola, senza sottolineatura. */
+.prosa a .esterno { display: inline-block; margin-left: 0.12em; font-size: 0.72em; line-height: 1; text-decoration: none; vertical-align: 0.15em; }
 :focus-visible { outline: 3px solid var(--viola); outline-offset: 3px; border-radius: 3px; }
 
 .salta {
@@ -304,6 +306,15 @@ a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offse
   display: grid; gap: 1.25rem; margin-top: 1.25rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr));
 }
+/* Separatori dei gruppi nella griglia (ordine del percorso). */
+.esplora-gruppo {
+  grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem;
+  margin-top: 1.75rem; padding-top: 0.9rem; border-top: 2px solid var(--inchiostro); font-family: var(--titoli);
+}
+.esplora-gruppo:first-child { margin-top: 0.5rem; }
+.esplora-gruppo-numero { font-weight: 800; font-size: 1.55rem; line-height: 1; letter-spacing: -0.03em; color: var(--viola); font-variant-numeric: tabular-nums; }
+.esplora-gruppo-nome { font-weight: 700; font-size: clamp(1.2rem, 2.6vw, 1.45rem); line-height: 1.2; letter-spacing: -0.02em; }
+.esplora-gruppo-quanti { margin-left: auto; font-size: 0.9rem; color: var(--tenue); }
 .scheda {
   position: relative; display: flex; flex-direction: column; gap: 0.55rem;
   padding: 1.25rem 1.3rem 1.2rem; background: var(--superficie); border: 1px solid var(--riga); border-radius: 14px;
@@ -509,12 +520,12 @@ html:has(.ricerca[open]) { overflow: hidden; }
     radial-gradient(farthest-side at 100% 50%, var(--ombra), transparent) right / 0.9rem 100% no-repeat scroll;
 }
 .tabella table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: 1.02rem; line-height: 1.4; }
-.tabella th {
+.tabella thead th, .tabella thead td {
   font-family: var(--titoli); font-weight: 600; font-size: 0.95rem; text-align: left;
   padding: 0 1rem 0.55rem 0; border-bottom: 2px solid var(--inchiostro); vertical-align: bottom;
 }
-.tabella td { padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--riga); vertical-align: top; }
-.tabella td:first-child { font-family: var(--titoli); font-weight: 600; font-size: 0.98rem; }
+.tabella tbody td, .tabella tbody th { padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--riga); vertical-align: top; text-align: left; }
+.tabella tbody td:first-child, .tabella tbody th { font-family: var(--titoli); font-weight: 600; font-size: 0.98rem; }
 .tabella th:last-child, .tabella td:last-child { padding-right: 0; }
 
 /* Le due voci */
@@ -654,8 +665,21 @@ html:has(.ricerca[open]) { overflow: hidden; }
   html { scroll-behavior: auto; }
 }
 
+/* Colori forzati (alto contrasto di Windows): i colori di sfondo spariscono, quindi
+   bottoni e pallini del livello hanno bisogno di un bordo o di un colore di sistema. */
+@media (forced-colors: active) {
+  .bottone, .rimando .bottone { border: 2px solid ButtonText; color: ButtonText; }
+  .livello-punti i { border-color: CanvasText; }
+  .livello[data-punti="1"] i:nth-child(-n+1),
+  .livello[data-punti="2"] i:nth-child(-n+2),
+  .livello[data-punti="3"] i { background: CanvasText; forced-color-adjust: none; }
+  .scheda, .scontro, .tema, .filtro-menu summary, .esplora-ricerca, .esplora-gruppo { border-color: CanvasText; }
+  .marchio span { border: 1px solid CanvasText; }
+}
+
 @media print {
-  .testata, .sommario-pagina, .vicini, .sim-comandi, .tema { display: none; }
+  .testata, .sommario-pagina, .sommario-breve, .vicini, .sim-comandi, .tema, .grafico-comandi, .esplora-filtri, .esplora-ricerca { display: none; }
+  a .esterno { display: none; }
   body { background: #fff; color: #000; font-size: 11pt; }
   .articolo-corpo { display: block; }
 }

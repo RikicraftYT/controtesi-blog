@@ -86,17 +86,55 @@ voce("obiezione", "Obiezione");
 voce("risposta", "Risposta");
 voce("difendibile", "Formulazione difendibile");
 
-// La tabella può scorrere in orizzontale su schermi stretti: il contenitore
-// riceve il focus, così si può scorrere anche da tastiera.
-md.renderer.rules.table_open = () => '<div class="tabella" tabindex="0" role="region" aria-label="Tabella"><table>\n';
+// Tabelle. Il contenitore può scorrere in orizzontale su schermi stretti e riceve il
+// focus, così si scorre anche da tastiera; il suo nome, per gli screen reader, viene dal
+// titolo che precede la tabella ("Tabella: Le tensioni"), numerato se ce n'è più d'una.
+// Se la prima cella dell'intestazione è vuota, la prima colonna contiene le voci delle
+// righe: la cella d'angolo diventa una td e le voci diventano th scope="row".
+md.core.ruler.push("tabelle_accessibili", (stato) => {
+  const tk = stato.tokens;
+  let titolo = "", perTitolo = new Map(), numero = 0;
+  for (let i = 0; i < tk.length; i++) {
+    const t = tk[i];
+    if (t.type === "heading_open") titolo = tk[i + 1].content;
+    if (t.type.startsWith("container_obiezione_open") && t.info.trim().slice(9).trim()) titolo = t.info.trim().slice(9).trim();
+    if (t.type !== "table_open") continue;
+    numero++;
+    const n = (perTitolo.get(titolo) ?? 0) + 1;
+    perTitolo.set(titolo, n);
+    t.meta = { etichetta: titolo ? `Tabella: ${titolo}${n > 1 ? ` (${n})` : ""}` : `Tabella ${numero}` };
+    // intestazione con l'angolo vuoto?
+    const primaTh = tk.findIndex((x, k) => k > i && x.type === "th_open");
+    if (primaTh < 0 || tk[primaTh + 1].content.trim() !== "") continue;
+    tk[primaTh].tag = "td"; tk[primaTh + 2].tag = "td";
+    for (let k = primaTh; k < tk.length && tk[k].type !== "table_close"; k++) {
+      if (tk[k].type === "tr_open" && tk[k + 1]?.type === "td_open" && k > primaTh) {
+        const apre = tk[k + 1];
+        const chiude = tk.slice(k + 2).find((x) => x.type === "td_close");
+        apre.tag = "th"; apre.attrSet("scope", "row"); chiude.tag = "th";
+      }
+    }
+  }
+});
+const nomeTabella = (t) => md.utils.escapeHtml(t.meta?.etichetta ?? "Tabella");
+md.renderer.rules.table_open = (tokens, idx) => `<div class="tabella" tabindex="0" role="region" aria-label="${nomeTabella(tokens[idx])}"><table>\n`;
 md.renderer.rules.table_close = () => "</table></div>\n";
 
+// Link esterni: si aprono in una nuova scheda, e lo dicono (freccia visibile e testo per
+// gli screen reader).
 const linkBase = md.renderer.rules.link_open ?? ((t, i, o, e, self) => self.renderToken(t, i, o));
+const chiusuraBase = md.renderer.rules.link_close ?? ((t, i, o, e, self) => self.renderToken(t, i, o));
+export const AVVISO_ESTERNO = '<span class="esterno" aria-hidden="true">↗</span><span class="visivamente-nascosto"> (si apre in una nuova scheda)</span>';
+const aperti = [];
 md.renderer.rules.link_open = (tokens, idx, opts, env, self) => {
   const href = tokens[idx].attrGet("href") ?? "";
-  if (/^https?:/.test(href)) {
+  const esterno = /^https?:/.test(href);
+  if (esterno) {
     tokens[idx].attrSet("target", "_blank");
     tokens[idx].attrSet("rel", "noopener");
   }
+  aperti.push(esterno);
   return linkBase(tokens, idx, opts, env, self);
 };
+md.renderer.rules.link_close = (tokens, idx, opts, env, self) =>
+  (aperti.pop() ? AVVISO_ESTERNO : "") + chiusuraBase(tokens, idx, opts, env, self);
