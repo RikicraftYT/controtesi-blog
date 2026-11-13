@@ -22,6 +22,84 @@ $$
 
 $\lambda$ misura l'avversione alle perdite: una perdita pesa oltre il doppio di un guadagno uguale. Il valore 2,25 viene da [un campione di 25 studenti](https://epub.ub.uni-muenchen.de/75121/1/275.pdf). Una meta-analisi su 607 stime pubblicate tra il 1992 e il 2017 [trova una media di 1,955](https://healthcare-economist.com/2024/06/26/empirical-estimates-of-loss-aversion), con intervallo tra 1,82 e 2,10. L'effetto c'è, un po' più piccolo del numero che si cita di solito.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "La funzione di valore: una perdita pesa più di un guadagno uguale",
+ "nota": "Parametri di Tversky e Kahneman (1992): α = 0,88, λ = 2,25.",
+ "x": {
+  "min": -100,
+  "max": 100,
+  "etichetta": "guadagno o perdita",
+  "passi": [
+   -100,
+   -50,
+   0,
+   50,
+   100
+  ]
+ },
+ "y": {
+  "min": -140,
+  "max": 80,
+  "etichetta": "valore percepito",
+  "passi": [
+   -120,
+   -80,
+   -40,
+   0,
+   40,
+   80
+  ]
+ },
+ "serie": [
+  {
+   "nome": "Valore percepito",
+   "colore": 2,
+   "generatore": {
+    "nome": "prospetto",
+    "alfa": 0.88,
+    "lambda": 2.25
+   }
+  }
+ ],
+ "riferimenti": [
+  {
+   "x": 0,
+   "etichetta": ""
+  }
+ ],
+ "punti": [
+  {
+   "x": 100,
+   "y": 57.5,
+   "colore": 2,
+   "etichetta": "+100 vale +57",
+   "tip": "Guadagno di 100: valore percepito +57,5"
+  },
+  {
+   "x": -100,
+   "y": -129.4,
+   "colore": 2,
+   "etichetta": "−100 vale −129",
+   "tip": "Perdita di 100: valore percepito −129,4",
+   "allinea": "start"
+  }
+ ],
+ "etichette": "legenda",
+ "tabella": {
+  "x": [
+   -100,
+   -50,
+   -10,
+   10,
+   50,
+   100
+  ]
+ }
+}
+```
+
 Da qui derivano comportamenti che si osservano nei portafogli: vendere troppo presto i titoli in guadagno e tenere quelli in perdita, controllare troppo spesso, e chiedere per le azioni un premio più alto di quello che il rischio giustificherebbe. È la spiegazione di Benartzi e Thaler per l'[equity premium puzzle](equity-premium-puzzle.html).
 
 ## Seconda gamba: perché nessuno corregge

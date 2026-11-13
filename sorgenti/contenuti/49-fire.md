@@ -37,6 +37,49 @@ Il reddito non compare. Compare solo $s$, e compare due volte: risparmiare di pi
 
 I valori escono dalla formula qui sopra e coincidono con quelli della tabella originale.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "Anni al traguardo secondo il tasso di risparmio",
+ "interattivo": "fire",
+ "nota": "Calcolo illustrativo con la formula dell'articolo: rendimento reale del 5% e tasso di prelievo del 4%. Con JavaScript attivo puoi cambiare entrambi.",
+ "x": {
+  "min": 5,
+  "max": 80,
+  "etichetta": "tasso di risparmio",
+  "formato": {
+   "dec": 0,
+   "suffisso": "%"
+  }
+ },
+ "y": {
+  "min": 0,
+  "max": 80,
+  "etichetta": "anni"
+ },
+ "serie": [
+  {
+   "nome": "Anni al traguardo",
+   "colore": 1,
+   "generatore": {
+    "nome": "fire-anni",
+    "r": 0.05,
+    "w": 0.04
+   }
+  }
+ ],
+ "etichette": "legenda",
+ "tabella": {
+  "x": [
+   10,
+   25,
+   50,
+   66
+  ]
+ }
+}
+```
+
 ## Quanto pesa ciascuna leva
 
 Il rendimento conta meno di quanto si crede. [Early Retirement Now](https://earlyretirementnow.com/2017/11/01/shockingly-simple-complicated-random-math-behind-early-retirement/) fa il confronto: con il 60% di risparmio e il 5% di rendimento servono 12,2 anni; con il 55% di risparmio servono 12,3 anni anche se il rendimento sale all'8%. Sono i numeri di Early Retirement Now, calcolati con ipotesi un po' diverse dalla formula qui sopra, che darebbe circa 12,4 e 12,6 anni: il confronto non cambia. Cinque punti di risparmio valgono più di tre punti di rendimento, e il risparmio è l'unica delle due variabili che controlli.

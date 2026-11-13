@@ -32,6 +32,78 @@ $$
 
 $L^{*}$ è la leva che massimizza la crescita, cioè il criterio di Kelly. Oltre $L^{*}$ ogni unità di leva in più *riduce* il rendimento composto; oltre $2L^{*}$ lo rende inferiore al tasso privo di rischio.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "Rendimento composto in funzione della leva",
+ "nota": "Calcolo illustrativo: premio per il rischio del 5%, volatilità del 18%, tasso privo di rischio del 3%. L* = premio / varianza ≈ 1,5.",
+ "x": {
+  "min": 0,
+  "max": 4,
+  "etichetta": "leva",
+  "formato": {
+   "dec": "auto",
+   "suffisso": "×"
+  }
+ },
+ "y": {
+  "min": -2,
+  "max": 8,
+  "etichetta": "rendimento composto annuo",
+  "formato": {
+   "dec": 0,
+   "suffisso": "%"
+  }
+ },
+ "serie": [
+  {
+   "nome": "Rendimento composto",
+   "colore": 1,
+   "generatore": {
+    "nome": "leva",
+    "rf": 0.03,
+    "premio": 0.05,
+    "sigma": 0.18
+   }
+  }
+ ],
+ "riferimenti": [
+  {
+   "y": 3,
+   "etichetta": "tasso privo di rischio"
+  },
+  {
+   "x": 1.54,
+   "etichetta": "L*"
+  },
+  {
+   "x": 3.09,
+   "etichetta": "2L*"
+  }
+ ],
+ "punti": [
+  {
+   "x": 1.54,
+   "y": 6.86,
+   "colore": 1,
+   "etichetta": "massimo, circa 6,9%",
+   "tip": "Leva 1,5: rendimento composto massimo, circa 6,9%"
+  }
+ ],
+ "etichette": "legenda",
+ "tabella": {
+  "x": [
+   0,
+   1,
+   1.5,
+   2,
+   3,
+   4
+  ]
+ }
+}
+```
+
 L'esempio degli ETF a leva giornaliera è immediato. Se l'indice fa $+10\%$ e poi $-9{,}09\%$, torna a 100. Il prodotto a leva 2 fa $+20\%$ e poi $-18{,}18\%$:
 
 $$

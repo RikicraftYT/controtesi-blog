@@ -10,6 +10,7 @@ import anchor from "markdown-it-anchor";
 import container from "markdown-it-container";
 import katexPluginModule from "@vscode/markdown-it-katex";
 import katex from "katex";
+import { grafico } from "./grafici.mjs";
 
 const katexPlugin = katexPluginModule.default ?? katexPluginModule;
 const QUI = path.dirname(fileURLToPath(import.meta.url));
@@ -131,6 +132,15 @@ function spezza(latex) {
   return parti.filter(Boolean).length > 1 ? parti.filter(Boolean) : null;
 }
 
+// Grafici: un blocco ```grafico con un oggetto JSON diventa una figura SVG (vedi grafici.mjs).
+let fileCorrente = "";
+const recintoBase = md.renderer.rules.fence;
+md.renderer.rules.fence = (tokens, idx, ...resto) => {
+  const t = tokens[idx];
+  if (t.info.trim() === "grafico") return grafico(t.content, fileCorrente);
+  return recintoBase(tokens, idx, ...resto);
+};
+
 const bloccoMatematico = md.renderer.rules.math_block;
 md.renderer.rules.math_block = (tokens, idx, ...resto) => {
   const affiancata = bloccoMatematico(tokens, idx, ...resto);
@@ -175,6 +185,7 @@ md.renderer.rules.link_open = (tokens, idx, opts, env, self) => {
 /* ---------- Lettura dei contenuti ---------- */
 
 function leggi(file) {
+  fileCorrente = path.basename(file);
   const grezzo = fs.readFileSync(file, "utf8");
   const m = grezzo.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!m) throw new Error(`Intestazione mancante in ${file}`);
@@ -190,7 +201,7 @@ function leggi(file) {
       sezioni.push({ id: t.attrGet("id"), testo: tokens[i + 1].content });
     }
   });
-  const parole = m[2].replace(/\$\$[\s\S]*?\$\$/g, " ").split(/\s+/).filter(Boolean).length;
+  const parole = m[2].replace(/```grafico[\s\S]*?```/g, " ").replace(/\$\$[\s\S]*?\$\$/g, " ").split(/\s+/).filter(Boolean).length;
   return {
     ...dati,
     file: path.basename(file),
@@ -527,6 +538,7 @@ const formulaLeggibile = (f) => f
   .replace(/\s+/g, " ")
   .trim();
 const testoPiano = (src) => src
+  .replace(/```grafico[\s\S]*?```/g, " ")
   .replace(/\$\$[\s\S]*?\$\$/g, " … ")
   .replace(/\$([^$\n]*)\$/g, (_, f) => formulaLeggibile(f))
   .replace(/^\|[\s|:-]+\|$/gm, "")

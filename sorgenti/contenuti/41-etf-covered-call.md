@@ -29,6 +29,64 @@ $$
 
 Un fondo può distribuire il 10% e perdere l'8% di valore: il rendimento totale è il 2%. Distribuire non crea ricchezza: sposta denaro dal fondo al conto dell'investitore.
 
+```grafico
+{
+ "tipo": "payoff",
+ "titolo": "Covered call contro azione, alla scadenza",
+ "nota": "Esempio illustrativo: azione comprata a 100, call con strike 102 venduta a 2. Sotto lo strike il premio attutisce di poco la perdita; sopra lo strike il guadagno si ferma. La linea tratteggiata è l'azione da sola.",
+ "confrontoNome": "solo azione",
+ "colonne": 1,
+ "x": {
+  "min": 70,
+  "max": 130,
+  "passi": [
+   80,
+   100,
+   120
+  ]
+ },
+ "y": {
+  "min": -30,
+  "max": 30
+ },
+ "pannelli": [
+  {
+   "titolo": "Azione + call venduta",
+   "colore": 1,
+   "gambe": [
+    {
+     "tipo": "azione",
+     "lato": 1,
+     "prezzo": 100
+    },
+    {
+     "tipo": "call",
+     "lato": -1,
+     "strike": 102,
+     "premio": 2
+    }
+   ],
+   "confronto": [
+    {
+     "tipo": "azione",
+     "lato": 1,
+     "prezzo": 100
+    }
+   ]
+  }
+ ],
+ "tabella": {
+  "x": [
+   80,
+   100,
+   102,
+   110,
+   130
+  ]
+ }
+}
+```
+
 Nel caso delle covered call c'è di più. Il premio incassato non è un guadagno netto, perché nello stesso momento il fondo si prende un obbligo: cedere il rialzo oltre lo strike. Nei mercati in forte crescita quell'obbligo costa più del premio. Il commentatore canadese Ben Felix, gestore di portafogli, lo riassume così: [rendimenti da distribuzione più alti implicano meccanicamente rendimenti totali attesi più bassi](https://rosetta.to/u/benfelixcsi/covered-calls-a-devil-s-bargain).
 
 ## Che cosa dicono i dati

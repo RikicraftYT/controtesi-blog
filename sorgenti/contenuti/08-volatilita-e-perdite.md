@@ -52,6 +52,67 @@ A sinistra c'è ciò che resta di 10.000 € dopo aver perso metà: 5.000 €. P
 
 Più la perdita è profonda, più la risalita richiesta cresce in fretta. Per questo limitare le perdite gravi, con la [diversificazione](diversificazione.html), conta più che inseguire i guadagni più alti.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "Quanto bisogna guadagnare per recuperare una perdita",
+ "nota": "Calcolo esatto: dopo una perdita p serve un guadagno di p/(1 − p).",
+ "x": {
+  "min": 0,
+  "max": 80,
+  "etichetta": "perdita",
+  "formato": {
+   "dec": 0,
+   "suffisso": "%"
+  }
+ },
+ "y": {
+  "min": 0,
+  "max": 400,
+  "etichetta": "guadagno necessario",
+  "formato": {
+   "dec": 0,
+   "suffisso": "%"
+  }
+ },
+ "serie": [
+  {
+   "nome": "Guadagno necessario",
+   "colore": 2,
+   "generatore": {
+    "nome": "recupero"
+   }
+  },
+  {
+   "nome": "Se fosse simmetrico",
+   "colore": 4,
+   "tratteggio": true,
+   "generatore": {
+     "nome": "lineare"
+    }
+  }
+ ],
+ "punti": [
+  {
+   "x": 50,
+   "y": 100,
+   "colore": 2,
+   "etichetta": "−50% → +100%",
+   "allinea": "end"
+  }
+ ],
+ "tabella": {
+  "x": [
+   10,
+   20,
+   40,
+   50,
+   70
+  ]
+ }
+}
+```
+
 ## Gli equivoci più comuni
 
 **«Finché non vendo non ho perso».** In parte è vero, ma il valore di ciò che possiedi è quello di oggi. Se ti servono i soldi adesso, la perdita è reale. Conta quando ne avrai bisogno.

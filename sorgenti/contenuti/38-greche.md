@@ -38,6 +38,44 @@ Valori illustrativi con un tasso del 3%.
 
 Ora una situazione. In una settimana l'azione sale di 1, a 101: la call guadagna circa 0,53. Nello stesso tempo passano sette giorni: perde circa 0,30. E la volatilità implicita scende dal 20% al 16%: perde circa 0,45. Sommate, le tre voci danno circa −0,22. Ricalcolando il prezzo con la formula la call vale 2,27, cioè 0,14 in meno: la somma è approssimata perché le greche cambiano mentre il prezzo si muove, ma il segno è lo stesso. Avevi ragione sulla direzione e hai perso. L'esempio è illustrativo.
 
+```grafico
+{
+ "tipo": "cascata",
+ "titolo": "Una settimana di una call: da dove viene la perdita",
+ "nota": "Esempio illustrativo dell'articolo: call al prezzo, 30 giorni, volatilità implicita dal 20% al 16%, tasso del 3%.",
+ "formato": {
+  "dec": 2
+ },
+ "min": 1.6,
+ "max": 3.1,
+ "inizio": {
+  "etichetta": "Premio iniziale",
+  "valore": 2.41
+ },
+ "passi": [
+  {
+   "etichetta": "Azione da 100 a 101 (delta)",
+   "valore": 0.53
+  },
+  {
+   "etichetta": "Sette giorni in meno (theta)",
+   "valore": -0.3
+  },
+  {
+   "etichetta": "Volatilità in calo (vega)",
+   "valore": -0.45
+  }
+ ],
+ "fine": {
+  "etichetta": "Stima con le greche"
+ },
+ "confronto": {
+  "etichetta": "Prezzo ricalcolato",
+  "valore": 2.27
+ }
+}
+```
+
 ## Tre scommesse in una
 
 L'esempio rende evidente una cosa che il profilo alla scadenza nasconde. Chi compra una call o una put non prende solo una posizione sulla direzione. È anche **lungo volatilità**, perché guadagna se le oscillazioni attese aumentano, e **corto tempo**, perché perde ogni giorno che passa senza movimenti.

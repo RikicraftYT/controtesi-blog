@@ -52,6 +52,58 @@ $$
 
 Con $\mu = 7\%$, $\sigma = 18\%$ e $T = 30$ anni, il valore atteso è circa 8,2 volte il capitale e la mediana circa 5. Lo studio sui paesi sviluppati citato in [Il mercato cresce nel tempo](mercato-cresce.html) mostra lo stesso scarto nei dati: [un dollaro diventa in media 7,34 dollari reali in 30 anni](https://www.cxoadvisory.com/?p=34496), eppure nel 12% dei casi vale meno di un dollaro. La stessa asimmetria, applicata ai singoli titoli, spiega perché [pochi titoli fanno tutto il rendimento](pochi-titoli.html).
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "Ricchezza dopo 30 anni: la media sta lontano dal caso tipico",
+ "nota": "Calcolo illustrativo: rendimento medio del 7% e volatilità del 18% l'anno. La curva mostra quanto sono probabili i diversi multipli del capitale iniziale.",
+ "x": {
+  "min": 0,
+  "max": 25,
+  "etichetta": "multiplo del capitale iniziale",
+  "formato": {
+   "dec": 0,
+   "suffisso": "×"
+  }
+ },
+ "y": {
+  "min": 0,
+  "max": 0.15,
+  "etichetta": "probabilità",
+  "passi": [],
+  "formato": {
+   "dec": 3
+  }
+ },
+ "serie": [
+  {
+   "nome": "Distribuzione della ricchezza finale",
+   "colore": 1,
+   "area": true,
+   "generatore": {
+    "nome": "lognormale",
+    "mu": 0.07,
+    "sigma": 0.18,
+    "anni": 30
+   },
+   "da": 0.05
+  }
+ ],
+ "riferimenti": [
+  {
+   "x": 5.02,
+   "etichetta": "mediana 5,0×"
+  },
+  {
+   "x": 8.17,
+   "etichetta": "media 8,2×"
+  }
+ ],
+ "etichette": "legenda",
+ "altezza": 280
+}
+```
+
 ### L'utilità non è lineare
 
 Nel paradosso di San Pietroburgo una scommessa ha valore atteso infinito e nessuno pagherebbe più di pochi euro per giocarla. La risposta classica è massimizzare l'utilità attesa della ricchezza, $E[u(W)]$, non la ricchezza attesa. Da qui nasce il premio al rischio discusso in [Equity premium puzzle](equity-premium-puzzle.html).

@@ -40,6 +40,114 @@ Un esempio, illustrativo: azione a 100, strike 100, premio 5 per ciascuna opzion
 
 La put venduta è il rovescio della put comprata: +5 se il prezzo resta sopra 100, −25 a 70.
 
+```grafico
+{
+ "tipo": "payoff",
+ "titolo": "I quattro profili di base alla scadenza",
+ "nota": "Esempio illustrativo dell'articolo: azione a 100, strike 100, premio 5. In ascissa il prezzo a scadenza, in ordinata il guadagno o la perdita. La linea tratteggiata è l'azione comprata a 100, per confronto.",
+ "confrontoNome": "azione comprata a 100",
+ "x": {
+  "min": 60,
+  "max": 140,
+  "passi": [
+   70,
+   100,
+   130
+  ]
+ },
+ "y": {
+  "min": -40,
+  "max": 40
+ },
+ "pannelli": [
+  {
+   "titolo": "Call comprata",
+   "colore": 1,
+   "gambe": [
+    {
+     "tipo": "call",
+     "lato": 1,
+     "strike": 100,
+     "premio": 5
+    }
+   ],
+   "confronto": [
+    {
+     "tipo": "azione",
+     "lato": 1,
+     "prezzo": 100
+    }
+   ]
+  },
+  {
+   "titolo": "Put comprata",
+   "colore": 1,
+   "gambe": [
+    {
+     "tipo": "put",
+     "lato": 1,
+     "strike": 100,
+     "premio": 5
+    }
+   ],
+   "confronto": [
+    {
+     "tipo": "azione",
+     "lato": 1,
+     "prezzo": 100
+    }
+   ]
+  },
+  {
+   "titolo": "Call venduta",
+   "colore": 2,
+   "gambe": [
+    {
+     "tipo": "call",
+     "lato": -1,
+     "strike": 100,
+     "premio": 5
+    }
+   ],
+   "confronto": [
+    {
+     "tipo": "azione",
+     "lato": 1,
+     "prezzo": 100
+    }
+   ]
+  },
+  {
+   "titolo": "Put venduta",
+   "colore": 2,
+   "gambe": [
+    {
+     "tipo": "put",
+     "lato": -1,
+     "strike": 100,
+     "premio": 5
+    }
+   ],
+   "confronto": [
+    {
+     "tipo": "azione",
+     "lato": 1,
+     "prezzo": 100
+    }
+   ]
+  }
+ ],
+ "tabella": {
+  "x": [
+   70,
+   100,
+   105,
+   130
+  ]
+ }
+}
+```
+
 Si leggono quattro forme.
 
 - **Call comprata.** Perdita massima pari al premio, guadagno senza limite. È una posizione rialzista.

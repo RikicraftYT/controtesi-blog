@@ -50,6 +50,71 @@ Il tempo fa lo stesso: più giorni restano, più si allarga il ventaglio dei pre
 
 Sono calcoli illustrativi su un'azione a 100. Triplicare il tempo non triplica il premio. E la discesa accelera vicino alla scadenza: è il *decadimento temporale*.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "Premio di una call con strike 100, a varie distanze dalla scadenza",
+ "interattivo": "opzione",
+ "nota": "Calcolo illustrativo con la formula di Black e Scholes, volatilità del 20% e tasso del 3%. La distanza tra ogni curva e il valore intrinseco è il valore temporale. Con JavaScript attivo puoi cambiare giorni e volatilità.",
+ "x": {
+  "min": 70,
+  "max": 130,
+  "etichetta": "prezzo dell'azione"
+ },
+ "y": {
+  "min": 0,
+  "max": 35,
+  "etichetta": "premio",
+  "formato": {
+   "dec": "auto"
+  }
+ },
+ "serie": [
+  {
+   "nome": "90 giorni",
+   "colore": 1,
+   "generatore": {
+    "nome": "bs-premio",
+    "K": 100,
+    "giorni": 90,
+    "r": 0.03,
+    "sigma": 0.2,
+    "tipo": "call"
+   }
+  },
+  {
+   "nome": "30 giorni",
+   "colore": 3,
+   "generatore": {
+    "nome": "bs-premio",
+    "K": 100,
+    "giorni": 30,
+    "r": 0.03,
+    "sigma": 0.2,
+    "tipo": "call"
+   }
+  },
+  {
+   "nome": "Valore intrinseco",
+   "colore": 2,
+   "tratteggio": true,
+   "generatore": {
+    "nome": "intrinseco",
+    "K": 100,
+    "tipo": "call"
+   }
+  }
+ ],
+ "tabella": {
+  "x": [
+   90,
+   100,
+   110
+  ]
+ }
+}
+```
+
 L'analogia con le assicurazioni è esatta. Il comunicato con cui l'Accademia svedese premiò Merton e Scholes nel 1997 lo dice esplicitamente: [chi possiede un contratto di assicurazione possiede una specie di opzione](https://www.nobelprize.org/nobel_prizes/economic-sciences/laureates/1997/press.html). Una polizza di un anno costa più di una di un mese perché copre più eventi possibili.
 
 ## La volatilità implicita

@@ -48,6 +48,51 @@ Sul lungo periodo l'inflazione si accumula, e la distanza tra nominale e reale d
 
 I numeri nominali impressionano di più. Quelli reali dicono la verità: quanto è cresciuta la capacità di comprare.
 
+```grafico
+{
+ "tipo": "punti-collegati",
+ "titolo": "Un dollaro investito nel 1900, a fine 2025",
+ "nota": "Stati Uniti. Scala logaritmica: ogni linea della griglia vale dieci volte la precedente. Il valore reale è quello nominale diviso per l'aumento dei prezzi, 38 volte nel periodo.",
+ "nomi": [
+  "Reale",
+  "Nominale"
+ ],
+ "colori": [
+  1,
+  3
+ ],
+ "x": {
+  "min": 1,
+  "max": 300000,
+  "log": true,
+  "passi": [
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000
+  ],
+  "formato": {
+   "dec": "auto",
+   "suffisso": " $"
+  }
+ },
+ "righe": [
+  {
+   "etichetta": "Azioni",
+   "da": 3300,
+   "a": 124854
+  },
+  {
+   "etichetta": "Obbligazioni a lunga scadenza",
+   "da": 7.5,
+   "a": 284
+  }
+ ]
+}
+```
+
 ## Gli equivoci più comuni
 
 **«Ho guadagnato, il saldo è salito».** Hai guadagnato in euro. Per sapere se hai guadagnato davvero devi togliere l'inflazione dello stesso periodo.

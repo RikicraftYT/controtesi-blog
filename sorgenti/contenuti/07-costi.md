@@ -36,6 +36,74 @@ Il numero $1{,}04$ è la crescita di un anno dopo aver tolto il costo: 5% meno 1
 
 Calcoli illustrativi su 10.000 € con un rendimento lordo costante del 5% l'anno. Nella prima riga la perdita non è indicata perché è il termine di confronto.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "10.000 € in 30 anni, con costi annui diversi",
+ "nota": "Calcolo illustrativo con un rendimento lordo costante del 5% l'anno.",
+ "x": {
+  "min": 0,
+  "max": 30,
+  "etichetta": "anni",
+  "unita": " anni"
+ },
+ "y": {
+  "min": 0,
+  "max": 45000,
+  "etichetta": "euro",
+  "formato": {
+   "dec": 0
+  }
+ },
+ "serie": [
+  {
+   "nome": "Costo 0%",
+   "colore": 1,
+   "generatore": {
+    "nome": "esponenziale",
+    "c0": 10000,
+    "base": 1.05
+   }
+  },
+  {
+   "nome": "Costo 0,2%",
+   "colore": 3,
+   "generatore": {
+    "nome": "esponenziale",
+    "c0": 10000,
+    "base": 1.048
+   }
+  },
+  {
+   "nome": "Costo 1%",
+   "colore": 2,
+   "generatore": {
+    "nome": "esponenziale",
+    "c0": 10000,
+    "base": 1.04
+   }
+  },
+  {
+   "nome": "Costo 2%",
+   "colore": 4,
+   "tratteggio": true,
+   "generatore": {
+    "nome": "esponenziale",
+    "c0": 10000,
+    "base": 1.03
+   }
+  }
+ ],
+ "tabella": {
+  "x": [
+   10,
+   20,
+   30
+  ]
+ }
+}
+```
+
 ## Quali costi esistono
 
 Non tutti i costi hanno lo stesso nome o si vedono allo stesso modo.

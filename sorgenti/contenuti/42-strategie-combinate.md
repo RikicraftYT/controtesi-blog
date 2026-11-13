@@ -62,6 +62,117 @@ Sono le strategie sulla volatilità descritte in [Le greche](greche.html): delta
 | Straddle comprato | 2 | il prezzo si muove molto |
 | Butterfly | 3 strike, 4 opzioni | il prezzo resta su un livello |
 
+```grafico
+{
+ "tipo": "payoff",
+ "titolo": "Profili alla scadenza di quattro strategie",
+ "nota": "Esempio illustrativo: azione a 100, opzioni a tre mesi, premi calcolati con Black e Scholes (volatilità 20%, tasso 3%). Bull call spread: call 100 comprata, call 110 venduta. Straddle: call e put 100. Strangle: put 90 e call 110. Butterfly: call 90 e 110 comprate, due call 100 vendute.",
+ "x": {
+  "min": 70,
+  "max": 130,
+  "passi": [
+   80,
+   100,
+   120
+  ]
+ },
+ "y": {
+  "min": -15,
+  "max": 25
+ },
+ "pannelli": [
+  {
+   "titolo": "Bull call spread",
+   "colore": 1,
+   "gambe": [
+    {
+     "tipo": "call",
+     "lato": 1,
+     "strike": 100,
+     "premio": 4.36
+    },
+    {
+     "tipo": "call",
+     "lato": -1,
+     "strike": 110,
+     "premio": 1.09
+    }
+   ]
+  },
+  {
+   "titolo": "Straddle comprato",
+   "colore": 1,
+   "gambe": [
+    {
+     "tipo": "call",
+     "lato": 1,
+     "strike": 100,
+     "premio": 4.36
+    },
+    {
+     "tipo": "put",
+     "lato": 1,
+     "strike": 100,
+     "premio": 3.61
+    }
+   ]
+  },
+  {
+   "titolo": "Strangle comprato",
+   "colore": 1,
+   "gambe": [
+    {
+     "tipo": "call",
+     "lato": 1,
+     "strike": 110,
+     "premio": 1.09
+    },
+    {
+     "tipo": "put",
+     "lato": 1,
+     "strike": 90,
+     "premio": 0.61
+    }
+   ]
+  },
+  {
+   "titolo": "Butterfly",
+   "colore": 1,
+   "gambe": [
+    {
+     "tipo": "call",
+     "lato": 1,
+     "strike": 90,
+     "premio": 11.28
+    },
+    {
+     "tipo": "call",
+     "lato": -1,
+     "strike": 100,
+     "premio": 4.36,
+     "quantita": 2
+    },
+    {
+     "tipo": "call",
+     "lato": 1,
+     "strike": 110,
+     "premio": 1.09
+    }
+   ]
+  }
+ ],
+ "tabella": {
+  "x": [
+   80,
+   90,
+   100,
+   110,
+   120
+  ]
+ }
+}
+```
+
 ## I certificati
 
 Un certificato di investimento è, in molti casi, un'obbligazione dell'emittente più una o più opzioni. Un certificato «a capitale protetto con partecipazione al rialzo» è un'obbligazione più una call comprata. Un certificato che paga cedole alte finché l'indice non scende sotto una barriera è un'obbligazione più una put venduta, spesso di un tipo che si attiva solo toccando la barriera. Saperlo permette di chiedersi quanto varrebbero separatamente i pezzi, e quanto costa metterli insieme.

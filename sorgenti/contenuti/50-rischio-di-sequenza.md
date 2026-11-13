@@ -40,6 +40,87 @@ Capitale 100, prelievo di 5 a inizio anno, stessi tre rendimenti in ordine oppos
 
 Stessa media, stessa volatilità, sei punti di differenza dopo tre anni. Su trent'anni lo scarto decide se il capitale dura o si esaurisce.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "Stessi rendimenti in ordine opposto, con un prelievo di 5 l'anno",
+ "nota": "Esempio illustrativo dell'articolo: capitale 100, prelievo di 5 all'inizio di ogni anno.",
+ "x": {
+  "min": 0,
+  "max": 3,
+  "etichetta": "anni",
+  "passi": [
+   0,
+   1,
+   2,
+   3
+  ]
+ },
+ "y": {
+  "min": 50,
+  "max": 140,
+  "etichetta": "capitale",
+  "formato": {
+   "dec": "auto"
+  }
+ },
+ "serie": [
+  {
+   "nome": "A: −30%, +10%, +30%",
+   "colore": 2,
+   "punti": [
+    [
+     0,
+     100
+    ],
+    [
+     1,
+     66.5
+    ],
+    [
+     2,
+     67.7
+    ],
+    [
+     3,
+     81.4
+    ]
+   ]
+  },
+  {
+   "nome": "B: +30%, +10%, −30%",
+   "colore": 1,
+   "punti": [
+    [
+     0,
+     100
+    ],
+    [
+     1,
+     123.5
+    ],
+    [
+     2,
+     130.4
+    ],
+    [
+     3,
+     87.7
+    ]
+   ]
+  }
+ ],
+ "tabella": {
+  "x": [
+   0,
+   1,
+   2,
+   3
+  ]
+ }
+}
+```
+
 Per chi accumula il segno si inverte: rendimenti cattivi all'inizio sono un vantaggio, perché i versamenti comprano a prezzi bassi. Il rischio si concentra dove il capitale è massimo rispetto ai flussi, cioè negli anni attorno al ritiro.
 
 ## Il legame con gli altri articoli

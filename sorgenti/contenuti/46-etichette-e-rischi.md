@@ -45,6 +45,50 @@ La differenza si scompone così, in punti di volatilità:
 | Composizione dell'azionario quotato | +0,10 |
 | **Totale** | **−0,96** |
 
+```grafico
+{
+ "tipo": "cascata",
+ "titolo": "Stessa etichetta 75/25, un punto di volatilità in meno",
+ "nota": "Caso di studio MSCI: volatilità annua in punti percentuali. Le barre rosa aggiungono rischio, quelle verdi lo tolgono.",
+ "formato": {
+  "dec": 2
+ },
+ "min": 9.5,
+ "max": 12.2,
+ "coloreSu": 2,
+ "coloreGiu": 4,
+ "inizio": {
+  "etichetta": "Riferimento 75/25",
+  "valore": 11.31
+ },
+ "passi": [
+  {
+   "etichetta": "Immobili non quotati",
+   "valore": -1.38
+  },
+  {
+   "etichetta": "Attività reali quotate",
+   "valore": -0.32
+  },
+  {
+   "etichetta": "Private equity",
+   "valore": 0.52
+  },
+  {
+   "etichetta": "Credito nei comparti difensivi",
+   "valore": 0.12
+  },
+  {
+   "etichetta": "Azionario quotato",
+   "valore": 0.1
+  }
+ ],
+ "fine": {
+  "etichetta": "Fondo"
+ }
+}
+```
+
 Le prime due voci diversificano: portano fattori solo in parte correlati con l'azionario. Il private equity aggiunge rischio pur avendo una correlazione moderata con il resto, 0,61, perché la sua volatilità stimata è del 27,2%. I comparti difensivi aggiungono rischio perché contengono credito, che scende insieme alle azioni.
 
 Per usare tutto il rischio approvato, la squadra riduce le obbligazioni quotate dal 19% all'11,3% e alza l'azionario quotato dal 44% al 50,8%. Il risultato ha l'82,7% in attività di crescita e la stessa volatilità del 75/25 di riferimento.

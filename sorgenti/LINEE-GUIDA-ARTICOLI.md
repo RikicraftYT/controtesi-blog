@@ -185,7 +185,34 @@ Due o tre frasi che riassumono il concetto.
 - **Mai celle segnaposto** («non disponibile», «da verificare», «non leggibile»). Se un dato manca si toglie la riga e lo si dice nel testo, oppure si usa «—» spiegando sotto la tabella perché.
 - I dati in tabella hanno una data («a fine 2025») nel testo o nell'intestazione.
 
-## 8. Link e fonti
+## 8. Grafici
+
+Un grafico si scrive come blocco recintato `grafico` con un oggetto JSON. La build lo trasforma in un'immagine che si adatta al telefono e al tema scuro, con una tabella dei dati sotto: chi scrive non deve disegnare nulla.
+
+```grafico
+{
+ "tipo": "barre",
+ "titolo": "Rendimento reale medio annuo, Stati Uniti 1900–2025",
+ "nota": "Fonte: UBS Global Investment Returns Yearbook 2026.",
+ "x": {"formato": {"dec": 1, "suffisso": "%"}},
+ "righe": [
+  {"etichetta": "Titoli di Stato a breve", "valore": 0.5, "colore": 4},
+  {"etichetta": "Azioni", "valore": 6.6, "colore": 1}
+ ]
+}
+```
+
+Regole:
+
+- **Solo numeri che hanno già una fonte nel testo**, oppure calcoli fatti con una formula dell'articolo. In quel caso la `nota` comincia con «Calcolo illustrativo» e dichiara le ipotesi.
+- **Un grafico per un concetto**, messo subito dopo il paragrafo o la tabella che spiega.
+- **Al massimo quattro serie.** I colori sono numerati da 1 a 4 e hanno sempre lo stesso ordine. Se compaiono insieme le serie 2 e 4, una delle due va tratteggiata (`"tratteggio": true`).
+- **Titolo che dice che cosa si vede**, non il nome del tipo di grafico.
+- **Numeri nel JSON con il punto decimale** (`6.6`): la virgola la mette la build.
+
+Tipi disponibili: `linee` (anche curve da formula, con `generatore`), `barre`, `barre100`, `cascata`, `payoff` (profili delle opzioni), `waffle`, `punti-collegati`, `intervalli`, `matrice`. Esempi di ciascuno sono negli articoli del sito: per esempio `costi`, `rischio-e-rendimento`, `risk-parity`, `greche`, `profili-di-rendimento`, `pochi-titoli`, `esposizione-geografica`, `regola-4-percento`, `permanent-portfolio`. Chi scrive può anche limitarsi a indicare dove servirebbe un grafico e con quali numeri, nella sezione «Da verificare»: lo costruisce chi integra l'articolo.
+
+## 9. Link e fonti
 
 È la parte più importante, ed è dove gli articoli esistenti hanno avuto più problemi.
 
@@ -206,7 +233,7 @@ Due o tre frasi che riassumono il concetto.
   - Titolo di un PDF senza link – Autori, istituzione, mese e anno
   ```
 
-## 9. Lingua e stile
+## 10. Lingua e stile
 
 - Italiano, seconda persona singolare («se investi», «il tuo portafoglio»).
 - Frasi brevi. Un'idea per frase. Niente enfasi, punti esclamativi, domande retoriche in serie.
@@ -217,7 +244,7 @@ Due o tre frasi che riassumono il concetto.
 - Niente note per chi integra dentro il testo dell'articolo («il grafico non era leggibile», «aggiungere il link»): vanno nella sezione «Da verificare».
 - Coerenza con gli altri articoli: se un articolo esistente dice il contrario, va citato e discusso, non ignorato.
 
-## 10. Indicazioni in più per il livello base
+## 11. Indicazioni in più per il livello base
 
 - **Si spiega, non si discute.** Niente tesi da smontare: l'articolo risponde a una domanda («perché i soldi fermi perdono valore?»). Le idee sbagliate più diffuse trovano posto, se servono, in «Gli equivoci più comuni».
 - **Un concetto per articolo.** Se servono due concetti, sono due articoli.
@@ -227,7 +254,7 @@ Due o tre frasi che riassumono il concetto.
 - **Nessun prerequisito oltre agli articoli base precedenti**, indicati nel campo `prima`.
 - **«Che cosa farne»** con tre punti pratici e generali (che cosa controllare, che cosa chiedersi), non consigli di acquisto.
 
-## 11. Controllo finale prima di mandare il file
+## 12. Controllo finale prima di mandare il file
 
 - [ ] Intestazione completa, con `livello`, `gruppo` e `tag` tra i valori ammessi
 - [ ] Slug unico, senza accenti, uguale a quello nella riga `ARTICOLO:`
@@ -240,7 +267,7 @@ Due o tre frasi che riassumono il concetto.
 - [ ] Lunghezza nei limiti del livello
 - [ ] Ciò che non è stato verificato è nella sezione «Da verificare»
 
-## 12. Esempio di articolo base
+## 13. Esempio di articolo base
 
 ```
 <!-- ===== ARTICOLO: interesse-composto ===== -->

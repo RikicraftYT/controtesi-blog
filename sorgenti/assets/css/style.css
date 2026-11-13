@@ -35,6 +35,14 @@
   --evidenziatore: #ffe45c;
   --su-evidenziatore: #1d1633;
 
+  /* Colori delle serie nei grafici, nell'ordine fisso 1-4. Verificati con il validatore
+     della skill dataviz su sfondo #ffffff. Le serie 2 e 4 vanno sempre distinte anche
+     da etichette o tratteggio, perché per chi confonde rosso e verde sono vicine. */
+  --g1: #5236e0;
+  --g2: #c2185b;
+  --g3: #9a6a00;
+  --g4: #00897b;
+
   --titoli: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --testo: "Newsreader", Georgia, "Times New Roman", serif;
 
@@ -53,6 +61,11 @@
   --viola: #ab99ff;
   --lampone: #ff7fab;
   --petrolio: #62d8c8;
+  /* Stesse tinte per il tema scuro, verificate su sfondo #1f1838. */
+  --g1: #8c78f5;
+  --g2: #e8588f;
+  --g3: #b98a2c;
+  --g4: #2aa697;
 }
 
 *,
@@ -543,6 +556,64 @@ html:has(.ricerca[open]) { overflow: hidden; }
 .sim-comandi button:active { background: var(--viola); }
 .sim .sim-esito { margin: 0; color: var(--tenue); }
 .sim figcaption { font-family: var(--titoli); font-size: 0.92rem; line-height: 1.4; color: var(--tenue); margin-top: 0.8rem; }
+
+/* Grafici generati in build (grafici.mjs) */
+.grafico { margin: 2rem 0; padding: 1.1rem 1.1rem 0.9rem; background: var(--superficie); border-radius: 12px; }
+.grafico-titolo { font-family: var(--titoli); font-weight: 700; font-size: 1.05rem !important; line-height: 1.3; margin: 0 0 0.8rem !important; }
+.grafico-svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--titoli); }
+.grafico-stretto { display: none; }
+@media (max-width: 34rem) {
+  .grafico { padding: 1rem 0.75rem 0.8rem; margin-left: -0.25rem; margin-right: -0.25rem; }
+  .grafico-largo { display: none; }
+  .grafico-stretto { display: block; }
+}
+.grafico figcaption { font-family: var(--titoli); font-size: 0.88rem; line-height: 1.4; color: var(--tenue); margin-top: 0.8rem; }
+.grafico-dati { margin-top: 0.6rem; font-family: var(--titoli); font-size: 0.9rem; }
+.grafico-dati summary { cursor: pointer; color: var(--viola); font-weight: 600; padding: 0.4rem 0; min-height: 32px; }
+.grafico-dati .tabella { margin: 0.5rem 0 0.2rem; }
+.grafico-dati table { min-width: 0; font-size: 0.92rem; }
+.g-s1 { --c: var(--g1); }
+.g-s2 { --c: var(--g2); }
+.g-s3 { --c: var(--g3); }
+.g-s4 { --c: var(--g4); }
+.g-griglia { stroke: var(--riga); stroke-width: 1; }
+.g-zero { stroke: var(--tenue); }
+.g-asse { fill: var(--tenue); font-size: 12px; }
+.g-titolo-asse { font-weight: 600; }
+.g-etichetta { fill: var(--inchiostro); font-size: 13px; }
+/* Alone del colore dello sfondo dietro le etichette: restano leggibili sopra linee e griglia. */
+.g-etichetta, .g-valore { paint-order: stroke; stroke: var(--superficie); stroke-width: 3.5px; stroke-linejoin: round; }
+.g-valore { fill: var(--inchiostro); font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.g-forte { font-weight: 700; }
+.g-tenue { fill: var(--tenue); }
+.g-linea { fill: none; stroke: var(--c); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+.g-spessa { stroke-width: 2.6; }
+.g-tratteggio { stroke-dasharray: 6 5; }
+.g-area { fill: var(--c); opacity: 0.14; }
+.g-barra { fill: var(--c); }
+.g-vuota { fill: none; stroke: var(--c); stroke-width: 2; stroke-dasharray: 4 3; }
+.g-su-colore { fill: var(--superficie); stroke: none; }
+.g-punto { fill: var(--c); stroke: var(--superficie); stroke-width: 2; }
+.g-evidenza { stroke-width: 2.5; }
+.g-collega { stroke: var(--riga); stroke-width: 4; stroke-linecap: round; }
+.g-rif { stroke: var(--tenue); stroke-width: 1; stroke-dasharray: 3 4; }
+.g-rif-forte { stroke-width: 1.5; stroke-dasharray: none; }
+.g-cella { fill: color-mix(in srgb, var(--c) 12%, var(--superficie)); stroke: var(--c); stroke-width: 1.5; }
+.grafico [data-tip] { cursor: default; }
+.grafico [data-tip]:focus { outline: none; }
+.grafico [data-tip]:focus-visible { stroke: var(--inchiostro); stroke-width: 2.5; }
+@media (hover: hover) { .grafico .g-barra[data-tip]:hover, .grafico .g-cella[data-tip]:hover { opacity: 0.85; } }
+.grafico-tip {
+  position: fixed; z-index: 30; pointer-events: none; max-width: 16rem;
+  padding: 0.45rem 0.65rem; border-radius: 8px; background: var(--inchiostro); color: var(--carta);
+  font-family: var(--titoli); font-size: 0.85rem; line-height: 1.35; box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+/* Controlli dei grafici interattivi */
+.grafico-comandi { display: grid; gap: 0.75rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); margin: 0 0 0.9rem; font-family: var(--titoli); font-size: 0.92rem; }
+.grafico-comandi label { display: grid; gap: 0.25rem; }
+.grafico-comandi output { font-weight: 700; color: var(--inchiostro); }
+.grafico-comandi input[type="range"] { width: 100%; min-height: 32px; accent-color: var(--viola); }
+.grafico-esito { font-family: var(--titoli); font-size: 0.95rem; margin: 0.6rem 0 0 !important; }
 
 /* Navigazione tra articoli */
 .vicini {

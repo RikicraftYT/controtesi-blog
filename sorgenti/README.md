@@ -96,6 +96,21 @@ I tag ammessi sono nell'elenco `TAG` di `build.mjs`: un tag che non c'è ferma l
 
 La build scrive anche `../assets/js/indice-ricerca.js` con titolo, tesi, obiezione, sommario, tag, titoli delle sezioni e testo di ogni articolo, senza formule. È un file JavaScript e non JSON perché così si carica anche aprendo il sito dal disco; `main.js` lo scarica solo alla prima ricerca. La ricerca ignora maiuscole e accenti, cerca i termini all'inizio delle parole e pesa di più titolo e tag. La stessa ricerca è nella finestra «Cerca» della testata (bottone, `/` o Ctrl+K), che rimanda alla home per i risultati completi.
 
+## Grafici
+
+I blocchi recintati `grafico` nei Markdown contengono un oggetto JSON. `build.mjs` li passa a `grafici.mjs`, che restituisce una `<figure>` con:
+
+- due SVG, largo (viewBox 640) e stretto (360): il CSS mostra il secondo sotto i 34rem, così il testo resta leggibile sul telefono;
+- una tabella dei dati in `<details>`, generata dagli stessi numeri (le x in `tabella.x` per le linee);
+- `role="img"`, `<title>`, `<desc>` e la nota come `<figcaption>`;
+- attributi `data-tip` sui segni, che `main.js` mostra come tooltip con mouse, tocco e tastiera.
+
+I tipi e i generatori di curve (lognormale, Black-Scholes, funzione di valore, code, FIRE, soglia di rendimento…) sono in testa a `grafici.mjs`. Un JSON sbagliato, un tipo o un generatore sconosciuto fermano la build indicando il file.
+
+I colori delle serie sono le variabili `--g1`…`--g4` in `style.css`, con valori propri per il tema scuro. Sono stati verificati con il validatore della skill dataviz (contrasto, luminosità, distinguibilità per daltonici) su sfondo chiaro e scuro; le serie 2 e 4 sono vicine per chi confonde rosso e verde, quindi quando compaiono insieme una delle due è tratteggiata o etichettata.
+
+Tre grafici sono interattivi (`"interattivo": "interesse" | "opzione" | "fire"`): la build scrive la versione statica, `main.js` la sostituisce con un grafico ridisegnato alla larghezza reale e con i cursori. Senza JavaScript resta quella statica.
+
 ## Fonti
 
 Ogni numero o affermazione citata deve avere un link nel testo e la stessa fonte in `contenuti/fonti.md`.

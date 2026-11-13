@@ -561,4 +561,229 @@
       menu.forEach(function (m) { if (m.open) { m.open = false; m.querySelector("summary").focus(); } });
     });
   }
+  /* ----- Grafici: tooltip su barre e punti (mouse, tocco e tastiera) ----- */
+  if (document.querySelector(".grafico")) {
+    var tip = document.createElement("div");
+    tip.className = "grafico-tip";
+    tip.hidden = true;
+    tip.setAttribute("role", "status");
+    document.body.appendChild(tip);
+    var posiziona = function (x, y) {
+      var w = tip.offsetWidth, h = tip.offsetHeight;
+      var left = Math.min(window.innerWidth - w - 8, Math.max(8, x - w / 2));
+      var top = y - h - 12 < 8 ? y + 18 : y - h - 12;
+      tip.style.left = left + "px";
+      tip.style.top = top + "px";
+    };
+    var mostra = function (el, x, y) {
+      tip.textContent = el.getAttribute("data-tip");
+      tip.hidden = false;
+      if (x === undefined) { var r = el.getBoundingClientRect(); x = r.left + r.width / 2; y = r.top; }
+      posiziona(x, y);
+    };
+    var nascondi = function () { tip.hidden = true; };
+    var bersaglio = function (e) { return e.target.closest ? e.target.closest(".grafico [data-tip]") : null; };
+    document.addEventListener("pointerover", function (e) { var el = bersaglio(e); if (el) mostra(el, e.clientX, e.clientY); });
+    document.addEventListener("pointermove", function (e) { if (!tip.hidden && bersaglio(e)) posiziona(e.clientX, e.clientY); });
+    document.addEventListener("pointerout", function (e) { if (bersaglio(e)) nascondi(); });
+    document.addEventListener("focusin", function (e) { var el = bersaglio(e); if (el) mostra(el); else nascondi(); });
+    document.addEventListener("focusout", function (e) { if (bersaglio(e)) nascondi(); });
+    window.addEventListener("scroll", nascondi, { passive: true });
+  }
+
+  /* ----- Grafici interattivi: interesse composto, valore temporale, FIRE ----- */
+  var interattivi = document.querySelectorAll(".grafico[data-interattivo]");
+  if (interattivi.length) {
+    var NS2 = "http://www.w3.org/2000/svg";
+    var nodo = function (nome, attr, testo) {
+      var n = document.createElementNS(NS2, nome);
+      for (var k in attr) n.setAttribute(k, attr[k]);
+      if (testo !== undefined) n.textContent = testo;
+      return n;
+    };
+    var num = function (v, dec) {
+      if (!isFinite(v)) return "—";
+      var parti = Math.abs(v).toFixed(dec || 0).split(".");
+      return (v < 0 ? "−" : "") + parti[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (parti[1] ? "," + parti[1] : "");
+    };
+    var tacche = function (min, max, quante) {
+      var passo = (max - min) / quante, mag = Math.pow(10, Math.floor(Math.log(passo) / Math.LN10));
+      var scelte = [1, 2, 2.5, 5, 10].map(function (k) { return k * mag; });
+      passo = scelte.filter(function (p) { return (max - min) / p <= quante; })[0] || 10 * mag;
+      var out = [];
+      for (var v = Math.ceil(min / passo - 1e-9) * passo; v <= max + 1e-9; v += passo) out.push(+v.toFixed(10));
+      return out;
+    };
+    var erf = function (x) {
+      var t = 1 / (1 + 0.3275911 * Math.abs(x));
+      var y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+      return x >= 0 ? y : -y;
+    };
+    var Nc = function (x) { return 0.5 * (1 + erf(x / Math.SQRT2)); };
+    var bsCall = function (S, K, T, r, s) {
+      if (T <= 0) return Math.max(S - K, 0);
+      var d1 = (Math.log(S / K) + (r + s * s / 2) * T) / (s * Math.sqrt(T)), d2 = d1 - s * Math.sqrt(T);
+      return S * Nc(d1) - K * Math.exp(-r * T) * Nc(d2);
+    };
+    // Disegna un grafico a linee alla larghezza reale del contenitore.
+    var disegnaLinee = function (cont, o) {
+      var W = Math.max(280, Math.round(cont.clientWidth)), stretto = W < 480;
+      var H = stretto ? Math.round(W * 0.78) : 320;
+      var fy = o.y.fmt, fx = o.x.fmt;
+      var sinistra = Math.max.apply(null, tacche(o.y.min, o.y.max, 5).map(function (v) { return fy(v).length * 7.1; })) + 14;
+      // legenda su più righe se non entra
+      var righeLeg = 1, cx = 0;
+      o.serie.forEach(function (s) { var w = 26 + s.nome.length * 6.9 + 18; if (cx + w > W && cx > 0) { righeLeg++; cx = 0; } cx += w; });
+      var legH = righeLeg * 18 + 4;
+      H += legH - 22;
+      var x0 = sinistra, x1 = W - 12, y1 = legH + 16, y0 = H - 40;
+      var sx = function (v) { return x0 + (v - o.x.min) / (o.x.max - o.x.min) * (x1 - x0); };
+      var sy = function (v) { return y0 - (Math.max(o.y.min, Math.min(o.y.max, v)) - o.y.min) / (o.y.max - o.y.min) * (y0 - y1); };
+      var svg = nodo("svg", { viewBox: "0 0 " + W + " " + H, "class": "grafico-svg", role: "img", "aria-label": o.titolo });
+      var lx = 0, ly = 10;
+      o.serie.forEach(function (s) {
+        var w = 26 + s.nome.length * 6.9 + 18;
+        if (lx + w > W && lx > 0) { lx = 0; ly += 18; }
+        svg.appendChild(nodo("line", { x1: lx, x2: lx + 20, y1: ly, y2: ly, "class": "g-linea g-s" + s.colore + (s.tratteggio ? " g-tratteggio" : "") }));
+        svg.appendChild(nodo("text", { x: lx + 26, y: ly + 4, "class": "g-etichetta" }, s.nome));
+        lx += w;
+      });
+      tacche(o.y.min, o.y.max, 5).forEach(function (v) {
+        svg.appendChild(nodo("line", { x1: x0, x2: x1, y1: sy(v), y2: sy(v), "class": "g-griglia" + (v === 0 ? " g-zero" : "") }));
+        svg.appendChild(nodo("text", { x: x0 - 6, y: sy(v) + 4, "text-anchor": "end", "class": "g-asse" }, fy(v)));
+      });
+      tacche(o.x.min, o.x.max, stretto ? 4 : 6).forEach(function (v) {
+        svg.appendChild(nodo("text", { x: sx(v), y: y0 + 18, "text-anchor": "middle", "class": "g-asse" }, fx(v)));
+      });
+      svg.appendChild(nodo("text", { x: x1, y: y0 + 34, "text-anchor": "end", "class": "g-asse g-titolo-asse" }, o.x.etichetta));
+      svg.appendChild(nodo("text", { x: x0 - 6, y: y1 - 8, "class": "g-asse g-titolo-asse" }, o.y.etichetta));
+      o.serie.forEach(function (s) {
+        var d = "";
+        for (var k = 0; k <= 160; k++) {
+          var xv = o.x.min + (o.x.max - o.x.min) * k / 160;
+          d += (k ? "L" : "M") + sx(xv).toFixed(1) + "," + sy(s.f(xv)).toFixed(1);
+        }
+        svg.appendChild(nodo("path", { d: d, "class": "g-linea g-s" + s.colore + (s.tratteggio ? " g-tratteggio" : "") }));
+      });
+      (o.punti || []).forEach(function (p) {
+        svg.appendChild(nodo("circle", { cx: sx(p.x), cy: sy(p.y), r: 5, "class": "g-punto g-evidenza g-s" + p.colore, tabindex: 0, "data-tip": p.tip }));
+      });
+      cont.innerHTML = "";
+      cont.appendChild(svg);
+    };
+
+    var MODELLI = {
+      interesse: {
+        cursori: [
+          { id: "r", nome: "Rendimento annuo", min: 0, max: 10, passo: 0.5, val: 5, fmt: function (v) { return num(v, 1) + "%"; } },
+          { id: "anni", nome: "Anni", min: 5, max: 50, passo: 1, val: 40, fmt: function (v) { return num(v); } }
+        ],
+        disegna: function (p, cont, esito) {
+          var r = p.r / 100, c0 = 10000, comp = function (t) { return c0 * Math.pow(1 + r, t); };
+          var fin = comp(p.anni), semp = c0 * (1 + r * p.anni);
+          disegnaLinee(cont, {
+            titolo: "10.000 € investiti per " + p.anni + " anni al " + num(p.r, 1) + "%",
+            x: { min: 0, max: p.anni, etichetta: "anni", fmt: function (v) { return num(v); } },
+            y: { min: 0, max: Math.max(12000, fin * 1.05), etichetta: "euro", fmt: function (v) { return num(v); } },
+            serie: [
+              { nome: "Interesse composto", colore: 1, f: comp },
+              { nome: "Interesse semplice", colore: 3, tratteggio: true, f: function (t) { return c0 * (1 + r * t); } },
+              { nome: "Capitale versato", colore: 4, tratteggio: true, f: function () { return c0; } }
+            ],
+            punti: [{ x: p.anni, y: fin, colore: 1, tip: "Dopo " + p.anni + " anni: " + num(fin) + " €" }]
+          });
+          esito.textContent = "Dopo " + p.anni + " anni: " + num(fin) + " € con l'interesse composto, " + num(semp) +
+            " € con quello semplice. La differenza, " + num(fin - semp) + " €, è fatta di guadagni sui guadagni.";
+        }
+      },
+      opzione: {
+        cursori: [
+          { id: "giorni", nome: "Giorni alla scadenza", min: 1, max: 180, passo: 1, val: 60, fmt: function (v) { return num(v); } },
+          { id: "vol", nome: "Volatilità", min: 10, max: 60, passo: 1, val: 30, fmt: function (v) { return num(v) + "%"; } }
+        ],
+        disegna: function (p, cont, esito) {
+          var T = p.giorni / 365, s = p.vol / 100, K = 100, r = 0.03;
+          var premio = function (S) { return bsCall(S, K, T, r, s); };
+          var a100 = premio(100), a110 = premio(110);
+          disegnaLinee(cont, {
+            titolo: "Premio di una call con strike 100",
+            x: { min: 70, max: 130, etichetta: "prezzo dell'azione", fmt: function (v) { return num(v); } },
+            y: { min: 0, max: 35, etichetta: "premio", fmt: function (v) { return num(v); } },
+            serie: [
+              { nome: "Premio", colore: 1, f: premio },
+              { nome: "Valore intrinseco", colore: 2, tratteggio: true, f: function (S) { return Math.max(S - K, 0); } }
+            ],
+            punti: [
+              { x: 100, y: a100, colore: 1, tip: "Azione a 100: premio " + num(a100, 2) + ", tutto valore temporale" },
+              { x: 110, y: a110, colore: 1, tip: "Azione a 110: premio " + num(a110, 2) + ", di cui 10 intrinseco" }
+            ]
+          });
+          esito.textContent = "Con l'azione a 100 la call vale " + num(a100, 2) + ", tutto valore temporale. A 110 vale " +
+            num(a110, 2) + ": 10 di valore intrinseco e " + num(a110 - 10, 2) + " di valore temporale.";
+        }
+      },
+      fire: {
+        cursori: [
+          { id: "r", nome: "Rendimento reale", min: 1, max: 8, passo: 0.5, val: 5, fmt: function (v) { return num(v, 1) + "%"; } },
+          { id: "w", nome: "Tasso di prelievo", min: 3, max: 5, passo: 0.25, val: 4, fmt: function (v) { return num(v, 2) + "%"; } }
+        ],
+        disegna: function (p, cont, esito) {
+          var r = p.r / 100, w = p.w / 100;
+          var anni = function (sp) { var s2 = sp / 100; return Math.log(1 + r * (1 - s2) / (s2 * w)) / Math.log(1 + r); };
+          disegnaLinee(cont, {
+            titolo: "Anni al traguardo secondo il tasso di risparmio",
+            x: { min: 5, max: 80, etichetta: "tasso di risparmio, %", fmt: function (v) { return num(v) + "%"; } },
+            y: { min: 0, max: 80, etichetta: "anni", fmt: function (v) { return num(v); } },
+            serie: [{ nome: "Anni al traguardo", colore: 1, f: anni }],
+            punti: [10, 25, 50, 66].map(function (sp) { return { x: sp, y: anni(sp), colore: 1, tip: "Risparmio " + sp + "%: circa " + num(anni(sp)) + " anni" }; })
+          });
+          esito.textContent = "Risparmiando il 25% servono circa " + num(anni(25)) + " anni; il 50%, circa " + num(anni(50)) +
+            ". Il traguardo è " + num(1 / w, 1) + " volte le spese annue.";
+        }
+      }
+    };
+
+    interattivi.forEach(function (fig) {
+      var modello = MODELLI[fig.getAttribute("data-interattivo")];
+      if (!modello) return;
+      var comandi = document.createElement("div");
+      comandi.className = "grafico-comandi";
+      var stato = {}, uscite = {};
+      modello.cursori.forEach(function (c) {
+        stato[c.id] = c.val;
+        var id = "c-" + Math.random().toString(36).slice(2, 8);
+        var l = document.createElement("label");
+        l.setAttribute("for", id);
+        l.innerHTML = "<span>" + c.nome + ": <output></output></span>";
+        var input = document.createElement("input");
+        input.type = "range"; input.id = id; input.min = c.min; input.max = c.max; input.step = c.passo; input.value = c.val;
+        l.appendChild(input);
+        uscite[c.id] = l.querySelector("output");
+        uscite[c.id].textContent = c.fmt(c.val);
+        input.addEventListener("input", function () {
+          stato[c.id] = Number(input.value);
+          uscite[c.id].textContent = c.fmt(stato[c.id]);
+          ridisegna();
+        });
+        comandi.appendChild(l);
+      });
+      var cont = document.createElement("div");
+      var esito = document.createElement("p");
+      esito.className = "grafico-esito";
+      esito.setAttribute("aria-live", "polite");
+      // La versione statica (per chi non ha JavaScript) lascia il posto a quella interattiva.
+      fig.querySelectorAll(".grafico-largo, .grafico-stretto").forEach(function (d) { d.hidden = true; });
+      var titolo = fig.querySelector(".grafico-titolo");
+      titolo.parentNode.insertBefore(comandi, titolo.nextSibling);
+      comandi.parentNode.insertBefore(cont, comandi.nextSibling);
+      cont.parentNode.insertBefore(esito, cont.nextSibling);
+      var ridisegna = function () { modello.disegna(stato, cont, esito); };
+      ridisegna();
+      var larghezza = cont.clientWidth, attesaG;
+      window.addEventListener("resize", function () {
+        clearTimeout(attesaG);
+        attesaG = setTimeout(function () { if (Math.abs(cont.clientWidth - larghezza) > 8) { larghezza = cont.clientWidth; ridisegna(); } }, 150);
+      });
+    });
+  }
 })();

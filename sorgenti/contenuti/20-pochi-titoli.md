@@ -24,6 +24,32 @@ Hendrik Bessembinder ha calcolato il rendimento sull'intera vita di ogni azione 
 
 In dollari, [l'intera creazione netta di ricchezza, circa 35.000 miliardi, è attribuibile a 1.092 società; più di metà viene da 90](https://wpcarey.asu.edu/sites/default/files/2021-10/do-stocks-outperform-treasury-bills.pdf). Il restante 96% dei titoli, nell'insieme, ha pareggiato i titoli di Stato.
 
+```grafico
+{
+ "tipo": "waffle",
+ "titolo": "Che cosa hanno reso le azioni americane, 1926–2016",
+ "nota": "Fonte: Bessembinder (2018), circa 26.000 titoli, rendimento sull'intera vita di ciascuno. Ogni quadrato è l'1% dei titoli.",
+ "parti": [
+  {
+   "nome": "meno dei titoli di Stato a un mese",
+   "valore": 58,
+   "colore": 2
+  },
+  {
+   "nome": "li hanno battuti di poco",
+   "valore": 38,
+   "colore": 3
+  },
+  {
+   "nome": "hanno fatto tutto il guadagno netto del mercato",
+   "valore": 4,
+   "colore": 1,
+   "etichettaValore": "circa 4%"
+  }
+ ]
+}
+```
+
 ## Perché succede
 
 Non c'è nulla di anomalo. Il rendimento composto di un titolo ha un limite inferiore, $-100\%$, e nessun limite superiore. Moltiplicando molti rendimenti periodali si ottiene una distribuzione asimmetrica a destra, in cui la media sta sopra la mediana. È la stessa struttura della scommessa di [Valore atteso](valore-atteso.html): la media è trainata da pochi esiti enormi, il percorso tipico sta sotto.

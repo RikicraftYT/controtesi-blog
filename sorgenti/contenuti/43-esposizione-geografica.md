@@ -27,6 +27,42 @@ La nota non riporta la quota per le attività dirette. Mettendo insieme ricavi, 
 
 Il caso opposto è la Cina. Nell'indice pesa il 2,5%. Per ricavi, quasi il 12% di ciò che le società dell'indice incassano viene da lì. Nella filiera dei beni, la dipendenza dalla Cina è dell'8% e quella da Taiwan del 6%. Un investitore che legge solo la tabella dei pesi crede di avere un'esposizione marginale alla Cina; ne ha una quasi cinque volte più grande. Quale Cina ci sia dentro un indice globale, e perché vi pesi così poco, è il tema di [Quale Cina compri](quale-cina.html).
 
+```grafico
+{
+ "tipo": "punti-collegati",
+ "titolo": "Quanto pesa un paese, per sede o per ricavi",
+ "nota": "Fonte: nota MSCI del giugno 2026 sull'indice MSCI ACWI. Per la filiera la quota degli Stati Uniti è quasi il 42%.",
+ "nomi": [
+  "Peso per sede",
+  "Peso per ricavi"
+ ],
+ "colori": [
+  4,
+  1
+ ],
+ "x": {
+  "min": 0,
+  "max": 70,
+  "formato": {
+   "dec": "auto",
+   "suffisso": "%"
+  }
+ },
+ "righe": [
+  {
+   "etichetta": "Stati Uniti",
+   "da": 64,
+   "a": 44
+  },
+  {
+   "etichetta": "Cina",
+   "da": 2.5,
+   "a": 12
+  }
+ ]
+}
+```
+
 ## Come si calcola
 
 Per ogni società $i$ con peso $w_i$ nel portafoglio, sia $s_{i,c}$ la quota dei suoi ricavi che viene dal paese $c$. L'esposizione del portafoglio a quel paese è

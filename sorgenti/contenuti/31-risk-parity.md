@@ -44,6 +44,54 @@ Ipotesi illustrative: azioni con volatilità 16%, obbligazioni 5%, correlazione 
 
 Il 60/40 è quasi interamente una scommessa azionaria. Un backtest dal 1987 riportato da [ETF Central](https://www.etfcentral.com/news/risk-parity-etfs-effective-2022) trova un valore simile: 94,83% del rischio dalle azioni.
 
+```grafico
+{
+ "tipo": "barre100",
+ "titolo": "Dove sta il capitale, dove sta il rischio",
+ "nota": "Ipotesi illustrative dell'articolo: volatilità del 16% per le azioni e del 5% per le obbligazioni, correlazione zero.",
+ "parti": [
+  {
+   "nome": "Azioni",
+   "colore": 1
+  },
+  {
+   "nome": "Obbligazioni",
+   "colore": 3
+  }
+ ],
+ "righe": [
+  {
+   "etichetta": "60/40, capitale",
+   "parti": [
+    60,
+    40
+   ]
+  },
+  {
+   "etichetta": "60/40, rischio",
+   "parti": [
+    96,
+    4
+   ]
+  },
+  {
+   "etichetta": "Risk parity, capitale",
+   "parti": [
+    24,
+    76
+   ]
+  },
+  {
+   "etichetta": "Risk parity, rischio",
+   "parti": [
+    50,
+    50
+   ]
+  }
+ ]
+}
+```
+
 La versione senza leva è bilanciata ma rende poco. Per riportarla alla volatilità del 60/40 serve una leva di circa 1,8, cioè prendere a prestito l'82% del capitale.
 
 ## Perché la leva dovrebbe pagare

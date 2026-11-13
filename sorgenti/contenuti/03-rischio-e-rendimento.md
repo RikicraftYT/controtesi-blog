@@ -35,6 +35,38 @@ Su 126 anni di storia negli Stati Uniti, le attività più rischiose hanno reso 
 
 Dati sugli Stati Uniti dal 1900 al 2025. La colonna dell'incertezza è una descrizione qualitativa.
 
+```grafico
+{
+ "tipo": "barre",
+ "titolo": "Rendimento reale medio annuo, Stati Uniti 1900–2025",
+ "nota": "Fonte: UBS Global Investment Returns Yearbook 2026. Nello stesso periodo azioni e obbligazioni hanno perso, in momenti diversi, oltre il 70% del valore reale.",
+ "colonna": "Rendimento reale annuo",
+ "x": {
+  "formato": {
+   "dec": 1,
+   "suffisso": "%"
+  }
+ },
+ "righe": [
+  {
+   "etichetta": "Titoli di Stato a breve",
+   "valore": 0.5,
+   "colore": 4
+  },
+  {
+   "etichetta": "Obbligazioni a lunga scadenza",
+   "valore": 1.6,
+   "colore": 3
+  },
+  {
+   "etichetta": "Azioni",
+   "valore": 6.6,
+   "colore": 1
+  }
+ ]
+}
+```
+
 L'ordine è quello che ci si aspetta. Ma il prezzo si vede nell'altra metà della storia: nello stesso periodo [azioni e obbligazioni hanno perso, in momenti diversi, oltre il 70% del valore reale](https://www.ubs.com/global/en/wealthmanagement/insights/marketnews/article.3435923.html). Il 6,6% è una media su più di un secolo, non quello che è successo ogni anno.
 
 ## Atteso non vuol dire garantito

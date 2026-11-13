@@ -22,6 +22,69 @@ $$
 
 Con una gaussiana la probabilità di allontanarsi dalla media decresce in modo esponenziale: un evento a cinque deviazioni standard è quasi impossibile. Con una legge di potenza no.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "Quanto sono rari gli eventi estremi, secondo due modelli",
+ "nota": "Calcolo illustrativo: probabilità di allontanarsi dalla media di più di x deviazioni standard. Normale contro t di Student con 3 gradi di libertà, che ha una coda con esponente 3. Scala logaritmica.",
+ "x": {
+  "min": 0,
+  "max": 8,
+  "etichetta": "deviazioni standard",
+  "passi": [
+   0,
+   2,
+   4,
+   6,
+   8
+  ]
+ },
+ "y": {
+  "min": 1e-10,
+  "max": 1,
+  "log": true,
+  "passi": [
+   0.01,
+   0.0001,
+   1e-06,
+   1e-08,
+   1e-10
+  ],
+  "formato": {
+   "tipo": "probabilita"
+  }
+ },
+ "serie": [
+  {
+   "nome": "Distribuzione normale",
+   "colore": 4,
+   "tratteggio": true,
+   "generatore": {
+    "nome": "coda-normale"
+   },
+   "da": 0.01
+  },
+  {
+   "nome": "Coda pesante (esponente 3)",
+   "colore": 2,
+   "generatore": {
+    "nome": "coda-t3"
+   },
+   "da": 0.01
+  }
+ ],
+ "tabella": {
+  "x": [
+   2,
+   3,
+   5,
+   8
+  ]
+ },
+ "altezza": 340
+}
+```
+
 L'esempio classico è il 19 ottobre 1987. Secondo [una rassegna sul tema](https://jid.aabri.com/manuscripts/131653.pdf), per i modelli gaussiani in uso quel crollo era un evento a circa diciotto deviazioni standard, cioè un evento che non dovrebbe verificarsi nell'intera vita dell'universo. Eppure è avvenuto, e altri di scala paragonabile lo hanno seguito.
 
 ## Che cosa cambia

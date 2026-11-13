@@ -49,6 +49,70 @@ $$
 
 Stessa volatilità, soglie a 7,45 punti di distanza. La differenza è tutta nella correlazione. I dieci titoli maggiori dell'indice sull'intelligenza artificiale, il 45% dell'indice, erano già tra le tredici maggiori posizioni azionarie del fondo. Comprarli di nuovo aggiunge rischio che il fondo ha già.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "La soglia sale con la correlazione",
+ "nota": "Caso MSCI: portafoglio con volatilità 11,31% e rendimento atteso in eccesso 5,65%; candidato con volatilità di circa il 23%.",
+ "x": {
+  "min": 0,
+  "max": 1,
+  "etichetta": "correlazione con il portafoglio",
+  "formato": {
+   "dec": 1
+  }
+ },
+ "y": {
+  "min": 0,
+  "max": 12,
+  "etichetta": "soglia di rendimento",
+  "formato": {
+   "dec": 0,
+   "suffisso": "%"
+  }
+ },
+ "serie": [
+  {
+   "nome": "Soglia",
+   "colore": 1,
+   "generatore": {
+    "nome": "soglia",
+    "sigmaI": 23.15,
+    "sigmaP": 11.31,
+    "rp": 5.65
+   }
+  }
+ ],
+ "punti": [
+  {
+   "x": 0.24,
+   "y": 2.72,
+   "colore": 3,
+   "etichetta": "Oro: 2,72%",
+   "allinea": "start",
+   "sotto": false
+  },
+  {
+   "x": 0.88,
+   "y": 10.17,
+   "colore": 2,
+   "etichetta": "IA: 10,17%",
+   "allinea": "end"
+  }
+ ],
+ "etichette": "legenda",
+ "tabella": {
+  "x": [
+   0,
+   0.25,
+   0.5,
+   0.75,
+   1
+  ]
+ }
+}
+```
+
 Il paper non dice quale dei due scegliere, e fa bene. Dice quale premio serve: l'intelligenza artificiale è il candidato migliore solo se ci si aspetta che renda oltre 7,45 punti l'anno più dell'oro. Se nessuno dei due supera la propria soglia, il fondo può rinunciare a entrambi.
 
 ## Da dove si prende il denaro

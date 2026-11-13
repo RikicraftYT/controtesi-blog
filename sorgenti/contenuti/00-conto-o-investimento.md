@@ -37,6 +37,54 @@ La riga si legge così. Il numero $1{,}02$ è l'aumento dei prezzi in un anno: 2
 
 I valori sono calcolati con un'inflazione costante del 2% l'anno.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "Che cosa comprano 10.000 € fermi sul conto",
+ "nota": "Calcolo illustrativo con un'inflazione costante del 2% l'anno: il valore è espresso in euro di oggi.",
+ "x": {
+  "min": 0,
+  "max": 30,
+  "etichetta": "anni",
+  "unita": " anni"
+ },
+ "y": {
+  "min": 0,
+  "max": 10000,
+  "etichetta": "euro di oggi",
+  "formato": {
+   "dec": 0
+  }
+ },
+ "serie": [
+  {
+   "nome": "Potere d'acquisto",
+   "colore": 2,
+   "area": true,
+   "generatore": {
+    "nome": "esponenziale",
+    "c0": 10000,
+    "base": 0.9803921568627451
+   }
+  }
+ ],
+ "riferimenti": [
+  {
+   "y": 10000,
+   "etichetta": "saldo sul conto: sempre 10.000 €"
+  }
+ ],
+ "tabella": {
+  "x": [
+   5,
+   10,
+   20,
+   30
+  ]
+ }
+}
+```
+
 ## Quando l'inflazione accelera
 
 Il 2% è una media a cui si punta, non una garanzia. In Italia [nel 2022 i prezzi al consumo sono cresciuti dell'8,1%, l'aumento più ampio dal 1985](https://www.istat.it/comunicato-stampa/prezzi-al-consumo-dicembre-2022/). [Nel 2023 sono cresciuti di un altro 5,7%, nel 2024 dell'1,0%](https://www.istat.it/comunicato-stampa/prezzi-al-consumo-dicembre-2024/).

@@ -25,6 +25,44 @@ Browne parte da un'ammissione: il regime economico futuro non è prevedibile. In
 
 Tre attivi su quattro sono molto volatili. La stabilità del portafoglio nasce dal fatto che le loro correlazioni di lungo periodo sono vicine a zero, e dal ribilanciamento che vende ciò che è salito e compra ciò che è sceso.
 
+```grafico
+{
+ "tipo": "matrice",
+ "titolo": "Un attivo per ogni regime economico",
+ "nota": "Schema semplificato dei quattro regimi di Browne, ciascuno con il 25% del capitale.",
+ "colonne": [
+  "Economia che cresce",
+  "Economia che rallenta"
+ ],
+ "righe": [
+  "Prezzi stabili o in calo",
+  "Prezzi in salita"
+ ],
+ "celle": [
+  {
+   "titolo": "Prosperità",
+   "testo": "Azioni, 25%",
+   "colore": 1
+  },
+  {
+   "titolo": "Deflazione",
+   "testo": "Titoli di Stato a lunga scadenza, 25%",
+   "colore": 4
+  },
+  {
+   "titolo": "Inflazione",
+   "testo": "Oro, 25%",
+   "colore": 3
+  },
+  {
+   "titolo": "Recessione con stretta monetaria",
+   "testo": "Liquidità, 25%",
+   "colore": 2
+  }
+ ]
+}
+```
+
 L'effetto è quello della formula $g \approx \mu - \sigma^2/2$ vista in [Rischio di sequenza](rischio-di-sequenza.html) e in [Volatility drag](volatility-drag.html): meno volatilità a parità di media significa più crescita composta e meno dipendenza dall'ordine dei rendimenti. Per chi preleva è una proprietà di valore.
 
 ## Obiezioni e risposte

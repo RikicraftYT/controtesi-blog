@@ -67,3 +67,79 @@ Il capitale dura di più perché sei tu a spendere meno. Secondo [Kitces](https:
 ::: difendibile
 Il 4% è un punto di partenza ragionevole per trent'anni, un portafoglio globale e valutazioni normali. Con orizzonti più lunghi o prezzi alti si scende verso il 3,25–3,5%. Qualunque numero iniziale regge meglio se accetti di ridurre i prelievi negli anni cattivi.
 :::
+
+```grafico
+{
+ "tipo": "intervalli",
+ "titolo": "Quanto si può prelevare il primo anno: le stime a confronto",
+ "nota": "Tasso di prelievo iniziale, rivalutato poi per l'inflazione, secondo le fonti citate nell'articolo. La linea verticale è il 4%.",
+ "colonna": "Tasso iniziale",
+ "x": {
+  "min": 2,
+  "max": 6,
+  "formato": {
+   "dec": "auto",
+   "suffisso": "%"
+  },
+  "passi": [
+   2,
+   3,
+   4,
+   5,
+   6
+  ]
+ },
+ "riferimento": {
+  "x": 4
+ },
+ "righe": [
+  {
+   "etichetta": "Campione largo, rischio 5%",
+   "da": 2.26,
+   "colore": 2
+  },
+  {
+   "etichetta": "Orizzonti lunghi",
+   "da": 3.25,
+   "a": 3.5,
+   "colore": 2
+  },
+  {
+   "etichetta": "Sessant'anni, ERN",
+   "da": 3.5,
+   "colore": 2
+  },
+  {
+   "etichetta": "Morningstar, 2026",
+   "da": 3.9,
+   "colore": 3
+  },
+  {
+   "etichetta": "Trinity, 95% di successo",
+   "da": 4.0,
+   "colore": 3
+  },
+  {
+   "etichetta": "Bengen 1994",
+   "da": 4.15,
+   "colore": 3
+  },
+  {
+   "etichetta": "Bengen, dati recenti",
+   "da": 4.7,
+   "colore": 1
+  },
+  {
+   "etichetta": "Guyton e Klinger, regole flessibili",
+   "da": 5.2,
+   "a": 5.6,
+   "colore": 1
+  },
+  {
+   "etichetta": "Morningstar, regole flessibili",
+   "da": 5.7,
+   "colore": 1
+  }
+ ]
+}
+```

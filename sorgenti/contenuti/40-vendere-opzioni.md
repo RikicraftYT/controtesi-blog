@@ -54,6 +54,30 @@ Le opzioni vendute fuori dal denaro scadono senza valore quasi sempre. Una strat
 La frequenza delle vincite non dice niente del risultato. Conta il valore atteso: probabilità per importo, sommato su tutti i casi. Una strategia che guadagna 1 l'85% delle volte e perde 10 il 15% delle volte ha valore atteso negativo. È l'errore descritto in [Valore atteso](valore-atteso.html).
 :::
 
+```grafico
+{
+ "tipo": "cascata",
+ "titolo": "Vincere spesso non basta: il valore atteso dell'esempio",
+ "nota": "Esempio illustrativo dell'articolo: +1 nell'85% dei casi, −10 nel 15%. Ogni barra è il contributo medio per caso.",
+ "formato": {
+  "dec": 2
+ },
+ "passi": [
+  {
+   "etichetta": "85 casi su 100: +1",
+   "valore": 0.85
+  },
+  {
+   "etichetta": "15 casi su 100: −10",
+   "valore": -1.5
+  }
+ ],
+ "fine": {
+  "etichetta": "Valore atteso per caso"
+ }
+}
+```
+
 ::: obiezione È meno rischiosa delle azioni
 Una covered call oscilla meno dell'azione sottostante e ha perdite massime più contenute.
 :::

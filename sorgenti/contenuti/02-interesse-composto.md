@@ -36,6 +36,67 @@ La caratteristica più importante è che la crescita non è costante: accelera.
 
 I valori sono calcoli illustrativi con un rendimento costante.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "10.000 € investiti per 40 anni al 5%",
+ "interattivo": "interesse",
+ "nota": "Calcolo illustrativo con un rendimento costante. Con JavaScript attivo puoi cambiare rendimento e durata.",
+ "x": {
+  "min": 0,
+  "max": 40,
+  "etichetta": "anni",
+  "unita": " anni"
+ },
+ "y": {
+  "min": 0,
+  "max": 75000,
+  "etichetta": "euro",
+  "formato": {
+   "dec": 0
+  }
+ },
+ "serie": [
+  {
+   "nome": "Interesse composto",
+   "colore": 1,
+   "generatore": {
+    "nome": "esponenziale",
+    "c0": 10000,
+    "base": 1.05
+   }
+  },
+  {
+   "nome": "Interesse semplice",
+   "colore": 3,
+   "tratteggio": true,
+   "generatore": {
+    "nome": "semplice",
+    "c0": 10000,
+    "tasso": 0.05
+   }
+  },
+  {
+   "nome": "Capitale versato",
+   "colore": 4,
+   "tratteggio": true,
+   "generatore": {
+    "nome": "costante",
+    "valore": 10000
+   }
+  }
+ ],
+ "tabella": {
+  "x": [
+   10,
+   20,
+   30,
+   40
+  ]
+ }
+}
+```
+
 Nel quarto decennio si guadagna più di quattro volte quello che si è guadagnato nel primo, senza aver aggiunto un euro. Per questo gli ultimi anni di un investimento lungo sono i più preziosi, e interromperlo presto costa molto.
 
 Una regola pratica aiuta a farsi un'idea: dividi 72 per il rendimento annuo e ottieni, più o meno, gli anni necessari a raddoppiare. Al 5% servono circa 14 anni. Al 2% ne servono 36.

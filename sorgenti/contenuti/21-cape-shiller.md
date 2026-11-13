@@ -22,6 +22,75 @@ $$
 
 Con un CAPE di 30 la stima è circa 3,3% reale annuo; con un CAPE di 15, circa 6,7%. È il termine $\Delta\%(P/E)$ di [Il mercato cresce nel tempo](mercato-cresce.html) reso misurabile.
 
+```grafico
+{
+ "tipo": "linee",
+ "titolo": "Rendimento reale atteso ≈ 1 / CAPE",
+ "nota": "Stima grezza, come spiegato nel testo. Le medie del CAPE americano vengono dal CFA Institute.",
+ "x": {
+  "min": 5,
+  "max": 45,
+  "etichetta": "CAPE"
+ },
+ "y": {
+  "min": 0,
+  "max": 20,
+  "etichetta": "rendimento reale annuo",
+  "formato": {
+   "dec": 0,
+   "suffisso": "%"
+  }
+ },
+ "serie": [
+  {
+   "nome": "1 / CAPE",
+   "colore": 1,
+   "generatore": {
+    "nome": "inverso",
+    "k": 100
+   }
+  }
+ ],
+ "riferimenti": [
+  {
+   "x": 14.1,
+   "etichetta": "media prima del 1990"
+  },
+  {
+   "x": 26.6,
+   "etichetta": "media dal 1990"
+  }
+ ],
+ "punti": [
+  {
+   "x": 15,
+   "y": 6.67,
+   "colore": 1,
+   "etichetta": "CAPE 15: 6,7%",
+   "sotto": false
+  },
+  {
+   "x": 30,
+   "y": 3.33,
+   "colore": 1,
+   "etichetta": "CAPE 30: 3,3%",
+   "sotto": true
+  }
+ ],
+ "etichette": "legenda",
+ "tabella": {
+  "x": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   40
+  ]
+ }
+}
+```
+
 ## L'evidenza
 
 Il legame tra CAPE iniziale e rendimenti successivi è negativo e robusto su orizzonti lunghi. Un'analisi Vanguard citata da [Advisor Perspectives](https://www.advisorperspectives.com/articles/2020/07/20/the-remarkable-accuracy-of-cape-as-a-predictor-of-returns-1) trova un $R^2$ di 0,43 tra CAPE e rendimenti a dieci anni nel periodo 1926–2011. Vuol dire anche che oltre metà della variabilità resta non spiegata.

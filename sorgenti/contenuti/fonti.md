@@ -5,7 +5,7 @@ tipo: pagina
 sommario: Tutti i numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'11 e il 13 novembre 2026.
 ---
 
-I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'11 e il 13 novembre 2026. Gli esempi numerici di [Valore atteso](valore-atteso.html), [Rischio di sequenza](rischio-di-sequenza.html), [Risk parity](risk-parity.html), [FIRE](fire.html) (la tabella degli anni al traguardo), [Volatility drag](volatility-drag.html) (ETF a leva e demone di Shannon) [Tutto subito o a rate](pac-o-pic.html) (costo atteso dell'attesa), [Dove investe davvero un indice globale](esposizione-geografica.html) (le due società) e [Quanto deve rendere per meritare un posto](hurdle-rate.html) (la tabella con l'ETF tematico) sono calcoli illustrativi su ipotesi dichiarate nel testo.
+I numeri citati negli articoli vengono dalle pagine qui sotto, consultate tra l'11 e il 13 novembre 2026. I grafici usano gli stessi numeri e le stesse fonti degli articoli in cui compaiono; quelli con la dicitura «calcolo illustrativo» sono costruiti con le formule e le ipotesi dichiarate nella loro nota. Gli esempi numerici di [Valore atteso](valore-atteso.html), [Rischio di sequenza](rischio-di-sequenza.html), [Risk parity](risk-parity.html), [FIRE](fire.html) (la tabella degli anni al traguardo), [Volatility drag](volatility-drag.html) (ETF a leva e demone di Shannon) [Tutto subito o a rate](pac-o-pic.html) (costo atteso dell'attesa), [Dove investe davvero un indice globale](esposizione-geografica.html) (le due società) e [Quanto deve rendere per meritare un posto](hurdle-rate.html) (la tabella con l'ETF tematico) sono calcoli illustrativi su ipotesi dichiarate nel testo.
 
 ## Per iniziare
 

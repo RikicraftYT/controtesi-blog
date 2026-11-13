@@ -31,6 +31,43 @@ I dati sono riassunti da [CXO Advisory](https://www.cxoadvisory.com/?p=34496) e 
 
 Lo stesso studio misura l'effetto dei costi: con una spesa annua dello 0,04% la probabilità di perdita è 12,3%; con l'1,11% sale al 17,5%.
 
+```grafico
+{
+ "tipo": "barre",
+ "titolo": "Probabilità di perdere potere d'acquisto in 30 anni",
+ "nota": "Fonte: Anarkulova, Cederburg e O'Doherty (2022), 39 paesi sviluppati dal 1841 al 2019.",
+ "colonna": "Probabilità",
+ "x": {
+  "formato": {
+   "dec": 1,
+   "suffisso": "%"
+  }
+ },
+ "righe": [
+  {
+   "etichetta": "Solo Stati Uniti",
+   "valore": 1.2,
+   "colore": 4
+  },
+  {
+   "etichetta": "39 paesi sviluppati",
+   "valore": 12.1,
+   "colore": 1
+  },
+  {
+   "etichetta": "39 paesi, costi 0,04% l'anno",
+   "valore": 12.3,
+   "colore": 3
+  },
+  {
+   "etichetta": "39 paesi, costi 1,11% l'anno",
+   "valore": 17.5,
+   "colore": 2
+  }
+ ]
+}
+```
+
 ## Obiezioni e risposte
 
 ::: obiezione Lo studio misura chi investe in un paese solo
