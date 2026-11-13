@@ -51,7 +51,7 @@ L'azionista incassa la crescita degli utili *per azione*. Nuove emissioni e nuov
 :::
 
 ::: risposta
-La tesi non richiede crescita del PIL: richiede un premio al rischio positivo. L'obiezione però ridimensiona l'ottimismo, perché il $g$ dell'azionista è più basso di quello dell'economia. Il caso più netto è la Cina: [Il PIL cresce, le azioni meno](cina-pil-rendimenti.html).
+La tesi non richiede crescita del PIL: richiede un premio al rischio positivo. L'obiezione però ridimensiona l'ottimismo, perché il $g$ dell'azionista è più basso di quello dell'economia.
 :::
 
 ::: obiezione Tra crescita e crollo c'è il ristagno

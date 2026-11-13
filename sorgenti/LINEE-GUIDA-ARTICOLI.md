@@ -70,7 +70,7 @@ Se un articolo non entra in nessun gruppo, va detto nella sezione «Da verificar
 
 **Tag disponibili**
 
-inflazione · liquidità · interesse composto · rischio · volatilità · azioni · obbligazioni · oro · fondi ed ETF · costi · tasse · diversificazione · asset allocation · leva · valutazioni · dati storici · efficienza dei mercati · comportamento · fattori · geografia · Cina · pensione · pianificazione · statistica · opzioni · metodo
+inflazione · liquidità · interesse composto · rischio · volatilità · azioni · obbligazioni · oro · fondi ed ETF · costi · tasse · diversificazione · asset allocation · leva · valutazioni · dati storici · efficienza dei mercati · comportamento · fattori · geografia · pensione · pianificazione · statistica · opzioni · metodo
 
 I tag servono ai lettori per filtrare gli articoli in home. Vanno scritti esattamente così, minuscole comprese. Un tag nuovo si propone nella sezione «Da verificare», non si inventa nell'intestazione.
 
