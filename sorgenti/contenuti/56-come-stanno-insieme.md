@@ -20,7 +20,6 @@ Le coppie sono raggruppate per tema. Su tutte pesa la tensione con i [Mercati ad
 
 | Coppia | Dove si scontrano | Come si ricompone |
 | --- | --- | --- |
-| [Crescita del mercato](mercato-cresce.html) e [PIL cinese](cina-pil-rendimenti.html) | Un'economia che cresce molto dovrebbe premiare le sue azioni | Conta la crescita per azione: diluizione e margini possono assorbire quella del PIL |
 | [Equity premium puzzle](equity-premium-puzzle.html) e [CAPE](cape-shiller.html) | Il premio storico è alto, quello implicito nei prezzi attuali è basso | Coerenti se parte del premio storico è stata rivalutazione irripetibile |
 | [Pochi titoli](pochi-titoli.html) e selezione dei titoli | Se pochi titoli fanno tutto il rendimento, basterebbe trovarli | Un portafoglio concentrato ha buone probabilità di non contenerli: l'indice li contiene tutti |
 | [Valore atteso](valore-atteso.html), [volatility drag](volatility-drag.html) e leva | La leva alza il rendimento medio | E abbassa quello tipico se introduce la possibilità di rovina; oltre la leva di Kelly scende anche il rendimento composto |

@@ -191,8 +191,6 @@ I dati dei paper MSCI sono riportati con la loro data di riferimento, indicata n
 - Understanding drivers of excess returns – Wei e Lyu, MSCI Research, maggio 2024
 - [Investor Bulletin: U.S.-Listed Companies Operating Chinese Businesses Through a VIE Structure](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/investor-bulletin-us-listed-companies-operating-chinese-businesses-through-vie-structure) – SEC, settembre 2021
 - [The New Face of Emerging Markets](https://www.marquetteassociates.com/new-face-emerging-markets/) – Marquette Associates, giugno 2026
-- [Economic growth and equity returns](https://site.warrington.ufl.edu/ritter/files/2015/04/Economic-growth-and-equity-returns-2005.pdf) – Jay Ritter, Pacific-Basin Finance Journal 2005
-- [Growth and Stocks Seem Unrelated](https://marginalrevolution.com/marginalrevolution/2005/11/economic_growth-2.html) – Marginal Revolution, sintesi dei risultati di Ritter
 
 ## Total Portfolio Approach
 

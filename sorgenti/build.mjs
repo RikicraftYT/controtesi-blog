@@ -83,7 +83,7 @@ const etichettaLivello = (l) =>
 // Vocabolario dei tag: un articolo può usare solo questi (campo "tag", separati da virgola).
 const TAG = ["inflazione", "liquidità", "interesse composto", "rischio", "volatilità", "azioni", "obbligazioni",
   "oro", "fondi ed ETF", "costi", "tasse", "diversificazione", "asset allocation", "leva", "valutazioni",
-  "dati storici", "efficienza dei mercati", "comportamento", "fattori", "geografia", "Cina", "pensione",
+  "dati storici", "efficienza dei mercati", "comportamento", "fattori", "geografia", "pensione",
   "pianificazione", "statistica", "opzioni", "metodo"];
 const MESI_BREVI = ["gen", "feb", "mar", "apr", "mag", "giu", "lug", "ago", "set", "ott", "nov", "dic"];
 const dataBreve = (iso) => { const [a, m, g] = iso.split("-"); return `${Number(g)} ${MESI_BREVI[Number(m) - 1]} ${a}`; };
