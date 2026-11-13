@@ -31,6 +31,8 @@ Dopo ogni modifica a testi, stile o script, rigenera e committa anche gli HTML. 
 
 ## Scrivere un articolo
 
+Le regole complete per chi scrive (livelli, struttura, fonti, stile, controllo finale) sono in [`LINEE-GUIDA-ARTICOLI.md`](LINEE-GUIDA-ARTICOLI.md). Qui sotto solo il formato tecnico.
+
 Ogni file in `contenuti/` inizia con un'intestazione:
 
 ```
