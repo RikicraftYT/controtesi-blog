@@ -63,13 +63,14 @@ La data di aggiornamento la aggiunge chi integra l'articolo nel sito.
 | `derivati` | Opzioni e derivati | Opzioni, futures e strategie che li usano |
 | `esposizioni` | Che cosa possiedi davvero | Leggere i rischi di ciò che si ha |
 | `vita` | Dal risparmio alla pensione | Accumulo, prelievo, ciclo di vita |
+| `oltre` | Oltre il portafoglio | Come si ragiona, come si scelgono le informazioni, come si costruisce un reddito |
 | `sintesi` | Trarre le conclusioni | Solo per la Mappa |
 
 Se un articolo non entra in nessun gruppo, va detto nella sezione «Da verificare», con una proposta di nome.
 
 **Tag disponibili**
 
-inflazione · liquidità · interesse composto · rischio · volatilità · azioni · obbligazioni · oro · fondi ed ETF · costi · tasse · diversificazione · asset allocation · leva · valutazioni · dati storici · efficienza dei mercati · comportamento · fattori · geografia · Cina · pensione · pianificazione · statistica · opzioni
+inflazione · liquidità · interesse composto · rischio · volatilità · azioni · obbligazioni · oro · fondi ed ETF · costi · tasse · diversificazione · asset allocation · leva · valutazioni · dati storici · efficienza dei mercati · comportamento · fattori · geografia · Cina · pensione · pianificazione · statistica · opzioni · metodo
 
 I tag servono ai lettori per filtrare gli articoli in home. Vanno scritti esattamente così, minuscole comprese. Un tag nuovo si propone nella sezione «Da verificare», non si inventa nell'intestazione.
 

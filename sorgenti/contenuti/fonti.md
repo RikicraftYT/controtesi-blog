@@ -237,6 +237,22 @@ Pagine consultate il 13 novembre 2026. Sono calcoli illustrativi, fatti con la f
 - [Put-call parity at 50](https://caia.org/node/5599) – CAIA Association, su Stoll, «The Relationship between Put and Call Option Prices», Journal of Finance, 1969
 - [Covered Calls: A Devil's Bargain](https://rosetta.to/u/benfelixcsi/covered-calls-a-devil-s-bargain) – Ben Felix, video, trascrizione su sito terzo
 
+## Oltre il portafoglio, Bogle, caos
+
+Testi citati per autore e titolo: sono la base degli articoli «Input di qualità», «Pensiero di terzo livello», «Cassa e patrimonio», «Bogle e l'indicizzazione» e «Caos di primo e secondo ordine».
+
+- Cultivating High-Quality Inputs for High-Quality Outputs – Nat Eliason, saggio
+- Level 3 Thinking: A Unified Theory of Self-Improvement – Nat Eliason, saggio
+- Fast Cash vs. Slow Equity – Nat Eliason, saggio, con gli esempi di Growth Machine e di Kit
+- Divertirsi da morire (Amusing Ourselves to Death) – Neil Postman, 1985
+- Crony Beliefs – Kevin Simler, Melting Asphalt, 2016
+- Deep Work – Cal Newport, 2016
+- The Acceleration of Addictiveness – Paul Graham, 2010
+- On John Bogle and index investing – MrRIP, Retire In Progress, 19 gennaio 2019
+- Bogle Sounds a Warning on Index Funds – John C. Bogle, The Wall Street Journal, 29 novembre 2018
+- First and Second Order Chaos – Daniel Miessler, 11 marzo 2017
+- Sapiens. Da animali a dèi – Yuval Noah Harari, 2011
+
 ## Libri per andare oltre
 
 - Dimson, Marsh, Staunton, *Triumph of the Optimists*

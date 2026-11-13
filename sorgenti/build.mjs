@@ -66,6 +66,7 @@ const GRUPPI = [
   { id: "derivati", nome: "Opzioni e derivati" },
   { id: "esposizioni", nome: "Che cosa possiedi davvero" },
   { id: "vita", nome: "Dal risparmio alla pensione" },
+  { id: "oltre", nome: "Oltre il portafoglio" },
   { id: "sintesi", nome: "Trarre le conclusioni" },
 ];
 
@@ -83,7 +84,7 @@ const etichettaLivello = (l) =>
 const TAG = ["inflazione", "liquidità", "interesse composto", "rischio", "volatilità", "azioni", "obbligazioni",
   "oro", "fondi ed ETF", "costi", "tasse", "diversificazione", "asset allocation", "leva", "valutazioni",
   "dati storici", "efficienza dei mercati", "comportamento", "fattori", "geografia", "Cina", "pensione",
-  "pianificazione", "statistica", "opzioni"];
+  "pianificazione", "statistica", "opzioni", "metodo"];
 const MESI_BREVI = ["gen", "feb", "mar", "apr", "mag", "giu", "lug", "ago", "set", "ott", "nov", "dic"];
 const dataBreve = (iso) => { const [a, m, g] = iso.split("-"); return `${Number(g)} ${MESI_BREVI[Number(m) - 1]} ${a}`; };
 const linkTag = (t) => `index.html?tag=${encodeURIComponent(t)}#articoli`;
