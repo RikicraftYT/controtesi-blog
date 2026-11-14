@@ -1,0 +1,71 @@
+# Genera, verifica e pubblica il sito.
+# A ogni push, su qualunque branch: anteprime, build e verifiche (anche nel browser).
+# Solo su main, se tutto è passato: pubblicazione su GitHub Pages.
+# Richiede in Settings → Pages la sorgente «GitHub Actions».
+name: Sito
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sito-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sorgenti
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: sorgenti/package-lock.json
+
+      - name: Dipendenze del sito
+        run: npm ci
+
+      - name: Strumenti per anteprime e verifiche (Playwright, axe, Pillow)
+        run: |
+          npm install --no-save playwright@1.63.0 axe-core@4.10.2
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y python3-pil
+
+      - name: Anteprime social
+        run: npm run anteprime
+
+      - name: Build
+        run: npm run build
+
+      - name: Verifiche (file e browser)
+        run: npm run verifica -- --browser
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: sito
+
+  pubblica:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.pubblicazione.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: pubblicazione
+        uses: actions/deploy-pages@v4

@@ -2,7 +2,12 @@
   "name": "controtesi",
   "private": true,
   "type": "module",
-  "scripts": { "build": "node build.mjs" },
+  "scripts": {
+    "build": "node build.mjs",
+    "verifica": "node verifica.mjs",
+    "anteprime": "node anteprime.mjs",
+    "sito": "node anteprime.mjs && node build.mjs && node verifica.mjs"
+  },
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.0.0",
     "@fontsource-variable/newsreader": "^5.0.0",
@@ -11,5 +16,8 @@
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.0.0",
     "markdown-it-container": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

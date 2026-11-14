@@ -22,11 +22,11 @@ slug: slug-dell-articolo
 ---
 ```
 
-In fondo al file, dopo l'ultimo articolo:
+In fondo al file, dopo l'ultimo articolo, le fonti di ciascun articolo (formato nella sezione 9) e ciò che resta da verificare:
 
 ```
 <!-- ===== FONTI ===== -->
-## Titolo della sezione delle fonti
+### [Titolo dell'articolo](slug-dell-articolo.html)
 - ...
 
 ## Da verificare prima di pubblicare
@@ -39,12 +39,12 @@ La sezione «Da verificare» non viene pubblicata: serve a segnalare ciò che no
 
 | Campo | Obbligatorio | Regola |
 | --- | --- | --- |
-| `slug` | sì | Minuscole, trattini, niente accenti né apostrofi. Diventa l'indirizzo della pagina e non va più cambiato. Esempio: `interesse-composto` |
+| `slug` | sì | Minuscole, trattini, niente accenti né apostrofi. Diventa l'indirizzo della pagina e non va più cambiato (se proprio serve, chi integra mette il vecchio nel campo `vecchi`, così i link già in giro continuano a funzionare). Esempio: `interesse-composto` |
 | `titolo` | sì | Forma «Argomento, sottotitolo che dice la tesi». Esempio: «Valore atteso, la media che nessuno vive». Al massimo 70 caratteri |
 | `tesi` | sì, tranne nel livello base | Una frase, l'idea che l'articolo mette alla prova, come la direbbe chi ci crede. Al massimo 60 caratteri, con il punto finale |
 | `obiezione` | sì, tranne nel livello base | Una o due frasi brevi, l'obiezione più forte. Al massimo 90 caratteri |
 | `livello` | sì | `base`, `intermedio` o `avanzato` (vedi sezione 4) |
-| `gruppo` | sì | Uno dei gruppi elencati sotto |
+| `gruppo` | sì | Uno dei gruppi elencati sotto. Serve a chi integra: decide la cartella in cui va il file (`contenuti/<gruppo>/`), dove poi il campo si toglie |
 | `tag` | sì | Da uno a quattro tag dal vocabolario qui sotto, separati da virgola. Esempio: `azioni, dati storici` |
 | `sommario` | sì | Due o tre frasi, al massimo 300 caratteri. Compare sotto il titolo e nelle anteprime social |
 | `prima` | no | Slug degli articoli da leggere prima, separati da virgola. Esempio: `interesse-composto, inflazione-rendimento-reale` |
@@ -64,7 +64,7 @@ La data di aggiornamento la aggiunge chi integra l'articolo nel sito.
 | `esposizioni` | Che cosa possiedi davvero | Leggere i rischi di ciò che si ha |
 | `vita` | Dal risparmio alla pensione | Accumulo, prelievo, ciclo di vita |
 | `oltre` | Oltre il portafoglio | Come si ragiona, come si scelgono le informazioni, come si costruisce un reddito |
-| `sintesi` | Trarre le conclusioni | Solo per la Mappa |
+| `sintesi` | Trarre le conclusioni | Solo per «Come stanno insieme», la pagina delle tensioni tra le teorie (voce «Tensioni» nel menu) |
 
 Se un articolo non entra in nessun gruppo, va detto nella sezione «Da verificare», con una proposta di nome.
 
@@ -81,13 +81,15 @@ Il livello dipende da quanto deve sapere il lettore, non dall'importanza del tem
 | | Base | Intermedio | Avanzato |
 | --- | --- | --- | --- |
 | Per chi | Chi non ha mai investito o ha appena cominciato | Chi conosce azioni, obbligazioni, ETF, inflazione, interesse composto | Chi ha familiarità con statistica e modelli |
-| Lunghezza | 600–900 parole | 700–1.200 parole | 900–1.600 parole |
+| Lunghezza | 600–900 parole | 450–1.200 parole | 550–1.600 parole |
 | Formule | Al massimo una, con numeri, spiegata riga per riga | Algebra semplice, sempre spiegata anche a parole | Libere, purché ogni simbolo sia definito |
 | Termini tecnici | Ognuno spiegato alla prima occorrenza | Spiegati quelli non di base | Spiegati quelli specialistici |
 | Obiezioni | Nessuna: l'articolo spiega | 3–5 | 3–7 |
 | Esempi | Numeri tondi, in euro, su una persona concreta | Dati reali con fonte | Dati reali, studi, confronti tra metodi |
 
 In caso di dubbio tra due livelli si sceglie quello più alto: per il lettore è meglio trovare un articolo più facile del previsto che il contrario.
+
+Le parole si contano senza grafici e formule su riga separata; le tabelle contano. I limiti valgono come intervallo normale, non come obiettivo: un articolo intermedio denso e completo in 500 parole va bene, uno che supera i 1.200 di solito ha una sezione o un'obiezione di troppo. `npm run verifica` segnala gli articoli fuori dai limiti.
 
 ## 5. Struttura dell'articolo
 
@@ -185,7 +187,34 @@ Due o tre frasi che riassumono il concetto.
 - **Mai celle segnaposto** («non disponibile», «da verificare», «non leggibile»). Se un dato manca si toglie la riga e lo si dice nel testo, oppure si usa «—» spiegando sotto la tabella perché.
 - I dati in tabella hanno una data («a fine 2025») nel testo o nell'intestazione.
 
-## 8. Link e fonti
+## 8. Grafici
+
+Un grafico si scrive come blocco recintato `grafico` con un oggetto JSON. La build lo trasforma in un'immagine che si adatta al telefono e al tema scuro, con una tabella dei dati sotto: chi scrive non deve disegnare nulla.
+
+```grafico
+{
+ "tipo": "barre",
+ "titolo": "Rendimento reale medio annuo, Stati Uniti 1900–2025",
+ "nota": "Fonte: UBS Global Investment Returns Yearbook 2026.",
+ "x": {"formato": {"dec": 1, "suffisso": "%"}},
+ "righe": [
+  {"etichetta": "Titoli di Stato a breve", "valore": 0.5, "colore": 4},
+  {"etichetta": "Azioni", "valore": 6.6, "colore": 1}
+ ]
+}
+```
+
+Regole:
+
+- **Solo numeri che hanno già una fonte nel testo**, oppure calcoli fatti con una formula dell'articolo. In quel caso la `nota` comincia con «Calcolo illustrativo» e dichiara le ipotesi.
+- **Un grafico per un concetto**, messo subito dopo il paragrafo o la tabella che spiega.
+- **Al massimo quattro serie.** I colori sono numerati da 1 a 4 e hanno sempre lo stesso ordine. Se compaiono insieme le serie 2 e 4, una delle due va tratteggiata (`"tratteggio": true`).
+- **Titolo che dice che cosa si vede**, non il nome del tipo di grafico.
+- **Numeri nel JSON con il punto decimale** (`6.6`): la virgola la mette la build.
+
+Tipi disponibili: `linee` (anche curve da formula, con `generatore`), `barre`, `barre100`, `cascata`, `payoff` (profili delle opzioni), `waffle`, `punti-collegati`, `intervalli`, `matrice`. Esempi di ciascuno sono negli articoli del sito: per esempio `costi`, `rischio-e-rendimento`, `risk-parity`, `greche`, `profili-di-rendimento`, `pochi-titoli`, `esposizione-geografica`, `regola-4-percento`, `permanent-portfolio`. Chi scrive può anche limitarsi a indicare dove servirebbe un grafico e con quali numeri, nella sezione «Da verificare»: lo costruisce chi integra l'articolo.
+
+## 9. Link e fonti
 
 È la parte più importante, ed è dove gli articoli esistenti hanno avuto più problemi.
 
@@ -193,20 +222,23 @@ Due o tre frasi che riassumono il concetto.
 - **Preferire le fonti primarie**: lo studio, il documento dell'istituzione, il comunicato ufficiale. Una sintesi giornalistica va bene in aggiunta, non al posto dell'originale. Evitare blog personali, forum, copie di PDF caricate da terzi, Wikipedia come unica fonte.
 - **Fonti senza link**: se un documento è stato letto da un PDF di cui non si ha l'indirizzo, va citato per titolo, autori e data, e segnalato in «Da verificare».
 - **Ragionamenti propri**: si possono fare, ma vanno presentati come ragionamenti («ne segue che», «è coerente con»), non come risultati di uno studio.
-- **Calcoli illustrativi**: se un esempio è inventato o calcolato a mano, va detto nel testo («l'esempio è illustrativo») e nella sezione fonti.
+- **Calcoli illustrativi**: se un esempio è inventato o calcolato a mano, va detto nel testo («l'esempio è illustrativo») e nelle fonti dell'articolo.
+- **Link esterni**: si scrivono come link normali. Sul sito si aprono in una nuova scheda con una piccola freccia ↗, aggiunta dalla build.
 - **Link interni**: agli altri articoli con `[testo](slug.html)`. Ogni articolo dovrebbe rimandare almeno a due articoli del sito, e il primo rimando a un articolo va messo dove serve al ragionamento, non in fondo.
-- **Formato della sezione fonti** in fondo al file:
+- **Formato delle fonti** in fondo al file: un blocco per articolo, con il titolo dell'articolo come link alla sua pagina. Chi integra lo copia nella pagina `fonti.md`, sotto il gruppo dell'articolo; la build lo mostra anche in fondo all'articolo, come «Fonti di questo articolo».
 
   ```
-  ## Nome della sezione (per esempio «Per iniziare»)
+  ### [Titolo dell'articolo](slug-dell-articolo.html)
 
-  Pagine consultate il 13 novembre 2026. L'esempio di ... è un calcolo illustrativo.
+  Calcolo illustrativo: l'esempio di ... (una riga, solo se serve).
 
   - [Titolo originale della pagina](https://...) – Autore o istituzione, testata, anno
   - Titolo di un PDF senza link – Autori, istituzione, mese e anno
   ```
 
-## 9. Lingua e stile
+  Ogni link esterno del testo deve comparire nel blocco del suo articolo con lo stesso identico indirizzo: `npm run verifica` lo controlla. Una fonte usata da due articoli si ripete in tutti e due i blocchi. Il blocco può contenere anche fonti senza link nel testo, citate per autore e titolo.
+
+## 10. Lingua e stile
 
 - Italiano, seconda persona singolare («se investi», «il tuo portafoglio»).
 - Frasi brevi. Un'idea per frase. Niente enfasi, punti esclamativi, domande retoriche in serie.
@@ -217,7 +249,7 @@ Due o tre frasi che riassumono il concetto.
 - Niente note per chi integra dentro il testo dell'articolo («il grafico non era leggibile», «aggiungere il link»): vanno nella sezione «Da verificare».
 - Coerenza con gli altri articoli: se un articolo esistente dice il contrario, va citato e discusso, non ignorato.
 
-## 10. Indicazioni in più per il livello base
+## 11. Indicazioni in più per il livello base
 
 - **Si spiega, non si discute.** Niente tesi da smontare: l'articolo risponde a una domanda («perché i soldi fermi perdono valore?»). Le idee sbagliate più diffuse trovano posto, se servono, in «Gli equivoci più comuni».
 - **Un concetto per articolo.** Se servono due concetti, sono due articoli.
@@ -227,20 +259,20 @@ Due o tre frasi che riassumono il concetto.
 - **Nessun prerequisito oltre agli articoli base precedenti**, indicati nel campo `prima`.
 - **«Che cosa farne»** con tre punti pratici e generali (che cosa controllare, che cosa chiedersi), non consigli di acquisto.
 
-## 11. Controllo finale prima di mandare il file
+## 12. Controllo finale prima di mandare il file
 
 - [ ] Intestazione completa, con `livello`, `gruppo` e `tag` tra i valori ammessi
 - [ ] Slug unico, senza accenti, uguale a quello nella riga `ARTICOLO:`
 - [ ] Intermedio e avanzato: ogni obiezione ha la sua risposta. Base: nessuna tesi, obiezione o risposta
 - [ ] Una sola `::: difendibile`, alla fine
-- [ ] Ogni numero ha un link a una fonte, e la fonte compare nella sezione fonti
+- [ ] Ogni numero ha un link a una fonte, e la fonte compare nel blocco fonti dell'articolo con lo stesso indirizzo
 - [ ] Nessuna cella segnaposto e nessuna nota interna nel testo
 - [ ] Formule con la virgola decimale `{,}` e simboli spiegati
 - [ ] Almeno due rimandi ad altri articoli del sito
 - [ ] Lunghezza nei limiti del livello
 - [ ] Ciò che non è stato verificato è nella sezione «Da verificare»
 
-## 12. Esempio di articolo base
+## 13. Esempio di articolo base
 
 ```
 <!-- ===== ARTICOLO: interesse-composto ===== -->
@@ -309,3 +341,19 @@ Ordine di lettura suggerito. Gli slug sono proposte: si possono cambiare, purch�
 | 14 | `scheda-di-un-fondo` | Come si legge la scheda di un fondo? | quale-cina, esposizione-geografica |
 
 Per `tasse-di-base` servono fonti normative ufficiali (Agenzia delle Entrate, testi di legge) per ogni aliquota citata.
+
+## Appendice: temi ancora da coprire
+
+Temi che mancano e che si prestano al formato tesi e obiezione. La tesi è una proposta di partenza: chi scrive può riformularla. Gruppo e livello sono indicativi.
+
+| Tema | Gruppo | Livello | Tesi da mettere alla prova |
+| --- | --- | --- | --- |
+| Fondi pensione e TFR | `vita` | intermedio | «Lasciare il TFR in azienda è la scelta prudente» |
+| Obbligazioni e tassi, la duration | `rendimenti` | intermedio | «Le obbligazioni sono la parte sicura del portafoglio» |
+| ETF in pratica: accumulo o distribuzione, replica, domicilio, valuta | `esposizioni` | intermedio | «Due ETF sullo stesso indice sono intercambiabili» |
+| Casa e immobili | `portafoglio` | intermedio | «Il mattone è l'investimento più sicuro» |
+| Criptovalute | `portafoglio` | intermedio | «Bitcoin è l'oro digitale» |
+| Tasse oltre le basi: compensazioni, regimi, rendimento netto | `vita` | intermedio | «Conta il rendimento lordo, le tasse sono uguali per tutti» |
+| Un fattore alla volta: momentum, value, qualità | `prezzi` | avanzato | «Il value è morto» |
+
+Oggi i tag «tasse» e «fattori» hanno uno e due articoli: i temi qui sopra li renderebbero utili come filtri.

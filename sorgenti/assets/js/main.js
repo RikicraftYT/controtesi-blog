@@ -387,6 +387,9 @@
     esplora.querySelector(".esplora-ricerca").hidden = false;
     esplora.querySelector(".esplora-filtri").hidden = false;
 
+    var separatori = {};
+    esplora.querySelectorAll(".esplora-gruppo").forEach(function (el) { separatori[el.getAttribute("data-gruppo")] = el; });
+
     var dati = schede.map(function (el) {
       return {
         el: el, slug: el.getAttribute("data-slug"), tema: el.getAttribute("data-gruppo"),
@@ -473,8 +476,19 @@
       attivi.hidden = !nAttivi;
       // Griglia: ordine nuovo, e solo le prime schede fino a "Mostra altri".
       if (daUtente) mostrati = PER_PAGINA;
+      // Nell'ordine del percorso, senza filtri né ricerca, i gruppi hanno il loro separatore.
+      var conGruppi = o === "percorso" && !nAttivi, precedente = null;
       dati.forEach(function (d) { d.el.hidden = true; });
-      visibili.forEach(function (d, k) { griglia.appendChild(d.el); d.el.hidden = k >= mostrati; });
+      Object.keys(separatori).forEach(function (g) { separatori[g].hidden = true; });
+      visibili.forEach(function (d, k) {
+        if (conGruppi && d.tema !== precedente && separatori[d.tema]) {
+          griglia.appendChild(separatori[d.tema]);
+          separatori[d.tema].hidden = k >= mostrati;
+        }
+        precedente = d.tema;
+        griglia.appendChild(d.el);
+        d.el.hidden = k >= mostrati;
+      });
       var resto = visibili.length - mostrati;
       altri.hidden = resto <= 0;
       altri.textContent = resto <= PER_PAGINA ? (resto === 1 ? "Mostra l'ultimo articolo" : "Mostra gli ultimi " + resto) : "Mostra altri " + PER_PAGINA + " (ne restano " + resto + ")";
@@ -559,6 +573,225 @@
     document.addEventListener("keydown", function (e) {
       if (e.key !== "Escape") return;
       menu.forEach(function (m) { if (m.open) { m.open = false; m.querySelector("summary").focus(); } });
+    });
+  }
+  /* ----- Grafici: tooltip su barre e punti (mouse, tocco e tastiera) ----- */
+  if (document.querySelector(".grafico")) {
+    var tip = document.createElement("div");
+    tip.className = "grafico-tip";
+    tip.hidden = true;
+    tip.setAttribute("role", "status");
+    document.body.appendChild(tip);
+    var posiziona = function (x, y) {
+      var w = tip.offsetWidth, h = tip.offsetHeight;
+      var left = Math.min(window.innerWidth - w - 8, Math.max(8, x - w / 2));
+      var top = y - h - 12 < 8 ? y + 18 : y - h - 12;
+      tip.style.left = left + "px";
+      tip.style.top = top + "px";
+    };
+    var mostra = function (el, x, y) {
+      tip.textContent = el.getAttribute("data-tip");
+      tip.hidden = false;
+      if (x === undefined) { var r = el.getBoundingClientRect(); x = r.left + r.width / 2; y = r.top; }
+      posiziona(x, y);
+    };
+    var nascondi = function () { tip.hidden = true; };
+    var bersaglio = function (e) { return e.target.closest ? e.target.closest(".grafico [data-tip]") : null; };
+    document.addEventListener("pointerover", function (e) { var el = bersaglio(e); if (el) mostra(el, e.clientX, e.clientY); });
+    document.addEventListener("pointermove", function (e) { if (!tip.hidden && bersaglio(e)) posiziona(e.clientX, e.clientY); });
+    document.addEventListener("pointerout", function (e) { if (bersaglio(e)) nascondi(); });
+    document.addEventListener("focusin", function (e) { var el = bersaglio(e); if (el) mostra(el); else nascondi(); });
+    document.addEventListener("focusout", function (e) { if (bersaglio(e)) nascondi(); });
+    window.addEventListener("scroll", nascondi, { passive: true });
+  }
+
+  /* ----- Grafici interattivi: interesse composto, valore temporale, FIRE ----- */
+  var interattivi = document.querySelectorAll(".grafico[data-interattivo]");
+  if (interattivi.length && window.ControtesiFormule) {
+    var NS2 = "http://www.w3.org/2000/svg";
+    var nodo = function (nome, attr, testo) {
+      var n = document.createElementNS(NS2, nome);
+      for (var k in attr) n.setAttribute(k, attr[k]);
+      if (testo !== undefined) n.textContent = testo;
+      return n;
+    };
+    // Numeri, tacche, Black-Scholes e FIRE vengono da formule.js, lo stesso file usato dalla build.
+    var F = window.ControtesiFormule;
+    var num = F.numero, tacche = F.tacche;
+    var bsCall = function (S, K, T, r, s) { return F.blackScholes({ S: S, K: K, T: T, r: r, sigma: s }); };
+    // Disegna un grafico a linee alla larghezza reale del contenitore.
+    var disegnaLinee = function (cont, o) {
+      var W = Math.max(280, Math.round(cont.clientWidth)), stretto = W < 480;
+      var H = stretto ? Math.round(W * 0.78) : 320;
+      var fy = o.y.fmt, fx = o.x.fmt;
+      var sinistra = Math.max.apply(null, tacche(o.y.min, o.y.max, 5).map(function (v) { return fy(v).length * 7.1; })) + 14;
+      // legenda su più righe se non entra
+      var righeLeg = 1, cx = 0;
+      o.serie.forEach(function (s) { var w = 26 + s.nome.length * 6.9 + 18; if (cx + w > W && cx > 0) { righeLeg++; cx = 0; } cx += w; });
+      var legH = righeLeg * 18 + 4;
+      H += legH - 22;
+      var x0 = sinistra, x1 = W - 12, y1 = legH + 16, y0 = H - 40;
+      var sx = function (v) { return x0 + (v - o.x.min) / (o.x.max - o.x.min) * (x1 - x0); };
+      var sy = function (v) { return y0 - (Math.max(o.y.min, Math.min(o.y.max, v)) - o.y.min) / (o.y.max - o.y.min) * (y0 - y1); };
+      var svg = nodo("svg", { viewBox: "0 0 " + W + " " + H, "class": "grafico-svg", role: "img", "aria-label": o.titolo });
+      var lx = 0, ly = 10;
+      o.serie.forEach(function (s) {
+        var w = 26 + s.nome.length * 6.9 + 18;
+        if (lx + w > W && lx > 0) { lx = 0; ly += 18; }
+        svg.appendChild(nodo("line", { x1: lx, x2: lx + 20, y1: ly, y2: ly, "class": "g-linea g-s" + s.colore + (s.tratteggio ? " g-tratteggio" : "") }));
+        svg.appendChild(nodo("text", { x: lx + 26, y: ly + 4, "class": "g-etichetta" }, s.nome));
+        lx += w;
+      });
+      tacche(o.y.min, o.y.max, 5).forEach(function (v) {
+        svg.appendChild(nodo("line", { x1: x0, x2: x1, y1: sy(v), y2: sy(v), "class": "g-griglia" + (v === 0 ? " g-zero" : "") }));
+        svg.appendChild(nodo("text", { x: x0 - 6, y: sy(v) + 4, "text-anchor": "end", "class": "g-asse" }, fy(v)));
+      });
+      tacche(o.x.min, o.x.max, stretto ? 4 : 6).forEach(function (v) {
+        svg.appendChild(nodo("text", { x: sx(v), y: y0 + 18, "text-anchor": "middle", "class": "g-asse" }, fx(v)));
+      });
+      svg.appendChild(nodo("text", { x: x1, y: y0 + 34, "text-anchor": "end", "class": "g-asse g-titolo-asse" }, o.x.etichetta));
+      svg.appendChild(nodo("text", { x: x0 - 6, y: y1 - 8, "class": "g-asse g-titolo-asse" }, o.y.etichetta));
+      o.serie.forEach(function (s) {
+        var d = "";
+        for (var k = 0; k <= 160; k++) {
+          var xv = o.x.min + (o.x.max - o.x.min) * k / 160;
+          d += (k ? "L" : "M") + sx(xv).toFixed(1) + "," + sy(s.f(xv)).toFixed(1);
+        }
+        svg.appendChild(nodo("path", { d: d, "class": "g-linea g-s" + s.colore + (s.tratteggio ? " g-tratteggio" : "") }));
+      });
+      (o.punti || []).forEach(function (p) {
+        svg.appendChild(nodo("circle", { cx: sx(p.x), cy: sy(p.y), r: 5, "class": "g-punto g-evidenza g-s" + p.colore, tabindex: 0, "data-tip": p.tip }));
+      });
+      cont.innerHTML = "";
+      cont.appendChild(svg);
+    };
+
+    var MODELLI = {
+      interesse: {
+        cursori: [
+          { id: "r", nome: "Rendimento annuo", min: 0, max: 10, passo: 0.5, val: 5, fmt: function (v) { return num(v, 1) + "%"; } },
+          { id: "anni", nome: "Anni", min: 5, max: 50, passo: 1, val: 40, fmt: function (v) { return num(v); } }
+        ],
+        disegna: function (p, cont, esito) {
+          var r = p.r / 100, c0 = 10000, comp = function (t) { return F.composto(c0, r, t); };
+          var fin = comp(p.anni), semp = F.semplice(c0, r, p.anni);
+          disegnaLinee(cont, {
+            titolo: "10.000 € investiti per " + p.anni + " anni al " + num(p.r, 1) + "%",
+            x: { min: 0, max: p.anni, etichetta: "anni", fmt: function (v) { return num(v); } },
+            y: { min: 0, max: Math.max(12000, fin * 1.05), etichetta: "euro", fmt: function (v) { return num(v); } },
+            serie: [
+              { nome: "Interesse composto", colore: 1, f: comp },
+              { nome: "Interesse semplice", colore: 3, tratteggio: true, f: function (t) { return F.semplice(c0, r, t); } },
+              { nome: "Capitale versato", colore: 4, tratteggio: true, f: function () { return c0; } }
+            ],
+            punti: [{ x: p.anni, y: fin, colore: 1, tip: "Dopo " + p.anni + " anni: " + num(fin) + " €" }]
+          });
+          esito.textContent = "Dopo " + p.anni + " anni: " + num(fin) + " € con l'interesse composto, " + num(semp) +
+            " € con quello semplice. La differenza, " + num(fin - semp) + " €, è fatta di guadagni sui guadagni.";
+        }
+      },
+      opzione: {
+        cursori: [
+          { id: "giorni", nome: "Giorni alla scadenza", min: 1, max: 180, passo: 1, val: 60, fmt: function (v) { return num(v); } },
+          { id: "vol", nome: "Volatilità", min: 10, max: 60, passo: 1, val: 30, fmt: function (v) { return num(v) + "%"; } }
+        ],
+        disegna: function (p, cont, esito) {
+          var T = p.giorni / 365, s = p.vol / 100, K = 100, r = 0.03;
+          var premio = function (S) { return bsCall(S, K, T, r, s); };
+          var a100 = premio(100), a110 = premio(110);
+          disegnaLinee(cont, {
+            titolo: "Premio di una call con strike 100",
+            x: { min: 70, max: 130, etichetta: "prezzo dell'azione", fmt: function (v) { return num(v); } },
+            y: { min: 0, max: 35, etichetta: "premio", fmt: function (v) { return num(v); } },
+            serie: [
+              { nome: "Premio", colore: 1, f: premio },
+              { nome: "Valore intrinseco", colore: 2, tratteggio: true, f: function (S) { return Math.max(S - K, 0); } }
+            ],
+            punti: [
+              { x: 100, y: a100, colore: 1, tip: "Azione a 100: premio " + num(a100, 2) + ", tutto valore temporale" },
+              { x: 110, y: a110, colore: 1, tip: "Azione a 110: premio " + num(a110, 2) + ", di cui 10 intrinseco" }
+            ]
+          });
+          esito.textContent = "Con l'azione a 100 la call vale " + num(a100, 2) + ", tutto valore temporale. A 110 vale " +
+            num(a110, 2) + ": 10 di valore intrinseco e " + num(a110 - 10, 2) + " di valore temporale.";
+        }
+      },
+      fire: {
+        cursori: [
+          { id: "r", nome: "Rendimento reale", min: 1, max: 8, passo: 0.5, val: 5, fmt: function (v) { return num(v, 1) + "%"; } },
+          { id: "w", nome: "Tasso di prelievo", min: 3, max: 5, passo: 0.25, val: 4, fmt: function (v) { return num(v, 2) + "%"; } }
+        ],
+        disegna: function (p, cont, esito) {
+          var r = p.r / 100, w = p.w / 100;
+          var anni = function (sp) { return F.anniFire(r, w, sp / 100); };
+          disegnaLinee(cont, {
+            titolo: "Anni al traguardo secondo il tasso di risparmio",
+            x: { min: 5, max: 80, etichetta: "tasso di risparmio, %", fmt: function (v) { return num(v) + "%"; } },
+            y: { min: 0, max: 80, etichetta: "anni", fmt: function (v) { return num(v); } },
+            serie: [{ nome: "Anni al traguardo", colore: 1, f: anni }],
+            punti: [10, 25, 50, 66].map(function (sp) { return { x: sp, y: anni(sp), colore: 1, tip: "Risparmio " + sp + "%: circa " + num(anni(sp)) + " anni" }; })
+          });
+          esito.textContent = "Risparmiando il 25% servono circa " + num(anni(25)) + " anni; il 50%, circa " + num(anni(50)) +
+            ". Il traguardo è " + num(1 / w, 1) + " volte le spese annue.";
+        }
+      }
+    };
+
+    interattivi.forEach(function (fig) {
+      var modello = MODELLI[fig.getAttribute("data-interattivo")];
+      if (!modello) return;
+      var comandi = document.createElement("div");
+      comandi.className = "grafico-comandi";
+      var stato = {}, uscite = {};
+      modello.cursori.forEach(function (c) {
+        stato[c.id] = c.val;
+        var id = "c-" + Math.random().toString(36).slice(2, 8);
+        var l = document.createElement("label");
+        l.setAttribute("for", id);
+        l.innerHTML = "<span>" + c.nome + ": <output></output></span>";
+        var input = document.createElement("input");
+        input.type = "range"; input.id = id; input.min = c.min; input.max = c.max; input.step = c.passo; input.value = c.val;
+        // Gli screen reader leggono il valore con la sua unità ("5%", non "5").
+        input.setAttribute("aria-valuetext", c.fmt(c.val));
+        l.appendChild(input);
+        uscite[c.id] = l.querySelector("output");
+        uscite[c.id].textContent = c.fmt(c.val);
+        input.addEventListener("input", function () {
+          stato[c.id] = Number(input.value);
+          uscite[c.id].textContent = c.fmt(stato[c.id]);
+          input.setAttribute("aria-valuetext", c.fmt(stato[c.id]));
+          ridisegna();
+          annuncia();
+        });
+        comandi.appendChild(l);
+      });
+      var cont = document.createElement("div");
+      var esito = document.createElement("p");
+      esito.className = "grafico-esito";
+      // L'esito si aggiorna subito sullo schermo; agli screen reader lo si annuncia solo
+      // quando il cursore si ferma, non a ogni passo.
+      var voce = document.createElement("p");
+      voce.className = "visivamente-nascosto";
+      voce.setAttribute("aria-live", "polite");
+      var attesaVoce;
+      var annuncia = function () {
+        clearTimeout(attesaVoce);
+        attesaVoce = setTimeout(function () { voce.textContent = esito.textContent; }, 700);
+      };
+      // La versione statica (per chi non ha JavaScript) lascia il posto a quella interattiva.
+      fig.querySelectorAll(".grafico-largo, .grafico-stretto").forEach(function (d) { d.hidden = true; });
+      var titolo = fig.querySelector(".grafico-titolo");
+      titolo.parentNode.insertBefore(comandi, titolo.nextSibling);
+      comandi.parentNode.insertBefore(cont, comandi.nextSibling);
+      cont.parentNode.insertBefore(esito, cont.nextSibling);
+      esito.parentNode.insertBefore(voce, esito.nextSibling);
+      var ridisegna = function () { modello.disegna(stato, cont, esito); };
+      ridisegna();
+      var larghezza = cont.clientWidth, attesaG;
+      window.addEventListener("resize", function () {
+        clearTimeout(attesaG);
+        attesaG = setTimeout(function () { if (Math.abs(cont.clientWidth - larghezza) > 8) { larghezza = cont.clientWidth; ridisegna(); } }, 150);
+      });
     });
   }
 })();

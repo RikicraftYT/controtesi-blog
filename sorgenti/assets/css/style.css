@@ -35,6 +35,14 @@
   --evidenziatore: #ffe45c;
   --su-evidenziatore: #1d1633;
 
+  /* Colori delle serie nei grafici, nell'ordine fisso 1-4. Verificati con il validatore
+     della skill dataviz su sfondo #ffffff. Le serie 2 e 4 vanno sempre distinte anche
+     da etichette o tratteggio, perché per chi confonde rosso e verde sono vicine. */
+  --g1: #5236e0;
+  --g2: #c2185b;
+  --g3: #9a6a00;
+  --g4: #00897b;
+
   --titoli: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --testo: "Newsreader", Georgia, "Times New Roman", serif;
 
@@ -53,6 +61,11 @@
   --viola: #ab99ff;
   --lampone: #ff7fab;
   --petrolio: #62d8c8;
+  /* Stesse tinte per il tema scuro, verificate su sfondo #1f1838. */
+  --g1: #8c78f5;
+  --g2: #e8588f;
+  --g3: #b98a2c;
+  --g4: #2aa697;
 }
 
 *,
@@ -77,7 +90,12 @@ body {
 
 a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
 @media (hover: hover) { a:hover { text-decoration-thickness: 0.16em; } }
+/* Freccia dei link esterni nel testo: piccola, senza sottolineatura. */
+.prosa a .esterno { display: inline-block; margin-left: 0.12em; font-size: 0.72em; line-height: 1; text-decoration: none; vertical-align: 0.15em; }
 :focus-visible { outline: 3px solid var(--viola); outline-offset: 3px; border-radius: 3px; }
+/* I titoli ricevono il focus quando si arriva da un'ancora (tabindex="-1"): non sono
+   comandi, quindi niente contorno. Il titolo raggiunto si evidenzia con :target. */
+h2[tabindex="-1"]:focus, h3[tabindex="-1"]:focus { outline: none; }
 
 .salta {
   position: absolute; left: -999rem; top: 0.5rem;
@@ -291,6 +309,15 @@ a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offse
   display: grid; gap: 1.25rem; margin-top: 1.25rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr));
 }
+/* Separatori dei gruppi nella griglia (ordine del percorso). */
+.esplora-gruppo {
+  grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem;
+  margin-top: 1.75rem; padding-top: 0.9rem; border-top: 2px solid var(--inchiostro); font-family: var(--titoli);
+}
+.esplora-gruppo:first-child { margin-top: 0.5rem; }
+.esplora-gruppo-numero { font-weight: 800; font-size: 1.55rem; line-height: 1; letter-spacing: -0.03em; color: var(--viola); font-variant-numeric: tabular-nums; }
+.esplora-gruppo-nome { font-weight: 700; font-size: clamp(1.2rem, 2.6vw, 1.45rem); line-height: 1.2; letter-spacing: -0.02em; }
+.esplora-gruppo-quanti { margin-left: auto; font-size: 0.9rem; color: var(--tenue); }
 .scheda {
   position: relative; display: flex; flex-direction: column; gap: 0.55rem;
   padding: 1.25rem 1.3rem 1.2rem; background: var(--superficie); border: 1px solid var(--riga); border-radius: 14px;
@@ -496,12 +523,12 @@ html:has(.ricerca[open]) { overflow: hidden; }
     radial-gradient(farthest-side at 100% 50%, var(--ombra), transparent) right / 0.9rem 100% no-repeat scroll;
 }
 .tabella table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: 1.02rem; line-height: 1.4; }
-.tabella th {
+.tabella thead th, .tabella thead td {
   font-family: var(--titoli); font-weight: 600; font-size: 0.95rem; text-align: left;
   padding: 0 1rem 0.55rem 0; border-bottom: 2px solid var(--inchiostro); vertical-align: bottom;
 }
-.tabella td { padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--riga); vertical-align: top; }
-.tabella td:first-child { font-family: var(--titoli); font-weight: 600; font-size: 0.98rem; }
+.tabella tbody td, .tabella tbody th { padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--riga); vertical-align: top; text-align: left; }
+.tabella tbody td:first-child, .tabella tbody th { font-family: var(--titoli); font-weight: 600; font-size: 0.98rem; }
 .tabella th:last-child, .tabella td:last-child { padding-right: 0; }
 
 /* Le due voci */
@@ -544,6 +571,64 @@ html:has(.ricerca[open]) { overflow: hidden; }
 .sim .sim-esito { margin: 0; color: var(--tenue); }
 .sim figcaption { font-family: var(--titoli); font-size: 0.92rem; line-height: 1.4; color: var(--tenue); margin-top: 0.8rem; }
 
+/* Grafici generati in build (grafici.mjs) */
+.grafico { margin: 2rem 0; padding: 1.1rem 1.1rem 0.9rem; background: var(--superficie); border-radius: 12px; }
+.grafico-titolo { font-family: var(--titoli); font-weight: 700; font-size: 1.05rem !important; line-height: 1.3; margin: 0 0 0.8rem !important; }
+.grafico-svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--titoli); }
+.grafico-stretto { display: none; }
+@media (max-width: 34rem) {
+  .grafico { padding: 1rem 0.75rem 0.8rem; margin-left: -0.25rem; margin-right: -0.25rem; }
+  .grafico-largo { display: none; }
+  .grafico-stretto { display: block; }
+}
+.grafico figcaption { font-family: var(--titoli); font-size: 0.88rem; line-height: 1.4; color: var(--tenue); margin-top: 0.8rem; }
+.grafico-dati { margin-top: 0.6rem; font-family: var(--titoli); font-size: 0.9rem; }
+.grafico-dati summary { cursor: pointer; color: var(--viola); font-weight: 600; padding: 0.4rem 0; min-height: 32px; }
+.grafico-dati .tabella { margin: 0.5rem 0 0.2rem; }
+.grafico-dati table { min-width: 0; font-size: 0.92rem; }
+.g-s1 { --c: var(--g1); }
+.g-s2 { --c: var(--g2); }
+.g-s3 { --c: var(--g3); }
+.g-s4 { --c: var(--g4); }
+.g-griglia { stroke: var(--riga); stroke-width: 1; }
+.g-zero { stroke: var(--tenue); }
+.g-asse { fill: var(--tenue); font-size: 12px; }
+.g-titolo-asse { font-weight: 600; }
+.g-etichetta { fill: var(--inchiostro); font-size: 13px; }
+/* Alone del colore dello sfondo dietro le etichette: restano leggibili sopra linee e griglia. */
+.g-etichetta, .g-valore { paint-order: stroke; stroke: var(--superficie); stroke-width: 3.5px; stroke-linejoin: round; }
+.g-valore { fill: var(--inchiostro); font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.g-forte { font-weight: 700; }
+.g-tenue { fill: var(--tenue); }
+.g-linea { fill: none; stroke: var(--c); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+.g-spessa { stroke-width: 2.6; }
+.g-tratteggio { stroke-dasharray: 6 5; }
+.g-area { fill: var(--c); opacity: 0.14; }
+.g-barra { fill: var(--c); }
+.g-vuota { fill: none; stroke: var(--c); stroke-width: 2; stroke-dasharray: 4 3; }
+.g-su-colore { fill: var(--superficie); stroke: none; }
+.g-punto { fill: var(--c); stroke: var(--superficie); stroke-width: 2; }
+.g-evidenza { stroke-width: 2.5; }
+.g-collega { stroke: var(--riga); stroke-width: 4; stroke-linecap: round; }
+.g-rif { stroke: var(--tenue); stroke-width: 1; stroke-dasharray: 3 4; }
+.g-rif-forte { stroke-width: 1.5; stroke-dasharray: none; }
+.g-cella { fill: color-mix(in srgb, var(--c) 12%, var(--superficie)); stroke: var(--c); stroke-width: 1.5; }
+.grafico [data-tip] { cursor: default; }
+.grafico [data-tip]:focus { outline: none; }
+.grafico [data-tip]:focus-visible { stroke: var(--inchiostro); stroke-width: 2.5; }
+@media (hover: hover) { .grafico .g-barra[data-tip]:hover, .grafico .g-cella[data-tip]:hover { opacity: 0.85; } }
+.grafico-tip {
+  position: fixed; z-index: 30; pointer-events: none; max-width: 16rem;
+  padding: 0.45rem 0.65rem; border-radius: 8px; background: var(--inchiostro); color: var(--carta);
+  font-family: var(--titoli); font-size: 0.85rem; line-height: 1.35; box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+/* Controlli dei grafici interattivi */
+.grafico-comandi { display: grid; gap: 0.75rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); margin: 0 0 0.9rem; font-family: var(--titoli); font-size: 0.92rem; }
+.grafico-comandi label { display: grid; gap: 0.25rem; }
+.grafico-comandi output { font-weight: 700; color: var(--inchiostro); }
+.grafico-comandi input[type="range"] { width: 100%; min-height: 32px; accent-color: var(--viola); }
+.grafico-esito { font-family: var(--titoli); font-size: 0.95rem; margin: 0.6rem 0 0 !important; }
+
 /* Navigazione tra articoli */
 .vicini {
   max-width: 78rem; margin: 0 auto; padding: 0 var(--bordo-dx) 4.5rem var(--bordo-sx);
@@ -565,6 +650,18 @@ html:has(.ricerca[open]) { overflow: hidden; }
 
 /* Pagina semplice (fonti) */
 .pagina .prosa h2 { font-size: 1.4rem; margin-top: 2.2em; }
+.pagina .prosa h3 { font-size: 1.12rem; margin: 1.8em 0 0.4em; }
+.pagina .prosa h3 a { color: inherit; }
+.pagina .prosa h3:target { background: color-mix(in srgb, var(--evidenziatore) 55%, transparent); box-shadow: 0 0 0 0.3rem color-mix(in srgb, var(--evidenziatore) 55%, transparent); border-radius: 2px; }
+.pagina .prosa h3 + p { font-size: 1rem; color: var(--tenue); margin: 0.2em 0 0.4em; }
+
+/* Fonti in fondo agli articoli */
+.fonti-articolo { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 2px solid var(--inchiostro); }
+.prosa .fonti-articolo h2 { font-size: 1.25rem; margin: 0 0 0.6rem; }
+.fonti-articolo p { font-size: 1rem; color: var(--tenue); }
+.fonti-articolo ul { list-style: none; padding-left: 0; margin: 0.5rem 0 0; }
+.fonti-articolo li { padding: 0.5rem 0; margin: 0; border-bottom: 1px solid var(--riga); font-size: 1rem; line-height: 1.4; }
+.prosa .fonti-articolo .fonti-articolo-tutte { margin-top: 0.9rem; font-family: var(--titoli); font-size: 0.92rem; }
 .pagina .prosa ul { list-style: none; padding-left: 0; }
 .pagina .prosa li { padding: 0.55rem 0; margin: 0; border-bottom: 1px solid var(--riga); font-size: 1.08rem; line-height: 1.4; }
 
@@ -583,8 +680,21 @@ html:has(.ricerca[open]) { overflow: hidden; }
   html { scroll-behavior: auto; }
 }
 
+/* Colori forzati (alto contrasto di Windows): i colori di sfondo spariscono, quindi
+   bottoni e pallini del livello hanno bisogno di un bordo o di un colore di sistema. */
+@media (forced-colors: active) {
+  .bottone, .rimando .bottone { border: 2px solid ButtonText; color: ButtonText; }
+  .livello-punti i { border-color: CanvasText; }
+  .livello[data-punti="1"] i:nth-child(-n+1),
+  .livello[data-punti="2"] i:nth-child(-n+2),
+  .livello[data-punti="3"] i { background: CanvasText; forced-color-adjust: none; }
+  .scheda, .scontro, .tema, .filtro-menu summary, .esplora-ricerca, .esplora-gruppo { border-color: CanvasText; }
+  .marchio span { border: 1px solid CanvasText; }
+}
+
 @media print {
-  .testata, .sommario-pagina, .vicini, .sim-comandi, .tema { display: none; }
+  .testata, .sommario-pagina, .sommario-breve, .vicini, .sim-comandi, .tema, .grafico-comandi, .esplora-filtri, .esplora-ricerca { display: none; }
+  a .esterno { display: none; }
   body { background: #fff; color: #000; font-size: 11pt; }
   .articolo-corpo { display: block; }
 }
