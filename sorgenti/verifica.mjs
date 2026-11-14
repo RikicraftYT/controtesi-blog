@@ -14,12 +14,13 @@ import { createRequire } from "node:module";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { LIVELLI, SIMULATORE } from "./config.mjs";
 import { leggiContenuti } from "./lib/contenuti.mjs";
+import { CONTENUTI, USCITA as CARTELLA_SITO } from "./lib/percorsi.mjs";
 import { md } from "./lib/markdown.mjs";
 import { CARTELLA_ANTEPRIME } from "./lib/modelli.mjs";
 import { impronta } from "./anteprime.mjs";
 
 const QUI = path.dirname(fileURLToPath(import.meta.url));
-const USCITA = path.resolve(QUI, "..");
+const USCITA = CARTELLA_SITO;
 const opzioni = new Set(process.argv.slice(2));
 const errori = [], avvisi = [];
 const errore = (m) => errori.push(m);
@@ -27,7 +28,7 @@ const avviso = (m) => avvisi.push(m);
 
 /* ---------- Contenuti (la lettura stessa controlla intestazioni, tag, gruppi, slug) ---------- */
 
-const { articoli, pagine, basi } = leggiContenuti(path.join(QUI, "contenuti"));
+const { articoli, pagine, basi } = leggiContenuti(CONTENUTI);
 // Link esterni di un testo Markdown, letti con lo stesso parser della build (che gestisce
 // anche le parentesi dentro gli indirizzi).
 const esterni = (testo) => {
@@ -58,7 +59,7 @@ for (const f of attese) if (!html.has(f)) errore(`Manca ${f}: esegui npm run bui
 for (const f of html.keys()) if (!attese.has(f)) errore(`${f} non è generato da nessun file in contenuti/: esegui npm run build, che lo toglie`);
 for (const p of [...articoli, ...pagine]) {
   const f = path.join(USCITA, `${p.slug}.html`);
-  if (fs.existsSync(f) && fs.statSync(f).mtimeMs < fs.statSync(path.join(QUI, "contenuti", p.file)).mtimeMs) {
+  if (fs.existsSync(f) && fs.statSync(f).mtimeMs < fs.statSync(path.join(CONTENUTI, p.file)).mtimeMs) {
     avviso(`${p.slug}.html è più vecchio di ${p.file}: esegui npm run build`);
   }
 }

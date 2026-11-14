@@ -5,7 +5,8 @@
   "scripts": {
     "build": "node build.mjs",
     "verifica": "node verifica.mjs",
-    "anteprime": "node anteprime.mjs"
+    "anteprime": "node anteprime.mjs",
+    "sito": "node anteprime.mjs && node build.mjs && node verifica.mjs"
   },
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.0.0",

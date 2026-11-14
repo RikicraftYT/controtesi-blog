@@ -28,8 +28,8 @@ export const contaParole = (corpo) =>
 
 const elenco = (s) => (s ?? "").split(",").map((t) => t.trim()).filter(Boolean);
 
-function leggi(file) {
-  impostaFile(path.basename(file));
+function leggi(file, relativo) {
+  impostaFile(relativo);
   const { dati, corpo } = intestazione(fs.readFileSync(file, "utf8"), file);
   const tokens = md.parse(corpo, {});
   const sezioni = [];
@@ -41,7 +41,7 @@ function leggi(file) {
   const parole = contaParole(corpo);
   return {
     ...dati,
-    file: path.basename(file),
+    file: relativo,
     sorgente: corpo,
     html: md.renderer.render(tokens, md.options, {}),
     sezioni,
@@ -51,18 +51,35 @@ function leggi(file) {
   };
 }
 
+// contenuti/ contiene una cartella per gruppo (contenuti/basi/, contenuti/rendimenti/…) con
+// gli articoli, e direttamente le pagine che non sono articoli (fonti.md). Il gruppo di un
+// articolo è la sua cartella; dentro la cartella l'ordine è quello dei nomi dei file
+// (01-, 02-…). I gruppi seguono l'ordine di GRUPPI, così "articolo precedente/successivo"
+// ripercorre la home.
 export function leggiContenuti(cartella) {
-  const tutti = fs.readdirSync(cartella).filter((f) => f.endsWith(".md")).sort()
-    .map((f) => leggi(path.join(cartella, f)));
-  // Gli articoli seguono l'ordine dei gruppi (e, dentro ogni gruppo, quello dei file):
-  // così "articolo precedente/successivo" ripercorre la home.
-  const posizione = (a) => {
-    const i = GRUPPI.findIndex((g) => g.id === a.gruppo);
-    if (i < 0) throw new Error(`Gruppo "${a.gruppo}" sconosciuto in ${a.file}: aggiungilo a GRUPPI in config.mjs`);
-    return i;
-  };
-  const articoli = tutti.filter((p) => p.tipo !== "pagina").sort((a, b) => posizione(a) - posizione(b));
-  const pagine = tutti.filter((p) => p.tipo === "pagina");
+  const voci = fs.readdirSync(cartella, { withFileTypes: true });
+  for (const v of voci) {
+    if (v.isDirectory() && !GRUPPI.some((g) => g.id === v.name)) {
+      throw new Error(`La cartella contenuti/${v.name} non corrisponde a nessun gruppo: usa uno degli id di GRUPPI in config.mjs (${GRUPPI.map((g) => g.id).join(", ")})`);
+    }
+  }
+  const md = (dir) => fs.readdirSync(dir).filter((f) => f.endsWith(".md")).sort();
+  const articoli = [];
+  for (const g of GRUPPI) {
+    const dir = path.join(cartella, g.id);
+    if (!fs.existsSync(dir)) continue;
+    for (const f of md(dir)) {
+      const a = leggi(path.join(dir, f), `${g.id}/${f}`);
+      if (a.tipo === "pagina") throw new Error(`${a.file}: le pagine (tipo: pagina) stanno direttamente in contenuti/, non nelle cartelle dei gruppi`);
+      if (a.gruppo && a.gruppo !== g.id) throw new Error(`${a.file}: l'intestazione dice "gruppo: ${a.gruppo}" ma il file è nella cartella ${g.id}/`);
+      a.gruppo = g.id;
+      articoli.push(a);
+    }
+  }
+  const pagine = md(cartella).map((f) => leggi(path.join(cartella, f), f));
+  for (const p of pagine) {
+    if (p.tipo !== "pagina") throw new Error(`${p.file}: un articolo va nella cartella del suo gruppo (contenuti/<gruppo>/), non direttamente in contenuti/`);
+  }
 
   for (const a of articoli) {
     if (!LIVELLI[a.livello]) throw new Error(`Livello "${a.livello ?? ""}" non valido in ${a.file}: usa base, intermedio o avanzato`);

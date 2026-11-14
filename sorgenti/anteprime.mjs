@@ -1,7 +1,7 @@
 // Controtesi — immagini di anteprima per articolo (quelle che compaiono quando un link
 // viene condiviso sui social o nelle chat). Uso: npm run anteprime, poi npm run build.
 //
-// Serve Playwright con Chromium. Le immagini vanno in ../assets/img/anteprime/<slug>.png;
+// Serve Playwright con Chromium. Le immagini vanno in ../sito/assets/img/anteprime/<slug>.png;
 // elenco.json ricorda con quali dati è stata fatta ognuna, così si rigenerano solo quelle
 // di articoli nuovi o con titolo, gruppo, livello o obiezione cambiati. Le immagini di
 // articoli che non esistono più vengono tolte. La build usa un'immagine per articolo
@@ -16,11 +16,12 @@ import { createRequire } from "node:module";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { GRUPPI, LIVELLI, SITO } from "./config.mjs";
 import { leggiContenuti } from "./lib/contenuti.mjs";
+import { CONTENUTI, USCITA as CARTELLA_SITO } from "./lib/percorsi.mjs";
 import { CARTELLA_ANTEPRIME } from "./lib/modelli.mjs";
 import { esc } from "./lib/testo.mjs";
 
 const QUI = path.dirname(fileURLToPath(import.meta.url));
-const USCITA = path.resolve(QUI, "..");
+const USCITA = CARTELLA_SITO;
 const CARTELLA = path.join(USCITA, CARTELLA_ANTEPRIME);
 const ELENCO = path.join(CARTELLA, "elenco.json");
 const tutte = process.argv.includes("--tutte");
@@ -31,7 +32,9 @@ export const impronta = (a) => crypto.createHash("sha1")
   .digest("hex").slice(0, 12);
 
 function modello(a) {
-  const font = (f) => pathToFileURL(path.join(USCITA, "assets/fonts", f)).href;
+  // Caratteri presi direttamente dai pacchetti installati con npm install.
+  const font = (f) => pathToFileURL(path.join(QUI, "node_modules/@fontsource-variable",
+    f.startsWith("bricolage") ? "bricolage-grotesque" : "newsreader", "files", f)).href;
   const gruppo = GRUPPI.find((g) => g.id === a.gruppo).nome;
   const lungo = a.titolo.length;
   const corpo = lungo > 60 ? 64 : lungo > 42 ? 76 : 88;
@@ -76,7 +79,7 @@ async function main() {
   try { ({ chromium } = createRequire(import.meta.url)("playwright")); }
   catch { console.error("Serve Playwright: npm install --no-save playwright && npx playwright install chromium"); process.exit(1); }
 
-  const { articoli, basi } = leggiContenuti(path.join(QUI, "contenuti"));
+  const { articoli, basi } = leggiContenuti(CONTENUTI);
   for (const a of articoli) if (a.base) a.passo = `${basi.indexOf(a) + 1} di ${basi.length}`;
   fs.mkdirSync(CARTELLA, { recursive: true });
   let elenco = {};
@@ -93,7 +96,7 @@ async function main() {
       fs.writeFileSync(file, modello(a));
       await pagina.goto(pathToFileURL(file).href, { waitUntil: "load" });
       await pagina.evaluate(() => document.fonts.ready);
-      if (!(await pagina.evaluate(() => document.fonts.check('800 40px "Bricolage Grotesque"')))) throw new Error("Caratteri non caricati: esegui prima npm run build");
+      if (!(await pagina.evaluate(() => document.fonts.check('800 40px "Bricolage Grotesque"')))) throw new Error("Caratteri non caricati: esegui prima npm install");
       await pagina.screenshot({ path: path.join(CARTELLA, `${a.slug}.png`) });
       elenco[a.slug] = impronta(a);
     }

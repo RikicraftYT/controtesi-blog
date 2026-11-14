@@ -1,5 +1,5 @@
 // Controtesi — generatore del sito statico.
-// Legge i file in contenuti/*.md e scrive le pagine HTML nella cartella superiore.
+// Legge i file in contenuti/ e scrive il sito in ../sito/ (vedi lib/percorsi.mjs).
 // Uso: npm install && npm run build
 //
 // Impostazioni (gruppi, tag, livelli, indirizzi): config.mjs.
@@ -11,15 +11,16 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { SITO } from "./config.mjs";
 import { leggiContenuti } from "./lib/contenuti.mjs";
+import { CONTENUTI, USCITA as CARTELLA_SITO } from "./lib/percorsi.mjs";
 import { paginaArticolo, paginaSemplice, paginaIniziale, pagina404, paginaSpostata, sitemap, feed,
   impostaAnteprime, CARTELLA_ANTEPRIME } from "./lib/modelli.mjs";
 import { indiceRicerca } from "./lib/ricerca.mjs";
 
 const QUI = path.dirname(fileURLToPath(import.meta.url));
-const USCITA = path.resolve(QUI, "..");
+const USCITA = CARTELLA_SITO;
 const MODULI = path.join(QUI, "node_modules");
 
-const sito = leggiContenuti(path.join(QUI, "contenuti"));
+const sito = leggiContenuti(CONTENUTI);
 const { articoli, pagine } = sito;
 
 // Anteprime per articolo già generate (npm run anteprime).

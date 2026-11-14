@@ -44,7 +44,7 @@ La sezione «Da verificare» non viene pubblicata: serve a segnalare ciò che no
 | `tesi` | sì, tranne nel livello base | Una frase, l'idea che l'articolo mette alla prova, come la direbbe chi ci crede. Al massimo 60 caratteri, con il punto finale |
 | `obiezione` | sì, tranne nel livello base | Una o due frasi brevi, l'obiezione più forte. Al massimo 90 caratteri |
 | `livello` | sì | `base`, `intermedio` o `avanzato` (vedi sezione 4) |
-| `gruppo` | sì | Uno dei gruppi elencati sotto |
+| `gruppo` | sì | Uno dei gruppi elencati sotto. Serve a chi integra: decide la cartella in cui va il file (`contenuti/<gruppo>/`), dove poi il campo si toglie |
 | `tag` | sì | Da uno a quattro tag dal vocabolario qui sotto, separati da virgola. Esempio: `azioni, dati storici` |
 | `sommario` | sì | Due o tre frasi, al massimo 300 caratteri. Compare sotto il titolo e nelle anteprime social |
 | `prima` | no | Slug degli articoli da leggere prima, separati da virgola. Esempio: `interesse-composto, inflazione-rendimento-reale` |

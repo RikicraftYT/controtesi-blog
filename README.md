@@ -48,4 +48,4 @@ Controtesi analizza idee. Non è consulenza finanziaria e non suggerisce cosa co
 
 ---
 
-Le note tecniche per modificare o rigenerare il sito sono in [`sorgenti/README.md`](sorgenti/README.md).
+Il sito si genera dai testi in [`sorgenti/`](sorgenti/) e si pubblica da solo a ogni aggiornamento. Le note tecniche sono in [`sorgenti/README.md`](sorgenti/README.md).
