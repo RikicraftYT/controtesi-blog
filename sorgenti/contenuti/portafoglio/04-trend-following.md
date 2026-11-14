@@ -50,7 +50,7 @@ Servono futures, leva, vendite allo scoperto e una disciplina meccanica.
 :::
 
 ::: risposta
-Per un privato l'accesso passa da fondi specializzati, con costi più alti di un ETF indicizzato. Il problema principale è la tenuta psicologica: è una posizione che perde poco e spesso e guadagna molto e di rado. La maggior parte degli investitori la abbandona nel decennio sbagliato.
+Per un privato l'accesso passa da fondi specializzati, con costi più alti di un ETF indicizzato: che cosa contengono e quanto costano è in [Managed futures](managed-futures.html). Il problema principale è la tenuta psicologica: è una posizione che perde poco e spesso e guadagna molto e di rado. La maggior parte degli investitori la abbandona nel decennio sbagliato.
 :::
 
 ::: obiezione Contraddice l'efficienza dei mercati

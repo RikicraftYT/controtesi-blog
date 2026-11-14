@@ -212,7 +212,7 @@ Regole:
 - **Titolo che dice che cosa si vede**, non il nome del tipo di grafico.
 - **Numeri nel JSON con il punto decimale** (`6.6`): la virgola la mette la build.
 
-Tipi disponibili: `linee` (anche curve da formula, con `generatore`), `barre`, `barre100`, `cascata`, `payoff` (profili delle opzioni), `waffle`, `punti-collegati`, `intervalli`, `matrice`. Esempi di ciascuno sono negli articoli del sito: per esempio `costi`, `rischio-e-rendimento`, `risk-parity`, `greche`, `profili-di-rendimento`, `pochi-titoli`, `esposizione-geografica`, `regola-4-percento`, `permanent-portfolio`. Chi scrive può anche limitarsi a indicare dove servirebbe un grafico e con quali numeri, nella sezione «Da verificare»: lo costruisce chi integra l'articolo.
+Tipi disponibili: `linee` (anche curve da formula, con `generatore`), `barre`, `barre100`, `cascata`, `payoff` (profili delle opzioni), `waffle`, `punti-collegati`, `intervalli`, `matrice`. Esempi di ciascuno sono negli articoli del sito: per esempio `costi`, `rischio-e-rendimento`, `risk-parity`, `greche`, `profili-di-rendimento`, `pochi-titoli`, `esposizione-geografica`, `regola-4-percento`, `permanent-portfolio`. Chi scrive può anche limitarsi a indicare dove servirebbe un grafico e con quali numeri, nella sezione «Da verificare»: lo costruisce chi integra l'articolo. In ogni caso chi integra rilegge ogni articolo nuovo cercando i punti in cui un grafico aiuterebbe, e li aggiunge anche se non sono stati proposti.
 
 ## 9. Link e fonti
 

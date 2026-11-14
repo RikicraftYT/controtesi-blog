@@ -260,6 +260,31 @@ Gli esempi numerici sono calcoli illustrativi su ipotesi dichiarate nel testo.
 - Time Series Momentum – Moskowitz, Ooi, Pedersen, Journal of Financial Economics 2012
 
 
+### [Managed futures, che cosa compri quando compri il trend](managed-futures.html)
+
+Calcoli illustrativi: la scomposizione del rendimento del fondo e il crollo con azioni −40%, obbligazioni +5% e trend +15% (tabella e grafico). Pagine consultate il 14 novembre 2026.
+
+- [Demystifying Managed Futures](https://www.aqr.com/library/journal-articles/demystifying-managed-futures) – Hurst, Ooi e Pedersen, Journal of Investment Management, 2013, pagina AQR
+- [Demystifying Managed Futures, abstract](https://papers.ssrn.com/abstract=2333776) – SSRN
+- [Demystifying Managed Futures, sintesi](https://joim.com/?p=1179) – Journal of Investment Management
+- [A Century of Evidence on Trend-Following Investing](https://fairmodel.econ.yale.edu/ec439/hurst.pdf) – Hurst, Ooi e Pedersen, Journal of Portfolio Management, 2017
+- [A Century of Evidence on Trend-Following Investing, versione 2014](https://oxfordstrat.com/coasdfASD32/uploads/2016/03/A-Century-of-Evidence-on-Trend-Following-Investing.pdf) – AQR (copia ospitata da terzi)
+- [Time Series Momentum, the historical evidence](https://alphaarchitect.com/time-series-momentum-aka-trend-following-the-historical-evidence/) – Alpha Architect
+- [Morningstar Advisor, giugno-luglio 2013](https://www.nxtbook.com/nxtbooks/morningstar/advisor_20130607/index.php?startid=45) – Morningstar, sul margine e la cassa
+- [Excess returns](https://nilssonhedge.com/databaseinfo/database-info/excess-returns/) – Nilsson Hedge
+- [The Convexity of Trend Following](https://thehedgefundjournal.com/the-convexity-of-trend-following/) – The Hedge Fund Journal
+- [Hype and reality in managed futures](https://www.priceactionlab.com/Blog/?p=68040) – Price Action Lab, 2023
+- [Flat December sees CTAs complete record year](https://www.hedgeweek.com/flat-december-sees-ctas-complete-record-year-2022/) – Hedgeweek, gennaio 2023
+- [Trend-following hedge funds endure more pain](https://www.alternativeswatch.com/2025/06/02/trend-following-hedge-funds-endure-more-pain-societe-generale-indices/) – Alternatives Watch, 2 giugno 2025
+- [Trend Following Performance Report, dicembre 2025](https://www.toptradersunplugged.com/?p=20381) – Top Traders Unplugged
+- [With trend following funds down sharply this fall, should investors fish or cut bait?](https://cambridgeassociates.com/insight/with-trend-following-funds-down-sharply-this-fall-should-investors-fish-or-cut-bait) – Cambridge Associates
+- [Fooling Some of the People All of the Time](https://academicnewsletter.sufe.edu.cn/info/354190) – Bhardwaj, Gorton e Rouwenhorst, Review of Financial Studies, 2014, abstract
+- [Fooling Some of the People All of the Time, working paper](https://www.nber.org/papers/w14424) – NBER, 2008
+- [Europe's first managed futures hedge fund ETF launches](https://www.hedgeweek.com/europes-first-managed-futures-hedge-fund-etf-launches/) – Hedgeweek, 2025
+- [Managed Futures and CTAs](https://ryanoconnellfinance.com/?p=12114) – Ryan O'Connell
+- [Themes of 2022](https://hedgenordic.com/?p=40435) – HedgeNordic, 2023
+- [Robust versus slow](https://transtrend.com/en/insights/robust-versus-slow/) – Transtrend, 2018
+
 ## Opzioni e derivati
 
 ### [Opzioni, un diritto che si compra e un obbligo che si vende](opzioni-come-funzionano.html)
