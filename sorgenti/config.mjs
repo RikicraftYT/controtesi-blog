@@ -35,8 +35,8 @@ export const GRUPPI = [
 // "parole" sono i limiti di lunghezza delle linee guida, controllati da npm run verifica.
 export const LIVELLI = {
   base: { nome: "Base", punti: 1, parole: [600, 900] },
-  intermedio: { nome: "Intermedio", punti: 2, parole: [500, 1200] },
-  avanzato: { nome: "Avanzato", punti: 3, parole: [600, 1600] },
+  intermedio: { nome: "Intermedio", punti: 2, parole: [450, 1200] },
+  avanzato: { nome: "Avanzato", punti: 3, parole: [550, 1600] },
 };
 
 // Vocabolario dei tag: un articolo può usare solo questi (campo "tag", separati da virgola).

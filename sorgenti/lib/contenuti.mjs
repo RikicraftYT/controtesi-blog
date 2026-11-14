@@ -4,6 +4,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { md, impostaFile } from "./markdown.mjs";
+import { fontiPerArticolo, htmlFonti } from "./fonti.mjs";
 import { GRUPPI, LIVELLI, TAG } from "../config.mjs";
 
 // Intestazione e corpo di un file Markdown. Le righe dell'intestazione sono "chiave: valore".
@@ -19,8 +20,11 @@ export function intestazione(grezzo, file) {
 }
 
 // Parole del testo, senza grafici e formule su riga separata.
+// Si contano solo le parole con almeno una lettera o una cifra: i "|" delle tabelle e i
+// segni del Markdown non sono parole.
 export const contaParole = (corpo) =>
-  corpo.replace(/```grafico[\s\S]*?```/g, " ").replace(/\$\$[\s\S]*?\$\$/g, " ").split(/\s+/).filter(Boolean).length;
+  corpo.replace(/```grafico[\s\S]*?```/g, " ").replace(/\$\$[\s\S]*?\$\$/g, " ")
+    .split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 
 const elenco = (s) => (s ?? "").split(",").map((t) => t.trim()).filter(Boolean);
 
@@ -87,6 +91,16 @@ export function leggiContenuti(cartella) {
       return b;
     });
   }
+  // Fonti di ogni articolo, dalla pagina fonti.md (vedi lib/fonti.mjs).
+  const paginaFonti = pagine.find((p) => p.slug === "fonti");
+  const fonti = paginaFonti ? fontiPerArticolo(paginaFonti.sorgente) : new Map();
+  for (const slug of fonti.keys()) {
+    if (!articoli.some((a) => a.slug === slug)) throw new Error(`fonti.md ha una sezione per "${slug}.html", che non è un articolo`);
+  }
+  for (const a of articoli) {
+    const blocco = fonti.get(a.slug);
+    a.fonti = blocco ? { html: htmlFonti(blocco), id: blocco.id, urls: blocco.urls } : null;
+  }
   const basi = articoli.filter((a) => a.gruppo === "basi");
-  return { articoli, pagine, basi };
+  return { articoli, pagine, basi, fonti };
 }

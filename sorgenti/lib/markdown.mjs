@@ -70,7 +70,8 @@ md.renderer.rules.math_block = (tokens, idx, ...resto) => {
   return `<div class="formula"><div class="formula-affiancata">${affiancata}</div>` +
     `<div class="formula-righe"><p class="katex-block">${righe}</p></div></div>\n`;
 };
-md.use(anchor, { slugify, level: [2] });
+// Ancore sui titoli ## (sommario) e ### (le sezioni della pagina Fonti, a cui rimandano gli articoli).
+md.use(anchor, { slugify, level: [2, 3] });
 
 const voce = (nome, etichetta) =>
   md.use(container, nome, {

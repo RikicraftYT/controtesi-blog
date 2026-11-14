@@ -140,7 +140,12 @@ export function paginaArticolo(a, i, { articoli, basi }) {
   const gruppo = gruppoDi(a);
   const prima = articoli[i - 1];
   const dopo = articoli[i + 1];
-  const { sommarioBreve, sommario } = sommari(a.sezioni);
+  const { sommarioBreve, sommario } = sommari(a.fonti ? [...a.sezioni, { id: "fonti-articolo", testo: "Fonti" }] : a.sezioni);
+  const fonti = a.fonti ? `<aside class="fonti-articolo" aria-labelledby="fonti-articolo">
+  <h2 id="fonti-articolo">Fonti di questo articolo</h2>
+${a.fonti.html}
+  <p class="fonti-articolo-tutte"><a href="fonti.html#${a.fonti.id}">Le fonti di tutti gli articoli</a></p>
+</aside>` : "";
   const corpo = `<article>
 <header class="articolo-testa">
   <p class="articolo-gruppo"><a href="index.html?tema=${gruppo.id}#articoli">${esc(gruppo.nome)}</a>${a.gruppo === "basi" ? ` <span aria-hidden="true">·</span> passo ${basi.indexOf(a) + 1} di ${basi.length}` : ""} <span aria-hidden="true">·</span> ${etichettaLivello(a.livello)}</p>
@@ -158,6 +163,7 @@ export function paginaArticolo(a, i, { articoli, basi }) {
   ${sommarioBreve}
   <div class="prosa">
 ${a.html}
+${fonti}
 ${RIMANDI[a.gruppo] ? rimandoSimulatore(...RIMANDI[a.gruppo]) : ""}
   </div>
   ${sommario}
@@ -275,7 +281,8 @@ export function paginaIniziale({ articoli, basi }) {
   <p class="esplora-vuoto" hidden>Nessun articolo corrisponde. <button type="button" class="esplora-azzera">Cancella i filtri</button></p>
   <div class="esplora-altri"><button type="button" class="bottone-secondario" hidden>Mostra altri</button></div>
 </section>`;
-  const primaTesi = articoli.find((a) => !a.base);
+  // Chi conosce già le basi parte dal primo articolo intermedio, non da uno avanzato.
+  const primaTesi = articoli.find((a) => a.livello === "intermedio") ?? articoli.find((a) => !a.base);
   const azioni = basi.length
     ? `<a class="bottone" href="${basi[0].slug}.html">Parti dalle basi</a>
     <a href="${primaTesi.slug}.html">Conosci già le basi? Vai alle tesi</a>`

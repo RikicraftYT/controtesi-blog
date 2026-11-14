@@ -93,6 +93,9 @@ a { color: var(--viola); text-decoration-thickness: 0.08em; text-underline-offse
 /* Freccia dei link esterni nel testo: piccola, senza sottolineatura. */
 .prosa a .esterno { display: inline-block; margin-left: 0.12em; font-size: 0.72em; line-height: 1; text-decoration: none; vertical-align: 0.15em; }
 :focus-visible { outline: 3px solid var(--viola); outline-offset: 3px; border-radius: 3px; }
+/* I titoli ricevono il focus quando si arriva da un'ancora (tabindex="-1"): non sono
+   comandi, quindi niente contorno. Il titolo raggiunto si evidenzia con :target. */
+h2[tabindex="-1"]:focus, h3[tabindex="-1"]:focus { outline: none; }
 
 .salta {
   position: absolute; left: -999rem; top: 0.5rem;
@@ -647,6 +650,18 @@ html:has(.ricerca[open]) { overflow: hidden; }
 
 /* Pagina semplice (fonti) */
 .pagina .prosa h2 { font-size: 1.4rem; margin-top: 2.2em; }
+.pagina .prosa h3 { font-size: 1.12rem; margin: 1.8em 0 0.4em; }
+.pagina .prosa h3 a { color: inherit; }
+.pagina .prosa h3:target { background: color-mix(in srgb, var(--evidenziatore) 55%, transparent); box-shadow: 0 0 0 0.3rem color-mix(in srgb, var(--evidenziatore) 55%, transparent); border-radius: 2px; }
+.pagina .prosa h3 + p { font-size: 1rem; color: var(--tenue); margin: 0.2em 0 0.4em; }
+
+/* Fonti in fondo agli articoli */
+.fonti-articolo { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 2px solid var(--inchiostro); }
+.prosa .fonti-articolo h2 { font-size: 1.25rem; margin: 0 0 0.6rem; }
+.fonti-articolo p { font-size: 1rem; color: var(--tenue); }
+.fonti-articolo ul { list-style: none; padding-left: 0; margin: 0.5rem 0 0; }
+.fonti-articolo li { padding: 0.5rem 0; margin: 0; border-bottom: 1px solid var(--riga); font-size: 1rem; line-height: 1.4; }
+.prosa .fonti-articolo .fonti-articolo-tutte { margin-top: 0.9rem; font-family: var(--titoli); font-size: 0.92rem; }
 .pagina .prosa ul { list-style: none; padding-left: 0; }
 .pagina .prosa li { padding: 0.55rem 0; margin: 0; border-bottom: 1px solid var(--riga); font-size: 1.08rem; line-height: 1.4; }
 
