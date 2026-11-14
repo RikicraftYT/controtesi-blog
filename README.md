@@ -15,9 +15,11 @@ Ogni tesi vale quanto la migliore obiezione a cui sa rispondere. Per questo gli 
 3. **Obiezioni e risposte**, una per una.
 4. **La formulazione difendibile**: cosa resta della tesi dopo il confronto.
 
-Le formule sono scritte per intero e ogni numero rimanda alla sua fonte.
+Le formule sono scritte per intero e ogni numero rimanda alla sua fonte; in fondo a ogni articolo c'è l'elenco delle fonti usate.
 
-Ogni articolo ha un livello di difficoltà (base, intermedio o avanzato), e in home si possono filtrare per livello. Una ricerca interna trova gli articoli per parola.
+Ogni articolo ha un livello di difficoltà (base, intermedio o avanzato), e in home gli articoli si filtrano per tema, livello e tag. Una ricerca interna li trova per parola, e molti concetti sono spiegati anche con grafici, alcuni interattivi.
+
+Per seguire gli articoli nuovi e quelli rivisti c'è il [feed degli articoli](https://rikicraftyt.github.io/controtesi-blog/feed.xml).
 
 ## Di cosa parla
 
@@ -30,7 +32,7 @@ Ogni articolo ha un livello di difficoltà (base, intermedio o avanzato), e in h
 - **Che cosa possiedi davvero**: dove investe un indice globale, quale Cina c'è negli indici, il total portfolio approach, i rischi dietro le etichette, quanto deve rendere un investimento per meritare un posto.
 - **Dal risparmio alla pensione**: entrare tutto subito o a rate, FIRE, il rischio di sequenza, la regola del 4%, il ciclo di vita.
 - **Oltre il portafoglio**: come scegliere le informazioni, come cambiare idea senza cadere in una nuova dottrina, perché alcuni progetti rendono subito e altri tardi.
-- **Trarre le conclusioni**: dove queste idee si contraddicono e quali combinazioni stanno in piedi.
+- **Trarre le conclusioni**: dove queste idee si contraddicono e quali combinazioni stanno in piedi (la voce «Tensioni» del menu).
 
 ## Per chi è
 
