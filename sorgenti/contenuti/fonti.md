@@ -342,6 +342,26 @@ Calcoli illustrativi con la formula di Black e Scholes e un tasso del 3%: le gre
 - [Covered Calls: A Devil's Bargain](https://rosetta.to/u/benfelixcsi/covered-calls-a-devil-s-bargain) – Ben Felix, video, trascrizione su sito terzo
 - [Covered Calls Uncovered](https://rpc.cfainstitute.org/research/financial-analysts-journal/2015/covered-calls-uncovered) – Israelov e Nielsen, Financial Analysts Journal, 2015
 
+### [ETF a leva, come si costruisce un 3x](etf-a-leva.html)
+
+Calcoli illustrativi: lo swap da 300 € su 100 € di patrimonio, il ribilanciamento dopo un rialzo e un ribasso del 2%, la perdita del 61,5% di un 3x nel 1987, il costo annuo del finanziamento al 2,5% e il costo dello swap annualizzato, nel testo e nei due grafici.
+
+- [MSCI Short and Leveraged Daily Indexes Methodology](https://www.msci.com/eqb/methodology/meth_docs/MSCI_Short_and_Leveraged_Daily_Indexes_Methodology_Aug2021.pdf) – MSCI, agosto 2021
+- [The Dynamics of Leveraged and Inverse Exchange-Traded Funds](https://joim.com/wp-content/uploads/emember/downloads/p0283.pdf) – Cheng e Madhavan, Journal of Investment Management, 2009
+- [Marking 30 years since the stock market crash of 1987](https://insight.factset.com/marking-30-years-since-the-stock-market-crash-of-1987) – FactSet, 2017
+- [WisdomTree EURO STOXX 50 3x Daily Leveraged](https://www.wisdomtree.com/pl/products/equities/wisdomtree-euro-stoxx-50-3x-daily-leveraged) – WisdomTree, scheda prodotto, luglio 2026
+- [The equity market turbulence of 5 February – the role of exchange-traded volatility products](https://www.bis.org/publ/qtrpdf/r_qt1803t.htm) – BIS Quarterly Review, marzo 2018
+- [Macroprudential Bulletin, ottobre 2019](https://www.ecb.europa.eu/pub/financial-stability/macroprudential-bulletin/html/ecb.mpbu201910_4~a9c04beceb.en.html) – Banca centrale europea
+- [Daily rebalancing in leveraged ETPs explained](https://leverageshares.com/it/insights/daily-rebalancing-in-leveraged-etps-explained/) – Leverage Shares
+- [WisdomTree Bund 30Y 3x Daily Short](https://www.wisdomtree.eu/etps/fixed-income/wisdomtree-bund-30y-3x-daily-short) – WisdomTree, scheda prodotto
+- [Avviso di quotazione ETN a leva 3x](https://www.borsaitaliana.it/etc-etn/notizie/3etnboost.pdf) – Borsa Italiana
+- [I migliori ETF a leva](https://www.justetf.com/it/how-to/invest-in-leveraged-etfs.html) – justETF
+- [Leverage Shares 3x Long Total World ETP Securities](https://script.finanzen.ch/etp/daten-gebuehr/leverage-shares-3x-long-total-world-etp-securities-xs2399364822) – finanzen.ch, scheda prodotto
+- [La tassazione degli ETC in Italia](https://www.justetf.com/it/news/etf/la-tassazione-degli-etc-in-italia.html) – justETF
+- [SEC Adopts Fund Derivatives Rule](https://www.sidley.com/zh-hans/insights/newsupdates/2020/10/sec-adopts-fund-derivatives-rule-expands-leverage-limits-forgoes-sales-practice-rules) – Sidley Austin, ottobre 2020
+- [Monetary policy decisions, 10 settembre 2026](https://ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html) – Banca centrale europea
+- [Final Terms, GraniteShares 3x Long Moderna Daily ETP](https://graniteshares.com/media/40dm2k0v/xs3069877556_f_pc_n.pdf) – GraniteShares
+
 ### [Strategie con più opzioni, mattoncini e parità put-call](strategie-combinate.html)
 
 - [Put-call parity at 50](https://caia.org/node/5599) – CAIA Association, su Stoll, «The Relationship between Put and Call Option Prices», Journal of Finance, 1969

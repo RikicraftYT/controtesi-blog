@@ -109,7 +109,7 @@ $$
 100 \times 1{,}20 \times 0{,}8182 = 98{,}18
 $$
 
-L'indice è fermo e il prodotto ha perso l'1,8%. In un mercato laterale e volatile la perdita si accumula; in un mercato che sale con poca volatilità succede il contrario. Il calcolo è illustrativo e non conta costi né interessi.
+L'indice è fermo e il prodotto ha perso l'1,8%. In un mercato laterale e volatile la perdita si accumula; in un mercato che sale con poca volatilità succede il contrario. Il calcolo è illustrativo e non conta costi né interessi; come sono costruiti questi prodotti e quanto costa la leva è spiegato in [ETF a leva](etf-a-leva.html).
 
 ## Il demone di Shannon
 
