@@ -1,7 +1,7 @@
 // Modelli HTML delle pagine: guscio comune, articolo, pagina semplice, home, 404.
 
 import { SITO, SIMULATORE, GRUPPI, LIVELLI, TAG, RIMANDI } from "../config.mjs";
-import { dataEstesa, dataBreve, inLettere, esc } from "./testo.mjs";
+import { dataEstesa, dataBreve, esc } from "./testo.mjs";
 
 const etichettaLivello = (l) =>
   `<span class="livello" data-punti="${LIVELLI[l].punti}"><span class="livello-punti" aria-hidden="true"><i></i><i></i><i></i></span>` +
@@ -274,7 +274,7 @@ export function paginaIniziale({ articoli, basi }) {
       </label>
     </div>
     <div class="esplora-attivi" hidden></div>
-    <p class="esplora-conteggio" aria-live="polite">${inLettere(articoli.length)} articoli</p>
+    <p class="esplora-conteggio" aria-live="polite">${articoli.length} articoli</p>
   </div>
   <div class="esplora-griglia">${schede}
   </div>
@@ -291,7 +291,7 @@ export function paginaIniziale({ articoli, basi }) {
 
   const corpo = `<section class="apertura">
   <h1>Ogni tesi vale quanto la migliore obiezione a cui sa rispondere.</h1>
-  <p>${inLettere(articoli.length)} articoli su rendimenti, prezzi, portafogli e pensione. ${basi.length ? "Chi comincia ha un percorso di base, da leggere in ordine. Gli altri partono dalla tesi nella sua forma più forte, poi le danno contro" : "Ognuno parte dalla tesi nella sua forma più forte, poi le dà contro"}, con le formule e le fonti in vista.</p>
+  <p>Rendimenti, prezzi, portafogli e pensione: le idee che si sentono ripetere più spesso. ${basi.length ? "Chi comincia ha un percorso di base, da leggere in ordine. Gli altri articoli partono dalla tesi nella sua forma più forte, poi le danno contro" : "Ogni articolo parte dalla tesi nella sua forma più forte, poi le dà contro"}, con le formule e le fonti in vista.</p>
   <div class="apertura-azioni">
     ${azioni}
   </div>

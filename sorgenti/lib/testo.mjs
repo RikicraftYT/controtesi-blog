@@ -1,4 +1,4 @@
-// Piccole utilità di testo: date in italiano, numeri in lettere, slug, escape HTML.
+// Piccole utilità di testo: date in italiano, slug, escape HTML.
 
 const MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio",
   "agosto", "settembre", "ottobre", "novembre", "dicembre"];
@@ -15,20 +15,6 @@ export function dataEstesa(iso, file) {
 
 // "2026-11-11" -> "11 nov 2026"
 export const dataBreve = (iso) => { const [a, m, g] = iso.split("-"); return `${Number(g)} ${MESI_BREVI[Number(m) - 1]} ${a}`; };
-
-// Numero in lettere, con la maiuscola, da 1 a 99: "Ventitré", "Quarantaquattro".
-const UNITA = ["", "uno", "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove", "dieci",
-  "undici", "dodici", "tredici", "quattordici", "quindici", "sedici", "diciassette", "diciotto", "diciannove"];
-const DECINE = ["", "", "venti", "trenta", "quaranta", "cinquanta", "sessanta", "settanta", "ottanta", "novanta"];
-export function inLettere(n) {
-  if (n < 1 || n > 99) return String(n);
-  let t = n < 20 ? UNITA[n] : DECINE[Math.floor(n / 10)];
-  if (n >= 20 && n % 10) {
-    const u = UNITA[n % 10];
-    t = (u === "uno" || u === "otto" ? t.slice(0, -1) : t) + (u === "tre" ? "tré" : u);
-  }
-  return t.charAt(0).toUpperCase() + t.slice(1);
-}
 
 export const slugify = (s) =>
   s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")

@@ -20,7 +20,7 @@ Istruzioni per chi modifica o rigenera il sito. La descrizione del progetto è n
 | `lib/fonti.mjs` | Fonti per articolo, ricavate da `fonti.md` |
 | `lib/modelli.mjs` | HTML delle pagine, sitemap, feed, pagine di reindirizzamento |
 | `lib/ricerca.mjs` | Indice della ricerca |
-| `lib/testo.mjs` | Date, numeri in lettere, slug |
+| `lib/testo.mjs` | Date, slug ed escape HTML |
 | `lib/percorsi.mjs` | Dove stanno contenuti e sito generato |
 | `assets/css/style.css` | Grafica (colori, caratteri, impaginazione, tema scuro) |
 | `assets/js/main.js` | Tema, barra di lettura, sommario, ricerca, filtri, tooltip, grafici interattivi |
